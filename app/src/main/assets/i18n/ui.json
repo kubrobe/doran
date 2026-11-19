@@ -998,5 +998,185 @@
   "uz": "Kundalikka saqlandi",
   "ru": "Сохранено в дневник",
   "en": "Saved to your diary"
+ },
+ "check_again": {
+  "uz": "Qayta tekshirish",
+  "ru": "Проверить снова",
+  "en": "Check again"
+ },
+ "check_recognizer": {
+  "uz": "Tanib olish bilan tekshirish",
+  "ru": "Проверить распознаванием",
+  "en": "Check with recognition"
+ },
+ "clarity": {
+  "uz": "Aniqlik",
+  "ru": "Чёткость",
+  "en": "Clarity"
+ },
+ "clarity_vs": {
+  "uz": "namuna:",
+  "ru": "образец:",
+  "en": "vs"
+ },
+ "heard_as": {
+  "uz": "Telefon eshitgani: «{0}»",
+  "ru": "Телефон услышал: «{0}»",
+  "en": "The phone heard: «{0}»"
+ },
+ "mark_good": {
+  "uz": "to‘g‘ri",
+  "ru": "верно",
+  "en": "clear"
+ },
+ "mark_close": {
+  "uz": "yaqin",
+  "ru": "почти",
+  "en": "close"
+ },
+ "mark_missed": {
+  "uz": "tushib qoldi",
+  "ru": "не услышано",
+  "en": "missed"
+ },
+ "model_slow": {
+  "uz": "Sekin",
+  "ru": "Медленно",
+  "en": "Slow"
+ },
+ "record_and_rate": {
+  "uz": "Yozib olish va baholash",
+  "ru": "Записать и оценить",
+  "en": "Record & rate"
+ },
+ "rating_busy": {
+  "uz": "Baholanmoqda…",
+  "ru": "Оцениваю…",
+  "en": "Scoring…"
+ },
+ "rating_no_model": {
+  "uz": "Solishtirish uchun namuna ovozi yo‘q. Sozlamalarda koreyscha ovozni yoqing yoki o‘rnating.",
+  "ru": "Нет образца для сравнения. Включите или установите корейский голос в настройках.",
+  "en": "No model voice to compare with. Turn on or install the Korean voice in Settings."
+ },
+ "rating_no_speech": {
+  "uz": "Ovoz deyarli eshitilmadi. Telefonni og‘zingizga yaqinroq tuting va qayta urinib ko‘ring.",
+  "ru": "Речь почти не слышна. Держите телефон ближе ко рту и попробуйте ещё раз.",
+  "en": "Hardly any speech came through. Hold the phone closer to your mouth and try again."
+ },
+ "sound_match": {
+  "uz": "Namunaga o‘xshashlik",
+  "ru": "Сходство с образцом",
+  "en": "Sound match"
+ },
+ "sound_note": {
+  "uz": "Taxminiy baho: yozuvingiz tovushi va ritmi namuna bilan solishtiriladi. Alohida tovushlarni aniq baholay olmaydi.",
+  "ru": "Примерная оценка: звучание и ритм записи сравниваются с образцом. Отдельные звуки она точно не оценивает.",
+  "en": "Approximate: compares the sound and rhythm of your take with the model. It can't judge single sounds precisely."
+ },
+ "understood_score": {
+  "uz": "Koreyscha tanib olish tushundi",
+  "ru": "Понял корейский распознаватель",
+  "en": "Understood by Korean recognition"
+ },
+ "understood_note": {
+  "uz": "Telefonning nutqni tanish tizimi har bir bo‘g‘inni qanday eshitganini ko‘rsatadi.",
+  "ru": "Показывает, как распознавание речи на телефоне услышало каждый слог.",
+  "en": "Shows how the phone's speech recognition heard each syllable."
+ },
+ "tip_too_quiet": {
+  "uz": "Biroz balandroq gapiring.",
+  "ru": "Говорите немного громче.",
+  "en": "Speak a little louder."
+ },
+ "tip_too_fast": {
+  "uz": "Juda tez — har bir bo‘g‘inni aniqroq ayting.",
+  "ru": "Слишком быстро — проговаривайте каждый слог.",
+  "en": "Too fast — give each syllable its time."
+ },
+ "tip_too_slow": {
+  "uz": "Juda sekin — bir nafasda ayting.",
+  "ru": "Слишком медленно — скажите на одном дыхании.",
+  "en": "Too slow — say it in one breath."
+ },
+ "tip_weakest": {
+  "uz": "Namunani yana tinglang va «{0}» bo‘g‘iniga e’tibor bering.",
+  "ru": "Послушайте образец ещё раз и обратите внимание на слог «{0}».",
+  "en": "Listen to the model again and focus on «{0}»."
+ },
+ "tip_great": {
+  "uz": "Juda yaxshi! Endi namunasiz, ma’nosidan ayting.",
+  "ru": "Отлично! Теперь скажите по смыслу, без образца.",
+  "en": "Great! Now try it from the meaning, without the model."
+ },
+ "tip_again": {
+  "uz": "Namunani tinglang, keyin uni ritmini takrorlab qayta ayting.",
+  "ru": "Послушайте образец и повторите, копируя ритм.",
+  "en": "Listen to the model, then copy its rhythm and try again."
+ },
+ "notice_mic_silent": {
+  "uz": "Mikrofon hech narsa eshitmadi. Boshqa ilova mikrofonni ishlatmayotganini va mikrofon o‘chirilmaganini tekshiring.",
+  "ru": "Микрофон ничего не услышал. Проверьте, что он не занят другим приложением и не отключён.",
+  "en": "The microphone heard nothing. Check that no other app is using it and it isn't blocked."
+ },
+ "notice_too_short": {
+  "uz": "Juda qisqa. Tugmani bosing, gapiring, keyin To‘xtatish tugmasini bosing.",
+  "ru": "Слишком коротко. Нажмите, скажите фразу, затем нажмите «Стоп».",
+  "en": "Too short. Tap, say the phrase, then tap Stop."
+ },
+ "notice_no_voice": {
+  "uz": "Koreyscha ovoz ijro etilmadi. Sozlamalar → Qurilmani tekshirish bo‘limida koreyscha ovozni o‘rnating.",
+  "ru": "Корейский голос не воспроизвёлся. Установите его в Настройки → Проверка устройства.",
+  "en": "The Korean voice couldn't play. Install it in Settings → Device check."
+ },
+ "notice_voice_off": {
+  "uz": "Sun’iy ovoz o‘chirilgan. Uni Sozlamalarda yoqing.",
+  "ru": "Синтезированный голос выключен. Включите его в настройках.",
+  "en": "The synthetic voice is turned off. Turn it on in Settings."
+ },
+ "notice_volume_off": {
+  "uz": "Media ovozi o‘chiq. Ovoz tugmasi bilan balandlating.",
+  "ru": "Громкость медиа на нуле. Прибавьте её кнопкой громкости.",
+  "en": "Media volume is at zero. Turn it up with the volume button."
+ },
+ "notice_play_failed": {
+  "uz": "Bu yozuvni ijro etib bo‘lmadi.",
+  "ru": "Не удалось воспроизвести запись.",
+  "en": "That recording couldn't play."
+ },
+ "notice_recognition_network": {
+  "uz": "Nutqni tanish uchun internet kerak. Hozircha yozib olamiz — keyin ma’nosini tanlaysiz.",
+  "ru": "Для распознавания нужен интернет. Пока записываем — потом выберете смысл.",
+  "en": "Recognition needs internet. Recording instead — you'll confirm what you meant."
+ },
+ "notice_recognition_no_korean": {
+  "uz": "Telefonda koreyscha nutqni tanish yo‘q. Yozib olamiz — keyin ma’nosini tanlaysiz.",
+  "ru": "На телефоне нет распознавания корейского. Записываем — потом выберете смысл.",
+  "en": "This phone has no Korean recognition. Recording instead — you'll confirm what you meant."
+ },
+ "test_voice": {
+  "uz": "Ovozni sinash",
+  "ru": "Проверить голос",
+  "en": "Test voice"
+ },
+ "test_mic": {
+  "uz": "Mikrofonni sinash",
+  "ru": "Проверить микрофон",
+  "en": "Test microphone"
+ },
+ "test_recognition": {
+  "uz": "Tanib olishni sinash",
+  "ru": "Проверить распознавание",
+  "en": "Test recognition"
+ },
+ "try_recognition_again": {
+  "uz": "Tanib olishni qayta yoqish",
+  "ru": "Снова включить распознавание",
+  "en": "Turn recognition back on"
+ },
+ "tts_settings": {
+  "uz": "Matnni ovozga sozlamalari",
+  "ru": "Настройки синтеза речи",
+  "en": "Text-to-speech settings"
  }
 }

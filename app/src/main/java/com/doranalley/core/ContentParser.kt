@@ -162,7 +162,8 @@ object ContentParser {
         priority = j.int("priority"), manual = j.bool("manual", true),
     )
 
-    private val placeholder = Regex("\\{(b|var):([a-zA-Z0-9_]+)}|\\{campus}")
+    // Android's regex engine (ICU) requires a literal "}" to be escaped, unlike desktop Java.
+    private val placeholder = Regex("\\{(b|var):([a-zA-Z0-9_]+)\\}|\\{campus\\}")
 
     fun subst(text: String, campus: Campus, vars: Map<String, String>): String {
         // Variables may themselves contain building placeholders, so resolve up to three levels.

@@ -1,1 +1,1002 @@
-{"app_name":{"en":"Doran Alley","ru":"Доран-аллея","uz":"Doran ko‘chasi"}}
+{
+ "app_name": {
+  "uz": "Doran ko‘chasi",
+  "ru": "Доран-аллея",
+  "en": "Doran Alley"
+ },
+ "back": {
+  "uz": "Orqaga",
+  "ru": "Назад",
+  "en": "Back"
+ },
+ "continue": {
+  "uz": "Davom etish",
+  "ru": "Продолжить",
+  "en": "Continue"
+ },
+ "continue_where": {
+  "uz": "To‘xtagan joydan davom eting",
+  "ru": "Продолжить с того места",
+  "en": "Pick up where you left off"
+ },
+ "start_here": {
+  "uz": "Shu yerdan boshlang",
+  "ru": "Начните отсюда",
+  "en": "Start here"
+ },
+ "baseline_invite": {
+  "uz": "Birinchi epizoddan oldin koreys tilida bir daqiqalik hikoya yozib oling. Bir haftadan keyin uni yangisi bilan solishtirasiz.",
+  "ru": "Перед первым эпизодом запишите минутный рассказ по-корейски. Через неделю сравните его с новым.",
+  "en": "Record a one-minute story in Korean before your first episode. Next week you'll compare it with a new one."
+ },
+ "record_baseline": {
+  "uz": "Boshlang‘ich hikoyani yozish",
+  "ru": "Записать исходный рассказ",
+  "en": "Record baseline story"
+ },
+ "stories": {
+  "uz": "Hikoyalar",
+  "ru": "Истории",
+  "en": "Stories"
+ },
+ "completed": {
+  "uz": "Tugallangan",
+  "ru": "Пройдено",
+  "en": "Done"
+ },
+ "coming_soon": {
+  "uz": "Tez orada",
+  "ru": "Скоро",
+  "en": "Coming soon"
+ },
+ "play": {
+  "uz": "Boshlash",
+  "ru": "Играть",
+  "en": "Play"
+ },
+ "play_again": {
+  "uz": "Yana o‘ynash",
+  "ru": "Ещё раз",
+  "en": "Play again"
+ },
+ "mirror_short": {
+  "uz": "Ko‘zgu",
+  "ru": "Зеркало",
+  "en": "Mirror"
+ },
+ "practice": {
+  "uz": "Mashq",
+  "ru": "Практика",
+  "en": "Practice"
+ },
+ "recall_title": {
+  "uz": "Og‘zaki eslash",
+  "ru": "Устное припоминание",
+  "en": "Spoken recall"
+ },
+ "recall_sub": {
+  "uz": "Avval ayting, keyin tekshiring",
+  "ru": "Сначала скажите, потом проверьте",
+  "en": "Say it first — then check"
+ },
+ "due_count": {
+  "uz": "Takrorlashga tayyor: {0} ta ibora.",
+  "ru": "Готово к повторению: {0}.",
+  "en": "{0} expressions are ready to practise."
+ },
+ "nothing_learned_yet": {
+  "uz": "Bu yer to‘lishi uchun birinchi hikoyani o‘ynang.",
+  "ru": "Пройдите первую историю, чтобы здесь что-то появилось.",
+  "en": "Play the first story to fill this up."
+ },
+ "next_review": {
+  "uz": "Keyingi takrorlash:",
+  "ru": "Следующее повторение:",
+  "en": "Next review:"
+ },
+ "open": {
+  "uz": "Ochish",
+  "ru": "Открыть",
+  "en": "Open"
+ },
+ "start": {
+  "uz": "Boshlash",
+  "ru": "Начать",
+  "en": "Start"
+ },
+ "go": {
+  "uz": "O‘tish",
+  "ru": "Перейти",
+  "en": "Go"
+ },
+ "quest_title": {
+  "uz": "5 daqiqalik topshiriq",
+  "ru": "Задание на 5 минут",
+  "en": "5-minute side quest"
+ },
+ "quest_desc": {
+  "uz": "Lenta o‘rniga: {0} daqiqa, aniq to‘xtash nuqtasi va o‘zingiz bilan olib ketadigan bitta ibora.",
+  "ru": "Вместо ленты: {0} минут, понятная точка остановки и одно выражение с собой.",
+  "en": "Instead of scrolling: {0} minutes, a clear stopping point, one expression to take away."
+ },
+ "mirror_title": {
+  "uz": "Talaffuz ko‘zgusi",
+  "ru": "Зеркало произношения",
+  "en": "Pronunciation mirror"
+ },
+ "mirror_desc": {
+  "uz": "Tinglang, yozing, solishtiring.",
+  "ru": "Слушайте, записывайте, сравнивайте.",
+  "en": "Hear, record, compare."
+ },
+ "diary_title": {
+  "uz": "Ovozli kundalik",
+  "ru": "Голосовой дневник",
+  "en": "Voice diary"
+ },
+ "diary_desc": {
+  "uz": "Vaqt o‘tishi bilan hikoyalaringiz.",
+  "ru": "Ваши рассказы со временем.",
+  "en": "Your stories over time."
+ },
+ "diary_private": {
+  "uz": "Yozuvlar shu telefonda qoladi",
+  "ru": "Записи остаются на этом телефоне",
+  "en": "Recordings stay on this phone"
+ },
+ "daily_rhythm": {
+  "uz": "Ixtiyoriy ikki soatlik kun",
+  "ru": "Необязательный двухчасовой день",
+  "en": "Optional two-hour day"
+ },
+ "daily_rhythm_note": {
+  "uz": "Xohlaganingizcha bo‘ling. Qisqa mashg‘ulot ham o‘z-o‘zidan foydali.",
+  "ru": "Делите как удобно. Короткое занятие тоже полезно само по себе.",
+  "en": "Split it however you like. A short session is useful on its own."
+ },
+ "more_today": {
+  "uz": "Yana xohlaysizmi? Hikoyani yangi muammo bilan qayta o‘ynang yoki ertangi kun topshirig‘ini sinab ko‘ring.",
+  "ru": "Хочется ещё? Повторите историю с новым поворотом или попробуйте задание следующего дня.",
+  "en": "Want more? Replay a story with a new complication, or try the next-day twist."
+ },
+ "cast": {
+  "uz": "Kimlar bilan tanishasiz",
+  "ru": "С кем вы встретитесь",
+  "en": "People you'll meet"
+ },
+ "settings": {
+  "uz": "Sozlamalar",
+  "ru": "Настройки",
+  "en": "Settings"
+ },
+ "draft_dialogue": {
+  "uz": "Dialog qoralama — ona tili egasi tekshiruvini kutmoqda",
+  "ru": "Черновик диалога — ждёт проверки носителем",
+  "en": "Draft dialogue — awaiting native-speaker review"
+ },
+ "tap_meaning": {
+  "uz": "Ma’nosi uchun bosing",
+  "ru": "Нажмите — значение",
+  "en": "Tap for meaning"
+ },
+ "meaning_after": {
+  "uz": "Ma’nosi javobingizdan keyin",
+  "ru": "Значение — после ответа",
+  "en": "Meaning after your reply"
+ },
+ "replay": {
+  "uz": "Qayta tinglash",
+  "ru": "Повторить",
+  "en": "Replay"
+ },
+ "you_chose": {
+  "uz": "(tanlandi, aytilmadi)",
+  "ru": "(выбрано, не сказано)",
+  "en": "(chosen, not spoken)"
+ },
+ "you_recorded": {
+  "uz": "(yozib olindi)",
+  "ru": "(записано)",
+  "en": "(recorded)"
+ },
+ "partner_unclear": {
+  "uz": "Suhbatdoshingiz to‘liq tushunmadi.",
+  "ru": "Собеседник не совсем понял.",
+  "en": "Your partner didn't quite understand."
+ },
+ "your_turn": {
+  "uz": "Sizning navbatingiz",
+  "ru": "Ваш ход",
+  "en": "Your turn"
+ },
+ "mic_denied_route": {
+  "uz": "Mikrofon o‘chiq. Baribir davom etishingiz mumkin: nima degan bo‘lardingiz — tanlang (faqat tinglash).",
+  "ru": "Микрофон выключен. Можно продолжить: выберите, что бы вы сказали (только слушание).",
+  "en": "The microphone is off. You can still continue: choose what you would say (listening-only route)."
+ },
+ "choose_reply": {
+  "uz": "Javobni tanlash",
+  "ru": "Выбрать ответ",
+  "en": "Choose a reply"
+ },
+ "allow_mic": {
+  "uz": "Mikrofonga ruxsat berish",
+  "ru": "Разрешить микрофон",
+  "en": "Allow microphone"
+ },
+ "hint_n": {
+  "uz": "Yordam {0}/{1}",
+  "ru": "Подсказка {0}/{1}",
+  "en": "Hint {0}/{1}"
+ },
+ "speak": {
+  "uz": "Gapirish",
+  "ru": "Говорить",
+  "en": "Speak"
+ },
+ "record_reply": {
+  "uz": "Javobni yozish",
+  "ru": "Записать ответ",
+  "en": "Record reply"
+ },
+ "cant_speak_now": {
+  "uz": "Hozir gapira olmaysizmi? Javobni tanlang (nutq hisobga olinmaydi)",
+  "ru": "Сейчас нельзя говорить? Выберите ответ (без зачёта речи)",
+  "en": "Can't speak right now? Choose a reply instead (no speaking credit)"
+ },
+ "listening": {
+  "uz": "Tinglayapman…",
+  "ru": "Слушаю…",
+  "en": "Listening…"
+ },
+ "recording": {
+  "uz": "Yozilmoqda…",
+  "ru": "Запись…",
+  "en": "Recording…"
+ },
+ "finish_when_ready": {
+  "uz": "Shoshilmang. Tugatganingizda «to‘xtatish»ni bosing.",
+  "ru": "Не спешите. Нажмите «стоп», когда закончите.",
+  "en": "Take your time. Tap stop when you've finished."
+ },
+ "stop": {
+  "uz": "To‘xtatish",
+  "ru": "Стоп",
+  "en": "Stop"
+ },
+ "play_model": {
+  "uz": "Namunani tinglash",
+  "ru": "Прослушать образец",
+  "en": "Play model"
+ },
+ "app_heard": {
+  "uz": "Ilova eshitdi:",
+  "ru": "Приложение услышало:",
+  "en": "The app heard:"
+ },
+ "meaning_is": {
+  "uz": "Ma’nosi:",
+  "ru": "Значит:",
+  "en": "Meaning:"
+ },
+ "yes_meant": {
+  "uz": "Ha, shuni nazarda tutgandim",
+  "ru": "Да, это я и имел в виду",
+  "en": "Yes, that's what I meant"
+ },
+ "which_meant": {
+  "uz": "Buni turlicha tushunish mumkin. Qaysi birini nazarda tutdingiz?",
+  "ru": "Это можно понять по-разному. Что вы имели в виду?",
+  "en": "This could mean more than one thing. Which did you mean?"
+ },
+ "heard_unclear": {
+  "uz": "Suhbatdoshingiz buni tushunmasligi mumkin. Shundayligicha yuboring yoki qayta urinib ko‘ring.",
+  "ru": "Собеседник может не понять. Отправьте как есть или попробуйте ещё раз.",
+  "en": "Your partner may not understand this. Send it anyway, or try again."
+ },
+ "send_anyway": {
+  "uz": "Shunday aytish",
+  "ru": "Сказать так",
+  "en": "Say it like that"
+ },
+ "say_again": {
+  "uz": "Qayta aytish",
+  "ru": "Сказать ещё раз",
+  "en": "Say it again"
+ },
+ "not_what_i_said": {
+  "uz": "Men buni aytmadim",
+  "ru": "Я сказал не это",
+  "en": "That's not what I said"
+ },
+ "choose_listening_hint": {
+  "uz": "Nima degan bo‘lardingiz — tanlang. Hikoya davom etadi, lekin bu nutq mashqi sifatida hisoblanmaydi.",
+  "ru": "Выберите, что бы вы сказали. История продолжится, но это не засчитывается как речь.",
+  "en": "Choose what you would say. The story continues, but this doesn't count as speaking practice."
+ },
+ "choose_self_hint": {
+  "uz": "Nutqni tanish mavjud emas, shuning uchun nimani nazarda tutganingizni ko‘rsating. Bu «o‘zingiz tasdiqlagan» deb belgilanadi.",
+  "ru": "Распознавание речи недоступно, поэтому укажите, что вы имели в виду. Это помечается как «подтверждено вами».",
+  "en": "Speech recognition isn't available, so tell the app what you meant. This is marked as self-confirmed."
+ },
+ "play_my_reply": {
+  "uz": "Javobimni tinglash",
+  "ru": "Прослушать мой ответ",
+  "en": "Play my reply"
+ },
+ "what_did_you_mean": {
+  "uz": "Nimani nazarda tutdingiz?",
+  "ru": "Что вы имели в виду?",
+  "en": "What did you mean?"
+ },
+ "something_else": {
+  "uz": "Boshqa narsa",
+  "ru": "Что-то другое",
+  "en": "Something else"
+ },
+ "which_did_you_say": {
+  "uz": "Bulardan qaysi birini haqiqatan aytdingiz?",
+  "ru": "Что из этого вы действительно сказали?",
+  "en": "Which of these did you actually say?"
+ },
+ "back_to_mic": {
+  "uz": "Qayta urinish",
+  "ru": "Попробовать снова",
+  "en": "Try again"
+ },
+ "confirm": {
+  "uz": "Tasdiqlash",
+  "ru": "Подтвердить",
+  "en": "Confirm"
+ },
+ "ev_recognized": {
+  "uz": "Ilova eshitdi",
+  "ru": "Распознано приложением",
+  "en": "Heard by the app"
+ },
+ "ev_self": {
+  "uz": "O‘zingiz tasdiqladingiz",
+  "ru": "Подтверждено вами",
+  "en": "Self-confirmed"
+ },
+ "ev_listening": {
+  "uz": "Faqat tinglash",
+  "ru": "Только слушание",
+  "en": "Listening only"
+ },
+ "help_hint": {
+  "uz": "Yordam bilan",
+  "ru": "С подсказкой",
+  "en": "With a hint"
+ },
+ "help_model": {
+  "uz": "Namunaga qaraldi",
+  "ru": "Подсмотрен образец",
+  "en": "Model peeked"
+ },
+ "synthetic_preview": {
+  "uz": "Sun’iy ovoz namunasi — tekshirilmagan",
+  "ru": "Синтезированный голос — не проверен",
+  "en": "Synthetic voice preview — not reviewed"
+ },
+ "no_new_words": {
+  "uz": "Bu gapda yangi so‘z yo‘q.",
+  "ru": "В этой реплике нет новых слов.",
+  "en": "No new words in this line."
+ },
+ "listen": {
+  "uz": "Tinglash",
+  "ru": "Слушать",
+  "en": "Listen"
+ },
+ "saved_for_review": {
+  "uz": "Saqlandi — takrorlashda qaytadi",
+  "ru": "Сохранено — вернётся при повторении",
+  "en": "Saved — it will come back in reviews"
+ },
+ "save_with_sentence": {
+  "uz": "Shu gap bilan saqlash",
+  "ru": "Сохранить с этой фразой",
+  "en": "Save with this sentence"
+ },
+ "episode_done": {
+  "uz": "Hikoya tugadi",
+  "ru": "История пройдена",
+  "en": "Story complete"
+ },
+ "goals_clarifications": {
+  "uz": "Erishilgan maqsadlar: {0} · qayta aytish yoki aniqlashtirish so‘ralgan: {1}",
+  "ru": "Цели достигнуты: {0} · просьбы повторить или уточнить: {1}",
+  "en": "Goals reached: {0} · times you asked to repeat or clarify: {1}"
+ },
+ "none_yet": {
+  "uz": "Hozircha yo‘q",
+  "ru": "Пока нет",
+  "en": "None yet"
+ },
+ "said_on_your_own": {
+  "uz": "O‘zingiz aytdingiz",
+  "ru": "Вы сказали сами",
+  "en": "You said on your own"
+ },
+ "said_with_help": {
+  "uz": "Yordam kerak bo‘ldi",
+  "ru": "Понадобилась помощь",
+  "en": "You needed help with"
+ },
+ "not_yet_produced": {
+  "uz": "Hali aytilmadi — keyingi imkoniyatga qoladi",
+  "ru": "Пока не сказано — останется на потом",
+  "en": "Not said yet — it stays for a later chance"
+ },
+ "coming_back": {
+  "uz": "Nimalar qaytadi",
+  "ru": "Что вернётся",
+  "en": "What will come back"
+ },
+ "practice_point": {
+  "uz": "Mashq qilish uchun bitta narsa",
+  "ru": "Над чем поработать",
+  "en": "One thing to practise"
+ },
+ "take_away": {
+  "uz": "O‘zingiz bilan oling",
+  "ru": "Возьмите с собой",
+  "en": "Take this with you"
+ },
+ "unlocked": {
+  "uz": "Ochildi",
+  "ru": "Открыто",
+  "en": "Unlocked"
+ },
+ "open_mirror": {
+  "uz": "Talaffuz ko‘zgusida mashq qilish",
+  "ru": "Потренироваться в зеркале произношения",
+  "en": "Practise in the pronunciation mirror"
+ },
+ "stop_here": {
+  "uz": "To‘xtash uchun yaxshi joy",
+  "ru": "Хорошее место, чтобы остановиться",
+  "en": "Good place to stop"
+ },
+ "card_n_of": {
+  "uz": "{0} / {1}",
+  "ru": "{0} из {1}",
+  "en": "{0} of {1}"
+ },
+ "nothing_due": {
+  "uz": "Hozir takrorlanadigan narsa yo‘q.",
+  "ru": "Сейчас нечего повторять.",
+  "en": "Nothing is due right now."
+ },
+ "recall_done": {
+  "uz": "Hozircha hammasi.",
+  "ru": "На сейчас всё.",
+  "en": "All done for now."
+ },
+ "practice_anyway": {
+  "uz": "Baribir mashq qilish",
+  "ru": "Всё равно потренироваться",
+  "en": "Practise anyway"
+ },
+ "twist_title": {
+  "uz": "Bugungi burilish",
+  "ru": "Поворот дня",
+  "en": "Today's twist"
+ },
+ "twist_locked": {
+  "uz": "Avval hikoyani tugating — ertasi kuni vaziyat o‘zgaradi.",
+  "ru": "Сначала пройдите историю — на следующий день ситуация изменится.",
+  "en": "Finish a story first — then the situation changes the next day."
+ },
+ "saved_word": {
+  "uz": "Saqlangan so‘z",
+  "ru": "Сохранённое слово",
+  "en": "Saved word"
+ },
+ "lesson_expression": {
+  "uz": "Hikoyadagi ibora",
+  "ru": "Выражение из истории",
+  "en": "Story expression"
+ },
+ "how_do_you_say": {
+  "uz": "Buni koreyschada qanday aytasiz?",
+  "ru": "Как это сказать по-корейски?",
+  "en": "How do you say it in Korean?"
+ },
+ "situation": {
+  "uz": "Vaziyat",
+  "ru": "Ситуация",
+  "en": "Situation"
+ },
+ "say_it": {
+  "uz": "Aytish",
+  "ru": "Сказать",
+  "en": "Say it"
+ },
+ "said_aloud": {
+  "uz": "Ovoz chiqarib aytdim",
+  "ru": "Я сказал вслух",
+  "en": "I said it aloud"
+ },
+ "first_sound": {
+  "uz": "Birinchi tovush",
+  "ru": "Первый звук",
+  "en": "First sound"
+ },
+ "reveal": {
+  "uz": "Javobni ko‘rsatish",
+  "ru": "Показать ответ",
+  "en": "Show answer"
+ },
+ "peeked_note": {
+  "uz": "Urinishdan oldin qaradingiz — ibora tezroq qaytadi. Bu normal.",
+  "ru": "Вы посмотрели до попытки — выражение вернётся раньше. Это нормально.",
+  "en": "You looked before trying — it'll come back sooner. That's fine."
+ },
+ "next": {
+  "uz": "Keyingisi",
+  "ru": "Дальше",
+  "en": "Next"
+ },
+ "how_did_it_go": {
+  "uz": "Qanday chiqdi?",
+  "ru": "Как получилось?",
+  "en": "How did it go?"
+ },
+ "rate_own": {
+  "uz": "O‘zim aytdim",
+  "ru": "Сказал сам",
+  "en": "Said it on my own"
+ },
+ "rate_hint": {
+  "uz": "Yordam bilan",
+  "ru": "С подсказкой",
+  "en": "With the hint"
+ },
+ "rate_not_yet": {
+  "uz": "Hali emas",
+  "ru": "Пока нет",
+  "en": "Not yet"
+ },
+ "quest_done": {
+  "uz": "Topshiriq bajarildi!",
+  "ru": "Задание выполнено!",
+  "en": "Quest complete!"
+ },
+ "quest_stop_note": {
+  "uz": "Bu aniq to‘xtash nuqtasi. Dam oling.",
+  "ru": "Это хорошая точка остановки. Отдохните.",
+  "en": "That's a clear stopping point. Go and enjoy your break."
+ },
+ "mirror_intro": {
+  "uz": "Namunani tinglang, o‘zingizni yozing, so‘ng ketma-ket tinglang. Hakam — siz: ilova tovushlarni matn bo‘yicha baholamaydi.",
+  "ru": "Послушайте образец, запишите себя и прослушайте подряд. Судья — вы: приложение не оценивает звуки по расшифровке.",
+  "en": "Listen to the model, record yourself, then play them one after another. You are the judge: the app does not grade sounds from a transcript."
+ },
+ "ladder_explain": {
+  "uz": "Nutq zinapoyasi: eshitish → takrorlash → ma’nodan aytish → yangi sahnada ishlatish.",
+  "ru": "Лестница речи: услышать → повторить → сказать по значению → использовать в новой сцене.",
+  "en": "Speaking ladder: hear it → imitate it → say it from the meaning → use it in a new scene."
+ },
+ "ladder_hear": {
+  "uz": "Eshitish",
+  "ru": "Услышать",
+  "en": "Hear"
+ },
+ "ladder_imitate": {
+  "uz": "Takrorlash",
+  "ru": "Повторить",
+  "en": "Imitate"
+ },
+ "ladder_meaning": {
+  "uz": "Ma’nodan",
+  "ru": "По значению",
+  "en": "From meaning"
+ },
+ "ladder_scene": {
+  "uz": "Yangi sahna",
+  "ru": "Новая сцена",
+  "en": "New scene"
+ },
+ "say_from_meaning": {
+  "uz": "Buni koreyschada ayting, so‘ng javobni oching.",
+  "ru": "Скажите это по-корейски, затем откройте ответ.",
+  "en": "Say it in Korean from this meaning, then reveal."
+ },
+ "listen_for": {
+  "uz": "E’tibor bering:",
+  "ru": "Обратите внимание:",
+  "en": "Listen for:"
+ },
+ "model": {
+  "uz": "Namuna",
+  "ru": "Образец",
+  "en": "Model"
+ },
+ "record": {
+  "uz": "Yozish",
+  "ru": "Записать",
+  "en": "Record"
+ },
+ "play_mine": {
+  "uz": "Mening yozuvim",
+  "ru": "Моя запись",
+  "en": "Play mine"
+ },
+ "ab_compare": {
+  "uz": "A/B: namuna, keyin men",
+  "ru": "A/B: образец, потом я",
+  "en": "A/B: model, then me"
+ },
+ "save_take": {
+  "uz": "Kundalikka saqlash",
+  "ru": "Сохранить в дневник",
+  "en": "Keep in diary"
+ },
+ "discard": {
+  "uz": "O‘chirish",
+  "ru": "Удалить",
+  "en": "Discard"
+ },
+ "from_meaning_toggle": {
+  "uz": "Ma’nodan mashq qilish (koreyschani yashirish)",
+  "ru": "Тренировать по значению (скрыть корейский)",
+  "en": "Practise from the meaning (hide Korean)"
+ },
+ "independent_count": {
+  "uz": "O‘zingiz ishlatgan iboralar: {0}",
+  "ru": "Выражений, сказанных самостоятельно: {0}",
+  "en": "Expressions you've used on your own: {0}"
+ },
+ "clarification_count": {
+  "uz": "Qayta aytish yoki aniqlashtirishni so‘ragan marta: {0}",
+  "ru": "Сколько раз вы просили повторить или уточнить: {0}",
+  "en": "Times you asked to repeat or clarify: {0}"
+ },
+ "goal_count": {
+  "uz": "Hikoyalardagi erishilgan maqsadlar: {0}",
+  "ru": "Достигнуто целей в историях: {0}",
+  "en": "Story goals reached: {0}"
+ },
+ "weekly_next": {
+  "uz": "Keyingi haftalik hikoya:",
+  "ru": "Следующий еженедельный пересказ:",
+  "en": "Next weekly retell:"
+ },
+ "record_now_anyway": {
+  "uz": "Baribir hozir yozish",
+  "ru": "Всё равно записать сейчас",
+  "en": "Record one now anyway"
+ },
+ "side_by_side": {
+  "uz": "Avval va hozir",
+  "ru": "Тогда и сейчас",
+  "en": "Then and now"
+ },
+ "baseline": {
+  "uz": "Boshlang‘ich",
+  "ru": "Исходный",
+  "en": "Baseline"
+ },
+ "weekly": {
+  "uz": "Haftalik",
+  "ru": "Еженедельный",
+  "en": "Weekly"
+ },
+ "play_both": {
+  "uz": "Ketma-ket tinglash",
+  "ru": "Прослушать подряд",
+  "en": "Play one after the other"
+ },
+ "all_recordings": {
+  "uz": "Barcha yozuvlar",
+  "ru": "Все записи",
+  "en": "All recordings"
+ },
+ "no_recordings": {
+  "uz": "Hozircha yozuvlar yo‘q.",
+  "ru": "Записей пока нет.",
+  "en": "No recordings yet."
+ },
+ "kind_baseline": {
+  "uz": "Boshlang‘ich hikoya",
+  "ru": "Исходный рассказ",
+  "en": "Baseline story"
+ },
+ "kind_weekly": {
+  "uz": "Haftalik hikoya",
+  "ru": "Еженедельный пересказ",
+  "en": "Weekly retell"
+ },
+ "kind_mirror": {
+  "uz": "Ko‘zgu yozuvi",
+  "ru": "Запись из зеркала",
+  "en": "Mirror take"
+ },
+ "baseline_title": {
+  "uz": "Boshlang‘ich hikoya",
+  "ru": "Исходный рассказ",
+  "en": "Baseline story"
+ },
+ "weekly_title": {
+  "uz": "Shu haftaning hikoyasi",
+  "ru": "Пересказ этой недели",
+  "en": "This week's retell"
+ },
+ "starter": {
+  "uz": "Shunday boshlashingiz mumkin:",
+  "ru": "Можно начать так:",
+  "en": "You could start:"
+ },
+ "delete": {
+  "uz": "O‘chirish",
+  "ru": "Удалить",
+  "en": "Delete"
+ },
+ "delete_title": {
+  "uz": "Bu yozuv o‘chirilsinmi?",
+  "ru": "Удалить эту запись?",
+  "en": "Delete this recording?"
+ },
+ "delete_body": {
+  "uz": "U telefondan o‘chiriladi.",
+  "ru": "Она будет удалена с телефона.",
+  "en": "It will be removed from this phone."
+ },
+ "cancel": {
+  "uz": "Bekor qilish",
+  "ru": "Отмена",
+  "en": "Cancel"
+ },
+ "interface_language": {
+  "uz": "Interfeys, yordam va izohlar",
+  "ru": "Интерфейс, подсказки и объяснения",
+  "en": "Interface, hints and explanations"
+ },
+ "language_note": {
+  "uz": "Har bir sahna tili koreyscha bo‘lib qoladi. Almashtirish joyingizni yo‘qotmaydi.",
+  "ru": "Корейский остаётся языком всех сцен. Переключение не сбрасывает прогресс.",
+  "en": "Korean stays the language of every scene. Switching never loses your place."
+ },
+ "how_you_answer": {
+  "uz": "Qanday javob berasiz",
+  "ru": "Как вы отвечаете",
+  "en": "How you answer"
+ },
+ "mode_auto": {
+  "uz": "Gapirish — telefonda koreyscha tanish ishlasa, ilova tinglaydi",
+  "ru": "Говорить — приложение слушает, если на телефоне работает корейское распознавание",
+  "en": "Speak — the app listens when Korean recognition works on this phone"
+ },
+ "mode_record": {
+  "uz": "Yozib olish, so‘ng ma’nosini tasdiqlash",
+  "ru": "Записать, затем подтвердить смысл",
+  "en": "Record, then confirm what I meant"
+ },
+ "mode_listen": {
+  "uz": "Faqat tinglash (mikrofonsiz)",
+  "ru": "Только слушание (без микрофона)",
+  "en": "Listening only (no microphone)"
+ },
+ "reduced_motion": {
+  "uz": "Kamroq animatsiya",
+  "ru": "Меньше анимации",
+  "en": "Reduce motion"
+ },
+ "allow_synthetic": {
+  "uz": "Yozuv bo‘lmasa, sun’iy koreys ovozi",
+  "ru": "Синтезированный голос, если нет записи",
+  "en": "Synthetic Korean voice when no recording exists"
+ },
+ "synthetic_note": {
+  "uz": "Sun’iy ovoz doim belgilanadi. Talaffuz namunasi sifatida faqat tekshirilgan yozuvlarni oling.",
+  "ru": "Синтезированный звук всегда помечен. Образцом произношения считайте только проверенные записи.",
+  "en": "Synthetic audio is always labelled. Treat only reviewed recordings as pronunciation references."
+ },
+ "review_timing": {
+  "uz": "Takrorlash vaqti (sinov)",
+  "ru": "Время повторений (пилот)",
+  "en": "Review timing (pilot)"
+ },
+ "review_timing_note": {
+  "uz": "Qiyin iboralar tezroq qaytadi. O‘zgarishlar keyingi takrorlashdan kuchga kiradi.",
+  "ru": "Трудные выражения возвращаются раньше. Изменения — со следующего повторения.",
+  "en": "Difficult items come back sooner. Changes apply to the next review."
+ },
+ "timing_1": {
+  "uz": "O‘sha kuni kechroq",
+  "ru": "Позже в тот же день",
+  "en": "Later the same day"
+ },
+ "timing_2": {
+  "uz": "Ertasi kuni",
+  "ru": "На следующий день",
+  "en": "Next day"
+ },
+ "timing_3": {
+  "uz": "Uch kundan keyin",
+  "ru": "Через три дня",
+  "en": "Three days later"
+ },
+ "timing_4": {
+  "uz": "Bir haftadan keyin",
+  "ru": "Через неделю",
+  "en": "A week later"
+ },
+ "hours_short": {
+  "uz": "soat",
+  "ru": "ч",
+  "en": "h"
+ },
+ "reset_default": {
+  "uz": "Standartga qaytarish",
+  "ru": "Сбросить",
+  "en": "Reset to defaults"
+ },
+ "device_check": {
+  "uz": "Bu telefon",
+  "ru": "Этот телефон",
+  "en": "This phone"
+ },
+ "korean_voice": {
+  "uz": "Koreys ovozi (sun’iy)",
+  "ru": "Корейский голос (синтез)",
+  "en": "Korean voice (synthetic preview)"
+ },
+ "ok": {
+  "uz": "Tayyor",
+  "ru": "Готово",
+  "en": "Ready"
+ },
+ "checking": {
+  "uz": "Tekshirilmoqda…",
+  "ru": "Проверка…",
+  "en": "Checking…"
+ },
+ "missing": {
+  "uz": "O‘rnatilmagan",
+  "ru": "Не установлен",
+  "en": "Not installed"
+ },
+ "voice_missing_note": {
+  "uz": "Koreys ovozi bo‘lmasa, yozuvsiz gaplar faqat matn sifatida ko‘rsatiladi.",
+  "ru": "Без корейского голоса реплики без записи показываются только текстом.",
+  "en": "Without a Korean voice, lines without a recording are shown as text only."
+ },
+ "install_voice": {
+  "uz": "Ovozni o‘rnatish",
+  "ru": "Установить голос",
+  "en": "Install voice data"
+ },
+ "recognition": {
+  "uz": "Koreys nutqini tanish",
+  "ru": "Распознавание корейской речи",
+  "en": "Korean speech recognition"
+ },
+ "unavailable_manual": {
+  "uz": "Mavjud emas — yozib, tasdiqlash",
+  "ru": "Недоступно — запись и подтверждение",
+  "en": "Not available — record and confirm"
+ },
+ "microphone": {
+  "uz": "Mikrofon",
+  "ru": "Микрофон",
+  "en": "Microphone"
+ },
+ "off_listening": {
+  "uz": "O‘chiq — faqat tinglash",
+  "ru": "Выключен — только слушание",
+  "en": "Off — listening-only route"
+ },
+ "recordings": {
+  "uz": "Ilovadagi tekshirilgan yozuvlar",
+  "ru": "Проверенных записей в приложении",
+  "en": "Reviewed recordings bundled"
+ },
+ "review_status_note": {
+  "uz": "Koreys tilini yaxshi biladigan kishi gaplar va yozuvlarni tekshirmaguncha dialog qoralama hisoblanadi.",
+  "ru": "Диалоги — черновик, пока носитель корейского не проверит реплики и записи.",
+  "en": "Dialogue is a draft until a proficient Korean speaker reviews the lines and recordings."
+ },
+ "test_tools": {
+  "uz": "Sinov vositalari",
+  "ru": "Инструменты для теста",
+  "en": "Playtest tools"
+ },
+ "clock_offset": {
+  "uz": "Ilova soati {0} soatga surilgan",
+  "ru": "Часы приложения сдвинуты на {0} ч",
+  "en": "App clock shifted by {0} h"
+ },
+ "plus_day": {
+  "uz": "+1 kun",
+  "ru": "+1 день",
+  "en": "+1 day"
+ },
+ "plus_4h": {
+  "uz": "+4 soat",
+  "ru": "+4 ч",
+  "en": "+4 h"
+ },
+ "reset_clock": {
+  "uz": "Soatni tiklash",
+  "ru": "Сбросить часы",
+  "en": "Reset clock"
+ },
+ "reset_progress": {
+  "uz": "Natijalarni tiklash",
+  "ru": "Сбросить прогресс",
+  "en": "Reset progress"
+ },
+ "reset_body": {
+  "uz": "Hikoya natijalari va takrorlashlar o‘chiriladi. Kundalik yozuvlari saqlanadi.",
+  "ru": "Прогресс историй и повторения будут удалены. Записи дневника сохранятся.",
+  "en": "Story progress and reviews will be cleared. Diary recordings are kept."
+ },
+ "reset_keep_diary": {
+  "uz": "Tiklash (kundalik qoladi)",
+  "ru": "Сбросить (дневник оставить)",
+  "en": "Reset (keep diary)"
+ },
+ "privacy_note": {
+  "uz": "Hammasi shu telefonda saqlanadi. Hisob, pullik xizmatlar va yuklashlarsiz.",
+  "ru": "Всё хранится на этом телефоне. Без аккаунта, платных сервисов и загрузок.",
+  "en": "Everything stays on this phone. No account, no paid services, no uploads."
+ },
+ "due_now": {
+  "uz": "hozir",
+  "ru": "сейчас",
+  "en": "now"
+ },
+ "today_at": {
+  "uz": "bugun {0}",
+  "ru": "сегодня в {0}",
+  "en": "today {0}"
+ },
+ "tomorrow_at": {
+  "uz": "ertaga {0}",
+  "ru": "завтра в {0}",
+  "en": "tomorrow {0}"
+ },
+ "in_days": {
+  "uz": "{0} kundan keyin",
+  "ru": "через {0} дн.",
+  "en": "in {0} days"
+ },
+ "notice_not_heard": {
+  "uz": "Hech narsa eshitilmadi — tayyor bo‘lganingizda qayta urinib ko‘ring.",
+  "ru": "Ничего не услышано — попробуйте ещё раз.",
+  "en": "Didn't catch anything — try again when you're ready."
+ },
+ "notice_mic_needed": {
+  "uz": "Gapirish uchun mikrofonga ruxsat kerak.",
+  "ru": "Чтобы говорить, нужен доступ к микрофону.",
+  "en": "The microphone permission is needed to speak."
+ },
+ "notice_mic_denied": {
+  "uz": "Mikrofon rad etildi — faqat tinglash yo‘li bilan davom etishingiz mumkin.",
+  "ru": "Доступ к микрофону запрещён — можно продолжить в режиме слушания.",
+  "en": "Microphone declined — you can continue with the listening-only route."
+ },
+ "notice_recognition_unavailable": {
+  "uz": "Bu yerda koreyscha tanish ishlamayapti. Keyingi safar yozib, ma’nosini tasdiqlaysiz.",
+  "ru": "Корейское распознавание здесь не работает. Дальше — запись и подтверждение смысла.",
+  "en": "Korean recognition isn't working here. Next time you'll record and confirm what you meant."
+ },
+ "notice_record_failed": {
+  "uz": "Yozishni boshlab bo‘lmadi.",
+  "ru": "Не удалось начать запись.",
+  "en": "Couldn't start recording."
+ },
+ "notice_saved": {
+  "uz": "Takrorlash uchun saqlandi",
+  "ru": "Сохранено для повторения",
+  "en": "Saved for review"
+ },
+ "notice_saved_diary": {
+  "uz": "Kundalikka saqlandi",
+  "ru": "Сохранено в дневник",
+  "en": "Saved to your diary"
+ }
+}

@@ -1,0 +1,29 @@
+{
+  "_comment": "Fictional pilot campus. Change names here; Korean lines use {b:<id>} placeholders and pick them up automatically. Re-record any bundled audio after renaming.",
+  "nameKo": "한빛대학교",
+  "name": { "en": "Hanbit University", "ru": "Университет Ханбит", "uz": "Hanbit universiteti" },
+  "neighborhoodKo": "도란동",
+  "neighborhood": { "en": "Doran-dong, Seoul", "ru": "Доран-дон, Сеул", "uz": "Doran-dong, Seul" },
+  "buildings": [
+    { "id": "inmun",    "ko": "인문관",   "name": { "en": "Humanities Hall", "ru": "Гуманитарный корпус", "uz": "Gumanitar bino" }, "x": 0.13, "color": "#C9A27E", "floors": 3 },
+    { "id": "haksaeng", "ko": "학생회관", "name": { "en": "Student Union",   "ru": "Студенческий центр",  "uz": "Talabalar markazi" }, "x": 0.40, "color": "#8FB3A5", "floors": 4 },
+    { "id": "library",  "ko": "도서관",   "name": { "en": "Library",         "ru": "Библиотека",          "uz": "Kutubxona" },         "x": 0.66, "color": "#B7A3C9", "floors": 3 },
+    { "id": "cafe",     "ko": "골목 카페", "name": { "en": "Golmok Café",    "ru": "Кафе «Голмок»",       "uz": "Golmok kafesi" },     "x": 0.89, "color": "#E8B07A", "floors": 1 }
+  ],
+  "locations": [
+    { "id": "old_room",        "backdrop": "corridor", "ko": "{b:inmun} 2층",  "building": "inmun",    "sign": "201호 강의실",
+      "name": { "en": "Humanities Hall, 2nd floor", "ru": "Гуманитарный корпус, 2 этаж", "uz": "Gumanitar bino, 2-qavat" } },
+    { "id": "hallway",         "backdrop": "corridor", "ko": "{b:inmun} 복도", "building": "inmun",    "sign": "안내도", "showMap": true,
+      "name": { "en": "Humanities Hall corridor", "ru": "Коридор гуманитарного корпуса", "uz": "Gumanitar bino yo‘lagi" } },
+    { "id": "street_inmun",    "backdrop": "street",   "ko": "{b:inmun} 앞",   "building": "inmun",
+      "name": { "en": "Outside Humanities Hall", "ru": "У гуманитарного корпуса", "uz": "Gumanitar bino oldi" } },
+    { "id": "street_haksaeng", "backdrop": "street",   "ko": "{b:haksaeng} 앞", "building": "haksaeng",
+      "name": { "en": "Outside the Student Union", "ru": "У студенческого центра", "uz": "Talabalar markazi oldi" } },
+    { "id": "room302",         "backdrop": "corridor", "ko": "{b:haksaeng} 3층", "building": "haksaeng", "sign": "302호 강의실",
+      "name": { "en": "Student Union, room 302", "ru": "Студенческий центр, ауд. 302", "uz": "Talabalar markazi, 302-xona" } },
+    { "id": "library",         "backdrop": "street",   "ko": "{b:library} 앞",  "building": "library",
+      "name": { "en": "Outside the Library", "ru": "У библиотеки", "uz": "Kutubxona oldi" } },
+    { "id": "cafe",            "backdrop": "street",   "ko": "{b:cafe}",        "building": "cafe",
+      "name": { "en": "Golmok Café", "ru": "Кафе «Голмок»", "uz": "Golmok kafesi" } }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "_comment": "Add an episode by adding its JSON file and an entry here. No navigation changes are needed.",
+  "episodes": [
+    { "id": "ep01_classroom_moved", "file": "episodes/ep01_classroom_moved.json", "status": "playable",
+      "title": { "en": "The classroom moved", "ru": "Аудиторию перенесли", "uz": "Auditoriya ko‘chirildi" },
+      "setting": { "en": "Campus", "ru": "Кампус", "uz": "Kampus" },
+      "summary": { "en": "Find the new classroom and tell another student where to go.", "ru": "Найдите новую аудиторию и подскажите другому студенту, куда идти.", "uz": "Yangi auditoriyani toping va boshqa talabaga qayerga borishni ayting." } },
+    { "id": "ep02_parcel_mixup", "status": "planned",
+      "title": { "en": "Two parcels, one name", "ru": "Две посылки, одно имя", "uz": "Ikki posilka, bitta ism" },
+      "setting": { "en": "Dorm", "ru": "Общежитие", "uz": "Yotoqxona" },
+      "summary": { "en": "Mr. Park at the dorm desk has mixed up two parcels.", "ru": "Господин Пак на вахте перепутал две посылки.", "uz": "Yotoqxona ma’muri Pak janoblari ikki posilkani almashtirib yuborgan." } },
+    { "id": "ep03_shift_swap", "status": "planned",
+      "title": { "en": "Can we swap shifts?", "ru": "Поменяемся сменами?", "uz": "Smenani almashtiramizmi?" },
+      "setting": { "en": "Work", "ru": "Работа", "uz": "Ish" },
+      "summary": { "en": "Junho wants to swap shifts at the campus café.", "ru": "Джунхо хочет поменяться сменами в кафе кампуса.", "uz": "Junxo kampus kafesida smenani almashtirmoqchi." } },
+    { "id": "ep04_same_request", "status": "planned",
+      "title": { "en": "Same request, two people", "ru": "Одна просьба, два человека", "uz": "Bir iltimos, ikki kishi" },
+      "setting": { "en": "Campus", "ru": "Кампус", "uz": "Kampus" },
+      "summary": { "en": "Ask for an extension — first a classmate, then a professor.", "ru": "Попросите отсрочку — сначала однокурсника, потом профессора.", "uz": "Muhlatni uzaytirishni so‘rang — avval kursdoshdan, keyin professordan." } }
+  ]
+}

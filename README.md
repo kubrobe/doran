@@ -28,14 +28,14 @@ run's **Artifacts** (`doran-alley-debug-apk`).
 |---|---|
 | **Campus scene** | Canvas-drawn street (인문관 · 학생회관 · 도서관 · 골목 카페) and corridors with a readable room sign (`201호 강의실`) and wall map. Characters walk when the conversation moves them — e.g. send Seoyeon to the wrong building and she walks there and comes back. Reduced-motion option (also follows the system setting). |
 | **Episode 1** | Four beats from the brief: closed door → hallway map → explaining to a second student → the project meeting moves to the café. Branching partner with natural clarifications (wrong room number, wrong building, missing building or number, "say that again"). |
-| **Speaking first** | Mic button at the bottom (one-handed). With Korean recognition: he confirms what the app heard; ambiguous readings ask which he meant. Without recognition: he records, can replay his reply, then confirms what he meant — labelled **Self-confirmed**. Mic declined: **Listening only** route (no speaking credit). |
+| **Speaking first** | Mic button at the bottom (one-handed), with a live level meter so he can see the mic hears him. With Korean recognition: he confirms what the app heard (plus a *clarity* score against the closest model reply); ambiguous readings ask which he meant. If the in-app recognizer fails, the app tries the phone's other recognition services, then the phone's own speech-input screen, and only then falls back to recording: he replays his reply and confirms what he meant — labelled **Self-confirmed**. Mic declined: **Listening only** route (no speaking credit). |
 | **Graduated help** | Hint 1 = meaning cue in his language, 2 = beginning of the Korean expression, 3 = model line with audio. The highest help used stays on record for that turn even if the next attempt succeeds. |
 | **Communication vs recall** | Kept separate. A natural paraphrase moves the story on; the target expression is only credited when he actually produced it, and otherwise stays scheduled for a later chance. |
 | **Words after the exchange** | Partner lines unlock after he replies: tap to hear again, see meanings, and save a word together with the sentence he heard. |
 | **Reviews** | Later that day → next day → 3 days → a week (editable in Settings). Peeked or "not yet" items return after an hour. Each item tracks lesson audio, contexts, last practice, next review, help history and independent uses on distinct days. Items are keyed by a language-free id, so switching language never changes what is due. |
 | **Next-day recall** | Due expressions first (produce before revealing), then *Today's twist*: the meeting moves again to a different place (Student Union / cafeteria / study room) — no hints unless he asks. |
 | **Reflection** | End of episode: said on his own, needed help with, not yet said, when each item returns, one practice point, a takeaway expression, and what was unlocked (Seoyeon + Golmok Café). |
-| **Pronunciation mirror** | Reference audio, replay, record, A/B (model then him). Takes are kept only if he chooses. Speaking ladder: hear → imitate → from meaning → new scene. No automatic sound judgments from a transcript. |
+| **Pronunciation mirror** | Reference audio (normal and slow), **Record & rate**, A/B (model then him). Each take gets a **sound-match score** (0–100) against the model, syllables coloured by how closely they matched, and tips (louder, slower/faster, which syllable to focus on). **Check with recognition** shows which syllables Korean speech recognition caught. Takes are kept only if he chooses. Speaking ladder: hear → imitate → from meaning → new scene. |
 | **Voice diary** | Baseline story, weekly retell prompts, side-by-side playback, delete. Shows independent expressions and successful clarifications next to the clips. |
 | **5-minute side quest** | Three recall cards and one mirror phrase, then a clear stopping point with a takeaway expression. |
 | **Daily rhythm** | The optional two-hour plan (20 / 35 / 20 / 35 / 10 min) on the home screen, each block linked to its activity. |
@@ -67,6 +67,21 @@ and examples. `강의실이 어디예요?`, `어디로 가면 돼요?` and `몇 
 Room numbers are read from digits and spoken Sino-Korean (`삼백이 호`, `삼, 공, 이`). A wrong number
 or building leads to a natural clarification from the partner, not an error message.
 
+### How pronunciation is rated
+
+Two independent, offline-capable measures (`app/src/main/java/com/doranalley/score/`, plain Java with JVM unit tests):
+
+- **Sound match** (`Acoustic`): both takes are trimmed to the speech, turned into normalized MFCC frames with a
+  vocal-tract-length search (so a man imitating a female model voice isn't penalized), and aligned with dynamic
+  time warping. The cost is compared with aligning against the model played backwards, so the score
+  self-calibrates. Korean is syllable-timed, so the model is split evenly into syllables to show roughly which one
+  drifted. It judges overall sound shape and rhythm — not individual phonemes — and says so in the app.
+- **Understood by recognition** (`Hangul`): what the phone's recognizer heard is aligned with the phrase syllable by
+  syllable, comparing jamo (initial/vowel/final) with credit for common near-misses (ㅐ/ㅔ, plain/tense/aspirated,
+  final-consonant neutralization). Digits ("302호") are read as Sino-Korean.
+
+The model sound is the bundled recording when there is one, otherwise the Korean TTS voice rendered to a cached WAV.
+
 ## Before treating it as teaching material
 
 - **Native-speaker review.** All Korean dialogue is marked *draft* in the app until a proficient Korean
@@ -80,7 +95,9 @@ or building leads to a natural clarification from the partner, not an error mess
 - On-device checks still to run on a real phone/emulator: whole episode, denied microphone, missing Korean
   voice, closing/reopening mid-lesson, switching all three languages, replay of his own recording.
 - Speech recognition and recording can't run at the same time on Android, so replies captured through
-  recognition are not saved as audio (record mode keeps the audio).
+  recognition are not saved as audio (record mode keeps the audio). In the mirror he records first (sound match),
+  then optionally checks with recognition.
+- The sound-match thresholds are calibrated on synthetic voices; tune `Acoustic.map()` after the first real playtest.
 - Open-ended voice conversation is a later milestone, once there is a runtime budget.
 
 ## First playtest

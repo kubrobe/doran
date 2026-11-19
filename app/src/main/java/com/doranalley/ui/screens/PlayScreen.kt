@@ -247,8 +247,8 @@ private fun TurnPanel(vm: AppViewModel, turn: Node.Turn, mem: TurnMemory, reques
             }
             when (val u = vm.turnUi) {
                 TurnUi.Idle -> Controls(vm, mem, requestMic)
-                TurnUi.Listening -> ListeningBar(vm, s("listening"), vm.recognizer.partial)
-                TurnUi.Recording -> ListeningBar(vm, s("recording"), null)
+                TurnUi.Listening -> ListeningBar(vm, s("listening"), vm.recognizer.partial, vm.recognizer.level)
+                TurnUi.Recording -> ListeningBar(vm, s("recording"), null, vm.recorder.level)
                 is TurnUi.Heard -> HeardPanel(vm, u)
                 is TurnUi.Choose -> ChoosePanel(vm, turn, u)
             }
@@ -308,12 +308,13 @@ private fun Controls(vm: AppViewModel, mem: TurnMemory, requestMic: () -> Unit) 
 }
 
 @Composable
-private fun ListeningBar(vm: AppViewModel, label: String, partial: String?) {
+private fun ListeningBar(vm: AppViewModel, label: String, partial: String?, level: Float) {
     var secs by remember { mutableStateOf(0) }
     LaunchedEffect(Unit) { while (true) { delay(1000); secs++ } }
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
         Column(Modifier.weight(1f)) {
             Text("$label  ${secs}s", color = Palette.Persimmon, fontWeight = FontWeight.SemiBold)
+            LevelMeter(level)
             if (!partial.isNullOrBlank()) Korean(partial, size = 17, weight = FontWeight.Normal)
             Text(s("finish_when_ready"), fontSize = 12.sp, color = Palette.Muted)
         }
@@ -331,6 +332,16 @@ private fun HeardPanel(vm: AppViewModel, h: TurnUi.Heard) {
             EvidencePill("recognized")
         }
         Korean("«${h.heard}»", size = 19)
+        // How clearly it came through, against the closest model reply (a paraphrase can still be fine).
+        // Below ~40 he most likely used different (still valid) wording, so no number is shown.
+        vm.clarityFor(h.heard)?.takeIf { it.score >= 40 }?.let { c ->
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(s("clarity") + "  ", fontSize = 13.sp, color = Palette.Muted)
+                Text("${c.score}", color = scoreColor(c.score), fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                Text(" / 100 · " + s("clarity_vs") + " ", fontSize = 12.sp, color = Palette.Muted)
+                Korean(c.target, size = 13, weight = FontWeight.Normal, color = Palette.Muted)
+            }
+        }
         when (val r = h.result) {
             is MatchResult.Matched -> {
                 Text(s("meaning_is") + " " + r.intent.meaning.tr(), fontSize = 15.sp)

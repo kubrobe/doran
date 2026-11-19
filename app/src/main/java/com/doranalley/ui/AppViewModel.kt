@@ -32,11 +32,15 @@ import com.doranalley.core.VocabSpec
 import com.doranalley.data.Content
 import com.doranalley.data.ContentRepository
 import com.doranalley.data.Store
+import com.doranalley.score.Acoustic
+import com.doranalley.score.Hangul
+import com.doranalley.score.Wav
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 import java.util.UUID
 
@@ -64,12 +68,35 @@ sealed class TurnUi {
 /** One-shot capture used by recall cards, the mirror and the diary. */
 data class Captured(val key: String, val alternatives: List<String>, val file: String?, val durationMs: Long)
 
+/** What a take should be rated against: the Korean phrase and its model recording. */
+data class RateTarget(val ko: String, val audio: String?, val allowExtra: Boolean = false)
+
+/**
+ * Pronunciation feedback for one capture key.
+ * [sound] compares the recording with the model's sound; [text] compares what the recognizer heard with the phrase.
+ */
+data class Rating(
+    val key: String,
+    val target: RateTarget,
+    val sound: Acoustic.Result? = null,
+    val soundBusy: Boolean = false,
+    /** True when there was no model sound to compare with (no recording and no Korean voice). */
+    val noModel: Boolean = false,
+    val text: Hangul.Result? = null,
+    val confidence: Float? = null,
+)
+
+/** A request to open the phone's own speech-input screen (used when in-app recognition fails). */
+data class SystemAsk(val key: String, val id: Long = System.nanoTime())
+
+const val TURN_KEY = "turn"
+
 class AppViewModel(app: Application) : AndroidViewModel(app) {
 
     val content: Content = ContentRepository.load(app)
     private val store = Store(app)
     val audio = AudioHub(app)
-    val recorder = Recorder(app)
+    val recorder = Recorder()
     val recognizer = KoRecognizer(app)
     @OptIn(ExperimentalCoroutinesApi::class)
     private val io = Dispatchers.IO.limitedParallelism(1)
@@ -99,8 +126,25 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     // ----- capture (recall / mirror / diary) -----
     var capturing by mutableStateOf<String?>(null); private set
     var captured by mutableStateOf<Captured?>(null); private set
+    private var captureTarget: RateTarget? = null
+    /** Pronunciation feedback per capture key. */
+    var ratings by mutableStateOf<Map<String, Rating>>(emptyMap()); private set
+
+    // ----- fallbacks -----
+    /** Set to open the phone's speech-input screen; MainActivity launches it and reports back. */
+    var systemAsk by mutableStateOf<SystemAsk?>(null); private set
+    private var systemDialogFailed = false
+    /** Runs once the microphone permission is granted (so one tap is enough). */
+    private var pendingMic: (() -> Unit)? = null
 
     init {
+        recorder.onAutoStop = {
+            when {
+                turnUi == TurnUi.Recording -> finishSpeaking()
+                capturing != null -> stopCapture()
+                else -> {}
+            }
+        }
         // Reopening mid-lesson returns straight to the scene.
         meta.activeEpisode?.let { id ->
             val p = store.loadProgress(id)
@@ -163,6 +207,25 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         if (turnUi == TurnUi.Listening || turnUi == TurnUi.Recording) turnUi = TurnUi.Idle
     }
 
+    // ================= microphone permission =================
+
+    /** Asks for the microphone and remembers what to do once it is allowed. */
+    private fun needMic(requestPermission: () -> Unit, then: () -> Unit) {
+        pendingMic = then
+        requestPermission()
+    }
+
+    /** Called by MainActivity with the permission result. */
+    fun onMicPermission(granted: Boolean) {
+        micGranted = granted
+        micDenied = !granted
+        val then = pendingMic
+        pendingMic = null
+        if (!granted) { notice = "notice_mic_denied"; return }
+        // Let the permission dialog close and the screen resume before opening the microphone.
+        if (then != null) viewModelScope.launch { delay(400); then() }
+    }
+
     /** App went to the background: stop sound and the microphone, pause the scene. */
     fun onPause() {
         autoJob?.cancel()
@@ -171,6 +234,8 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
 
     /** Back in the foreground: pick the scene up where it stopped. */
     fun onResume() {
+        // Back from installing a Korean voice: look again.
+        if (audio.ttsState == AudioHub.TtsState.MISSING) audio.retryTts()
         if (screen is Screen.Play && progress?.finished == false) runAuto()
     }
 
@@ -236,16 +301,40 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         runAuto()
     }
 
+    private var warnedNoVoice = false
+
     private suspend fun speakLine(node: Node.Line) {
         val c = content.characters[node.speaker]
+        checkVolume()
         val src = audio.playReference(node.id, node.ko, node.audio, settings.allowSynthetic, c?.pitch ?: 1f, c?.rate ?: 1f)
-        if (src == AudioHub.Source.NONE) delay(1200L + 70L * node.ko.length) // time to read when no voice is available
+        if (src == AudioHub.Source.NONE) {
+            if (!warnedNoVoice) { warnedNoVoice = true; notice = noVoiceNotice() }
+            delay(1200L + 70L * node.ko.length) // time to read when no voice is available
+        }
+    }
+
+    private fun noVoiceNotice() = if (!settings.allowSynthetic) "notice_voice_off" else "notice_no_voice"
+
+    private var warnedMuted = false
+
+    /** Media volume at zero is the most common "no sound" cause; say so once per session. */
+    private fun checkVolume() {
+        if (audio.isMuted() && !warnedMuted) { warnedMuted = true; notice = "notice_volume_off" }
+    }
+
+    /** Plays something the learner tapped; tells him why if nothing could play. */
+    private fun playTapped(key: String, ko: String, audioPath: String?, pitch: Float = 1f, rate: Float = 1f) {
+        if (audio.isMuted()) notice = "notice_volume_off"
+        viewModelScope.launch {
+            val src = audio.playReference(key, ko, audioPath, settings.allowSynthetic, pitch, rate)
+            if (src == AudioHub.Source.NONE) notice = noVoiceNotice()
+        }
     }
 
     fun replayEntry(entry: TranscriptEntry) {
         val ko = entry.ko ?: return
         val c = entry.speaker?.let { content.characters[it] }
-        viewModelScope.launch { audio.playReference("t:${entry.nodeId}", ko, entry.audio, settings.allowSynthetic, c?.pitch ?: 1f, c?.rate ?: 1f) }
+        playTapped("t:${entry.nodeId}", ko, entry.audio, c?.pitch ?: 1f, c?.rate ?: 1f)
     }
 
     fun replayLastLine() {
@@ -277,7 +366,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
 
     fun playModel() {
         val t = progress?.let { engine?.turn(it) } ?: return
-        viewModelScope.launch { audio.playReference("model:${t.id}", t.hints.model, t.hints.modelAudio, settings.allowSynthetic) }
+        playTapped("model:${t.id}", t.hints.model, t.hints.modelAudio)
     }
 
     /** Main microphone button during a turn. */
@@ -285,8 +374,9 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         audio.stop()
         when {
             settings.inputMode == InputMode.LISTEN -> chooseWithoutSpeaking()
-            !micGranted -> requestPermission()
+            !micGranted -> needMic(requestPermission) { speak(requestPermission) }
             settings.inputMode == InputMode.AUTO && !recognitionBroken && recognizer.isAvailable() -> listen()
+            settings.inputMode == InputMode.AUTO && !recognitionBroken && systemDialogUsable() -> askSystem(TURN_KEY)
             else -> record()
         }
     }
@@ -294,20 +384,80 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     private fun listen() {
         turnUi = TurnUi.Listening
         recognizer.start(
-            onResult = { alts ->
-                val p = progress
-                val e = engine
-                turnUi = if (p != null && e != null) TurnUi.Heard(alts.first(), e.match(p, alts)) else TurnUi.Idle
-            },
+            onResult = { alts, _ -> showHeard(alts) },
             onFailure = { f ->
                 turnUi = TurnUi.Idle
-                when (f) {
-                    KoRecognizer.Failure.NOTHING_HEARD -> notice = "notice_not_heard"
-                    KoRecognizer.Failure.NO_PERMISSION -> { micGranted = false; notice = "notice_mic_needed" }
-                    KoRecognizer.Failure.UNAVAILABLE -> { recognitionBroken = true; notice = "notice_recognition_unavailable" }
-                }
+                handleRecognitionFailure(f, TURN_KEY, retry = { listen() }, fallback = { record() })
             },
         )
+    }
+
+    private fun showHeard(alts: List<String>) {
+        val p = progress
+        val e = engine
+        turnUi = if (p != null && e != null) TurnUi.Heard(alts.first(), e.match(p, alts)) else TurnUi.Idle
+    }
+
+    /**
+     * Recognition failed. Tries, in order: another recognition service on the phone, the phone's own
+     * speech-input screen, and finally plain recording (he then confirms what he meant).
+     */
+    private fun handleRecognitionFailure(f: KoRecognizer.Failure, key: String, retry: () -> Unit, fallback: () -> Unit) {
+        // Run the next step after the recognizer has let go of the microphone.
+        fun later(step: () -> Unit) { viewModelScope.launch { delay(300); step() } }
+        when (f) {
+            KoRecognizer.Failure.NOTHING_HEARD -> notice = "notice_not_heard"
+            KoRecognizer.Failure.NO_PERMISSION -> { micGranted = false; notice = "notice_mic_needed" }
+            KoRecognizer.Failure.NETWORK -> { notice = "notice_recognition_network"; later(fallback) }
+            KoRecognizer.Failure.NO_KOREAN, KoRecognizer.Failure.UNAVAILABLE -> when {
+                recognizer.tryNextService() -> later(retry)
+                systemDialogUsable() -> later { askSystem(key) }
+                else -> {
+                    recognitionBroken = true
+                    notice = if (f == KoRecognizer.Failure.NO_KOREAN) "notice_recognition_no_korean" else "notice_recognition_unavailable"
+                    later(fallback)
+                }
+            }
+        }
+    }
+
+    // ----- the phone's own speech-input screen -----
+
+    private fun systemDialogUsable(): Boolean {
+        if (systemDialogFailed) return false
+        val pm = getApplication<Application>().packageManager
+        return runCatching {
+            android.content.Intent(android.speech.RecognizerIntent.ACTION_RECOGNIZE_SPEECH).resolveActivity(pm) != null
+        }.getOrDefault(false)
+    }
+
+    private fun askSystem(key: String) {
+        if (key == TURN_KEY) turnUi = TurnUi.Listening else capturing = key
+        systemAsk = SystemAsk(key)
+    }
+
+    /** MainActivity started the request; clear it so it isn't launched twice. */
+    fun systemAskLaunched() { systemAsk = null }
+
+    /**
+     * Result from the phone's speech-input screen. [alternatives] null means it could not run at all,
+     * empty means he cancelled or nothing was heard.
+     */
+    fun onSystemRecognition(key: String, alternatives: List<String>?) {
+        systemAsk = null
+        if (alternatives == null) {
+            systemDialogFailed = true
+            recognitionBroken = true
+            notice = "notice_recognition_unavailable"
+            if (key == TURN_KEY) { turnUi = TurnUi.Idle; record() } else { capturing = null; recordCapture(key) }
+            return
+        }
+        if (key == TURN_KEY) {
+            if (alternatives.isEmpty()) { turnUi = TurnUi.Idle; notice = "notice_not_heard" } else showHeard(alternatives)
+        } else {
+            capturing = null
+            if (alternatives.isEmpty()) notice = "notice_not_heard" else deliverRecognized(key, alternatives, null)
+        }
     }
 
     fun finishSpeaking() {
@@ -315,7 +465,15 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             TurnUi.Listening -> recognizer.finish()
             TurnUi.Recording -> {
                 val r = recorder.stop()
-                turnUi = TurnUi.Choose(r?.first?.absolutePath, listeningOnly = false, heard = null)
+                when {
+                    r == null -> { turnUi = TurnUi.Idle; notice = "notice_too_short" }
+                    recorder.lastTakeWasSilent() -> {
+                        r.first.delete()
+                        turnUi = TurnUi.Idle
+                        notice = "notice_mic_silent"
+                    }
+                    else -> turnUi = TurnUi.Choose(r.first.absolutePath, listeningOnly = false, heard = null)
+                }
             }
             else -> {}
         }
@@ -323,8 +481,8 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
 
     private fun record() {
         val t = progress?.let { engine?.turn(it) } ?: return
-        val f = File(store.scratchDir, "reply_${t.id}_${System.currentTimeMillis()}.m4a")
-        if (recorder.start("turn", f)) turnUi = TurnUi.Recording
+        val f = File(store.scratchDir, "reply_${t.id}_${System.currentTimeMillis()}.wav")
+        if (recorder.start("turn", f, maxMs = 30_000)) turnUi = TurnUi.Recording
         else { notice = "notice_record_failed"; chooseWithoutSpeaking() }
     }
 
@@ -337,9 +495,19 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         turnUi = TurnUi.Choose(null, listeningOnly = false, heard = h)
     }
 
-    fun retry() { recognizer.destroy(); turnUi = TurnUi.Idle }
+    fun retry() { recognizer.destroy(); if (recorder.isRecording) recorder.cancel(); turnUi = TurnUi.Idle }
 
-    fun playTake(path: String) { viewModelScope.launch { audio.playFile(File(path)) } }
+    /** How clearly a recognized reply came through, against the model line and the accepted examples. */
+    fun clarityFor(heard: String): Hangul.Result? {
+        val t = progress?.let { engine?.turn(it) } ?: return null
+        val refs = (listOf(t.hints.model) + t.intents.flatMap { it.examples }).filter { it.isNotBlank() }
+        return refs.map { Hangul.compare(it, heard) }.maxByOrNull { it.score }
+    }
+
+    fun playTake(path: String) {
+        if (audio.isMuted()) notice = "notice_volume_off"
+        viewModelScope.launch { if (!audio.playFile(File(path))) notice = "notice_play_failed" }
+    }
 
     /** Confirms a recognized reply. Used targets are detected in the recognized text. */
     fun confirmHeard(intentId: String) {
@@ -421,8 +589,8 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         notice = "notice_saved"
     }
 
-    fun playKo(key: String, ko: String, audioPath: String? = null) {
-        viewModelScope.launch { audio.playReference(key, ko, audioPath, settings.allowSynthetic) }
+    fun playKo(key: String, ko: String, audioPath: String? = null, slow: Boolean = false) {
+        playTapped(key, ko, audioPath, rate = if (slow) 0.7f else 1f)
     }
 
     // ================= recall & quest =================
@@ -454,40 +622,98 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
 
     // ================= capture for recall / mirror / diary =================
 
-    fun canRecognize() = micGranted && settings.inputMode == InputMode.AUTO && !recognitionBroken && recognizer.isAvailable()
+    fun canRecognize() = micGranted && settings.inputMode == InputMode.AUTO && !recognitionBroken &&
+        (recognizer.isAvailable() || systemDialogUsable())
 
-    fun startCapture(key: String, recognize: Boolean, requestPermission: () -> Unit) {
+    /**
+     * Captures one attempt for a recall card, the mirror or the diary.
+     * With [recognize] it tries Korean recognition first and falls back to recording.
+     * With a [rate] target the attempt is scored for pronunciation as soon as it ends.
+     */
+    fun startCapture(key: String, recognize: Boolean, requestPermission: () -> Unit, rate: RateTarget? = null) {
         audio.stop()
-        if (!micGranted) { requestPermission(); return }
-        captured = null
+        if (!micGranted) { needMic(requestPermission) { startCapture(key, recognize, requestPermission, rate) }; return }
+        // A recognizer check on the mirror keeps the recorded take; a fresh attempt elsewhere starts clean.
+        if (captured?.key != key || !recognize) captured = null
+        captureTarget = rate
         if (recognize && canRecognize()) {
-            capturing = key
-            recognizer.start(
-                onResult = { alts -> capturing = null; captured = Captured(key, alts, null, 0) },
-                onFailure = { f ->
-                    capturing = null
-                    if (f == KoRecognizer.Failure.UNAVAILABLE) recognitionBroken = true
-                    notice = if (f == KoRecognizer.Failure.NOTHING_HEARD) "notice_not_heard" else "notice_recognition_unavailable"
-                },
-            )
-        } else {
-            val f = File(store.scratchDir, "${key.replace(Regex("[^A-Za-z0-9_]"), "_")}_${System.currentTimeMillis()}.m4a")
-            if (recorder.start(key, f)) capturing = key else notice = "notice_record_failed"
+            if (recognizer.isAvailable()) listenCapture(key) else askSystem(key)
+        } else recordCapture(key)
+    }
+
+    private fun listenCapture(key: String) {
+        capturing = key
+        recognizer.start(
+            onResult = { alts, conf -> capturing = null; deliverRecognized(key, alts, conf) },
+            onFailure = { f ->
+                capturing = null
+                handleRecognitionFailure(f, key, retry = { listenCapture(key) }, fallback = { recordCapture(key) })
+            },
+        )
+    }
+
+    private fun deliverRecognized(key: String, alts: List<String>, conf: Float?) {
+        val keepFile = captured?.takeIf { it.key == key }
+        captured = Captured(key, alts, keepFile?.file, keepFile?.durationMs ?: 0)
+        captureTarget?.let { t ->
+            val r = Hangul.best(t.ko, alts, t.allowExtra)
+            val old = ratings[key]?.takeIf { it.target == t }
+            ratings = ratings + (key to (old ?: Rating(key, t)).copy(text = r, confidence = conf))
         }
+    }
+
+    private fun recordCapture(key: String) {
+        val f = File(store.scratchDir, "${key.replace(Regex("[^A-Za-z0-9_]"), "_")}_${System.currentTimeMillis()}.wav")
+        val max = if (key.startsWith("diary")) 180_000L else 30_000L
+        if (recorder.start(key, f, maxMs = max)) capturing = key else notice = "notice_record_failed"
     }
 
     fun stopCapture() {
         val key = capturing ?: return
         if (recognizer.listening) { recognizer.finish(); return }
+        if (!recorder.isRecording) return // the phone's speech screen is open; it reports back on its own
         val r = recorder.stop()
         capturing = null
-        captured = r?.let { Captured(key, emptyList(), it.first.absolutePath, it.second) }
+        when {
+            r == null -> notice = "notice_too_short"
+            recorder.lastTakeWasSilent() -> { r.first.delete(); notice = "notice_mic_silent" }
+            else -> {
+                captured = Captured(key, emptyList(), r.first.absolutePath, r.second)
+                captureTarget?.let { rateSound(key, it, r.first) }
+            }
+        }
+    }
+
+    /** Scores a recorded take against the model's sound, off the main thread. */
+    private fun rateSound(key: String, target: RateTarget, take: File) {
+        ratings = ratings + (key to Rating(key, target, soundBusy = true))
+        viewModelScope.launch {
+            val ref = audio.referencePcm(target.ko, target.audio, settings.allowSynthetic)
+            val result = if (ref == null) null else withContext(Dispatchers.Default) {
+                runCatching { Acoustic.compare(Wav.read(take), ref, target.ko.count { it in '\uAC00'..'\uD7A3' }) }.getOrNull()
+            }
+            val cur = ratings[key] ?: return@launch
+            if (cur.target != target) return@launch
+            ratings = ratings + (key to cur.copy(sound = result, soundBusy = false, noModel = ref == null))
+        }
     }
 
     fun clearCapture(deleteFile: Boolean = true) {
-        captured?.file?.let { if (deleteFile && it.startsWith(store.scratchDir.absolutePath)) File(it).delete() }
+        captured?.let { c ->
+            c.file?.let { if (deleteFile && it.startsWith(store.scratchDir.absolutePath)) File(it).delete() }
+            ratings = ratings - c.key
+        }
         captured = null
     }
+
+    /** Device check: give recognition another chance after it was switched off. */
+    fun resetRecognition() {
+        recognitionBroken = false
+        systemDialogFailed = false
+    }
+
+    /** Clears the score for a key (e.g. when a new attempt starts). */
+    fun clearRating(key: String) { ratings = ratings - key }
 
     // ================= mirror =================
 
@@ -500,8 +726,13 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
 
     /** A/B: the reference, then his own take. */
     fun playAB(key: String, ko: String, audioPath: String?, take: String) {
+        if (audio.isMuted()) notice = "notice_volume_off"
         viewModelScope.launch {
-            audio.playReference(key, ko, audioPath, settings.allowSynthetic)
+            when (audio.playReference(key, ko, audioPath, settings.allowSynthetic)) {
+                AudioHub.Source.INTERRUPTED -> return@launch
+                AudioHub.Source.NONE -> notice = noVoiceNotice()
+                else -> {}
+            }
             delay(350)
             audio.playFile(File(take))
         }
@@ -514,7 +745,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         val c = captured ?: return
         val src = c.file?.let(::File) ?: return
         val id = UUID.randomUUID().toString()
-        val name = "$id.m4a"
+        val name = "$id." + src.extension.ifBlank { "wav" }
         val dst = store.diaryFile(name)
         if (!src.renameTo(dst)) { src.copyTo(dst, overwrite = true); src.delete() }
         val entry = DiaryEntry(id, now(), kind, promptId, phraseKo, name, c.durationMs)

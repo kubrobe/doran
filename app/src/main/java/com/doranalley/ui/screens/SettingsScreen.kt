@@ -102,20 +102,31 @@ fun SettingsScreen(vm: AppViewModel, requestMic: () -> Unit) {
             SectionCard {
                 Text(st["device_check"], fontWeight = FontWeight.SemiBold)
                 Status(st["korean_voice"], when (vm.audio.ttsState) {
-                    AudioHub.TtsState.READY -> st["ok"]
+                    AudioHub.TtsState.READY -> st["ok"] + (vm.audio.ttsEngine?.let { " · $it" } ?: "")
                     AudioHub.TtsState.LOADING -> st["checking"]
                     AudioHub.TtsState.MISSING -> st["missing"]
                 }, vm.audio.ttsState == AudioHub.TtsState.READY)
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    OutlinedButton(onClick = { vm.playKo("test_voice", "안녕하세요. 강의실이 바뀌었어요.") }) { Text(st["test_voice"]) }
+                    if (vm.audio.ttsState == AudioHub.TtsState.MISSING) TextButton(onClick = vm.audio::retryTts) { Text(st["check_again"]) }
+                }
                 if (vm.audio.ttsState == AudioHub.TtsState.MISSING) {
                     Text(st["voice_missing_note"], fontSize = 12.sp, color = Palette.Muted)
-                    OutlinedButton(onClick = {
-                        runCatching { ctx.startActivity(Intent(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }
-                    }) { Text(st["install_voice"]) }
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        OutlinedButton(onClick = {
+                            runCatching { ctx.startActivity(Intent(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }
+                                .onFailure { openTtsSettings(ctx) }
+                        }) { Text(st["install_voice"]) }
+                        TextButton(onClick = { openTtsSettings(ctx) }) { Text(st["tts_settings"]) }
+                    }
                 }
-                val recOk = vm.recognizer.isAvailable() && !vm.recognitionBroken
-                Status(st["recognition"], if (recOk) st["ok"] else st["unavailable_manual"], recOk)
                 Status(st["microphone"], if (vm.micGranted) st["ok"] else st["off_listening"], vm.micGranted)
                 if (!vm.micGranted) OutlinedButton(onClick = requestMic) { Text(st["allow_mic"]) }
+                else DeviceTest(vm, "mictest", st["test_mic"], recognize = false, requestMic = requestMic)
+                val recOk = (vm.recognizer.isAvailable() || vm.canRecognize()) && !vm.recognitionBroken
+                Status(st["recognition"], if (recOk) st["ok"] + " · " + vm.recognizer.serviceName() else st["unavailable_manual"], recOk)
+                if (vm.micGranted) DeviceTest(vm, "rectest", st["test_recognition"], recognize = true, requestMic = requestMic)
+                if (vm.recognitionBroken) TextButton(onClick = vm::resetRecognition) { Text(st["try_recognition_again"]) }
                 val lines = vm.content.episodes.values.flatMap { it.nodes.values }.filterIsInstance<Node.Line>().filter { it.audio != null }
                 val bundled = lines.count { vm.audio.hasBundled(it.audio) }
                 Status(st["recordings"], "$bundled / ${lines.size}", bundled == lines.size && lines.isNotEmpty())
@@ -141,6 +152,33 @@ fun SettingsScreen(vm: AppViewModel, requestMic: () -> Unit) {
         confirmButton = { TextButton(onClick = { vm.resetProgress(keepDiary = true); confirmReset = false }) { Text(st["reset_keep_diary"]) } },
         dismissButton = { TextButton(onClick = { confirmReset = false }) { Text(st["cancel"]) } },
     )
+}
+
+private fun openTtsSettings(ctx: android.content.Context) {
+    runCatching { ctx.startActivity(Intent("com.android.settings.TTS_SETTINGS").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }
+        .onFailure { runCatching { ctx.startActivity(Intent(android.provider.Settings.ACTION_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) } }
+}
+
+/** Record a few seconds and play it back, or say something and see what the recognizer heard. */
+@Composable
+private fun DeviceTest(vm: AppViewModel, key: String, label: String, recognize: Boolean, requestMic: () -> Unit) {
+    val st = LocalStrings.current
+    val cap = vm.captured?.takeIf { it.key == key }
+    if (vm.capturing == key) {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Button(onClick = vm::stopCapture) { Text(st["stop"]) }
+            Column(Modifier.weight(1f)) {
+                LevelMeter(if (vm.recognizer.listening) vm.recognizer.level else vm.recorder.level)
+                if (vm.recognizer.partial.isNotBlank()) Korean(vm.recognizer.partial, size = 15, weight = FontWeight.Normal)
+            }
+        }
+    } else {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedButton(onClick = { vm.clearCapture(); vm.startCapture(key, recognize, requestMic) }) { Text(label) }
+            cap?.file?.let { f -> TextButton(onClick = { vm.playTake(f) }) { Text(st["play_mine"]) } }
+        }
+        cap?.alternatives?.firstOrNull()?.let { Text(st["app_heard"] + " «$it»", fontSize = 13.sp) }
+    }
 }
 
 private fun trim(d: Double) = if (d == Math.floor(d)) d.toLong().toString() else d.toString()

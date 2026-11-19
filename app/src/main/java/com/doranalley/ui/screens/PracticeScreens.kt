@@ -50,6 +50,7 @@ import com.doranalley.core.ReviewItem
 import com.doranalley.core.Scheduler
 import com.doranalley.ui.AppViewModel
 import com.doranalley.ui.LocalStrings
+import com.doranalley.ui.RateTarget
 import com.doranalley.ui.Screen
 import com.doranalley.ui.theme.Palette
 import com.doranalley.ui.tr
@@ -135,15 +136,22 @@ fun RecallCard(vm: AppViewModel, item: ReviewItem, setting: String, requestMic: 
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 if (vm.capturing == key) {
                     Button(onClick = vm::stopCapture) { Icon(Icons.Filled.Stop, null); Text(" " + st["stop"]) }
-                    if (vm.recognizer.partial.isNotBlank()) Korean(vm.recognizer.partial, size = 16, weight = FontWeight.Normal)
+                    Column(Modifier.weight(1f)) {
+                        LevelMeter(if (vm.recognizer.listening) vm.recognizer.level else vm.recorder.level)
+                        if (vm.recognizer.partial.isNotBlank()) Korean(vm.recognizer.partial, size = 16, weight = FontWeight.Normal)
+                    }
                 } else {
-                    Button(onClick = { vm.startCapture(key, recognize = true, requestPermission = requestMic) }) {
+                    Button(onClick = {
+                        vm.startCapture(key, recognize = true, requestPermission = requestMic, rate = RateTarget(item.ko, item.audio, allowExtra = true))
+                    }) {
                         Icon(Icons.Filled.Mic, null); Text(" " + st["say_it"])
                     }
                     if (!attempted) TextButton(onClick = { saidAloud = true }) { Text(st["said_aloud"]) }
                 }
             }
         }
+        // The score names the target phrase, so it only shows once he has revealed it or got it right.
+        if (revealed || heardIt) RatingPanel(vm, key)
         if (heard != null) Row(verticalAlignment = Alignment.CenterVertically) {
             Text(st["app_heard"] + " «$heard»  ", fontSize = 14.sp)
             if (heardIt) Pill("✓", Palette.TealSoft)
@@ -254,7 +262,10 @@ fun MirrorScreen(vm: AppViewModel, episodeId: String, requestMic: () -> Unit) {
     }
 }
 
-/** Reference audio, record, immediate A/B, and save-only-if-he-chooses. No automatic sound judgments. */
+/**
+ * Reference audio (normal and slow), record, an approximate sound-match score with the weakest syllable,
+ * an optional check of what the Korean recognizer understood, immediate A/B, and save-only-if-he-chooses.
+ */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun MirrorPhraseCard(vm: AppViewModel, phrase: MirrorPhrase, requestMic: () -> Unit) {
@@ -282,26 +293,46 @@ fun MirrorPhraseCard(vm: AppViewModel, phrase: MirrorPhrase, requestMic: () -> U
             Text(phrase.gloss.tr(), color = Palette.Muted)
         }
         Text(st["listen_for"] + " " + phrase.listenFor.tr(), fontSize = 13.sp)
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+        val target = RateTarget(phrase.ko, phrase.audio)
+        FlowRow(
+            verticalArrangement = Arrangement.spacedBy(6.dp), horizontalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
             FilledTonalButton(onClick = { vm.playKo(key, phrase.ko, phrase.audio); vm.markLadder(phrase.id, 1) }, enabled = revealed) {
                 Icon(Icons.AutoMirrored.Filled.VolumeUp, null, Modifier.size(18.dp)); Text(" " + st["model"])
             }
-            if (vm.capturing == key) {
-                Button(onClick = vm::stopCapture) { Icon(Icons.Filled.Stop, null, Modifier.size(18.dp)); Text(" " + st["stop"]) }
-            } else {
-                Button(onClick = {
-                    vm.clearCapture()
-                    vm.startCapture(key, recognize = false, requestPermission = requestMic)
-                    vm.markLadder(phrase.id, if (fromMeaning) 3 else 2)
-                }) { Icon(Icons.Filled.Mic, null, Modifier.size(18.dp)); Text(" " + st["record"]) }
+            OutlinedButton(onClick = { vm.playKo(key, phrase.ko, phrase.audio, slow = true); vm.markLadder(phrase.id, 1) }, enabled = revealed) {
+                Text(st["model_slow"])
             }
             if (synthetic) SyntheticBadge()
         }
+        if (vm.capturing == key) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                Button(onClick = vm::stopCapture) { Icon(Icons.Filled.Stop, null, Modifier.size(18.dp)); Text(" " + st["stop"]) }
+                Column(Modifier.weight(1f)) {
+                    Text(if (vm.recognizer.listening) st["listening"] else st["recording"], fontSize = 13.sp, color = Palette.Persimmon)
+                    LevelMeter(if (vm.recognizer.listening) vm.recognizer.level else vm.recorder.level)
+                    if (vm.recognizer.partial.isNotBlank()) Korean(vm.recognizer.partial, size = 16, weight = FontWeight.Normal)
+                }
+            }
+        } else {
+            Button(
+                onClick = {
+                    vm.clearCapture()
+                    vm.startCapture(key, recognize = false, requestPermission = requestMic, rate = target)
+                    vm.markLadder(phrase.id, if (fromMeaning) 3 else 2)
+                },
+                modifier = Modifier.fillMaxWidth(),
+            ) { Icon(Icons.Filled.Mic, null, Modifier.size(20.dp)); Text(" " + st["record_and_rate"]) }
+        }
+        RatingPanel(vm, key)
         val take = cap?.file
-        if (take != null) {
+        if (take != null && vm.capturing != key) {
             FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                OutlinedButton(onClick = { vm.playTake(take) }) { Text(st["play_mine"]) }
+                OutlinedButton(onClick = { vm.playTake(take) }) { Icon(Icons.Filled.PlayArrow, null, Modifier.size(18.dp)); Text(" " + st["play_mine"]) }
                 OutlinedButton(onClick = { vm.playAB(key, phrase.ko, phrase.audio, take) }, enabled = revealed) { Text(st["ab_compare"]) }
+                if (vm.canRecognize()) OutlinedButton(onClick = {
+                    vm.startCapture(key, recognize = true, requestPermission = requestMic, rate = target)
+                }) { Text(st["check_recognizer"]) }
                 Button(onClick = { vm.saveCaptureToDiary("mirror", null, phrase.ko) }) { Text(st["save_take"]) }
                 TextButton(onClick = { vm.clearCapture() }) { Text(st["discard"]) }
             }

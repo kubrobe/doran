@@ -3,6 +3,13 @@
 package com.doranalley.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.foundation.layout.requiredSize
+import com.doranalley.ui.components.BrushCircle
+import com.doranalley.ui.components.DancheongBand
+import com.doranalley.ui.components.GlowBurst
+import com.doranalley.ui.components.glass
+import com.doranalley.ui.components.jewel
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -139,15 +146,20 @@ fun LetterIntroView(vm: AppViewModel, ex: Exercise.LetterIntro) {
     val playing by vm.audio.playing.collectAsState()
     ExerciseFrame("New letter", locked = false, ready = true, onCheck = { vm.next() }, checkLabel = "Continue") {
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            val card = RoundedCornerShape(32.dp)
-            Box(
-                Modifier.size(184.dp).clip(card).background(C.PurpleDark).padding(bottom = 6.dp).clip(card).background(C.Purple),
-                contentAlignment = Alignment.Center,
-            ) {
-                Text(ex.letter.ch, fontSize = 112.sp, color = Color.White, fontWeight = FontWeight.Bold, modifier = Modifier.enterPop(delayMs = 120, from = 0.4f, durationMs = 520))
+            val card = RoundedCornerShape(40.dp)
+            Box(Modifier.size(220.dp), contentAlignment = Alignment.Center) {
+                GlowBurst(Modifier.requiredSize(300.dp), color = C.Purple, durationMs = 1100)
+                Box(
+                    Modifier.size(188.dp).enterPop(from = 0.7f, durationMs = 480).jewel(C.Purple, C.PurpleDark, card, elevation = 22.dp).clip(card),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    DancheongBand(Modifier.fillMaxWidth().height(8.dp).align(Alignment.TopCenter), alpha = 0.7f)
+                    BrushCircle(Modifier.size(150.dp), color = Color.White.copy(alpha = 0.55f), delayMs = 350, durationMs = 950, width = 6.dp)
+                    Text(ex.letter.ch, fontSize = 108.sp, color = Color.White, fontWeight = FontWeight.Bold, modifier = Modifier.enterPop(delayMs = 120, from = 0.4f, durationMs = 520))
+                }
             }
-            Spacer(Modifier.height(18.dp))
-            Text("“${ex.letter.rom}”", fontSize = 34.sp, fontWeight = FontWeight.Black, fontFamily = Nunito, color = C.Purple, modifier = Modifier.enterRise(delayMs = 260))
+            Spacer(Modifier.height(10.dp))
+            Text("“${ex.letter.rom}”", fontSize = 34.sp, fontWeight = FontWeight.Black, fontFamily = Nunito, color = C.PurpleInk, modifier = Modifier.enterRise(delayMs = 260))
             Text(ex.letter.hint, fontSize = 17.sp, color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 6.dp))
             Spacer(Modifier.height(20.dp))
             SpeakerButton(playing == "ko:${ex.letter.say}", { vm.audio.play(ex.letter.say) }, size = 80.dp, tag = "play")
@@ -161,7 +173,7 @@ fun LetterToSoundView(vm: AppViewModel, ex: Exercise.LetterToSound, locked: Bool
     var sel by remember { mutableStateOf<String?>(null) }
     ExerciseFrame("What sound does this make?", locked, sel != null, { vm.submit(sel == ex.letter.rom) }, secondary = secondary) {
         Box(Modifier.fillMaxWidth().padding(bottom = 20.dp), contentAlignment = Alignment.Center) {
-            Text(ex.letter.ch, fontSize = 96.sp, fontWeight = FontWeight.Bold, color = C.Ink, modifier = Modifier.testTag("prompt"))
+            Text(ex.letter.ch, fontSize = 96.sp, fontWeight = FontWeight.Bold, color = C.Ink, modifier = Modifier.enterPop(from = 0.6f).testTag("prompt"))
         }
         OptionGrid(ex.options, sel, locked, { sel = it }, fontSize = 26)
     }
@@ -186,8 +198,8 @@ fun WordMeaningView(vm: AppViewModel, ex: Exercise.WordMeaning, locked: Boolean,
     val playing by vm.audio.playing.collectAsState()
     ExerciseFrame(if (ex.isNew) "New word" else "What does this mean?", locked, sel != null, { vm.submit(sel == ex.word.en) }, secondary = secondary) {
         if (ex.isNew) {
-            Text("✨ New word", color = C.PurpleDark, fontWeight = FontWeight.ExtraBold, fontFamily = Nunito, fontSize = 14.sp,
-                modifier = Modifier.enterPop(from = 0.7f).background(C.Purple.copy(alpha = 0.12f), RoundedCornerShape(10.dp)).padding(horizontal = 10.dp, vertical = 4.dp))
+            Text("✨ New word", color = C.PurpleInk, fontWeight = FontWeight.ExtraBold, fontFamily = Nunito, fontSize = 14.sp,
+                modifier = Modifier.enterPop(from = 0.7f).glass(CircleShape, tint = C.Purple, tintAlpha = 0.2f, elevation = 6.dp, glow = C.Purple).padding(horizontal = 12.dp, vertical = 4.dp))
             Spacer(Modifier.height(12.dp))
         }
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 22.dp)) {
@@ -305,8 +317,8 @@ private fun WordBank(tiles: List<Tile>, chosen: MutableList<Tile>, locked: Boole
     val fs = if (korean) 20.sp else 18.sp
     // Answer lines
     Box(Modifier.fillMaxWidth().defaultMinSize(minHeight = 128.dp).testTag("answerArea")) {
-        Box(Modifier.fillMaxWidth().padding(top = 63.dp).height(2.dp).background(C.Line))
-        Box(Modifier.fillMaxWidth().padding(top = 126.dp).height(2.dp).background(C.Line))
+        Box(Modifier.fillMaxWidth().padding(top = 63.dp).height(1.5.dp).background(C.LineDark))
+        Box(Modifier.fillMaxWidth().padding(top = 126.dp).height(1.5.dp).background(C.LineDark))
         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.padding(top = 8.dp)) {
             chosen.forEach { t ->
                 key(t.id) {
@@ -322,7 +334,12 @@ private fun WordBank(tiles: List<Tile>, chosen: MutableList<Tile>, locked: Boole
         tiles.forEach { t ->
             val used = chosen.any { it.id == t.id }
             if (used) {
-                Box(Modifier.padding(bottom = 3.dp).background(C.Soft, RoundedCornerShape(16.dp)).border(2.dp, C.Line, RoundedCornerShape(16.dp)).padding(horizontal = 14.dp, vertical = 12.dp)) {
+                val dash = C.LineDark
+                Box(Modifier.drawBehind {
+                    drawRoundRect(dash.copy(alpha = 0.18f), cornerRadius = androidx.compose.ui.geometry.CornerRadius(18.dp.toPx()))
+                    drawRoundRect(dash, cornerRadius = androidx.compose.ui.geometry.CornerRadius(18.dp.toPx()),
+                        style = androidx.compose.ui.graphics.drawscope.Stroke(1.5.dp.toPx(), pathEffect = androidx.compose.ui.graphics.PathEffect.dashPathEffect(floatArrayOf(8.dp.toPx(), 6.dp.toPx()))))
+                }.padding(horizontal = 14.dp, vertical = 12.dp)) {
                     Text(t.text, fontSize = fs, color = Color.Transparent)
                 }
             } else {
@@ -373,10 +390,11 @@ fun FillBlankView(vm: AppViewModel, ex: Exercise.FillBlank, locked: Boolean, sec
         FlowRow(verticalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth().padding(bottom = 28.dp)) {
             if (ex.fill.before.isNotBlank()) Text(ex.fill.before, fontSize = 26.sp, color = C.Ink, modifier = Modifier.align(Alignment.CenterVertically))
             Box(
-                Modifier.padding(horizontal = 4.dp).border(2.dp, if (sel != null) C.Blue else C.LineDark, RoundedCornerShape(10.dp))
+                Modifier.padding(horizontal = 4.dp).glass(RoundedCornerShape(12.dp), tint = if (sel != null) C.Blue else Color.Unspecified, elevation = 4.dp)
+                    .border(2.dp, if (sel != null) C.Blue else C.LineDark, RoundedCornerShape(12.dp))
                     .defaultMinSize(minWidth = 70.dp).padding(horizontal = 10.dp, vertical = 4.dp).align(Alignment.CenterVertically).testTag("blank"),
                 contentAlignment = Alignment.Center,
-            ) { key(sel) { Text(sel ?: " ", fontSize = 26.sp, color = C.Blue, fontWeight = FontWeight.Bold, modifier = if (sel != null) Modifier.enterPop(from = 0.6f, durationMs = 260) else Modifier) } }
+            ) { key(sel) { Text(sel ?: " ", fontSize = 26.sp, color = C.BlueInk, fontWeight = FontWeight.Bold, modifier = if (sel != null) Modifier.enterPop(from = 0.6f, durationMs = 260) else Modifier) } }
             if (ex.fill.after.isNotBlank()) Text(ex.fill.after, fontSize = 26.sp, color = C.Ink, modifier = Modifier.align(Alignment.CenterVertically))
         }
         OptionList(ex.options, sel, locked, { sel = it }, big = true)

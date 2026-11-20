@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="icon_bg">#FFFFF4E8</color>
-    <!-- Celadon-tinted paper; matches C.Bg so there is no white flash on launch. -->
-    <color name="app_bg">#FFF4F8F5</color>
+    <!-- Night ink; matches the default (night) C.Bg so there is no white flash on launch. -->
+    <color name="app_bg">#FF0B1021</color>
 </resources>

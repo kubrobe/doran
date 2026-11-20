@@ -14,6 +14,12 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
+import com.doranalley.ui.components.GlowBurst
+import com.doranalley.ui.components.drawOrb
+import com.doranalley.ui.components.glass
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -190,7 +196,7 @@ fun SpeakView(vm: AppViewModel, ex: Exercise.Speak, locked: Boolean) {
                         }
                     }
                     is SpeakState.Error -> {
-                        Text(s.message, color = C.RedDark, textAlign = TextAlign.Center, modifier = Modifier.testTag("speakError"))
+                        Text(s.message, color = C.RedInk, textAlign = TextAlign.Center, modifier = Modifier.testTag("speakError"))
                         Spacer(Modifier.height(8.dp))
                         SmallAction("Try again", Icons.Filled.Refresh, "tryAgain") { vm.resetSpeak() }
                     }
@@ -229,40 +235,41 @@ private fun CheckingDots(modifier: Modifier = Modifier) {
 @Composable
 private fun Hint(text: String) = Text(text, color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 10.dp, bottom = 6.dp))
 
+/** A large glass orb. Blue and still when idle; red, ringed by ripples and a live voice glow while recording. */
 @Composable
 private fun MicButton(recording: Boolean, level: Float, onClick: () -> Unit) {
     val source = remember { MutableInteractionSource() }
     val pressed by source.collectIsPressedAsState()
-    val sink by animateDpAsState(if (pressed) 5.dp else 0.dp, spring(stiffness = Spring.StiffnessHigh), label = "sink")
-    // The voice ring follows the microphone level smoothly.
+    val squeeze by animateFloatAsState(if (pressed) 0.92f else 1f, spring(dampingRatio = 0.45f, stiffness = 800f), label = "squeeze")
+    // The voice glow follows the microphone level smoothly.
     val lvl by animateFloatAsState(if (recording) level.coerceIn(0f, 1f) else 0f, spring(stiffness = 300f), label = "lvl")
     val ripple = if (recording) {
         val t = rememberInfiniteTransition(label = "mic")
-        t.animateFloat(0f, 1f, infiniteRepeatable(tween(1400, easing = LinearEasing)), label = "r").value
-    } else -1f
-    val face by animateColorAsState(if (recording) C.Red else C.Blue, tween(200), label = "face")
-    val edge by animateColorAsState(if (recording) C.RedDark else C.BlueDark, tween(200), label = "edge")
+        t.animateFloat(0f, 1f, infiniteRepeatable(tween(1400, easing = LinearEasing)), label = "r")
+    } else null
+    val face by animateColorAsState(if (recording) C.Red else C.Blue, tween(260), label = "face")
+    val edge by animateColorAsState(if (recording) C.RedDark else C.BlueDark, tween(260), label = "edge")
     Box(
-        Modifier.size(170.dp).drawBehind {
-            val base = 52.dp.toPx()
-            if (ripple >= 0f) {
-                for (k in 0..2) {
-                    val p = (ripple + k / 3f) % 1f
-                    drawCircle(C.Red.copy(alpha = 0.22f * (1f - p)), base * (1f + p * 0.6f), style = Stroke(3.dp.toPx()))
-                }
-                drawCircle(C.Red.copy(alpha = 0.16f), base * (1.02f + lvl * 0.55f))
+        Modifier.size(180.dp).drawBehind {
+            val base = 54.dp.toPx()
+            drawCircle(Brush.radialGradient(listOf(face.copy(alpha = 0.30f + 0.25f * lvl), face.copy(alpha = 0f))), base * (1.6f + lvl * 0.5f))
+            val r = ripple?.value ?: return@drawBehind
+            for (k in 0..2) {
+                val p = (r + k / 3f) % 1f
+                drawCircle(face.copy(alpha = 0.35f * (1f - p)), base * (1f + p * 0.65f), style = Stroke(2.5.dp.toPx()))
             }
         },
         contentAlignment = Alignment.Center,
     ) {
         Box(
-            Modifier.size(104.dp).clip(CircleShape)
-                .clickable(source, null, onClick = onClick).testTag(if (recording) "stopMic" else "mic")
-                .padding(top = sink).background(edge, CircleShape)
-                .padding(bottom = (6.dp - sink).coerceAtLeast(0.dp)).background(face, CircleShape),
+            Modifier.size(108.dp).graphicsLayer { scaleX = squeeze * (1f + lvl * 0.06f); scaleY = squeeze * (1f + lvl * 0.06f) }
+                .shadow(18.dp, CircleShape, clip = false, ambientColor = face, spotColor = face)
+                .clip(CircleShape)
+                .drawBehind { drawOrb(face, edge, center, size.minDimension / 2f) }
+                .clickable(source, null, onClick = onClick).testTag(if (recording) "stopMic" else "mic"),
             contentAlignment = Alignment.Center,
         ) {
-            Icon(if (recording) Icons.Filled.Stop else Icons.Filled.Mic, if (recording) "Stop" else "Speak", tint = Color.White, modifier = Modifier.size(52.dp))
+            Icon(if (recording) Icons.Filled.Stop else Icons.Filled.Mic, if (recording) "Stop" else "Speak", tint = Color.White, modifier = Modifier.size(50.dp))
         }
     }
 }
@@ -270,12 +277,12 @@ private fun MicButton(recording: Boolean, level: Float, onClick: () -> Unit) {
 @Composable
 private fun SmallAction(text: String, icon: androidx.compose.ui.graphics.vector.ImageVector, tag: String, onClick: () -> Unit) {
     Row(
-        Modifier.clip(RoundedCornerShape(14.dp)).background(C.Card).border(2.dp, C.Line, RoundedCornerShape(14.dp)).clickable(onClick = onClick)
-            .padding(horizontal = 14.dp, vertical = 10.dp).testTag(tag),
+        Modifier.glass(CircleShape, elevation = 6.dp).clip(CircleShape).clickable(onClick = onClick)
+            .padding(horizontal = 16.dp, vertical = 10.dp).testTag(tag),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Icon(icon, null, tint = C.Blue, modifier = Modifier.size(22.dp))
-        Text(text, color = C.Blue, fontWeight = FontWeight.ExtraBold, fontFamily = Nunito, modifier = Modifier.padding(start = 6.dp))
+        Icon(icon, null, tint = C.BlueInk, modifier = Modifier.size(20.dp))
+        Text(text, color = C.BlueInk, fontWeight = FontWeight.ExtraBold, fontFamily = Nunito, modifier = Modifier.padding(start = 6.dp))
     }
 }
 
@@ -283,14 +290,17 @@ private fun SmallAction(text: String, icon: androidx.compose.ui.graphics.vector.
 private fun ScoreView(vm: AppViewModel, s: SpeakState.Scored, ex: Exercise.Speak) {
     val score = s.result.score
     val color = when { score >= 85 -> C.Green; s.result.passed -> C.Gold; else -> C.Red }
+    val track = C.Line
     // The ring sweeps to the score while the number counts up.
     val sweep = remember(s) { Animatable(0f) }
     LaunchedEffect(s) { sweep.animateTo(score / 100f, tween(900, easing = Motion.EaseOut)) }
-    Box(Modifier.size(104.dp).enterPop(from = 0.7f).testTag("score"), contentAlignment = Alignment.Center) {
-        Canvas(Modifier.size(104.dp)) {
+    Box(Modifier.size(112.dp).enterPop(from = 0.7f).testTag("score"), contentAlignment = Alignment.Center) {
+        if (score >= 85) GlowBurst(Modifier.requiredSize(200.dp), color = color, key = s, durationMs = 1100)
+        Canvas(Modifier.size(112.dp)) {
             val st = 9.dp.toPx()
-            drawCircle(color.copy(alpha = 0.12f), size.minDimension / 2f - st / 2f)
-            drawArc(C.Line, 0f, 360f, false, topLeft = Offset(st / 2, st / 2), size = Size(size.width - st, size.height - st), style = Stroke(st))
+            drawCircle(Brush.radialGradient(listOf(color.copy(alpha = 0.28f), color.copy(alpha = 0.04f))), size.minDimension / 2f - st / 2f)
+            drawArc(track, 0f, 360f, false, topLeft = Offset(st / 2, st / 2), size = Size(size.width - st, size.height - st), style = Stroke(st))
+            drawArc(color.copy(alpha = 0.3f), -90f, 360f * sweep.value, false, topLeft = Offset(st / 2, st / 2), size = Size(size.width - st, size.height - st), style = Stroke(st * 2.2f, cap = StrokeCap.Round))
             drawArc(color, -90f, 360f * sweep.value, false, topLeft = Offset(st / 2, st / 2), size = Size(size.width - st, size.height - st), style = Stroke(st, cap = StrokeCap.Round))
         }
         Text("${(sweep.value * 100).roundToInt()}%", fontSize = 28.sp, fontWeight = FontWeight.Black, fontFamily = Nunito, color = color)
@@ -317,7 +327,7 @@ private fun ColoredSentence(target: String, heard: String) {
         var prev = ' '
         marks.forEach { (c, m) ->
             if (c != ' ' && prev != ' ') append('\u2060')
-            val col = when (m) { Hangul.Mark.GOOD -> C.GreenDark; Hangul.Mark.CLOSE -> C.GoldDark; Hangul.Mark.MISSED -> C.Red }
+            val col = when (m) { Hangul.Mark.GOOD -> C.GreenInk; Hangul.Mark.CLOSE -> C.GoldInk; Hangul.Mark.MISSED -> C.RedInk }
             withStyle(SpanStyle(color = if (Hangul.isSyllable(c)) col else C.Ink)) { append(c) }
             prev = c
         }

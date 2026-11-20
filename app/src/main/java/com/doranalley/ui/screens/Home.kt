@@ -1,6 +1,17 @@
 package com.doranalley.ui.screens
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Animatable
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
+import com.doranalley.ui.components.DancheongBand
+import com.doranalley.ui.components.darken
+import com.doranalley.ui.components.drawOrb
+import com.doranalley.ui.components.glass
+import com.doranalley.ui.components.jewel
+import com.doranalley.ui.components.lighten
+import com.doranalley.ui.theme.HangulSerif
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -106,44 +117,87 @@ import kotlin.math.sin
 fun HomeScreen(vm: AppViewModel, tab: Tab) {
     val p by vm.progress.collectAsState()
     val now by vm.now.collectAsState()
-    Column(Modifier.fillMaxSize().background(C.Bg).statusBarsPadding().navigationBarsPadding()) {
-        TopStats(vm, p, now)
-        Box(Modifier.weight(1f)) {
-            key(tab) {
-                Box(Modifier.fillMaxSize().enterRise(distance = 10.dp, durationMs = 260)) {
-                    when (tab) {
-                        Tab.LEARN -> PathView(vm, p)
-                        Tab.PRACTICE -> PracticeTab(vm)
-                        Tab.WORDS -> WordsTab(vm, p)
-                        Tab.PROFILE -> ProfileTab(vm, p)
+    Box(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
+        Column(Modifier.fillMaxSize()) {
+            TopStats(vm, p, now)
+            Box(Modifier.weight(1f)) {
+                key(tab) {
+                    Box(Modifier.fillMaxSize().enterRise(distance = 10.dp, durationMs = 260)) {
+                        when (tab) {
+                            Tab.LEARN -> PathView(vm, p)
+                            Tab.PRACTICE -> PracticeTab(vm)
+                            Tab.WORDS -> WordsTab(vm, p)
+                            Tab.PROFILE -> ProfileTab(vm, p)
+                        }
                     }
                 }
             }
         }
-        Column(Modifier.background(C.Card)) {
-            Box(Modifier.fillMaxWidth().height(2.dp).background(C.Line))
-            Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), horizontalArrangement = Arrangement.SpaceEvenly) {
-                NavItem(Icons.Filled.Home, "Learn", tab == Tab.LEARN, "tabLearn") { vm.go(Screen.Home(Tab.LEARN)) }
-                NavItem(Icons.Filled.FitnessCenter, "Practice", tab == Tab.PRACTICE, "tabPractice") { vm.go(Screen.Home(Tab.PRACTICE)) }
-                NavItem(Icons.AutoMirrored.Filled.MenuBook, "Words", tab == Tab.WORDS, "tabWords") { vm.go(Screen.Home(Tab.WORDS)) }
-                NavItem(Icons.Filled.Person, "Profile", tab == Tab.PROFILE, "tabProfile") { vm.go(Screen.Home(Tab.PROFILE)) }
+        LiquidTabBar(tab, Modifier.align(Alignment.BottomCenter)) { vm.go(Screen.Home(it)) }
+    }
+}
+
+/** Room the floating tab bar takes at the bottom; scrolling content pads by this so it can slide under the glass. */
+val TabBarSpace = 104.dp
+
+private data class TabItem(val tab: Tab, val icon: ImageVector, val label: String, val tag: String)
+
+private val tabItems = listOf(
+    TabItem(Tab.LEARN, Icons.Filled.Home, "Learn", "tabLearn"),
+    TabItem(Tab.PRACTICE, Icons.Filled.FitnessCenter, "Practice", "tabPractice"),
+    TabItem(Tab.WORDS, Icons.AutoMirrored.Filled.MenuBook, "Words", "tabWords"),
+    TabItem(Tab.PROFILE, Icons.Filled.Person, "Profile", "tabProfile"),
+)
+
+/**
+ * Floating liquid-glass tab bar. A lens of tinted glass slides to the chosen tab with a spring and
+ * stretches while it travels, like a drop of water.
+ */
+@Composable
+private fun LiquidTabBar(tab: Tab, modifier: Modifier = Modifier, onSelect: (Tab) -> Unit) {
+    val index = tabItems.indexOfFirst { it.tab == tab }.coerceAtLeast(0)
+    val pos = remember { Animatable(index.toFloat()) }
+    LaunchedEffect(index) { pos.animateTo(index.toFloat(), spring(dampingRatio = 0.62f, stiffness = 380f)) }
+    val shape = RoundedCornerShape(30.dp)
+    val accent = C.Green
+    Box(
+        modifier.padding(horizontal = 18.dp, vertical = 10.dp).fillMaxWidth().height(66.dp)
+            .glass(shape, elevation = 16.dp, opaque = 0.86f)
+            .clip(shape)
+            .drawBehind {
+                val n = tabItems.size
+                val slot = (size.width - 12.dp.toPx()) / n
+                val v = pos.value
+                val stretch = 1f + (kotlin.math.abs(v - index) * 0.9f).coerceAtMost(0.6f)
+                val w = slot * stretch
+                val cx = 6.dp.toPx() + slot * (v + 0.5f)
+                val h = size.height - 12.dp.toPx()
+                val tl = Offset(cx - w / 2f, 6.dp.toPx())
+                val r = androidx.compose.ui.geometry.CornerRadius(h / 2f)
+                drawRoundRect(Brush.verticalGradient(listOf(accent.copy(alpha = 0.34f), accent.copy(alpha = 0.16f)), startY = tl.y, endY = tl.y + h), tl, androidx.compose.ui.geometry.Size(w, h), r)
+                drawRoundRect(Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.6f), Color.White.copy(alpha = 0.05f)), startY = tl.y, endY = tl.y + h), tl, androidx.compose.ui.geometry.Size(w, h), r, style = Stroke(1.2.dp.toPx()))
             }
+            .padding(6.dp),
+    ) {
+        Row(Modifier.fillMaxSize()) {
+            tabItems.forEach { item -> NavItem(item, item.tab == tab, Modifier.weight(1f)) { onSelect(item.tab) } }
         }
     }
 }
 
 @Composable
-private fun NavItem(icon: ImageVector, label: String, selected: Boolean, tag: String, onClick: () -> Unit) {
-    val bg by animateColorAsState(if (selected) C.GreenLight else Color.Transparent, tween(200), label = "navBg")
-    val fg by animateColorAsState(if (selected) C.GreenDark else C.Muted, tween(200), label = "navFg")
+private fun NavItem(item: TabItem, selected: Boolean, modifier: Modifier, onClick: () -> Unit) {
+    val fg by animateColorAsState(if (selected) C.GreenInk else C.Muted, tween(220), label = "navFg")
     val scale by animateFloatAsState(if (selected) 1.12f else 1f, spring(dampingRatio = 0.4f, stiffness = 500f), label = "navScale")
+    val lift by animateFloatAsState(if (selected) 1f else 0f, spring(dampingRatio = 0.6f, stiffness = 400f), label = "navLift")
     Column(
-        Modifier.clip(RoundedCornerShape(14.dp)).background(bg)
-            .clickable(onClick = onClick).padding(horizontal = 14.dp, vertical = 6.dp).testTag(tag),
+        modifier.fillMaxSize().clip(RoundedCornerShape(24.dp))
+            .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, onClick = onClick).testTag(item.tag),
         horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
     ) {
-        Icon(icon, label, tint = fg, modifier = Modifier.size(26.dp).graphicsLayer { scaleX = scale; scaleY = scale })
-        Text(label, fontSize = 12.sp, color = fg, fontWeight = FontWeight.ExtraBold, fontFamily = Nunito)
+        Icon(item.icon, item.label, tint = fg, modifier = Modifier.size(24.dp).graphicsLayer { scaleX = scale; scaleY = scale; translationY = -lift * 1.5.dp.toPx() })
+        Text(item.label, fontSize = 11.sp, color = fg, fontWeight = FontWeight.ExtraBold, fontFamily = Nunito)
     }
 }
 
@@ -151,9 +205,12 @@ private fun NavItem(icon: ImageVector, label: String, selected: Boolean, tag: St
 private fun TopStats(vm: AppViewModel, p: Progress, now: Long) {
     val today = vm.today()
     var heartsInfo by remember { mutableStateOf(false) }
-    Column(Modifier.background(C.Card)) {
-        Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-            Text("도란", fontSize = 22.sp, fontWeight = FontWeight.Black, color = C.Ink, modifier = Modifier.padding(start = 6.dp))
+    Column {
+        Row(Modifier.fillMaxWidth().padding(start = 18.dp, end = 12.dp, top = 10.dp, bottom = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+            Column {
+                Text("도란", fontSize = 26.sp, fontWeight = FontWeight.Black, color = C.Ink, fontFamily = HangulSerif, lineHeight = 28.sp)
+                Text("Doran Korean", fontSize = 11.sp, fontWeight = FontWeight.ExtraBold, color = C.Muted, fontFamily = Nunito, letterSpacing = 1.2.sp)
+            }
             Spacer(Modifier.weight(1f))
             val streak = p.visibleStreak(today)
             StatChip(Icons.Filled.LocalFireDepartment, "$streak", if (p.extendedToday(today)) C.Orange else C.Muted, tag = "streak")
@@ -162,7 +219,7 @@ private fun TopStats(vm: AppViewModel, p: Progress, now: Long) {
             Spacer(Modifier.width(6.dp))
             StatChip(Icons.Filled.Favorite, if (p.settings.unlimitedHearts) "∞" else "${p.heartsNow(now)}", C.Red, onClick = { heartsInfo = true }, tag = "heartsChip")
         }
-        // Daily goal as a thin bar under the stats.
+        // Daily goal as a glowing thread under the stats.
         ProgressLine(p.xpOn(today).toFloat() / p.dailyGoal.coerceAtLeast(1))
     }
     if (heartsInfo) HeartsDialog(vm, p, now) { heartsInfo = false }
@@ -171,23 +228,35 @@ private fun TopStats(vm: AppViewModel, p: Progress, now: Long) {
 @Composable
 private fun ProgressLine(fraction: Float) {
     val f by animateFloatAsState(fraction.coerceIn(0f, 1f), spring(dampingRatio = 0.8f, stiffness = 120f), label = "goal")
-    Box(Modifier.fillMaxWidth().height(3.dp).background(C.Line)) {
-        if (f > 0.001f) Box(Modifier.fillMaxWidth(f.coerceIn(0f, 1f)).height(3.dp).background(C.Gold))
-    }
+    val track = C.Line
+    val gold = C.Gold
+    Box(
+        Modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 6.dp).height(4.dp).drawBehind {
+            val r = androidx.compose.ui.geometry.CornerRadius(size.height / 2f)
+            drawRoundRect(track, cornerRadius = r)
+            if (f > 0.001f) {
+                val w = size.width * f
+                drawRoundRect(gold.copy(alpha = 0.35f), topLeft = Offset(0f, -2.dp.toPx()), size = androidx.compose.ui.geometry.Size(w, size.height + 4.dp.toPx()), cornerRadius = androidx.compose.ui.geometry.CornerRadius(size.height))
+                drawRoundRect(Brush.horizontalGradient(listOf(C.Orange, gold), endX = w), size = androidx.compose.ui.geometry.Size(w, size.height), cornerRadius = r)
+                drawCircle(Color.White, size.height * 0.9f, Offset(w, size.height / 2f))
+                drawCircle(gold.copy(alpha = 0.4f), size.height * 2.2f, Offset(w, size.height / 2f))
+            }
+        },
+    )
 }
 
 @Composable
 fun HeartsDialog(vm: AppViewModel, p: Progress, now: Long, onDismiss: () -> Unit) {
     Dialog(onDismissRequest = onDismiss) {
         Column(
-            Modifier.enterPop(from = 0.85f, durationMs = 320).clip(RoundedCornerShape(24.dp)).background(C.Card).padding(22.dp),
+            Modifier.enterPop(from = 0.85f, durationMs = 320).glass(RoundedCornerShape(28.dp), elevation = 24.dp, opaque = 0.92f).padding(22.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text("Hearts", style = MaterialTheme.typography.titleLarge)
             Row(Modifier.padding(vertical = 12.dp)) {
                 repeat(Progress.MAX_HEARTS) { i ->
                     Icon(
-                        Icons.Filled.Favorite, null, tint = if (i < p.heartsNow(now)) C.Red else C.Line,
+                        Icons.Filled.Favorite, null, tint = if (i < p.heartsNow(now)) C.Red else C.LineDark,
                         modifier = Modifier.size(34.dp).enterPop(delayMs = i * 60, from = 0.3f),
                     )
                 }
@@ -248,7 +317,7 @@ private fun PathView(vm: AppViewModel, p: Progress) {
     LaunchedEffect(currentRow) { if (currentRow > 2) state.scrollToItem((currentRow - 2).coerceAtLeast(0)) }
     var open by remember { mutableStateOf<PathRow.Node?>(null) }
 
-    LazyColumn(state = state, modifier = Modifier.fillMaxSize().testTag("path")) {
+    LazyColumn(state = state, modifier = Modifier.fillMaxSize().testTag("path"), contentPadding = PaddingValues(bottom = TabBarSpace)) {
         items(rows.size) { i ->
             when (val r = rows[i]) {
                 is PathRow.Header -> UnitHeader(r.unit, r.sectionStart, p.lessonsDone(r.unit)) { vm.go(Screen.Guidebook(r.unit)) }
@@ -269,7 +338,7 @@ private fun PathView(vm: AppViewModel, p: Progress) {
         item {
             Column(Modifier.fillMaxWidth().padding(32.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                 Mascot(mood = if (cur == null) Mood.CHEER else Mood.THINK, size = 110.dp)
-                Text(if (cur == null) "You finished the whole course! 정말 잘했어요!" else "More units are on the way.", color = C.Muted, textAlign = TextAlign.Center)
+                Text(if (cur == null) "You finished the whole course! 정말 잘했어요!" else "More units are on the way.", color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 6.dp))
             }
         }
     }
@@ -289,34 +358,44 @@ private fun watermark(u: CourseUnit): String =
 private fun UnitHeader(u: CourseUnit, sectionStart: Boolean, done: Int, onGuide: () -> Unit) {
     val (col, edge) = C.section(u.section)
     Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(top = if (sectionStart) 22.dp else 30.dp, bottom = 10.dp)) {
-        if (sectionStart) SectionTitle(u.section, Modifier.padding(bottom = 10.dp, start = 4.dp), color = edge)
-        val shape = RoundedCornerShape(20.dp)
-        Box(Modifier.fillMaxWidth().clip(shape).background(edge).padding(bottom = 5.dp).clip(shape).background(col)) {
+        if (sectionStart) SectionTitle(u.section, Modifier.padding(bottom = 12.dp, start = 4.dp), color = sectionInk(u.section))
+        val shape = RoundedCornerShape(26.dp)
+        Box(Modifier.fillMaxWidth().jewel(col, edge, shape).clip(shape)) {
+            DancheongBand(Modifier.fillMaxWidth().height(9.dp).align(Alignment.TopCenter), alpha = 0.75f)
             Text(
-                watermark(u), fontSize = 118.sp, fontWeight = FontWeight.Black, color = Color.White.copy(alpha = 0.14f),
-                modifier = Modifier.align(Alignment.CenterEnd).offset(x = (-58).dp, y = 14.dp).graphicsLayer { rotationZ = -10f },
+                watermark(u), fontSize = 124.sp, fontWeight = FontWeight.Black, fontFamily = HangulSerif, color = Color.White.copy(alpha = 0.16f),
+                modifier = Modifier.align(Alignment.CenterEnd).offset(x = (-54).dp, y = 16.dp).graphicsLayer { rotationZ = -8f },
             )
-            Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+            Row(Modifier.padding(start = 18.dp, end = 16.dp, top = 22.dp, bottom = 16.dp), verticalAlignment = Alignment.CenterVertically) {
                 Column(Modifier.weight(1f)) {
-                    Text("Unit ${u.number}", color = Color.White.copy(alpha = 0.85f), fontWeight = FontWeight.ExtraBold, fontSize = 14.sp, fontFamily = Nunito)
+                    Text("Unit ${u.number}", color = Color.White.copy(alpha = 0.8f), fontWeight = FontWeight.ExtraBold, fontSize = 13.sp, fontFamily = Nunito, letterSpacing = 0.8.sp)
                     Text(u.title, color = Color.White, fontWeight = FontWeight.Black, fontSize = 22.sp, fontFamily = Nunito, lineHeight = 26.sp)
-                    Text(u.blurb, color = Color.White.copy(alpha = 0.92f), fontSize = 14.sp, fontFamily = Nunito, lineHeight = 18.sp)
-                    Row(Modifier.padding(top = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-                        val f by animateFloatAsState(done.toFloat() / u.lessonCount, tween(600), label = "unitProgress")
-                        Box(Modifier.width(110.dp).height(8.dp).clip(CircleShape).background(Color.White.copy(alpha = 0.25f))) {
-                            if (f > 0.001f) Box(Modifier.fillMaxWidth(f.coerceIn(0f, 1f)).height(8.dp).clip(CircleShape).background(Color.White))
+                    Text(u.blurb, color = Color.White.copy(alpha = 0.9f), fontSize = 14.sp, fontFamily = Nunito, lineHeight = 18.sp)
+                    Row(Modifier.padding(top = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+                        val f by animateFloatAsState(done.toFloat() / u.lessonCount, tween(700, easing = com.doranalley.ui.components.Motion.EaseOut), label = "unitProgress")
+                        Box(Modifier.width(118.dp).height(7.dp).clip(CircleShape).background(Color.Black.copy(alpha = 0.18f))) {
+                            if (f > 0.001f) Box(Modifier.fillMaxWidth(f.coerceIn(0f, 1f)).height(7.dp).clip(CircleShape).background(Brush.horizontalGradient(listOf(Color.White.copy(alpha = 0.75f), Color.White))))
                         }
                         Text("$done/${u.lessonCount}", color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 13.sp, fontFamily = Nunito, modifier = Modifier.padding(start = 8.dp))
                     }
                 }
                 Box(
-                    Modifier.clip(RoundedCornerShape(14.dp)).background(Color.White.copy(alpha = 0.16f))
-                        .border(2.dp, Color.White.copy(alpha = 0.45f), RoundedCornerShape(14.dp))
-                        .clickable(onClick = onGuide).padding(10.dp).testTag("guide:${u.id}"),
-                ) { Icon(Icons.AutoMirrored.Filled.MenuBook, "Guidebook", tint = Color.White) }
+                    Modifier.size(46.dp).clip(CircleShape).background(Color.White.copy(alpha = 0.18f))
+                        .border(1.5.dp, Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.8f), Color.White.copy(alpha = 0.15f))), CircleShape)
+                        .clickable(onClick = onGuide).testTag("guide:${u.id}"),
+                    contentAlignment = Alignment.Center,
+                ) { Icon(Icons.AutoMirrored.Filled.MenuBook, "Guidebook", tint = Color.White, modifier = Modifier.size(22.dp)) }
             }
         }
     }
+}
+
+/** Readable text colour for a section on the backdrop. */
+private fun sectionInk(section: String): Color = when (section) {
+    "Hangul" -> C.PurpleInk
+    "Basics" -> C.GreenInk
+    "Everyday" -> if (C.isDark) lighten(C.Plum, 0.35f) else C.PlumDark
+    else -> C.OrangeInk
 }
 
 private fun trail(x1: Float, y1: Float, x2: Float, y2: Float): Path = Path().apply {
@@ -344,7 +423,8 @@ private fun PathNodeRow(
     val x = nodeX(r.idx)
     val xp = nodeX(r.idx - 1)
     val xn = nodeX(r.idx + 1)
-    val walked = col.copy(alpha = 0.55f)
+    val walked = col.copy(alpha = 0.75f)
+    val unwalked = C.LineDark
     Box(
         Modifier.fillMaxWidth().height(top + RowH).drawBehind {
             // Dotted stepping stones between nodes. Each row draws both neighbouring curves clipped to
@@ -352,51 +432,71 @@ private fun PathNodeRow(
             val cx = size.width / 2f
             val half = RowH.toPx() / 2f
             val cy = size.height - half
-            val stroke = Stroke(width = 10.dp.toPx(), cap = StrokeCap.Round, pathEffect = PathEffect.dashPathEffect(floatArrayOf(0.1f, 18.dp.toPx())))
+            val dash = PathEffect.dashPathEffect(floatArrayOf(0.1f, 18.dp.toPx()))
+            val stroke = Stroke(width = 9.dp.toPx(), cap = StrokeCap.Round, pathEffect = dash)
+            val halo = Stroke(width = 20.dp.toPx(), cap = StrokeCap.Round, pathEffect = dash)
             clipRect {
-                if (hasPrev) drawPath(trail(cx + xp.dp.toPx(), -half, cx + x.dp.toPx(), cy), if (prevDone) walked else C.LineDark, style = stroke)
-                if (hasNext) drawPath(trail(cx + x.dp.toPx(), cy, cx + xn.dp.toPx(), size.height + nextTop.toPx() + half), if (done) walked else C.LineDark, style = stroke)
+                if (hasPrev) {
+                    val path = trail(cx + xp.dp.toPx(), -half, cx + x.dp.toPx(), cy)
+                    if (prevDone) drawPath(path, col.copy(alpha = 0.18f), style = halo)
+                    drawPath(path, if (prevDone) walked else unwalked, style = stroke)
+                }
+                if (hasNext) {
+                    val path = trail(cx + x.dp.toPx(), cy, cx + xn.dp.toPx(), size.height + nextTop.toPx() + half)
+                    if (done) drawPath(path, col.copy(alpha = 0.18f), style = halo)
+                    drawPath(path, if (done) walked else unwalked, style = stroke)
+                }
             }
         },
     ) {
         Box(Modifier.align(Alignment.BottomCenter).offset(x = x.dp).padding(bottom = (RowH - 92.dp) / 2)) {
             val icon = when { done -> Icons.Filled.Check; !unlocked -> Icons.Filled.Lock; isReview -> Icons.Filled.EmojiEvents; u.isHangul -> Icons.Filled.Translate; else -> Icons.Filled.Star }
-            val fill = when { done -> C.Gold; unlocked -> col; else -> C.Line }
-            val rim = when { done -> C.GoldDark; unlocked -> edge; else -> C.LineDark }
+            val fill = when { done -> C.Gold; unlocked -> col; else -> Color.Unspecified }
+            val rim = when { done -> C.GoldDark; unlocked -> edge; else -> Color.Unspecified }
             NodeButton(icon, fill, rim, if (unlocked || done) Color.White else C.Muted, current, col, "node:${u.id}:${r.lesson}", onClick)
             if (current) StartTag(col, Modifier.align(Alignment.TopCenter))
         }
     }
 }
 
+/**
+ * A lesson node: a glossy glass orb (gold when done, the section colour when open, frosted when
+ * locked). The current lesson glows like a lantern, with a pulsing halo and a progress ring.
+ */
 @Composable
 private fun NodeButton(icon: ImageVector, fill: Color, rim: Color, tint: Color, current: Boolean, col: Color, tag: String, onClick: () -> Unit) {
     val source = remember { MutableInteractionSource() }
     val pressed by source.collectIsPressedAsState()
-    val sink by animateDpAsState(if (pressed) 6.dp else 0.dp, spring(stiffness = Spring.StiffnessHigh), label = "sink")
+    val squeeze by animateFloatAsState(if (pressed) 0.9f else 1f, spring(dampingRatio = 0.45f, stiffness = 700f), label = "squeeze")
     val halo = if (current) {
         val t = rememberInfiniteTransition(label = "halo")
-        t.animateFloat(0f, 1f, infiniteRepeatable(tween(1600, easing = LinearEasing)), label = "h").value
-    } else -1f
-    Box(Modifier.size(92.dp), contentAlignment = Alignment.Center) {
-        if (current) {
-            Canvas(Modifier.size(92.dp)) {
-                val rr = size.minDimension / 2f
-                drawCircle(col.copy(alpha = 0.22f * (1f - halo)), rr * (0.8f + 0.2f * halo))
-                drawCircle(C.Line, rr - 4.dp.toPx(), style = Stroke(6.dp.toPx()))
+        t.animateFloat(0f, 1f, infiniteRepeatable(tween(1800, easing = LinearEasing)), label = "h")
+    } else null
+    val locked = fill == Color.Unspecified
+    val ring = C.Line
+    Box(Modifier.size(96.dp), contentAlignment = Alignment.Center) {
+        Canvas(Modifier.size(96.dp)) {
+            val rr = size.minDimension / 2f
+            if (halo != null) {
+                val h = halo.value
+                drawCircle(Brush.radialGradient(listOf(col.copy(alpha = 0.45f), col.copy(alpha = 0f))), rr * 1.25f)
+                drawCircle(col.copy(alpha = 0.5f * (1f - h)), rr * (0.78f + 0.3f * h), style = Stroke(2.5.dp.toPx()))
+                drawCircle(ring, rr - 4.dp.toPx(), style = Stroke(5.dp.toPx()))
                 drawArc(col, -90f, 360f, false, topLeft = Offset(4.dp.toPx(), 4.dp.toPx()),
-                    size = androidx.compose.ui.geometry.Size(size.width - 8.dp.toPx(), size.height - 8.dp.toPx()), style = Stroke(6.dp.toPx(), cap = StrokeCap.Round))
+                    size = androidx.compose.ui.geometry.Size(size.width - 8.dp.toPx(), size.height - 8.dp.toPx()), style = Stroke(5.dp.toPx(), cap = StrokeCap.Round))
+            } else if (!locked) {
+                drawCircle(Brush.radialGradient(listOf(fill.copy(alpha = 0.30f * (0.5f + 0.5f * C.night)), fill.copy(alpha = 0f))), rr * 1.05f)
             }
         }
         Box(
-            Modifier.size(NodeSize).clip(CircleShape)
-                .clickable(source, null, onClick = onClick).testTag(tag)
-                .padding(top = sink).background(rim, CircleShape)
-                .padding(bottom = (7.dp - sink).coerceAtLeast(0.dp)).background(fill, CircleShape),
+            Modifier.size(NodeSize).graphicsLayer { scaleX = squeeze; scaleY = squeeze }
+                .then(if (locked) Modifier.glass(CircleShape, elevation = 6.dp) else Modifier.shadow(10.dp, CircleShape, clip = false, ambientColor = fill, spotColor = fill))
+                .clip(CircleShape)
+                .drawBehind { if (!locked) drawOrb(fill, rim, center, size.minDimension / 2f) }
+                .clickable(source, null, onClick = onClick).testTag(tag),
             contentAlignment = Alignment.Center,
         ) {
-            Box(Modifier.align(Alignment.TopStart).padding(start = 15.dp, top = 11.dp).size(width = 14.dp, height = 8.dp).graphicsLayer { rotationZ = -35f }.clip(CircleShape).background(Color.White.copy(alpha = 0.35f)))
-            Icon(icon, null, tint = tint, modifier = Modifier.size(34.dp))
+            Icon(icon, null, tint = tint, modifier = Modifier.size(32.dp))
         }
     }
 }
@@ -405,21 +505,21 @@ private val TagArrow = GenericShape { size, _ ->
     moveTo(0f, 0f); lineTo(size.width, 0f); lineTo(size.width / 2f, size.height); close()
 }
 
-/** The bouncing "Start" tag above the current lesson. */
+/** The bobbing glass "Start" tag above the current lesson. */
 @Composable
 private fun StartTag(col: Color, modifier: Modifier) {
     val t = rememberInfiniteTransition(label = "tag")
-    val bob by t.animateFloat(0f, 1f, infiniteRepeatable(tween(700, easing = FastOutSlowInEasing), RepeatMode.Reverse), label = "bob")
+    val bob by t.animateFloat(0f, 1f, infiniteRepeatable(tween(800, easing = FastOutSlowInEasing), RepeatMode.Reverse), label = "bob")
     Column(
-        modifier.offset { IntOffset(0, (-(46.dp.toPx()) - bob * 5.dp.toPx()).roundToInt()) },
+        modifier.offset { IntOffset(0, (-(48.dp.toPx()) - bob * 5.dp.toPx()).roundToInt()) },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            "Start", color = col, fontWeight = FontWeight.Black, fontSize = 16.sp, fontFamily = Nunito,
-            modifier = Modifier.clip(RoundedCornerShape(12.dp)).background(C.Card).border(2.dp, C.Line, RoundedCornerShape(12.dp))
-                .padding(horizontal = 14.dp, vertical = 5.dp),
+            "Start", color = Color.White, fontWeight = FontWeight.Black, fontSize = 15.sp, fontFamily = Nunito, letterSpacing = 0.5.sp,
+            modifier = Modifier.jewel(col, darken(col, 0.25f), RoundedCornerShape(14.dp), elevation = 8.dp)
+                .padding(horizontal = 16.dp, vertical = 5.dp),
         )
-        Box(Modifier.offset(y = (-2).dp).size(width = 14.dp, height = 8.dp).background(C.Line, TagArrow))
+        Box(Modifier.offset(y = (-1).dp).size(width = 14.dp, height = 8.dp).background(darken(col, 0.1f), TagArrow))
     }
 }
 
@@ -428,36 +528,38 @@ private fun LessonPopup(u: CourseUnit, lesson: Int, done: Boolean, unlocked: Boo
     val (col, edge) = C.section(u.section)
     val isReview = lesson == u.lessonCount - 1
     Dialog(onDismissRequest = onDismiss) {
-        val shape = RoundedCornerShape(24.dp)
+        val shape = RoundedCornerShape(30.dp)
         Box(
-            Modifier.enterPop(from = 0.85f, durationMs = 340).clip(shape).background(if (unlocked) edge else C.LineDark).padding(bottom = 5.dp)
-                .clip(shape).background(if (unlocked) col else C.Card).testTag("lessonPopup"),
+            Modifier.enterPop(from = 0.85f, durationMs = 340)
+                .then(if (unlocked) Modifier.jewel(col, edge, shape, elevation = 24.dp) else Modifier.glass(shape, elevation = 24.dp, opaque = 0.92f))
+                .clip(shape).testTag("lessonPopup"),
         ) {
+            if (unlocked) DancheongBand(Modifier.fillMaxWidth().height(9.dp).align(Alignment.TopCenter), alpha = 0.8f)
             Text(
-                watermark(u), fontSize = 96.sp, fontWeight = FontWeight.Black,
-                color = (if (unlocked) Color.White else C.Ink).copy(alpha = 0.1f),
-                modifier = Modifier.align(Alignment.TopEnd).offset(x = (-12).dp, y = (-8).dp),
+                watermark(u), fontSize = 104.sp, fontWeight = FontWeight.Black, fontFamily = HangulSerif,
+                color = (if (unlocked) Color.White else C.Ink).copy(alpha = 0.12f),
+                modifier = Modifier.align(Alignment.TopEnd).offset(x = (-14).dp, y = (-2).dp),
             )
-            Column(Modifier.padding(20.dp)) {
+            Column(Modifier.padding(start = 22.dp, end = 22.dp, top = 26.dp, bottom = 20.dp)) {
                 val fg = if (unlocked) Color.White else C.Ink
-                Text(u.title, color = fg, fontWeight = FontWeight.Black, fontSize = 22.sp, fontFamily = Nunito)
+                Text(u.title, color = fg, fontWeight = FontWeight.Black, fontSize = 23.sp, fontFamily = Nunito)
                 Text(
                     if (isReview) "Unit review" else "Lesson ${lesson + 1} of ${u.lessonCount - 1}",
                     color = fg.copy(alpha = 0.85f), fontFamily = Nunito, fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(top = 2.dp, bottom = 10.dp),
+                    modifier = Modifier.padding(top = 2.dp, bottom = 12.dp),
                 )
-                // One dot per node in the unit.
-                Row(horizontalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.padding(bottom = 16.dp)) {
+                // One bead per node in the unit.
+                Row(horizontalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.padding(bottom = 18.dp)) {
                     repeat(u.lessonCount) { i ->
                         val on = i == lesson
-                        Box(Modifier.size(width = if (on) 22.dp else 8.dp, height = 8.dp).clip(CircleShape)
+                        Box(Modifier.enterPop(delayMs = 80 + i * 35, from = 0.2f).size(width = if (on) 24.dp else 8.dp, height = 8.dp).clip(CircleShape)
                             .background(if (unlocked) Color.White.copy(alpha = if (on) 1f else 0.35f) else if (on) C.Muted else C.Line))
                     }
                 }
                 if (unlocked) {
                     ChunkyButton(
                         if (done) "Practice again  +10 XP" else if (isReview) "Start review  +15 XP" else "Start  +10 XP",
-                        onStart, Modifier.fillMaxWidth(), color = C.Card, edge = C.Line, textColor = edge, tag = "startLesson",
+                        onStart, Modifier.fillMaxWidth(), color = Color.White, edge = Color(0xFFE9ECF5), textColor = darken(edge, 0.1f), tag = "startLesson",
                     )
                 } else {
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -477,13 +579,15 @@ fun GuidebookScreen(vm: AppViewModel, u: CourseUnit) {
     val playing by vm.audio.playing.collectAsState()
     val (col, edge) = C.section(u.section)
     androidx.activity.compose.BackHandler { vm.back() }
-    Column(Modifier.fillMaxSize().background(C.Bg).navigationBarsPadding()) {
-        Box(Modifier.fillMaxWidth().background(col)) {
+    Column(Modifier.fillMaxSize().navigationBarsPadding()) {
+        val headShape = RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp)
+        Box(Modifier.fillMaxWidth().jewel(col, edge, headShape, elevation = 18.dp).clip(headShape)) {
             Text(
-                watermark(u), fontSize = 150.sp, fontWeight = FontWeight.Black, color = Color.White.copy(alpha = 0.12f),
-                modifier = Modifier.align(Alignment.BottomEnd).offset(x = (-16).dp, y = 30.dp),
+                watermark(u), fontSize = 160.sp, fontWeight = FontWeight.Black, fontFamily = HangulSerif, color = Color.White.copy(alpha = 0.14f),
+                modifier = Modifier.align(Alignment.BottomEnd).offset(x = (-16).dp, y = 34.dp),
             )
-            Column(Modifier.statusBarsPadding().padding(start = 8.dp, end = 20.dp, bottom = 20.dp)) {
+            DancheongBand(Modifier.fillMaxWidth().height(9.dp).align(Alignment.BottomCenter), alpha = 0.7f)
+            Column(Modifier.statusBarsPadding().padding(start = 8.dp, end = 20.dp, bottom = 26.dp)) {
                 androidx.compose.material3.IconButton(onClick = { vm.back() }, modifier = Modifier.testTag("back")) {
                     Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back", tint = Color.White)
                 }
@@ -494,13 +598,12 @@ fun GuidebookScreen(vm: AppViewModel, u: CourseUnit) {
                 }
             }
         }
-        Box(Modifier.fillMaxWidth().height(5.dp).background(edge))
         LazyColumn(Modifier.fillMaxSize().padding(horizontal = 20.dp)) {
-            item { SectionTitle("Key points", Modifier.padding(top = 20.dp, bottom = 10.dp)) }
+            item { SectionTitle("Key points", Modifier.padding(top = 22.dp, bottom = 10.dp)) }
             items(u.tips) { t ->
                 CardBox(Modifier.fillMaxWidth().padding(vertical = 5.dp)) {
                     Row(Modifier.padding(14.dp)) {
-                        Box(Modifier.padding(top = 7.dp).size(8.dp).clip(CircleShape).background(col))
+                        Box(Modifier.padding(top = 7.dp).size(8.dp).graphicsLayer { rotationZ = 45f }.clip(RoundedCornerShape(2.dp)).background(col))
                         Text(t, fontSize = 16.sp, color = C.Ink, modifier = Modifier.padding(start = 12.dp), lineHeight = 22.sp)
                     }
                 }
@@ -522,10 +625,10 @@ fun GuidebookScreen(vm: AppViewModel, u: CourseUnit) {
 
 @Composable
 fun GuideRow(ko: String, en: String, playing: Boolean, onPlay: () -> Unit) {
-    Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).clickable(onClick = onPlay).padding(vertical = 8.dp, horizontal = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+    Row(Modifier.fillMaxWidth().padding(vertical = 4.dp).glass(RoundedCornerShape(18.dp), elevation = 4.dp).clip(RoundedCornerShape(18.dp)).clickable(onClick = onPlay).padding(vertical = 8.dp, horizontal = 10.dp), verticalAlignment = Alignment.CenterVertically) {
         SpeakerButton(playing, onPlay, size = 42.dp)
-        Column(Modifier.padding(start = 14.dp)) {
-            Text(ko, fontSize = 20.sp, fontWeight = FontWeight.Bold, color = C.Ink)
+        Column(Modifier.padding(start = 14.dp, end = 34.dp)) {
+            Text(ko, fontSize = 20.sp, fontWeight = FontWeight.Bold, color = C.Ink, lineHeight = 24.sp)
             Text(en, fontSize = 14.sp, color = C.Muted)
         }
     }

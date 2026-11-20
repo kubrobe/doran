@@ -143,10 +143,12 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
 
     // ------------------------------------------------------------ settings
 
+    fun setTheme(mode: String) = setSettings { it.copy(theme = mode) }
+
     fun setSettings(f: (com.doranalley.core.Settings) -> com.doranalley.core.Settings) = update { it.copy(settings = f(it.settings)) }
 
     fun resetProgress() {
-        update { Progress(onboarded = false) }
+        update { Progress(onboarded = false, settings = com.doranalley.core.Settings(theme = it.settings.theme)) }
         _session.value = null
         go(Screen.Onboarding())
     }

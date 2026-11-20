@@ -6,6 +6,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,3 +40,21 @@ jobs:
         with:
           name: unit-test-reports
           path: app/build/reports/tests/
+      - name: Publish phone APK to the "apk" branch (direct download link)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/duolingo-korean'
+        run: |
+          set -e
+          APK=app/build/outputs/apk/debug/app-arm64-v8a-debug.apk
+          ls -la "$APK"
+          SIZE=$(stat -c %s "$APK")
+          [ "$SIZE" -lt 100000000 ] || { echo "APK is over GitHub's 100 MB file limit"; exit 1; }
+          D=$(mktemp -d)
+          cp "$APK" "$D/Doran-Korean.apk"
+          printf '# Doran Korean - phone APK\n\nOpen Doran-Korean.apk on your phone and tap Download.\n' > "$D/README.md"
+          cd "$D"
+          git init -q -b apk
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add .
+          git commit -q -m "Doran Korean APK from ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" apk

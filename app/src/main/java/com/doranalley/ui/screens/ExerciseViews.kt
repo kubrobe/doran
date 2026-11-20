@@ -42,6 +42,7 @@ import com.doranalley.core.Tile
 import com.doranalley.ui.AppViewModel
 import com.doranalley.ui.components.BoxState
 import com.doranalley.ui.components.Bubble
+import com.doranalley.ui.components.GlossText
 import com.doranalley.ui.components.ChunkyButton
 import com.doranalley.ui.components.Mascot
 import com.doranalley.ui.components.SelectBox
@@ -63,10 +64,10 @@ private fun Speakers(vm: AppViewModel, text: String, slow: Boolean = true, big: 
     }
 }
 
-/** Mascot with a speech bubble; the bubble can hold a speaker and the prompt. */
+/** Mascot with a speech bubble; the bubble can hold a speaker and the prompt (words tap for hints). */
 @Composable
-private fun MascotPrompt(text: String, vm: AppViewModel?, audioText: String?) {
-    val playing = vm?.audio?.playing?.collectAsState()?.value
+private fun MascotPrompt(text: String, vm: AppViewModel, audioText: String?, korean: Boolean) {
+    val playing = vm.audio.playing.collectAsState().value
     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp)) {
         Mascot(size = 76.dp)
         Spacer(Modifier.width(8.dp))
@@ -74,11 +75,12 @@ private fun MascotPrompt(text: String, vm: AppViewModel?, audioText: String?) {
             Modifier.border(2.dp, C.Line, RoundedCornerShape(16.dp)).padding(horizontal = 12.dp, vertical = 10.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            if (vm != null && audioText != null) {
+            if (audioText != null) {
                 SpeakerButton(playing == "ko:$audioText", { vm.audio.play(audioText) }, size = 40.dp, tag = "play")
                 Spacer(Modifier.width(10.dp))
             }
-            Text(text, fontSize = 19.sp, color = C.Ink, modifier = Modifier.testTag("prompt"))
+            val gloss = vm.course.gloss
+            GlossText(text, if (korean) gloss::korean else gloss::english)
         }
     }
 }
@@ -172,6 +174,9 @@ fun WordMeaningView(vm: AppViewModel, ex: Exercise.WordMeaning, locked: Boolean,
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 22.dp)) {
             SpeakerButton(playing == "ko:${ex.word.ko}", { vm.audio.play(ex.word.ko) }, size = 56.dp, tag = "play")
             Text(ex.word.ko, fontSize = 38.sp, fontWeight = FontWeight.Bold, color = C.Ink, modifier = Modifier.padding(start = 16.dp).testTag("prompt"))
+        }
+        if (ex.isNew) {
+            Text("means “${ex.word.en}”", color = C.Muted, fontSize = 17.sp, modifier = Modifier.padding(bottom = 16.dp).testTag("newMeaning"))
         }
         OptionList(ex.options, sel, locked, { sel = it })
     }
@@ -307,7 +312,7 @@ private fun WordBank(tiles: List<Tile>, chosen: MutableList<Tile>, locked: Boole
 fun BuildEnglishView(vm: AppViewModel, ex: Exercise.BuildEnglish, locked: Boolean, secondary: (@Composable () -> Unit)?) {
     val chosen = remember { mutableStateListOf<Tile>() }
     ExerciseFrame("Translate this sentence", locked, chosen.isNotEmpty(), { vm.submit(Checker.englishCorrect(ex.sentence, chosen.map { it.text })) }, secondary = secondary) {
-        MascotPrompt(ex.sentence.ko, vm, ex.sentence.ko)
+        MascotPrompt(ex.sentence.ko, vm, ex.sentence.ko, korean = true)
         WordBank(ex.tiles, chosen, locked, korean = false)
     }
 }
@@ -316,7 +321,7 @@ fun BuildEnglishView(vm: AppViewModel, ex: Exercise.BuildEnglish, locked: Boolea
 fun BuildKoreanView(vm: AppViewModel, ex: Exercise.BuildKorean, locked: Boolean, secondary: (@Composable () -> Unit)?) {
     val chosen = remember { mutableStateListOf<Tile>() }
     ExerciseFrame("Write this in Korean", locked, chosen.isNotEmpty(), { vm.submit(Checker.koreanCorrect(ex.sentence, chosen.map { it.text })) }, secondary = secondary) {
-        MascotPrompt(ex.sentence.en, null, null)
+        MascotPrompt(ex.sentence.en, vm, null, korean = false)
         WordBank(ex.tiles, chosen, locked, korean = true)
     }
 }

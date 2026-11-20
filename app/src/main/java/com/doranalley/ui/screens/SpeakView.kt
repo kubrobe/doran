@@ -140,7 +140,7 @@ fun SpeakView(vm: AppViewModel, ex: Exercise.Speak, locked: Boolean) {
                     }
                     Spacer(Modifier.height(8.dp))
                     val s = state
-                    if (s is SpeakState.Scored) ColoredSentence(ex.ko, s.result.heard) else Text(ex.ko, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = C.Ink, modifier = Modifier.testTag("prompt"))
+                    if (s is SpeakState.Scored) ColoredSentence(ex.ko, s.result.heard) else com.doranalley.ui.components.GlossText(ex.ko, vm.course.gloss::korean, fontSize = 24.sp, bold = true)
                     Text(ex.en, fontSize = 15.sp, color = C.Muted, modifier = Modifier.padding(top = 4.dp))
                 }
             }

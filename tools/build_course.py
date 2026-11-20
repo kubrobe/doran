@@ -44,13 +44,27 @@ def err(msg):
 
 
 units = []
+glossary = {}
 cur = None
+in_glossary = False
 for n, raw in enumerate(SRC.read_text(encoding="utf-8").splitlines(), 1):
     line = raw.strip()
     if not line or line.startswith("#"):
         continue
     kind, _, rest = line.partition(" ")
     rest = rest.strip()
+    if kind == "@glossary":
+        in_glossary = True
+        continue
+    if in_glossary:
+        ko, sep, en = rest.partition(" = ")
+        if kind != "g" or not sep:
+            err(f"line {n}: glossary lines are 'g korean = meaning'")
+        elif ko.strip() in glossary:
+            err(f"line {n}: duplicate glossary entry {ko!r}")
+        else:
+            glossary[ko.strip()] = en.strip()
+        continue
     if kind == "@unit":
         parts = [p.strip() for p in rest.split("|")]
         if len(parts) != 4:
@@ -182,7 +196,7 @@ for u in units:
     for f in u["fills"]:
         need(f["full"], True)
 
-course = {"version": 1, "units": units}
+course = {"version": 1, "units": units, "glossary": glossary}
 OUT.parent.mkdir(parents=True, exist_ok=True)
 OUT.write_text(json.dumps(course, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 AUDIO_LIST.write_text(json.dumps(sorted(texts.values(), key=lambda x: x["key"]), ensure_ascii=False, indent=1) + "\n",

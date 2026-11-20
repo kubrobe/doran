@@ -42,7 +42,10 @@ data class CourseUnit(
     val number: Int get() = index + 1
 }
 
-class Course(val units: List<CourseUnit>) {
+class Course(val units: List<CourseUnit>, val glossaryExtra: Map<String, String> = emptyMap()) {
+    /** Tap-for-meaning hints for every word in the course. */
+    val gloss: Gloss by lazy { Gloss(units.flatMap { it.words }, glossaryExtra) }
+
     private val byId = units.associateBy { it.id }
     fun unit(id: String): CourseUnit? = byId[id]
     val sections: List<String> = units.map { it.section }.distinct()
@@ -64,7 +67,9 @@ class Course(val units: List<CourseUnit>) {
             val root = JSONObject(json)
             val arr = root.getJSONArray("units")
             val units = (0 until arr.length()).map { i -> parseUnit(i, arr.getJSONObject(i)) }
-            return Course(units)
+            val g = root.optJSONObject("glossary")
+            val extra = g?.keys()?.asSequence()?.associateWith { g.getString(it) } ?: emptyMap()
+            return Course(units, extra)
         }
 
         private fun JSONArray.strings(): List<String> = (0 until length()).map { getString(it) }

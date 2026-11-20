@@ -122,3 +122,26 @@ class ProgressTest {
         assertEquals(8, p.studiedUnits(course).size)
     }
 }
+
+class GlossTest {
+    private val course = Course.parse(java.io.File("src/main/assets/course/course.json").readText())
+    private val g = course.gloss
+
+    @Test fun korean() {
+        assertEquals(listOf("학생 = student", "이에요 = is / am / are"), g.korean("학생이에요."))
+        assertEquals("커피 = coffee", g.korean("커피를")!!.first())
+        assertEquals(listOf("안녕하세요 = hello"), g.korean("안녕하세요,"))
+        assertEquals(null, g.korean("ㅋㅋ"))
+    }
+
+    @Test fun english() {
+        assertEquals(listOf("학생"), g.english("student"))
+        assertEquals(null, g.english("xyz"))
+    }
+
+    @Test fun almostEveryWordInASentenceHasAHint() {
+        val tiles = course.units.flatMap { it.sentences }.flatMap { it.koTiles }
+        val missing = tiles.filter { g.korean(it) == null }
+        assertTrue("no hint for: ${missing.distinct()}", missing.size <= tiles.size / 20)
+    }
+}

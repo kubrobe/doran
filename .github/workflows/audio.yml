@@ -7,7 +7,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
-concurrency: { group: audio-${{ github.ref }}, cancel-in-progress: false }
+concurrency:
+  group: audio-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
   audio:
     runs-on: ubuntu-latest
@@ -15,7 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v5
-        with: { python-version: "3.12" }
+        with:
+          python-version: "3.12"
       - run: sudo apt-get install -y ffmpeg >/dev/null
       - run: pip install edge-tts sherpa-onnx numpy
       - run: python tools/gen_audio.py

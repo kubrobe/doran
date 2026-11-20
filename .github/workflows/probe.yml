@@ -3,33 +3,18 @@ on:
   push:
     branches: [duolingo-korean]
     paths: [".github/workflows/probe.yml", ".github/probe/**"]
+permissions:
+  contents: write
 jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v5
-        with: { python-version: "3.12" }
-      - run: sudo apt-get install -y ffmpeg >/dev/null
-      - run: pip install edge-tts gTTS vosk
-      - run: edge-tts --list-voices | grep -i ko-KR || true
-      - name: TTS
-        run: |
-          mkdir -p out
-          i=0
-          while IFS= read -r line; do
-            i=$((i+1))
-            edge-tts --voice ko-KR-SunHiNeural --rate=-10% --text "$line" --write-media out/e_$i.mp3 || echo "edge fail $i"
-            gtts-cli -l ko "$line" -o out/g_$i.mp3 || echo "gtts fail $i"
-          done < .github/probe/lines.txt
-          ls -la out
-      - name: Vosk model
+      - name: Vosk model to branch
         run: |
           curl -sSL -o model.zip https://alphacephei.com/vosk/models/vosk-model-small-ko-0.22.zip
-          unzip -q model.zip && ls -laR vosk-model-small-ko-0.22 | head -40 && du -sh vosk-model-small-ko-0.22
-      - name: Recognize
-        run: python .github/probe/rec.py vosk-model-small-ko-0.22 out .github/probe/lines.txt
-      - uses: actions/upload-artifact@v4
-        with: { name: probe-audio, path: out }
-      - uses: actions/upload-artifact@v4
-        with: { name: vosk-model, path: model.zip }
+          unzip -q model.zip && find vosk-model-small-ko-0.22 -type f -exec ls -la {} \;
+          mkdir push && cd push && git init -q -b model-cache
+          cp -r ../vosk-model-small-ko-0.22 . 
+          git config user.name ci && git config user.email ci@example.com
+          git add -A && git commit -qm "Vosk small Korean model (cache for experiments)"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" model-cache 2>&1 | tail -2

@@ -1,0 +1,682 @@
+# Doran Korean course source.
+# Edit this file, then run: python3 tools/build_course.py
+#
+# @unit id | title | section | short description
+# t  guidebook tip shown in the unit's guidebook
+# l  letter | romanization | syllable to play | hint | confusion-group (optional)
+# w  korean = english meaning
+# s  korean sentence = english | other accepted english order ...   {nospeak} = never a speaking exercise
+# f  sentence with [answer] = english ; wrong option, wrong option
+
+########################################################################
+@unit h1 | Vowels 1 | Hangul | Your first six Korean vowels
+t Korean letters are grouped into syllable blocks. Every block starts with a consonant.
+t ㅇ is silent at the start of a block, so 아 is just "a" and 오 is just "o".
+t Vertical vowels (ㅏ ㅓ ㅣ) sit to the right of the consonant. Horizontal ones (ㅗ ㅜ ㅡ) sit below it.
+l ㅏ | a | 아 | like "a" in "father"
+l ㅓ | eo | 어 | like "u" in "fun"
+l ㅗ | o | 오 | like "o" in "go", lips rounded
+l ㅜ | u | 우 | like "oo" in "moon"
+l ㅡ | eu | 으 | lips flat, tongue back, like "oo" without rounding
+l ㅣ | i | 이 | like "ee" in "see"
+w 아이 = child
+w 오이 = cucumber
+w 오 = five
+w 이 = two
+
+@unit h2 | Vowels 2 | Hangul | Y-vowels and the e-sounds
+t Add one extra stroke and a vowel gets a "y" in front: ㅏ a → ㅑ ya, ㅗ o → ㅛ yo.
+t ㅐ and ㅔ sound almost the same in modern Seoul Korean. You only need to tell them apart in spelling.
+l ㅐ | ae | 애 | like "e" in "bed" | e
+l ㅔ | e | 에 | almost the same as ㅐ | e
+l ㅑ | ya | 야 | like "ya" in "yard"
+l ㅕ | yeo | 여 | like "yu" in "young"
+l ㅛ | yo | 요 | like "yo" in "yoga"
+l ㅠ | yu | 유 | like "you"
+w 우유 = milk
+w 여우 = fox
+w 이유 = reason
+
+@unit h3 | Vowels 3 | Hangul | Combined vowels
+t Combined vowels glide: ㅗ + ㅏ = ㅘ (wa), ㅜ + ㅓ = ㅝ (wo).
+t ㅙ, ㅚ and ㅞ all sound like "we" today.
+l ㅘ | wa | 와 | like "wa" in "water"
+l ㅝ | wo | 워 | like "wo" in "won"
+l ㅟ | wi | 위 | like "wee"
+l ㅢ | ui | 의 | "eu" gliding into "i"
+l ㅚ | oe | 외 | sounds like "we" | we
+l ㅙ | wae | 왜 | sounds like "we" | we
+l ㅖ | ye | 예 | like "ye" in "yes"
+w 왜 = why
+w 위 = above
+w 예 = yes (formal)
+w 와 = wow
+
+@unit h4 | Consonants 1 | Hangul | The basic consonants
+t ㄱ ㄷ ㅂ ㅈ sound softer at the start of a word (k, t, p, ch) and voiced between vowels (g, d, b, j).
+t ㄹ is a quick tap between vowels (like the "tt" in American "butter") and an "l" at the end of a syllable.
+l ㄱ | g / k | 가 | soft "g" or "k"
+l ㄴ | n | 나 | like "n"
+l ㄷ | d / t | 다 | soft "d" or "t"
+l ㄹ | r / l | 라 | a light tap
+l ㅁ | m | 마 | like "m"
+l ㅂ | b / p | 바 | soft "b" or "p"
+l ㅅ | s | 사 | like "s"
+l ㅈ | j | 자 | soft "j"
+l ㅎ | h | 하 | like "h"
+w 나무 = tree
+w 바다 = sea
+w 하마 = hippo
+w 모자 = hat
+w 라디오 = radio
+w 두부 = tofu
+w 가수 = singer
+w 어머니 = mother
+w 아버지 = father
+w 비누 = soap
+
+@unit h5 | Consonants 2 | Hangul | Strong and tense consonants
+t Aspirated consonants (ㅋ ㅌ ㅍ ㅊ) come with a puff of air. Hold your hand in front of your mouth and feel it.
+t Double consonants (ㄲ ㄸ ㅃ ㅆ ㅉ) are tense: no air, tight throat, a sharp start.
+l ㅋ | k | 카 | strong "k" with a puff of air
+l ㅌ | t | 타 | strong "t" with a puff of air
+l ㅍ | p | 파 | strong "p" with a puff of air
+l ㅊ | ch | 차 | strong "ch" with a puff of air
+l ㄲ | kk | 까 | tense "k", no air
+l ㄸ | tt | 따 | tense "t", no air
+l ㅃ | pp | 빠 | tense "p", no air
+l ㅆ | ss | 싸 | tense "s"
+l ㅉ | jj | 짜 | tense "j"
+w 커피 = coffee
+w 토마토 = tomato
+w 피자 = pizza
+w 아빠 = dad
+w 오빠 = older brother (said by a girl)
+w 기차 = train
+w 코 = nose
+w 쓰레기 = trash
+w 찌개 = stew
+w 토끼 = rabbit
+
+@unit h6 | Final consonants | Hangul | Batchim: consonants at the bottom
+t A consonant at the bottom of a block is called 받침 (batchim).
+t There are only seven final sounds: k, n, t, l, m, p, ng. Many letters collapse into these.
+t ㅇ at the bottom is "ng", like in "sing".
+l 악 | ak | 악 | final ㄱ: a short, unreleased "k"
+l 안 | an | 안 | final ㄴ: "n"
+l 앗 | at | 앗 | final ㅅ sounds like an unreleased "t"
+l 알 | al | 알 | final ㄹ: a clear "l"
+l 암 | am | 암 | final ㅁ: "m"
+l 압 | ap | 압 | final ㅂ: an unreleased "p"
+l 앙 | ang | 앙 | final ㅇ: "ng" as in "sing"
+w 가방 = bag
+w 물 = water
+w 밥 = rice
+w 사람 = person
+w 한국 = Korea
+w 김치 = kimchi
+w 책 = book
+w 학교 = school
+w 선생님 = teacher
+w 친구 = friend
+
+########################################################################
+@unit u1 | Greetings | Basics | Say hello, thank you and goodbye
+t 안녕하세요 works for hello at any time of day.
+t There are two goodbyes: 안녕히 가세요 to someone who is leaving, 안녕히 계세요 to someone who is staying.
+t 감사합니다 and 고맙습니다 both mean thank you. 감사합니다 is a little more formal.
+w 안녕하세요 = hello
+w 감사합니다 = thank you
+w 네 = yes
+w 아니요 = no
+w 죄송합니다 = I'm sorry
+w 괜찮아요 = it's okay
+w 안녕히 가세요 = goodbye (to someone leaving)
+w 안녕히 계세요 = goodbye (when you leave)
+w 만나서 반가워요 = nice to meet you
+w 저기요 = excuse me
+s 안녕하세요, 만나서 반가워요. = Hello, nice to meet you.
+s 네, 감사합니다. = Yes, thank you.
+s 아니요, 괜찮아요. = No, it's okay.
+s 죄송합니다, 괜찮아요? = I'm sorry, are you okay?
+s 네, 괜찮아요. = Yes, it's okay.
+s 감사합니다, 안녕히 계세요. = Thank you, goodbye.
+s 정말 반가워요. = It's really nice to meet you.
+s 아, 죄송합니다. = Oh, I'm sorry.
+s 저기요, 괜찮아요? = Excuse me, are you okay?
+s 고맙습니다, 내일 봐요. = Thanks, see you tomorrow.
+f 만나서 [반가워요] = Nice to meet you. ; 감사합니다, 괜찮아요
+f 감사합니다, 안녕히 [계세요] = Thank you, goodbye. ; 반가워요, 죄송합니다
+
+@unit u2 | Introductions | Basics | Talk about who you are
+t 저는 means "I" (as the topic). 은/는 marks the topic: 는 after a vowel, 은 after a consonant.
+t "A is B" = A는 B이에요 / B예요. Use 이에요 after a consonant (학생이에요) and 예요 after a vowel (민수예요).
+t To say "not", use 이/가 아니에요: 선생님이 아니에요.
+w 저 = I (polite)
+w 이름 = name
+w 학생 = student
+w 회사원 = office worker
+w 사람 = person
+w 우즈베키스탄 = Uzbekistan
+w 친구 = friend
+w 뭐 = what
+w 나라 = country
+w 의사 = doctor
+s 저는 학생이에요. = I am a student.
+s 제 이름은 민수예요. = My name is Minsu.
+s 저는 우즈베키스탄 사람이에요. = I am from Uzbekistan.
+s 이름이 뭐예요? = What is your name?
+s 민수 씨는 한국 사람이에요. = Minsu is Korean.
+s 저는 선생님이 아니에요. = I am not a teacher.
+s 친구는 회사원이에요. = My friend is an office worker.
+s 어느 나라 사람이에요? = Where are you from?
+s 저도 학생이에요. = I am a student too.
+s 제 친구는 의사예요. = My friend is a doctor.
+f 저는 학생[이에요] = I am a student. ; 예요, 있어요
+f 제 이름은 민수[예요] = My name is Minsu. ; 이에요, 있어요
+f 저[는] 선생님이 아니에요 = I am not a teacher. ; 을, 에
+
+@unit u3 | Things | Basics | This, that and whose
+t 이 = this (near me), 그 = that (near you), 저 = that over there.
+t 거 means "thing": 이거 = this thing, 제 거 = mine.
+t 제 = my (polite). 누구 거예요? = Whose is it?
+w 이거 = this
+w 그거 = that
+w 저거 = that (over there)
+w 책 = book
+w 가방 = bag
+w 휴대폰 = cell phone
+w 커피 = coffee
+w 우산 = umbrella
+w 시계 = watch
+w 제 = my
+w 누구 = who
+s 이거 뭐예요? = What is this?
+s 그거 제 가방이에요. = That is my bag.
+s 이건 책이 아니에요. = This is not a book.
+s 저거 누구 우산이에요? = Whose umbrella is that?
+s 이거 제 휴대폰이에요. = This is my phone.
+s 이 커피는 제 거예요. = This coffee is mine.
+s 물이에요? = Is it water?
+s 네, 시계예요. = Yes, it is a watch.
+s 이거 선생님 책이에요. = This is the teacher's book.
+s 제 우산은 가방 안에 있어요. = My umbrella is in the bag.
+f 이건 책[이] 아니에요 = This is not a book. ; 를, 에
+f 이 커피는 제 [거예요] = This coffee is mine. ; 책이에요, 있어요
+
+@unit u4 | Places | Basics | Where things are
+t 있어요 = there is / is (located). 없어요 = there isn't.
+t 에 marks where something is: 집에 있어요 = I am at home.
+t 어디예요? and 어디에 있어요? both ask "where is it?"
+w 집 = home
+w 학교 = school
+w 도서관 = library
+w 식당 = restaurant
+w 화장실 = bathroom
+w 카페 = café
+w 은행 = bank
+w 편의점 = convenience store
+w 어디 = where
+w 여기 = here
+w 옆 = next to
+w 앞 = in front of
+s 화장실이 어디예요? = Where is the bathroom?
+s 도서관은 저기 있어요. = The library is over there.
+s 편의점 옆에 은행이 있어요. = There is a bank next to the convenience store.
+s 학교 앞에 카페가 있어요. = There is a café in front of the school.
+s 지금 집에 있어요. = I am at home now. | Now I am at home.
+s 이 근처에 식당이 없어요. = There is no restaurant near here.
+s 은행이 어디에 있어요? = Where is the bank?
+s 시간이 없어요. = I don't have time.
+s 여기는 우리 학교예요. = This is our school.
+s 화장실은 식당 옆에 있어요. = The bathroom is next to the restaurant.
+f 학교 앞[에] 카페가 있어요 = There is a café in front of the school. ; 를, 은
+f 편의점 옆에 은행이 [있어요] = There is a bank next to the convenience store. ; 없어요, 이에요
+
+@unit u5 | Numbers | Basics | Sino-Korean numbers, prices and rooms
+t Korean has two number systems. Sino-Korean (일, 이, 삼...) is used for money, phone numbers, minutes and room numbers.
+t Big numbers: 십 = 10, 백 = 100, 천 = 1,000, 만 = 10,000. 삼천 원 = 3,000 won.
+t 몇 asks "what number / how many": 몇 호예요? = What room number?
+w 일 = one (Sino-Korean)
+w 삼 = three (Sino-Korean)
+w 사 = four (Sino-Korean)
+w 육 = six (Sino-Korean)
+w 칠 = seven (Sino-Korean)
+w 팔 = eight (Sino-Korean)
+w 구 = nine (Sino-Korean)
+w 십 = ten (Sino-Korean)
+w 백 = hundred
+w 천 = thousand
+w 만 = ten thousand
+w 원 = won (money)
+w 몇 = how many
+s 이 커피는 삼천 원이에요. = This coffee is three thousand won. {nospeak}
+s 이거 얼마예요? = How much is this?
+s 만 원이에요. = It is ten thousand won. {nospeak}
+s 몇 호예요? = What room number is it?
+s 삼백이 호예요. = It is room 302. {nospeak}
+s 강의실은 육 층에 있어요. = The classroom is on the sixth floor. {nospeak}
+s 전화번호가 몇 번이에요? = What is your phone number?
+s 김밥은 사천 원이에요. = Kimbap is four thousand won. {nospeak}
+s 우리 반에 학생이 십 명 있어요. = There are ten students in our class. {nospeak}
+f 이거 [얼마예요]? = How much is this? ; 어디예요, 뭐예요
+
+@unit u6 | Ordering food | Basics | Order in a restaurant
+t 주세요 = please give me. Put the thing first: 물 주세요.
+t Native numbers (하나, 둘, 셋, 넷) are used with counters, and shorten before them: 한 개, 두 잔, 세 명, 네 개.
+t 개 counts things, 잔 counts cups, 명 counts people.
+w 하나 = one (native)
+w 둘 = two (native)
+w 셋 = three (native)
+w 넷 = four (native)
+w 다섯 = five (native)
+w 잔 = cup (counter)
+w 주세요 = please give me
+w 메뉴 = menu
+w 비빔밥 = bibimbap
+w 김치찌개 = kimchi stew
+w 맛있어요 = it's delicious
+w 사과 = apple
+s 비빔밥 하나 주세요. = One bibimbap, please.
+s 커피 두 잔 주세요. = Two coffees, please.
+s 몇 명이에요? = How many people?
+s 두 명이에요. = Two people.
+s 메뉴 좀 주세요. = Please give me the menu. | The menu, please.
+s 물 좀 주세요. = Water, please.
+s 김치찌개가 정말 맛있어요. = The kimchi stew is really delicious.
+s 여기요, 김치찌개 하나 주세요. = Excuse me, one kimchi stew please.
+s 사과 세 개 주세요. = Three apples, please.
+s 이거 맛있어요? = Is this delicious?
+f 두 [명이에요] = Two people. ; 잔이에요, 개예요
+f 비빔밥 [하나] 주세요 = One bibimbap, please. ; 둘, 셋
+
+########################################################################
+@unit u7 | Everyday verbs | Everyday | The present tense
+t Polite present: verb stem + 아요 (after ㅏ, ㅗ) or 어요 (after other vowels). 하다 becomes 해요.
+t 을/를 marks the object: 커피를 마셔요 = I drink coffee. 를 after a vowel, 을 after a consonant.
+t 에서 marks where an action happens: 도서관에서 공부해요.
+w 가요 = go
+w 와요 = come
+w 먹어요 = eat
+w 마셔요 = drink
+w 봐요 = watch
+w 해요 = do
+w 공부해요 = study
+w 일해요 = work
+w 자요 = sleep
+w 읽어요 = read
+w 한국어 = Korean (language)
+w 영화 = movie
+s 저는 학교에 가요. = I go to school.
+s 커피를 마셔요. = I drink coffee.
+s 친구가 한국어를 공부해요. = My friend studies Korean.
+s 저는 도서관에서 책을 읽어요. = I read a book at the library.
+s 친구가 영화를 봐요. = My friend watches a movie.
+s 지금 뭐 해요? = What are you doing now?
+s 밥을 먹어요. = I eat rice.
+s 형은 회사에서 일해요. = My older brother works at a company.
+s 일찍 자요. = I go to bed early.
+s 친구가 우리 집에 와요. = My friend comes to my house.
+f 커피[를] 마셔요 = I drink coffee. ; 을, 가
+f 도서관[에서] 책을 읽어요 = I read a book at the library. ; 에, 을
+
+@unit u8 | Time and routine | Everyday | Days, times and habits
+t Time + 에: 일곱 시에 = at seven o'clock, 주말에 = on the weekend.
+t Hours use native numbers (한 시, 두 시, 일곱 시). Minutes use Sino-Korean (십 분).
+t 안 before a verb makes it negative: 안 먹어요 = I don't eat.
+w 아침 = morning
+w 점심 = lunch
+w 저녁 = evening
+w 오늘 = today
+w 내일 = tomorrow
+w 어제 = yesterday
+w 지금 = now
+w 시 = o'clock
+w 매일 = every day
+w 주말 = weekend
+w 일어나요 = get up
+w 바빠요 = I'm busy
+s 지금 몇 시예요? = What time is it now?
+s 저는 매일 일곱 시에 일어나요. = I get up at seven every day. | Every day I get up at seven.
+s 주말에 뭐 해요? = What do you do on the weekend?
+s 오늘 저녁에 친구를 만나요. = I meet a friend this evening. | This evening I meet a friend.
+s 아침을 안 먹어요. = I don't eat breakfast.
+s 내일 수업이 있어요. = I have class tomorrow. | Tomorrow I have class.
+s 점심 같이 먹어요. = Let's eat lunch together.
+s 아홉 시에 시작해요. = It starts at nine.
+s 오늘은 바빠요. = I am busy today. | Today I am busy.
+s 열두 시에 점심을 먹어요. = I eat lunch at twelve.
+f 일곱 시[에] 일어나요 = I get up at seven. ; 에서, 를
+f 아침을 [안] 먹어요 = I don't eat breakfast. ; 좀, 다
+
+@unit u9 | The past | Everyday | Talk about what you did
+t Past tense: 았어요 / 었어요 / 했어요. 가요 → 갔어요, 먹어요 → 먹었어요, 해요 → 했어요.
+t 어제 (yesterday), 지난주 (last week) and 주말에 (on the weekend) often go with the past tense.
+w 갔어요 = went
+w 왔어요 = came
+w 먹었어요 = ate
+w 마셨어요 = drank
+w 봤어요 = watched
+w 했어요 = did
+w 만났어요 = met
+w 샀어요 = bought
+w 재미있었어요 = it was fun
+w 지난주 = last week
+s 어제 친구를 만났어요. = I met a friend yesterday. | Yesterday I met a friend.
+s 주말에 영화를 봤어요. = I watched a movie on the weekend. | On the weekend I watched a movie.
+s 점심 먹었어요? = Did you eat lunch?
+s 지난주에 부산에 갔어요. = I went to Busan last week. | Last week I went to Busan.
+s 영화가 정말 재미있었어요. = The movie was really fun.
+s 어제 뭐 했어요? = What did you do yesterday?
+s 커피를 너무 많이 마셨어요. = I drank too much coffee.
+s 시장에서 과일을 샀어요. = I bought fruit at the market.
+s 숙제를 다 했어요. = I did all the homework.
+s 친구가 우리 집에 왔어요. = My friend came to my house.
+f 어제 영화를 [봤어요] = I watched a movie yesterday. ; 봐요, 볼 거예요
+f 지난주에 부산에 [갔어요] = I went to Busan last week. ; 가요, 갈 거예요
+
+@unit u10 | Shopping | Everyday | Prices, sizes and paying
+t 얼마예요? = How much is it?
+t 너무 = too / very. 좀 softens a request: 좀 깎아 주세요.
+t -아/어도 돼요? asks for permission: 카드로 계산해도 돼요? = Can I pay by card?
+w 얼마예요 = how much is it
+w 비싸요 = it's expensive
+w 싸요 = it's cheap
+w 사요 = buy
+w 옷 = clothes
+w 신발 = shoes
+w 가게 = store
+w 커요 = it's big
+w 작아요 = it's small
+w 예뻐요 = it's pretty
+w 색깔 = color
+s 이 신발 얼마예요? = How much are these shoes?
+s 너무 비싸요. = It's too expensive.
+s 좀 깎아 주세요. = Please give me a discount.
+s 이 티셔츠는 너무 작아요. = This T-shirt is too small.
+s 다른 색깔 있어요? = Do you have another color?
+s 카드로 계산해도 돼요? = Can I pay by card?
+s 이거 주세요. = I'll take this.
+s 가방이 정말 예뻐요. = The bag is really pretty.
+s 편의점에서 물을 샀어요. = I bought water at the convenience store.
+s 이 가게는 옷이 싸요. = This store's clothes are cheap.
+f 너무 [비싸요] = It's too expensive. ; 싸요, 작아요
+f 카드로 계산해도 [돼요]? = Can I pay by card? ; 줘요, 사요
+
+@unit u11 | Likes and wants | Everyday | What you like and want to do
+t 좋아해요 = I like (something). 좋아요 = it is good.
+t Verb stem + 고 싶어요 = want to: 가고 싶어요 = I want to go.
+t 매운 음식 = spicy food. Adjectives go before the noun with ㄴ/은.
+w 좋아해요 = like
+w 싫어해요 = dislike
+w 음식 = food
+w 운동 = exercise
+w 음악 = music
+w 여행 = travel
+w 노래 = song
+w 매워요 = it's spicy
+w 싶어요 = want to
+w 취미 = hobby
+w 자주 = often
+s 저는 매운 음식을 좋아해요. = I like spicy food.
+s 한국에 가고 싶어요. = I want to go to Korea.
+s 취미가 뭐예요? = What is your hobby?
+s 저는 운동을 싫어해요. = I dislike exercise.
+s 한국 노래를 자주 들어요. = I often listen to Korean songs.
+s 뭐 먹고 싶어요? = What do you want to eat?
+s 여행을 정말 좋아해요. = I really like traveling.
+s 이 음식은 너무 매워요. = This food is too spicy.
+s 음악 듣는 것을 좋아해요. = I like listening to music.
+s 오늘은 쉬고 싶어요. = I want to rest today. | Today I want to rest.
+f 한국에 가고 [싶어요] = I want to go to Korea. ; 좋아해요, 있어요
+f 저는 매운 음식을 [좋아해요] = I like spicy food. ; 좋아요, 싶어요
+
+@unit u12 | Plans | Everyday | Future plans and suggestions
+t -(으)ㄹ 거예요 = will / going to: 갈 거예요 = I will go.
+t -(으)ㄹ까요? = shall we?: 같이 볼까요? = Shall we watch it together?
+t -(으)ㄹ게요 = I'll (a promise to the listener): 전화할게요 = I'll call you.
+w 할 거예요 = will do
+w 갈 거예요 = will go
+w 같이 = together
+w 시간 = time
+w 약속 = plans
+w 다음 주 = next week
+w 이따가 = later
+w 영화관 = movie theater
+w 만날까요 = shall we meet
+w 쉴 거예요 = will rest
+s 주말에 뭐 할 거예요? = What will you do on the weekend?
+s 다음 주에 서울에 갈 거예요. = I will go to Seoul next week. | Next week I will go to Seoul.
+s 같이 영화 볼까요? = Shall we watch a movie together?
+s 몇 시에 만날까요? = What time shall we meet?
+s 이따가 전화할게요. = I will call you later.
+s 오늘 약속이 있어요. = I have plans today. | Today I have plans.
+s 내일 시간 있어요? = Do you have time tomorrow?
+s 영화관 앞에서 만나요. = Let's meet in front of the movie theater.
+s 저는 집에서 쉴 거예요. = I will rest at home.
+s 같이 점심 먹을까요? = Shall we eat lunch together?
+f 다음 주에 서울에 [갈 거예요] = I will go to Seoul next week. ; 갔어요, 가요
+f 같이 영화 [볼까요]? = Shall we watch a movie together? ; 봤어요, 봐요
+
+########################################################################
+@unit u13 | Getting around | Exchange life | Subway, bus and directions
+t -(으)세요 is a polite request: 가세요 = please go, 내리세요 = please get off.
+t (으)로 shows direction: 오른쪽으로 = to the right.
+t 까지 = up to / until: 학교까지 = to school.
+w 지하철 = subway
+w 버스 = bus
+w 택시 = taxi
+w 역 = station
+w 정류장 = bus stop
+w 타요 = ride
+w 내려요 = get off
+w 갈아타요 = transfer
+w 왼쪽 = left
+w 오른쪽 = right
+w 똑바로 = straight
+w 걸려요 = it takes (time)
+s 지하철역이 어디에 있어요? = Where is the subway station?
+s 이 버스 수원역에 가요? = Does this bus go to Suwon Station?
+s 다음 역에서 내리세요. = Get off at the next station.
+s 오른쪽으로 가세요. = Go to the right.
+s 똑바로 가세요. = Go straight.
+s 학교까지 얼마나 걸려요? = How long does it take to get to school?
+s 이십 분쯤 걸려요. = It takes about twenty minutes. {nospeak}
+s 사당역에서 갈아타세요. = Transfer at Sadang Station.
+s 택시를 탈까요? = Shall we take a taxi?
+s 버스 정류장이 왼쪽에 있어요. = The bus stop is on the left.
+s 기사님, 여기서 내릴게요. = Driver, I will get off here.
+f 다음 역에서 [내리세요] = Get off at the next station. ; 타세요, 가요
+f 오른쪽[으로] 가세요 = Go to the right. ; 를, 이
+
+@unit u14 | Campus life | Exchange life | Classes, professors and rooms
+t 교수님 = professor. -님 adds respect (선생님, 사장님).
+t 바뀌었어요 = it changed. Useful when a room or time moves.
+t 몇 호 = which room number. 302호 is read 삼백이 호.
+w 수업 = class
+w 강의실 = classroom
+w 교수님 = professor
+w 과제 = assignment
+w 시험 = exam
+w 기숙사 = dormitory
+w 학생회관 = student union building
+w 질문 = question
+w 바뀌었어요 = it changed
+w 끝나요 = it ends
+w 마감 = deadline
+s 오늘 강의실이 바뀌었어요. = The classroom changed today. | Today the classroom changed.
+s 수업이 몇 시에 끝나요? = What time does class end?
+s 교수님, 질문이 있어요. = Professor, I have a question.
+s 과제가 너무 많아요. = There are too many assignments.
+s 다음 주에 시험이 있어요. = There is an exam next week. | Next week there is an exam.
+s 학생회관 삼백이 호예요. = It is room 302 in the student union building. {nospeak}
+s 강의실이 몇 호예요? = What room number is the classroom?
+s 저는 기숙사에 살아요. = I live in the dormitory.
+s 과제 마감이 언제예요? = When is the assignment due?
+s 수업이 어디로 바뀌었어요? = Where did the class move to?
+s 도서관에서 같이 공부할까요? = Shall we study together at the library?
+f 교수님, 질문이 [있어요] = Professor, I have a question. ; 없어요, 해요
+f 오늘 강의실이 [바뀌었어요] = The classroom changed today. ; 끝나요, 있어요
+
+@unit u15 | Dorm life | Exchange life | Rooms, parcels and problems
+t 고장 났어요 = it's broken (a machine).
+t -지만 = but: 작지만 조용해요 = it's small but quiet.
+t 잃어버렸어요 = I lost (it).
+w 방 = room
+w 룸메이트 = roommate
+w 열쇠 = key
+w 택배 = parcel
+w 세탁기 = washing machine
+w 고장 났어요 = it's broken
+w 관리실 = management office
+w 비밀번호 = password
+w 월세 = monthly rent
+w 조용해요 = it's quiet
+w 시끄러워요 = it's noisy
+s 택배가 왔어요. = A parcel arrived.
+s 세탁기가 고장 났어요. = The washing machine is broken.
+s 와이파이 비밀번호가 뭐예요? = What is the Wi-Fi password?
+s 방 열쇠를 잃어버렸어요. = I lost my room key.
+s 관리실이 어디에 있어요? = Where is the management office?
+s 제 룸메이트는 정말 친절해요. = My roommate is really kind.
+s 월세가 얼마예요? = How much is the monthly rent?
+s 옆방이 너무 시끄러워요. = The room next door is too noisy.
+s 이 택배는 제 것이 아니에요. = This parcel is not mine.
+s 방이 작지만 조용해요. = The room is small but quiet.
+f 세탁기가 [고장 났어요] = The washing machine is broken. ; 왔어요, 조용해요
+f 방이 작[지만] 조용해요 = The room is small but quiet. ; 고, 아서
+
+@unit u16 | Asking for help | Exchange life | Repeat, slow down, explain
+t These phrases save you in any conversation: 다시 한 번 말해 주세요, 천천히 말해 주세요.
+t -아서/어서 gives a reason: 늦어서 죄송해요 = Sorry for being late.
+t 못 = can't: 못 갔어요 = I couldn't go.
+w 다시 = again
+w 천천히 = slowly
+w 잠깐만요 = just a moment
+w 도와주세요 = please help me
+w 말해 주세요 = please tell me
+w 몰라요 = I don't know
+w 알겠어요 = I understand
+w 무슨 뜻이에요 = what does it mean
+w 영어 = English
+w 그래서 = so
+s 다시 한 번 말해 주세요. = Please say it one more time.
+s 천천히 말해 주세요. = Please speak slowly.
+s 잠깐만요, 도와주세요! = Just a moment, please help me!
+s 이게 무슨 뜻이에요? = What does this mean?
+s 죄송해요, 잘 몰라요. = Sorry, I don't really know.
+s 네, 알겠어요. = Yes, I understand.
+s 늦어서 죄송해요. = Sorry I'm late.
+s 아파서 학교에 못 갔어요. = I was sick so I couldn't go to school.
+s 한국어를 잘 못해요. = I'm not good at Korean.
+s 영어로 말해도 돼요? = Can I speak in English?
+f 천천히 말해 [주세요] = Please speak slowly. ; 있어요, 했어요
+f 늦[어서] 죄송해요 = Sorry I'm late. ; 지만, 고
+
+@unit u17 | Part-time job | Exchange life | Shifts, bosses and customers
+t -(으)ㄹ 수 있어요 = can: 일할 수 있어요 = I can work. -(으)ㄹ 수 없어요 = can't.
+t -(으)ㄹ 것 같아요 = I think (it) will: 늦을 것 같아요 = I think I'll be late.
+t 사장님 = the boss (owner). 손님 = customer.
+w 아르바이트 = part-time job
+w 사장님 = boss
+w 손님 = customer
+w 출근해요 = go to work
+w 퇴근해요 = leave work
+w 쉬는 날 = day off
+w 시급 = hourly wage
+w 근무 = shift
+w 바꿀 수 있어요 = can change
+w 많아요 = there are many
+s 저는 카페에서 아르바이트를 해요. = I work part-time at a café.
+s 내일 근무를 바꿀 수 있어요? = Can I change my shift tomorrow?
+s 사장님, 오늘 조금 늦을 것 같아요. = Boss, I think I will be a little late today.
+s 손님, 뭐 드릴까요? = What can I get for you?
+s 몇 시에 출근해요? = What time do you go to work?
+s 저는 여섯 시에 퇴근해요. = I leave work at six.
+s 토요일은 제 쉬는 날이에요. = Saturday is my day off.
+s 시급이 얼마예요? = What is the hourly wage?
+s 주말에도 일할 수 있어요. = I can work on weekends too.
+s 오늘은 손님이 많아요. = There are many customers today. | Today there are many customers.
+f 내일 근무를 [바꿀 수 있어요]? = Can I change my shift tomorrow? ; 바꿨어요, 바꿀 거예요
+f 주말에도 일할 수 [있어요] = I can work on weekends too. ; 해요, 싶어요
+
+@unit u18 | Health | Exchange life | Feeling sick and the pharmacy
+t 아파요 = it hurts / I'm sick. Body part + 이/가 아파요: 머리가 아파요.
+t -아/어야 해요 = have to: 가야 해요 = I have to go.
+t 드세요 is the polite way to say "take / eat" for medicine.
+w 아파요 = it hurts
+w 머리 = head
+w 배 = stomach
+w 감기 = cold
+w 약 = medicine
+w 약국 = pharmacy
+w 병원 = hospital
+w 열 = fever
+w 기침 = cough
+w 목 = throat
+s 머리가 아파요. = My head hurts.
+s 감기에 걸렸어요. = I caught a cold.
+s 약국이 어디에 있어요? = Where is the pharmacy?
+s 열이 나고 기침을 해요. = I have a fever and a cough.
+s 이 약을 하루에 세 번 드세요. = Take this medicine three times a day.
+s 병원에 가야 해요. = I have to go to the hospital.
+s 배가 아파서 못 먹었어요. = My stomach hurt so I couldn't eat.
+s 목이 아파요. = My throat hurts.
+s 감기약 있어요? = Do you have cold medicine?
+s 푹 쉬세요. = Get some good rest.
+f 병원에 [가야 해요] = I have to go to the hospital. ; 갔어요, 가고 싶어요
+f 머리[가] 아파요 = My head hurts. ; 를, 에서
+
+@unit u19 | Phone and plans | Exchange life | Calls, texts and meeting up
+t 여보세요 = hello (only on the phone).
+t -(으)면 = if / when: 도착하면 = when you arrive.
+t 어때요? = how about it?: 토요일은 어때요? = How about Saturday?
+w 여보세요 = hello (on the phone)
+w 전화 = phone call
+w 문자 = text message
+w 연락 = contact
+w 보낼게요 = I'll send
+w 어때요 = how about
+w 기다릴게요 = I'll wait
+w 도착했어요 = I arrived
+w 출발해요 = leave
+w 벌써 = already
+s 여보세요, 민수 씨 계세요? = Hello, is Minsu there?
+s 나중에 문자 보낼게요. = I will text you later.
+s 토요일 오후는 어때요? = How about Saturday afternoon?
+s 미안해요, 조금 늦을 것 같아요. = Sorry, I think I will be a little late.
+s 지금 출발해요. = I am leaving now.
+s 역 앞에서 기다릴게요. = I will wait in front of the station.
+s 도착하면 연락 주세요. = Please contact me when you arrive.
+s 지금 통화할 수 있어요? = Can you talk on the phone now?
+s 다섯 시는 어때요? = How about five o'clock?
+s 벌써 도착했어요. = I already arrived.
+f 역 앞에서 [기다릴게요] = I will wait in front of the station. ; 기다렸어요, 기다려요
+f 도착하[면] 연락 주세요 = Please contact me when you arrive. ; 지만, 고
+
+@unit u20 | Polite speech | Exchange life | Talking to professors and elders
+t -(으)시- shows respect to the person you talk about: 가요 → 가세요.
+t Some verbs change completely: 먹어요 → 드세요, 자요 → 주무세요, 있어요 → 계세요.
+t Some nouns change too: 이름 → 성함, 나이 → 연세, 집 → 댁.
+w 성함 = name (honorific)
+w 연세 = age (honorific)
+w 드세요 = please eat
+w 계세요 = is there (honorific)
+w 말씀 = words (honorific)
+w 주무세요 = sleep (honorific)
+w 댁 = home (honorific)
+w 할머니 = grandmother
+w 연구실 = office (professor's)
+w 잠시만 = for a moment
+s 성함이 어떻게 되세요? = May I ask your name?
+s 교수님께서 연구실에 계세요. = The professor is in the office.
+s 맛있게 드세요. = Enjoy your meal.
+s 할머니, 안녕히 주무세요. = Good night, Grandma.
+s 사장님께 말씀드릴게요. = I will tell the boss.
+s 연세가 어떻게 되세요? = May I ask how old you are?
+s 어디에 가세요? = Where are you going?
+s 교수님, 하나 여쭤봐도 될까요? = Professor, may I ask you something?
+s 선생님 댁이 어디세요? = Where is your home, teacher?
+s 잠시만 기다려 주세요. = Please wait a moment.
+f 맛있게 [드세요] = Enjoy your meal. ; 먹어요, 마셔요
+f 교수님께서 연구실에 [계세요] = The professor is in the office. ; 있어요, 주무세요

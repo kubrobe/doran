@@ -1,0 +1,2477 @@
+[
+ {
+  "key": "001a89099a51",
+  "text": "과제",
+  "slow": false
+ },
+ {
+  "key": "03455cfc9f61",
+  "text": "다섯 시는 어때요?",
+  "slow": true
+ },
+ {
+  "key": "04d7c9bd630d",
+  "text": "저는 도서관에서 책을 읽어요.",
+  "slow": true
+ },
+ {
+  "key": "05000ee6cdb0",
+  "text": "이거 맛있어요?",
+  "slow": true
+ },
+ {
+  "key": "0563a514318a",
+  "text": "라",
+  "slow": false
+ },
+ {
+  "key": "059ee37f8be7",
+  "text": "뭐",
+  "slow": false
+ },
+ {
+  "key": "05a40b3a46ee",
+  "text": "역",
+  "slow": false
+ },
+ {
+  "key": "05a95a7cfe78",
+  "text": "저녁",
+  "slow": false
+ },
+ {
+  "key": "06a5309a7b16",
+  "text": "택배",
+  "slow": false
+ },
+ {
+  "key": "06cf3e90de6e",
+  "text": "일",
+  "slow": false
+ },
+ {
+  "key": "06f2845ec6e2",
+  "text": "월세",
+  "slow": false
+ },
+ {
+  "key": "076925c57174",
+  "text": "메뉴",
+  "slow": false
+ },
+ {
+  "key": "07d25c799d09",
+  "text": "두부",
+  "slow": false
+ },
+ {
+  "key": "085e7d25f844",
+  "text": "감기",
+  "slow": false
+ },
+ {
+  "key": "08906e22553d",
+  "text": "으",
+  "slow": false
+ },
+ {
+  "key": "08f6c357e084",
+  "text": "제 친구는 의사예요.",
+  "slow": true
+ },
+ {
+  "key": "0ab81acc4b0e",
+  "text": "교수님께서 연구실에 계세요.",
+  "slow": true
+ },
+ {
+  "key": "0b4370591e73",
+  "text": "출근해요",
+  "slow": false
+ },
+ {
+  "key": "0b4af546d3ed",
+  "text": "셋",
+  "slow": false
+ },
+ {
+  "key": "0cdb0e17f29a",
+  "text": "병원",
+  "slow": false
+ },
+ {
+  "key": "0d11962a880b",
+  "text": "미안해요, 조금 늦을 것 같아요.",
+  "slow": true
+ },
+ {
+  "key": "0d6c2b633b83",
+  "text": "색깔",
+  "slow": false
+ },
+ {
+  "key": "0dfb66d7b9e9",
+  "text": "한국 노래를 자주 들어요.",
+  "slow": true
+ },
+ {
+  "key": "0e3301813779",
+  "text": "어머니",
+  "slow": false
+ },
+ {
+  "key": "0e360b40c084",
+  "text": "저는 선생님이 아니에요.",
+  "slow": true
+ },
+ {
+  "key": "0ffcb2dc1b9b",
+  "text": "이 음식은 너무 매워요.",
+  "slow": true
+ },
+ {
+  "key": "10d6c7e6e1c9",
+  "text": "계세요",
+  "slow": false
+ },
+ {
+  "key": "110abbe28039",
+  "text": "저는 운동을 싫어해요.",
+  "slow": true
+ },
+ {
+  "key": "112941bdae0a",
+  "text": "가수",
+  "slow": false
+ },
+ {
+  "key": "11d1982d7082",
+  "text": "연락",
+  "slow": false
+ },
+ {
+  "key": "1244a68987a1",
+  "text": "죄송합니다, 괜찮아요?",
+  "slow": true
+ },
+ {
+  "key": "126a593010be",
+  "text": "이 근처에 식당이 없어요.",
+  "slow": true
+ },
+ {
+  "key": "1283cbaee724",
+  "text": "밥",
+  "slow": false
+ },
+ {
+  "key": "131c83b2cfb5",
+  "text": "이 약을 하루에 세 번 드세요.",
+  "slow": true
+ },
+ {
+  "key": "1380d9145ebb",
+  "text": "사과",
+  "slow": false
+ },
+ {
+  "key": "142a30281546",
+  "text": "가방",
+  "slow": false
+ },
+ {
+  "key": "144d73ab9595",
+  "text": "문자",
+  "slow": false
+ },
+ {
+  "key": "14b73293e7e0",
+  "text": "세탁기",
+  "slow": false
+ },
+ {
+  "key": "14f8a04bab19",
+  "text": "지하철",
+  "slow": false
+ },
+ {
+  "key": "153ff43ea00e",
+  "text": "우유",
+  "slow": false
+ },
+ {
+  "key": "16f66ac24b86",
+  "text": "오른쪽",
+  "slow": false
+ },
+ {
+  "key": "191475fa6074",
+  "text": "약국",
+  "slow": false
+ },
+ {
+  "key": "196c53c8f98a",
+  "text": "어",
+  "slow": false
+ },
+ {
+  "key": "19c5ec746362",
+  "text": "해요",
+  "slow": false
+ },
+ {
+  "key": "19eec08acc95",
+  "text": "만나서 반가워요",
+  "slow": false
+ },
+ {
+  "key": "1b53e275a33a",
+  "text": "비누",
+  "slow": false
+ },
+ {
+  "key": "1c0c0a461d57",
+  "text": "어느 나라 사람이에요?",
+  "slow": true
+ },
+ {
+  "key": "1c1ada074b17",
+  "text": "토요일 오후는 어때요?",
+  "slow": true
+ },
+ {
+  "key": "1c594bb5af0b",
+  "text": "저거",
+  "slow": false
+ },
+ {
+  "key": "1c7904672e2f",
+  "text": "내일 시간 있어요?",
+  "slow": true
+ },
+ {
+  "key": "1d6b498ac790",
+  "text": "이 커피는 삼천 원이에요.",
+  "slow": true
+ },
+ {
+  "key": "1dcbc740f342",
+  "text": "천천히",
+  "slow": false
+ },
+ {
+  "key": "1df58d3fbec5",
+  "text": "오늘은 바빠요.",
+  "slow": true
+ },
+ {
+  "key": "1e4ab85f0d9d",
+  "text": "여행을 정말 좋아해요.",
+  "slow": true
+ },
+ {
+  "key": "1e9ec64a8950",
+  "text": "어디에 가세요?",
+  "slow": true
+ },
+ {
+  "key": "1f43a021e042",
+  "text": "늦어서 죄송해요.",
+  "slow": true
+ },
+ {
+  "key": "1ff7914bebc9",
+  "text": "쉬는 날",
+  "slow": false
+ },
+ {
+  "key": "207adb179692",
+  "text": "아니요, 괜찮아요.",
+  "slow": true
+ },
+ {
+  "key": "20931411a95f",
+  "text": "싸요",
+  "slow": false
+ },
+ {
+  "key": "20bdcf5c8f8b",
+  "text": "와",
+  "slow": false
+ },
+ {
+  "key": "20bff68f55c6",
+  "text": "사장님께 말씀드릴게요.",
+  "slow": true
+ },
+ {
+  "key": "21ba070b23b6",
+  "text": "원",
+  "slow": false
+ },
+ {
+  "key": "227850d2e134",
+  "text": "도서관에서 같이 공부할까요?",
+  "slow": true
+ },
+ {
+  "key": "22bed844302f",
+  "text": "내일 수업이 있어요.",
+  "slow": true
+ },
+ {
+  "key": "22cd875fb70d",
+  "text": "암",
+  "slow": false
+ },
+ {
+  "key": "23200971c8cc",
+  "text": "일어나요",
+  "slow": false
+ },
+ {
+  "key": "23268133c4d6",
+  "text": "가요",
+  "slow": false
+ },
+ {
+  "key": "23913a525f1e",
+  "text": "교수님",
+  "slow": false
+ },
+ {
+  "key": "23c6a8b9d892",
+  "text": "방 열쇠를 잃어버렸어요.",
+  "slow": true
+ },
+ {
+  "key": "249497667b4a",
+  "text": "여보세요, 민수 씨 계세요?",
+  "slow": true
+ },
+ {
+  "key": "251dd9abf191",
+  "text": "친구는 회사원이에요.",
+  "slow": true
+ },
+ {
+  "key": "25a032c9069f",
+  "text": "앗",
+  "slow": false
+ },
+ {
+  "key": "266539c75d9a",
+  "text": "커피를 너무 많이 마셨어요.",
+  "slow": true
+ },
+ {
+  "key": "27122a203445",
+  "text": "이거 얼마예요?",
+  "slow": true
+ },
+ {
+  "key": "27916ecc49ec",
+  "text": "싸",
+  "slow": false
+ },
+ {
+  "key": "27a36aee2831",
+  "text": "은행",
+  "slow": false
+ },
+ {
+  "key": "27e0fcb7ba87",
+  "text": "영어로 말해도 돼요?",
+  "slow": true
+ },
+ {
+  "key": "288d14be0365",
+  "text": "룸메이트",
+  "slow": false
+ },
+ {
+  "key": "2892aebc57e1",
+  "text": "말해 주세요",
+  "slow": false
+ },
+ {
+  "key": "29e6fd0f9e65",
+  "text": "주말에 뭐 해요?",
+  "slow": true
+ },
+ {
+  "key": "2ab096e7f48b",
+  "text": "질문",
+  "slow": false
+ },
+ {
+  "key": "2b582952069c",
+  "text": "바다",
+  "slow": false
+ },
+ {
+  "key": "2b7beade8d6b",
+  "text": "좀 깎아 주세요.",
+  "slow": true
+ },
+ {
+  "key": "2bdce5e8cc42",
+  "text": "오늘",
+  "slow": false
+ },
+ {
+  "key": "2c0e95dc0ba9",
+  "text": "일찍 자요.",
+  "slow": true
+ },
+ {
+  "key": "2c2c3b487137",
+  "text": "우즈베키스탄",
+  "slow": false
+ },
+ {
+  "key": "2dcc21ee47ef",
+  "text": "주말",
+  "slow": false
+ },
+ {
+  "key": "2df94c8444e2",
+  "text": "왼쪽",
+  "slow": false
+ },
+ {
+  "key": "2f3a26716570",
+  "text": "따",
+  "slow": false
+ },
+ {
+  "key": "2f4621ed195a",
+  "text": "바",
+  "slow": false
+ },
+ {
+  "key": "2f5d120217b6",
+  "text": "저는 집에서 쉴 거예요.",
+  "slow": true
+ },
+ {
+  "key": "30c7307a4223",
+  "text": "앙",
+  "slow": false
+ },
+ {
+  "key": "3135f62c00e4",
+  "text": "의사",
+  "slow": false
+ },
+ {
+  "key": "31f4c97b704c",
+  "text": "메뉴 좀 주세요.",
+  "slow": true
+ },
+ {
+  "key": "31f615480646",
+  "text": "쓰레기",
+  "slow": false
+ },
+ {
+  "key": "3251b51e8a6c",
+  "text": "밥을 먹어요.",
+  "slow": true
+ },
+ {
+  "key": "327063563e1e",
+  "text": "저는 매일 일곱 시에 일어나요.",
+  "slow": true
+ },
+ {
+  "key": "32eb6dca492b",
+  "text": "친구가 한국어를 공부해요.",
+  "slow": true
+ },
+ {
+  "key": "33949eb8666b",
+  "text": "아, 죄송합니다.",
+  "slow": true
+ },
+ {
+  "key": "34e413e86ca5",
+  "text": "음식",
+  "slow": false
+ },
+ {
+  "key": "358f5aad8d27",
+  "text": "택시",
+  "slow": false
+ },
+ {
+  "key": "363fa7d0e382",
+  "text": "강의실이 몇 호예요?",
+  "slow": true
+ },
+ {
+  "key": "3658ffd36136",
+  "text": "수업이 몇 시에 끝나요?",
+  "slow": true
+ },
+ {
+  "key": "365e09d0e595",
+  "text": "너무 비싸요.",
+  "slow": true
+ },
+ {
+  "key": "368a267ab5d4",
+  "text": "그래서",
+  "slow": false
+ },
+ {
+  "key": "376b19ea5379",
+  "text": "여행",
+  "slow": false
+ },
+ {
+  "key": "377094ee3430",
+  "text": "시장에서 과일을 샀어요.",
+  "slow": true
+ },
+ {
+  "key": "37764ba042ce",
+  "text": "다음 역에서 내리세요.",
+  "slow": true
+ },
+ {
+  "key": "383051371729",
+  "text": "바뀌었어요",
+  "slow": false
+ },
+ {
+  "key": "3b016801e3b0",
+  "text": "이따가",
+  "slow": false
+ },
+ {
+  "key": "3bdf9e8a53ce",
+  "text": "어디",
+  "slow": false
+ },
+ {
+  "key": "3bf609ee9834",
+  "text": "시간이 없어요.",
+  "slow": true
+ },
+ {
+  "key": "3c8becac138b",
+  "text": "화장실",
+  "slow": false
+ },
+ {
+  "key": "3cab15cd8ac4",
+  "text": "이름이 뭐예요?",
+  "slow": true
+ },
+ {
+  "key": "3d02685ac2a0",
+  "text": "취미가 뭐예요?",
+  "slow": true
+ },
+ {
+  "key": "3d171fc67b52",
+  "text": "친구가 우리 집에 왔어요.",
+  "slow": true
+ },
+ {
+  "key": "3e80b4bf66a3",
+  "text": "감기약 있어요?",
+  "slow": true
+ },
+ {
+  "key": "3e92afe7a63d",
+  "text": "다음 주",
+  "slow": false
+ },
+ {
+  "key": "3ebecbc92a54",
+  "text": "저는 기숙사에 살아요.",
+  "slow": true
+ },
+ {
+  "key": "3f05aa426619",
+  "text": "읽어요",
+  "slow": false
+ },
+ {
+  "key": "3f449463610d",
+  "text": "감기에 걸렸어요.",
+  "slow": true
+ },
+ {
+  "key": "3fb24b2a2290",
+  "text": "수업이 어디로 바뀌었어요?",
+  "slow": true
+ },
+ {
+  "key": "3fcc7bebc2b4",
+  "text": "시험",
+  "slow": false
+ },
+ {
+  "key": "406694f37ba4",
+  "text": "출발해요",
+  "slow": false
+ },
+ {
+  "key": "4118d67c96ec",
+  "text": "우",
+  "slow": false
+ },
+ {
+  "key": "415d0abccee6",
+  "text": "관리실이 어디에 있어요?",
+  "slow": true
+ },
+ {
+  "key": "41c24cc187b6",
+  "text": "지금 출발해요.",
+  "slow": true
+ },
+ {
+  "key": "42072be3da06",
+  "text": "저",
+  "slow": false
+ },
+ {
+  "key": "4259dd769cec",
+  "text": "칠",
+  "slow": false
+ },
+ {
+  "key": "436b04b93df9",
+  "text": "이십 분쯤 걸려요.",
+  "slow": true
+ },
+ {
+  "key": "445287d4d334",
+  "text": "여",
+  "slow": false
+ },
+ {
+  "key": "44c39868ff15",
+  "text": "보낼게요",
+  "slow": false
+ },
+ {
+  "key": "4631dbf903ab",
+  "text": "도서관은 저기 있어요.",
+  "slow": true
+ },
+ {
+  "key": "4667f6416961",
+  "text": "점심 먹었어요?",
+  "slow": true
+ },
+ {
+  "key": "4672972ea1f7",
+  "text": "오이",
+  "slow": false
+ },
+ {
+  "key": "476b58b7e5a4",
+  "text": "어제",
+  "slow": false
+ },
+ {
+  "key": "49a63eac55b6",
+  "text": "옷",
+  "slow": false
+ },
+ {
+  "key": "49f204197d4a",
+  "text": "왔어요",
+  "slow": false
+ },
+ {
+  "key": "4a3ea882accc",
+  "text": "오",
+  "slow": false
+ },
+ {
+  "key": "4a63de98b64c",
+  "text": "이 커피는 제 거예요.",
+  "slow": true
+ },
+ {
+  "key": "4a9aae1df0cc",
+  "text": "교수님, 질문이 있어요.",
+  "slow": true
+ },
+ {
+  "key": "4b5ff02aecf4",
+  "text": "누구",
+  "slow": false
+ },
+ {
+  "key": "4bc5d65ee391",
+  "text": "네",
+  "slow": false
+ },
+ {
+  "key": "4c3c31b4a5f1",
+  "text": "학생회관 삼백이 호예요.",
+  "slow": true
+ },
+ {
+  "key": "4c537d131462",
+  "text": "파",
+  "slow": false
+ },
+ {
+  "key": "4ca0aab4feca",
+  "text": "사당역에서 갈아타세요.",
+  "slow": true
+ },
+ {
+  "key": "4ce01164bfca",
+  "text": "도서관",
+  "slow": false
+ },
+ {
+  "key": "4d18906b651e",
+  "text": "김치찌개가 정말 맛있어요.",
+  "slow": true
+ },
+ {
+  "key": "4d20ad440e35",
+  "text": "마셔요",
+  "slow": false
+ },
+ {
+  "key": "4d37461d4c11",
+  "text": "싶어요",
+  "slow": false
+ },
+ {
+  "key": "4d6729522e29",
+  "text": "여기",
+  "slow": false
+ },
+ {
+  "key": "4e71ce81ea22",
+  "text": "음악",
+  "slow": false
+ },
+ {
+  "key": "4ecb3373d1e9",
+  "text": "운동",
+  "slow": false
+ },
+ {
+  "key": "4fa363012687",
+  "text": "저는 학교에 가요.",
+  "slow": true
+ },
+ {
+  "key": "4fa86f2b5c9b",
+  "text": "쉴 거예요",
+  "slow": false
+ },
+ {
+  "key": "4fd1e8c4b2dd",
+  "text": "숙제를 다 했어요.",
+  "slow": true
+ },
+ {
+  "key": "4fe57c1f6d3a",
+  "text": "사과 세 개 주세요.",
+  "slow": true
+ },
+ {
+  "key": "50d36272c737",
+  "text": "압",
+  "slow": false
+ },
+ {
+  "key": "51208381144e",
+  "text": "점심",
+  "slow": false
+ },
+ {
+  "key": "5195a19778ac",
+  "text": "세탁기가 고장 났어요.",
+  "slow": true
+ },
+ {
+  "key": "51d37ac1ae3a",
+  "text": "좋아해요",
+  "slow": false
+ },
+ {
+  "key": "53c83f02f25d",
+  "text": "근무",
+  "slow": false
+ },
+ {
+  "key": "54af01b89b9b",
+  "text": "옆",
+  "slow": false
+ },
+ {
+  "key": "54e5853d475c",
+  "text": "잠깐만요, 도와주세요!",
+  "slow": true
+ },
+ {
+  "key": "5503506ed35c",
+  "text": "수업",
+  "slow": false
+ },
+ {
+  "key": "55913fc51ee6",
+  "text": "영어",
+  "slow": false
+ },
+ {
+  "key": "5664a634af5f",
+  "text": "목",
+  "slow": false
+ },
+ {
+  "key": "56e7d0eeff5d",
+  "text": "비빔밥",
+  "slow": false
+ },
+ {
+  "key": "5796b2127ebd",
+  "text": "타요",
+  "slow": false
+ },
+ {
+  "key": "57b7afd916e5",
+  "text": "고맙습니다, 내일 봐요.",
+  "slow": true
+ },
+ {
+  "key": "5867a72fc3a0",
+  "text": "안녕하세요, 만나서 반가워요.",
+  "slow": true
+ },
+ {
+  "key": "59463e84fb8f",
+  "text": "삼",
+  "slow": false
+ },
+ {
+  "key": "5cd06196d056",
+  "text": "휴대폰",
+  "slow": false
+ },
+ {
+  "key": "5d12b208e550",
+  "text": "머리가 아파요.",
+  "slow": true
+ },
+ {
+  "key": "5d3126b6e554",
+  "text": "버스",
+  "slow": false
+ },
+ {
+  "key": "5e8d2758a78f",
+  "text": "주세요",
+  "slow": false
+ },
+ {
+  "key": "5eeefea77e6f",
+  "text": "시끄러워요",
+  "slow": false
+ },
+ {
+  "key": "5f1fe47a8b80",
+  "text": "저도 학생이에요.",
+  "slow": true
+ },
+ {
+  "key": "5f51b383d2c1",
+  "text": "잔",
+  "slow": false
+ },
+ {
+  "key": "60c482020480",
+  "text": "이 택배는 제 것이 아니에요.",
+  "slow": true
+ },
+ {
+  "key": "60c9b490b4c8",
+  "text": "주말에 뭐 할 거예요?",
+  "slow": true
+ },
+ {
+  "key": "61569786dba5",
+  "text": "배",
+  "slow": false
+ },
+ {
+  "key": "620be2237701",
+  "text": "선생님",
+  "slow": false
+ },
+ {
+  "key": "62835bc3f41a",
+  "text": "벌써",
+  "slow": false
+ },
+ {
+  "key": "62b87927fab1",
+  "text": "점심 같이 먹어요.",
+  "slow": true
+ },
+ {
+  "key": "62cc8ca815d0",
+  "text": "책",
+  "slow": false
+ },
+ {
+  "key": "632dbc1fb4da",
+  "text": "라디오",
+  "slow": false
+ },
+ {
+  "key": "63948d05b106",
+  "text": "만",
+  "slow": false
+ },
+ {
+  "key": "65683add0017",
+  "text": "같이",
+  "slow": false
+ },
+ {
+  "key": "6587001da0ea",
+  "text": "할머니",
+  "slow": false
+ },
+ {
+  "key": "662204e2ddd2",
+  "text": "할머니, 안녕히 주무세요.",
+  "slow": true
+ },
+ {
+  "key": "67685688b219",
+  "text": "지금 통화할 수 있어요?",
+  "slow": true
+ },
+ {
+  "key": "679be7c22b7a",
+  "text": "잠시만 기다려 주세요.",
+  "slow": true
+ },
+ {
+  "key": "67b779297055",
+  "text": "버스 정류장이 왼쪽에 있어요.",
+  "slow": true
+ },
+ {
+  "key": "67c78e687590",
+  "text": "은행이 어디에 있어요?",
+  "slow": true
+ },
+ {
+  "key": "6815b54790ef",
+  "text": "두 명이에요.",
+  "slow": true
+ },
+ {
+  "key": "6851b5d68b45",
+  "text": "네, 괜찮아요.",
+  "slow": true
+ },
+ {
+  "key": "69ae3423ef85",
+  "text": "푹 쉬세요.",
+  "slow": true
+ },
+ {
+  "key": "6a3f7c07b670",
+  "text": "사장님",
+  "slow": false
+ },
+ {
+  "key": "6ab30e4845aa",
+  "text": "한국에 가고 싶어요.",
+  "slow": true
+ },
+ {
+  "key": "6b1cfdef109e",
+  "text": "매일",
+  "slow": false
+ },
+ {
+  "key": "6c0cd2af1e1b",
+  "text": "이",
+  "slow": false
+ },
+ {
+  "key": "6c1f4a005f91",
+  "text": "택시를 탈까요?",
+  "slow": true
+ },
+ {
+  "key": "6c35133c478b",
+  "text": "시간",
+  "slow": false
+ },
+ {
+  "key": "6c544d7f9450",
+  "text": "저는 카페에서 아르바이트를 해요.",
+  "slow": true
+ },
+ {
+  "key": "6daadb891eff",
+  "text": "카페",
+  "slow": false
+ },
+ {
+  "key": "6df77be79eff",
+  "text": "오른쪽으로 가세요.",
+  "slow": true
+ },
+ {
+  "key": "6e02f187f694",
+  "text": "찌개",
+  "slow": false
+ },
+ {
+  "key": "6e081b5948ef",
+  "text": "한국어",
+  "slow": false
+ },
+ {
+  "key": "6e9d56454f04",
+  "text": "약",
+  "slow": false
+ },
+ {
+  "key": "6f2edfcf8ee6",
+  "text": "끝나요",
+  "slow": false
+ },
+ {
+  "key": "7092fea8a162",
+  "text": "학생회관",
+  "slow": false
+ },
+ {
+  "key": "70aac02e9d3c",
+  "text": "화장실이 어디예요?",
+  "slow": true
+ },
+ {
+  "key": "70b1bf6d1cc1",
+  "text": "바꿀 수 있어요",
+  "slow": false
+ },
+ {
+  "key": "712e0c058dbc",
+  "text": "오늘은 손님이 많아요.",
+  "slow": true
+ },
+ {
+  "key": "7142cb20d309",
+  "text": "얼마예요",
+  "slow": false
+ },
+ {
+  "key": "71a490eb578b",
+  "text": "저는 우즈베키스탄 사람이에요.",
+  "slow": true
+ },
+ {
+  "key": "71c706d65211",
+  "text": "유",
+  "slow": false
+ },
+ {
+  "key": "729c85015363",
+  "text": "강의실은 육 층에 있어요.",
+  "slow": true
+ },
+ {
+  "key": "72cc58fc62db",
+  "text": "과제 마감이 언제예요?",
+  "slow": true
+ },
+ {
+  "key": "735c1e670f00",
+  "text": "에",
+  "slow": false
+ },
+ {
+  "key": "7425750e4bec",
+  "text": "피자",
+  "slow": false
+ },
+ {
+  "key": "75b11647e539",
+  "text": "물 좀 주세요.",
+  "slow": true
+ },
+ {
+  "key": "75b9f271b083",
+  "text": "머리",
+  "slow": false
+ },
+ {
+  "key": "75cb58018b2b",
+  "text": "죄송해요, 잘 몰라요.",
+  "slow": true
+ },
+ {
+  "key": "7606fd7609b7",
+  "text": "악",
+  "slow": false
+ },
+ {
+  "key": "773277b54fe4",
+  "text": "기다릴게요",
+  "slow": false
+ },
+ {
+  "key": "77b7e85879b3",
+  "text": "카드로 계산해도 돼요?",
+  "slow": true
+ },
+ {
+  "key": "77f4df2c9b00",
+  "text": "야",
+  "slow": false
+ },
+ {
+  "key": "7830e5d54679",
+  "text": "토끼",
+  "slow": false
+ },
+ {
+  "key": "785d85930adf",
+  "text": "천천히 말해 주세요.",
+  "slow": true
+ },
+ {
+  "key": "7ae1a5a07dbc",
+  "text": "방",
+  "slow": false
+ },
+ {
+  "key": "7b45c5871684",
+  "text": "봐요",
+  "slow": false
+ },
+ {
+  "key": "7c7bfcc5d234",
+  "text": "주말에 영화를 봤어요.",
+  "slow": true
+ },
+ {
+  "key": "7dcadffb9083",
+  "text": "카",
+  "slow": false
+ },
+ {
+  "key": "7dde8c4ef667",
+  "text": "어때요",
+  "slow": false
+ },
+ {
+  "key": "7e3ccf684e2d",
+  "text": "아버지",
+  "slow": false
+ },
+ {
+  "key": "7e811773882e",
+  "text": "자주",
+  "slow": false
+ },
+ {
+  "key": "7eec619024a9",
+  "text": "외",
+  "slow": false
+ },
+ {
+  "key": "7efeb2d1bb26",
+  "text": "신발",
+  "slow": false
+ },
+ {
+  "key": "80a2399857e2",
+  "text": "할 거예요",
+  "slow": false
+ },
+ {
+  "key": "811e02934458",
+  "text": "나",
+  "slow": false
+ },
+ {
+  "key": "81973897c757",
+  "text": "비밀번호",
+  "slow": false
+ },
+ {
+  "key": "8198fd54dd02",
+  "text": "타",
+  "slow": false
+ },
+ {
+  "key": "82b333e36a84",
+  "text": "한국어를 잘 못해요.",
+  "slow": true
+ },
+ {
+  "key": "8311e7f7e1ed",
+  "text": "감사합니다",
+  "slow": false
+ },
+ {
+  "key": "8441573d5cdd",
+  "text": "이따가 전화할게요.",
+  "slow": true
+ },
+ {
+  "key": "845b3bc66909",
+  "text": "죄송합니다",
+  "slow": false
+ },
+ {
+  "key": "84a9cb107d99",
+  "text": "몇 명이에요?",
+  "slow": true
+ },
+ {
+  "key": "84f2ad4c3cdb",
+  "text": "삼백이 호예요.",
+  "slow": true
+ },
+ {
+  "key": "85289ac883a3",
+  "text": "지난주",
+  "slow": false
+ },
+ {
+  "key": "853bf3c8124e",
+  "text": "괜찮아요",
+  "slow": false
+ },
+ {
+  "key": "8578f008f790",
+  "text": "약속",
+  "slow": false
+ },
+ {
+  "key": "8621f0f991c3",
+  "text": "가게",
+  "slow": false
+ },
+ {
+  "key": "86860ab8f94f",
+  "text": "비싸요",
+  "slow": false
+ },
+ {
+  "key": "878ce9a75ccc",
+  "text": "저거 누구 우산이에요?",
+  "slow": true
+ },
+ {
+  "key": "88c6c0919f09",
+  "text": "몇 시에 출근해요?",
+  "slow": true
+ },
+ {
+  "key": "8980e7e906ea",
+  "text": "먹어요",
+  "slow": false
+ },
+ {
+  "key": "89d5348b4e00",
+  "text": "백",
+  "slow": false
+ },
+ {
+  "key": "8a04a604381d",
+  "text": "노래",
+  "slow": false
+ },
+ {
+  "key": "8a3f09a0f3a1",
+  "text": "시급",
+  "slow": false
+ },
+ {
+  "key": "8c1f37ddc1bf",
+  "text": "오늘은 쉬고 싶어요.",
+  "slow": true
+ },
+ {
+  "key": "8c2400975133",
+  "text": "친구",
+  "slow": false
+ },
+ {
+  "key": "8c4f4acab88d",
+  "text": "커피 두 잔 주세요.",
+  "slow": true
+ },
+ {
+  "key": "8cd38cd5337e",
+  "text": "뭐 먹고 싶어요?",
+  "slow": true
+ },
+ {
+  "key": "8ceca7a3c5c6",
+  "text": "똑바로",
+  "slow": false
+ },
+ {
+  "key": "8d0f492da35b",
+  "text": "토마토",
+  "slow": false
+ },
+ {
+  "key": "8d74d27418bc",
+  "text": "댁",
+  "slow": false
+ },
+ {
+  "key": "8eb09d166479",
+  "text": "나무",
+  "slow": false
+ },
+ {
+  "key": "8f6a651214d1",
+  "text": "과제가 너무 많아요.",
+  "slow": true
+ },
+ {
+  "key": "8f873495aa55",
+  "text": "도착했어요",
+  "slow": false
+ },
+ {
+  "key": "8fcd164546ce",
+  "text": "시계",
+  "slow": false
+ },
+ {
+  "key": "900e95b6971a",
+  "text": "한국",
+  "slow": false
+ },
+ {
+  "key": "91032991267e",
+  "text": "전화",
+  "slow": false
+ },
+ {
+  "key": "91ba5d367169",
+  "text": "성함",
+  "slow": false
+ },
+ {
+  "key": "92d77633148a",
+  "text": "아이",
+  "slow": false
+ },
+ {
+  "key": "92df3d0ff5eb",
+  "text": "많아요",
+  "slow": false
+ },
+ {
+  "key": "92e03fc3fa3e",
+  "text": "이거 뭐예요?",
+  "slow": true
+ },
+ {
+  "key": "931e06ca2a6c",
+  "text": "드세요",
+  "slow": false
+ },
+ {
+  "key": "934f9d188f6e",
+  "text": "집",
+  "slow": false
+ },
+ {
+  "key": "93d5745087c9",
+  "text": "제 우산은 가방 안에 있어요.",
+  "slow": true
+ },
+ {
+  "key": "94d49e76db66",
+  "text": "제 룸메이트는 정말 친절해요.",
+  "slow": true
+ },
+ {
+  "key": "95482fd1f3a5",
+  "text": "관리실",
+  "slow": false
+ },
+ {
+  "key": "959f80bb167c",
+  "text": "육",
+  "slow": false
+ },
+ {
+  "key": "95da674c3031",
+  "text": "지하철역이 어디에 있어요?",
+  "slow": true
+ },
+ {
+  "key": "962d4846411b",
+  "text": "가방이 정말 예뻐요.",
+  "slow": true
+ },
+ {
+  "key": "963156802b45",
+  "text": "애",
+  "slow": false
+ },
+ {
+  "key": "96873754251b",
+  "text": "왜",
+  "slow": false
+ },
+ {
+  "key": "973984f8ba07",
+  "text": "그거 제 가방이에요.",
+  "slow": true
+ },
+ {
+  "key": "979cd596f75f",
+  "text": "여기요, 김치찌개 하나 주세요.",
+  "slow": true
+ },
+ {
+  "key": "97e7090fc660",
+  "text": "몇 시에 만날까요?",
+  "slow": true
+ },
+ {
+  "key": "9867f2e28aaf",
+  "text": "빠",
+  "slow": false
+ },
+ {
+  "key": "987f733776e4",
+  "text": "아빠",
+  "slow": false
+ },
+ {
+  "key": "98bb79d2c3e7",
+  "text": "커피",
+  "slow": false
+ },
+ {
+  "key": "98cf248570be",
+  "text": "영화관 앞에서 만나요.",
+  "slow": true
+ },
+ {
+  "key": "99674d0313ad",
+  "text": "네, 감사합니다.",
+  "slow": true
+ },
+ {
+  "key": "99a812ae7853",
+  "text": "지금 몇 시예요?",
+  "slow": true
+ },
+ {
+  "key": "99e60e2e5e6c",
+  "text": "말씀",
+  "slow": false
+ },
+ {
+  "key": "9aa18e507125",
+  "text": "이름",
+  "slow": false
+ },
+ {
+  "key": "9b3ade54ec68",
+  "text": "지난주에 부산에 갔어요.",
+  "slow": true
+ },
+ {
+  "key": "9b47c4246aa4",
+  "text": "같이 영화 볼까요?",
+  "slow": true
+ },
+ {
+  "key": "9b7d34baf22d",
+  "text": "마",
+  "slow": false
+ },
+ {
+  "key": "9cdbcf20ae17",
+  "text": "음악 듣는 것을 좋아해요.",
+  "slow": true
+ },
+ {
+  "key": "9dc6e23e4804",
+  "text": "안녕히 계세요",
+  "slow": false
+ },
+ {
+  "key": "9dfb9dc36cff",
+  "text": "식당",
+  "slow": false
+ },
+ {
+  "key": "9e40bd930a83",
+  "text": "편의점에서 물을 샀어요.",
+  "slow": true
+ },
+ {
+  "key": "9e49f9be2c56",
+  "text": "이건 책이 아니에요.",
+  "slow": true
+ },
+ {
+  "key": "9e4bb560ba94",
+  "text": "차",
+  "slow": false
+ },
+ {
+  "key": "a0066f1d7ec2",
+  "text": "우리 반에 학생이 십 명 있어요.",
+  "slow": true
+ },
+ {
+  "key": "a037409af536",
+  "text": "천",
+  "slow": false
+ },
+ {
+  "key": "a161fbaa4f2c",
+  "text": "저기요, 괜찮아요?",
+  "slow": true
+ },
+ {
+  "key": "a1ad60494964",
+  "text": "김밥은 사천 원이에요.",
+  "slow": true
+ },
+ {
+  "key": "a1c7f5c56476",
+  "text": "예뻐요",
+  "slow": false
+ },
+ {
+  "key": "a1e42ee229fc",
+  "text": "여기는 우리 학교예요.",
+  "slow": true
+ },
+ {
+  "key": "a35116d52bc2",
+  "text": "하마",
+  "slow": false
+ },
+ {
+  "key": "a35e68beb381",
+  "text": "모자",
+  "slow": false
+ },
+ {
+  "key": "a3976f42ff49",
+  "text": "월세가 얼마예요?",
+  "slow": true
+ },
+ {
+  "key": "a39fb8b80637",
+  "text": "제",
+  "slow": false
+ },
+ {
+  "key": "a44ee133f054",
+  "text": "택배가 왔어요.",
+  "slow": true
+ },
+ {
+  "key": "a485b923c07a",
+  "text": "맛있게 드세요.",
+  "slow": true
+ },
+ {
+  "key": "a53f835e0855",
+  "text": "다음 주에 서울에 갈 거예요.",
+  "slow": true
+ },
+ {
+  "key": "a58f7c29f225",
+  "text": "이거",
+  "slow": false
+ },
+ {
+  "key": "a5f63c6d0376",
+  "text": "이 버스 수원역에 가요?",
+  "slow": true
+ },
+ {
+  "key": "a7601e8a520e",
+  "text": "선생님 댁이 어디세요?",
+  "slow": true
+ },
+ {
+  "key": "a7762a2330f0",
+  "text": "시",
+  "slow": false
+ },
+ {
+  "key": "a842629afdcd",
+  "text": "예",
+  "slow": false
+ },
+ {
+  "key": "a862646b2e3b",
+  "text": "자",
+  "slow": false
+ },
+ {
+  "key": "a8bb5b3f7835",
+  "text": "만 원이에요.",
+  "slow": true
+ },
+ {
+  "key": "a90a34b50541",
+  "text": "저는 매운 음식을 좋아해요.",
+  "slow": true
+ },
+ {
+  "key": "aa35ca789b9a",
+  "text": "이 신발 얼마예요?",
+  "slow": true
+ },
+ {
+  "key": "aa41f7661a5e",
+  "text": "작아요",
+  "slow": false
+ },
+ {
+  "key": "ab3873a24347",
+  "text": "공부해요",
+  "slow": false
+ },
+ {
+  "key": "ac0aba44aaee",
+  "text": "정말 반가워요.",
+  "slow": true
+ },
+ {
+  "key": "ac94e84f5271",
+  "text": "어제 친구를 만났어요.",
+  "slow": true
+ },
+ {
+  "key": "ad95f2b6dcc7",
+  "text": "내일",
+  "slow": false
+ },
+ {
+  "key": "ada1b261da85",
+  "text": "아르바이트",
+  "slow": false
+ },
+ {
+  "key": "ae0375b0ba17",
+  "text": "만났어요",
+  "slow": false
+ },
+ {
+  "key": "aebd74354697",
+  "text": "걸려요",
+  "slow": false
+ },
+ {
+  "key": "afdaa5738502",
+  "text": "이 가게는 옷이 싸요.",
+  "slow": true
+ },
+ {
+  "key": "b09ea522edfc",
+  "text": "다른 색깔 있어요?",
+  "slow": true
+ },
+ {
+  "key": "b09feaba2e5a",
+  "text": "만날까요",
+  "slow": false
+ },
+ {
+  "key": "b1445a899069",
+  "text": "정류장",
+  "slow": false
+ },
+ {
+  "key": "b175acc377e7",
+  "text": "아침",
+  "slow": false
+ },
+ {
+  "key": "b1b9ffdb5c93",
+  "text": "그거",
+  "slow": false
+ },
+ {
+  "key": "b2caeebbd757",
+  "text": "옆방이 너무 시끄러워요.",
+  "slow": true
+ },
+ {
+  "key": "b343b444896c",
+  "text": "내려요",
+  "slow": false
+ },
+ {
+  "key": "b3576909072e",
+  "text": "코",
+  "slow": false
+ },
+ {
+  "key": "b35f51fc953f",
+  "text": "봤어요",
+  "slow": false
+ },
+ {
+  "key": "b38f3d075119",
+  "text": "오빠",
+  "slow": false
+ },
+ {
+  "key": "b3937326bcf3",
+  "text": "오늘 저녁에 친구를 만나요.",
+  "slow": true
+ },
+ {
+  "key": "b44963f67fa8",
+  "text": "위",
+  "slow": false
+ },
+ {
+  "key": "b457cf07bb6c",
+  "text": "제 이름은 민수예요.",
+  "slow": true
+ },
+ {
+  "key": "b6816abd9612",
+  "text": "화장실은 식당 옆에 있어요.",
+  "slow": true
+ },
+ {
+  "key": "b893b34bace7",
+  "text": "방이 작지만 조용해요.",
+  "slow": true
+ },
+ {
+  "key": "b8b2f2af8573",
+  "text": "워",
+  "slow": false
+ },
+ {
+  "key": "b933922e49c0",
+  "text": "김치",
+  "slow": false
+ },
+ {
+  "key": "b99482aa55a2",
+  "text": "이유",
+  "slow": false
+ },
+ {
+  "key": "b99a86feb35f",
+  "text": "내일 근무를 바꿀 수 있어요?",
+  "slow": true
+ },
+ {
+  "key": "ba7659781416",
+  "text": "커요",
+  "slow": false
+ },
+ {
+  "key": "baacc077ca3a",
+  "text": "네, 시계예요.",
+  "slow": true
+ },
+ {
+  "key": "bad639cc7a6f",
+  "text": "지금 집에 있어요.",
+  "slow": true
+ },
+ {
+  "key": "bb99fe1a9bfe",
+  "text": "샀어요",
+  "slow": false
+ },
+ {
+  "key": "bbb794c8d4f6",
+  "text": "도서관에서 책을 읽어요.",
+  "slow": true
+ },
+ {
+  "key": "bbef14c0a2a0",
+  "text": "나중에 문자 보낼게요.",
+  "slow": true
+ },
+ {
+  "key": "bc08fbb2bad9",
+  "text": "역 앞에서 기다릴게요.",
+  "slow": true
+ },
+ {
+  "key": "bc30c10c3ce3",
+  "text": "어제 영화를 봤어요.",
+  "slow": true
+ },
+ {
+  "key": "bc89708ff7b3",
+  "text": "알",
+  "slow": false
+ },
+ {
+  "key": "bcc522c5bfa1",
+  "text": "저기요",
+  "slow": false
+ },
+ {
+  "key": "bd987192c259",
+  "text": "배가 아파서 못 먹었어요.",
+  "slow": true
+ },
+ {
+  "key": "bda0208a5c6a",
+  "text": "십",
+  "slow": false
+ },
+ {
+  "key": "bdfc4578247e",
+  "text": "이거 선생님 책이에요.",
+  "slow": true
+ },
+ {
+  "key": "be0f3f883804",
+  "text": "토요일은 제 쉬는 날이에요.",
+  "slow": true
+ },
+ {
+  "key": "be4c38c2050e",
+  "text": "회사원",
+  "slow": false
+ },
+ {
+  "key": "be6b235a0274",
+  "text": "아",
+  "slow": false
+ },
+ {
+  "key": "be8a7912294f",
+  "text": "물",
+  "slow": false
+ },
+ {
+  "key": "bec20f9740f7",
+  "text": "갔어요",
+  "slow": false
+ },
+ {
+  "key": "beef1b9f6048",
+  "text": "몇 호예요?",
+  "slow": true
+ },
+ {
+  "key": "bf49f397869c",
+  "text": "사장님, 오늘 조금 늦을 것 같아요.",
+  "slow": true
+ },
+ {
+  "key": "bf9a528f2bc8",
+  "text": "마감",
+  "slow": false
+ },
+ {
+  "key": "bfd360c3b501",
+  "text": "나라",
+  "slow": false
+ },
+ {
+  "key": "c00869777165",
+  "text": "기차",
+  "slow": false
+ },
+ {
+  "key": "c01bb55b8907",
+  "text": "안",
+  "slow": false
+ },
+ {
+  "key": "c0f3f8c5f482",
+  "text": "학교 앞에 카페가 있어요.",
+  "slow": true
+ },
+ {
+  "key": "c12837501332",
+  "text": "와이파이 비밀번호가 뭐예요?",
+  "slow": true
+ },
+ {
+  "key": "c187b5befafb",
+  "text": "마셨어요",
+  "slow": false
+ },
+ {
+  "key": "c39acc2d68a6",
+  "text": "기사님, 여기서 내릴게요.",
+  "slow": true
+ },
+ {
+  "key": "c3c6d557d9a2",
+  "text": "우산",
+  "slow": false
+ },
+ {
+  "key": "c47dadc5d8f5",
+  "text": "안녕히 가세요",
+  "slow": false
+ },
+ {
+  "key": "c5b0286b5410",
+  "text": "교수님, 하나 여쭤봐도 될까요?",
+  "slow": true
+ },
+ {
+  "key": "c65bf962bbe6",
+  "text": "싫어해요",
+  "slow": false
+ },
+ {
+  "key": "c664396c5362",
+  "text": "짜",
+  "slow": false
+ },
+ {
+  "key": "c66b320c9c58",
+  "text": "성함이 어떻게 되세요?",
+  "slow": true
+ },
+ {
+  "key": "c6d6e215b12b",
+  "text": "팔",
+  "slow": false
+ },
+ {
+  "key": "c8df8653b763",
+  "text": "잠시만",
+  "slow": false
+ },
+ {
+  "key": "c94aacfd9480",
+  "text": "다",
+  "slow": false
+ },
+ {
+  "key": "ca5eea5b5296",
+  "text": "넷",
+  "slow": false
+ },
+ {
+  "key": "cb55854f7b5f",
+  "text": "조용해요",
+  "slow": false
+ },
+ {
+  "key": "cbf1df6a6de2",
+  "text": "의",
+  "slow": false
+ },
+ {
+  "key": "ccf0c3a2f89b",
+  "text": "아니요",
+  "slow": false
+ },
+ {
+  "key": "cd6e3ede43e1",
+  "text": "저는 여섯 시에 퇴근해요.",
+  "slow": true
+ },
+ {
+  "key": "cda0a93acda4",
+  "text": "몰라요",
+  "slow": false
+ },
+ {
+  "key": "cdd53fc66531",
+  "text": "맛있어요",
+  "slow": false
+ },
+ {
+  "key": "ce05326dba5e",
+  "text": "하",
+  "slow": false
+ },
+ {
+  "key": "cfc1e124a640",
+  "text": "열",
+  "slow": false
+ },
+ {
+  "key": "cfc2df5c1da9",
+  "text": "여우",
+  "slow": false
+ },
+ {
+  "key": "d0235a87ebdc",
+  "text": "어제 뭐 했어요?",
+  "slow": true
+ },
+ {
+  "key": "d07eb370764a",
+  "text": "지금",
+  "slow": false
+ },
+ {
+  "key": "d168e8ff6187",
+  "text": "먹었어요",
+  "slow": false
+ },
+ {
+  "key": "d2705e43df7f",
+  "text": "일해요",
+  "slow": false
+ },
+ {
+  "key": "d360a51bd357",
+  "text": "이게 무슨 뜻이에요?",
+  "slow": true
+ },
+ {
+  "key": "d3b807bb5fa1",
+  "text": "갈아타요",
+  "slow": false
+ },
+ {
+  "key": "d4300bfc9287",
+  "text": "친구가 영화를 봐요.",
+  "slow": true
+ },
+ {
+  "key": "d45c7bed6aa9",
+  "text": "기침",
+  "slow": false
+ },
+ {
+  "key": "d4b885f8f51e",
+  "text": "주말에도 일할 수 있어요.",
+  "slow": true
+ },
+ {
+  "key": "d554c4ddca7f",
+  "text": "영화관",
+  "slow": false
+ },
+ {
+  "key": "d79eba70db4e",
+  "text": "주무세요",
+  "slow": false
+ },
+ {
+  "key": "d7d9909ee53d",
+  "text": "열쇠",
+  "slow": false
+ },
+ {
+  "key": "d8ea17277cc0",
+  "text": "감사합니다, 안녕히 계세요.",
+  "slow": true
+ },
+ {
+  "key": "d8f324428d3c",
+  "text": "학생",
+  "slow": false
+ },
+ {
+  "key": "d9090bbedcf7",
+  "text": "아파요",
+  "slow": false
+ },
+ {
+  "key": "d973a47f5dd7",
+  "text": "강의실",
+  "slow": false
+ },
+ {
+  "key": "d9b814dca800",
+  "text": "아침을 안 먹어요.",
+  "slow": true
+ },
+ {
+  "key": "db4c67791f35",
+  "text": "다시 한 번 말해 주세요.",
+  "slow": true
+ },
+ {
+  "key": "db4f4e1c81a6",
+  "text": "까",
+  "slow": false
+ },
+ {
+  "key": "db5a39ac6e6d",
+  "text": "같이 점심 먹을까요?",
+  "slow": true
+ },
+ {
+  "key": "db861cdcc2b9",
+  "text": "잠깐만요",
+  "slow": false
+ },
+ {
+  "key": "dbe0879714ed",
+  "text": "무슨 뜻이에요",
+  "slow": false
+ },
+ {
+  "key": "dcbadde3184d",
+  "text": "학교",
+  "slow": false
+ },
+ {
+  "key": "dd0ab4ab02c8",
+  "text": "친구가 우리 집에 와요.",
+  "slow": true
+ },
+ {
+  "key": "de96f038dd16",
+  "text": "알겠어요",
+  "slow": false
+ },
+ {
+  "key": "deb2e6ed1b9f",
+  "text": "열이 나고 기침을 해요.",
+  "slow": true
+ },
+ {
+  "key": "df186d09302b",
+  "text": "학교까지 얼마나 걸려요?",
+  "slow": true
+ },
+ {
+  "key": "df3388cfe4d6",
+  "text": "갈 거예요",
+  "slow": false
+ },
+ {
+  "key": "df6ec8eaea3a",
+  "text": "아파서 학교에 못 갔어요.",
+  "slow": true
+ },
+ {
+  "key": "e04f6b9b9e57",
+  "text": "앞",
+  "slow": false
+ },
+ {
+  "key": "e1654d4d968b",
+  "text": "손님, 뭐 드릴까요?",
+  "slow": true
+ },
+ {
+  "key": "e178e52a7d2b",
+  "text": "비빔밥 하나 주세요.",
+  "slow": true
+ },
+ {
+  "key": "e2189b700c10",
+  "text": "했어요",
+  "slow": false
+ },
+ {
+  "key": "e3525116b83f",
+  "text": "와요",
+  "slow": false
+ },
+ {
+  "key": "e5a7eb85d3c1",
+  "text": "재미있었어요",
+  "slow": false
+ },
+ {
+  "key": "e671aa59d990",
+  "text": "다시",
+  "slow": false
+ },
+ {
+  "key": "e67a764b9d01",
+  "text": "김치찌개",
+  "slow": false
+ },
+ {
+  "key": "e6cc255f8f47",
+  "text": "영화",
+  "slow": false
+ },
+ {
+  "key": "e7071ff21559",
+  "text": "편의점 옆에 은행이 있어요.",
+  "slow": true
+ },
+ {
+  "key": "e78498f904fe",
+  "text": "하나",
+  "slow": false
+ },
+ {
+  "key": "e7af1ffe6f75",
+  "text": "편의점",
+  "slow": false
+ },
+ {
+  "key": "e8762a25919b",
+  "text": "요",
+  "slow": false
+ },
+ {
+  "key": "e8a9724a92d7",
+  "text": "커피를 마셔요.",
+  "slow": true
+ },
+ {
+  "key": "e8b701a28309",
+  "text": "구",
+  "slow": false
+ },
+ {
+  "key": "e9a95de0add7",
+  "text": "안녕하세요",
+  "slow": false
+ },
+ {
+  "key": "ea869d7cd791",
+  "text": "열두 시에 점심을 먹어요.",
+  "slow": true
+ },
+ {
+  "key": "eaa640aced91",
+  "text": "몇",
+  "slow": false
+ },
+ {
+  "key": "eb9f90dfacea",
+  "text": "똑바로 가세요.",
+  "slow": true
+ },
+ {
+  "key": "ec067747603a",
+  "text": "병원에 가야 해요.",
+  "slow": true
+ },
+ {
+  "key": "ec488add9d1d",
+  "text": "사",
+  "slow": false
+ },
+ {
+  "key": "ed1703dc9415",
+  "text": "연세",
+  "slow": false
+ },
+ {
+  "key": "ee2ea79dfacb",
+  "text": "전화번호가 몇 번이에요?",
+  "slow": true
+ },
+ {
+  "key": "efd23dd5edb2",
+  "text": "가",
+  "slow": false
+ },
+ {
+  "key": "f03178980e64",
+  "text": "오늘 강의실이 바뀌었어요.",
+  "slow": true
+ },
+ {
+  "key": "f057d9a7672a",
+  "text": "오늘 약속이 있어요.",
+  "slow": true
+ },
+ {
+  "key": "f127ef73497d",
+  "text": "연구실",
+  "slow": false
+ },
+ {
+  "key": "f189eae288b4",
+  "text": "형은 회사에서 일해요.",
+  "slow": true
+ },
+ {
+  "key": "f2480f5009aa",
+  "text": "민수 씨는 한국 사람이에요.",
+  "slow": true
+ },
+ {
+  "key": "f308269d300a",
+  "text": "목이 아파요.",
+  "slow": true
+ },
+ {
+  "key": "f38f87e1cdc4",
+  "text": "퇴근해요",
+  "slow": false
+ },
+ {
+  "key": "f3e20ae188e5",
+  "text": "저는 학생이에요.",
+  "slow": true
+ },
+ {
+  "key": "f3fc28f45912",
+  "text": "매워요",
+  "slow": false
+ },
+ {
+  "key": "f414c5a8e49c",
+  "text": "이거 제 휴대폰이에요.",
+  "slow": true
+ },
+ {
+  "key": "f429d5becc35",
+  "text": "도와주세요",
+  "slow": false
+ },
+ {
+  "key": "f4c43048aba5",
+  "text": "벌써 도착했어요.",
+  "slow": true
+ },
+ {
+  "key": "f4fe174eefaf",
+  "text": "자요",
+  "slow": false
+ },
+ {
+  "key": "f5b2db88e9ac",
+  "text": "아홉 시에 시작해요.",
+  "slow": true
+ },
+ {
+  "key": "f5d9de961cd8",
+  "text": "고장 났어요",
+  "slow": false
+ },
+ {
+  "key": "f64ab5490128",
+  "text": "지금 뭐 해요?",
+  "slow": true
+ },
+ {
+  "key": "f67db198d7e8",
+  "text": "연세가 어떻게 되세요?",
+  "slow": true
+ },
+ {
+  "key": "f6e1218a5cc7",
+  "text": "시급이 얼마예요?",
+  "slow": true
+ },
+ {
+  "key": "f7aa9bd92c5b",
+  "text": "손님",
+  "slow": false
+ },
+ {
+  "key": "f7de8479218d",
+  "text": "사람",
+  "slow": false
+ },
+ {
+  "key": "f8073b892a7d",
+  "text": "만나서 반가워요.",
+  "slow": true
+ },
+ {
+  "key": "f8bf7a93905e",
+  "text": "둘",
+  "slow": false
+ },
+ {
+  "key": "f8df78512f6f",
+  "text": "기숙사",
+  "slow": false
+ },
+ {
+  "key": "f8e6518387a4",
+  "text": "약국이 어디에 있어요?",
+  "slow": true
+ },
+ {
+  "key": "fa3129059e4c",
+  "text": "영화가 정말 재미있었어요.",
+  "slow": true
+ },
+ {
+  "key": "faac263f42e1",
+  "text": "사요",
+  "slow": false
+ },
+ {
+  "key": "fb0483e34b84",
+  "text": "취미",
+  "slow": false
+ },
+ {
+  "key": "fb28891bf148",
+  "text": "물이에요?",
+  "slow": true
+ },
+ {
+  "key": "fb9e0fb2441b",
+  "text": "여보세요",
+  "slow": false
+ },
+ {
+  "key": "fbbd1d1816e0",
+  "text": "다섯",
+  "slow": false
+ },
+ {
+  "key": "fc3e0a447cd2",
+  "text": "네, 알겠어요.",
+  "slow": true
+ },
+ {
+  "key": "fcf2ac6fdc00",
+  "text": "바빠요",
+  "slow": false
+ },
+ {
+  "key": "fd962d4f43d4",
+  "text": "이거 주세요.",
+  "slow": true
+ },
+ {
+  "key": "fda54e360f1d",
+  "text": "도착하면 연락 주세요.",
+  "slow": true
+ },
+ {
+  "key": "fdeb80b15281",
+  "text": "다음 주에 시험이 있어요.",
+  "slow": true
+ },
+ {
+  "key": "fdf3c918c694",
+  "text": "일곱 시에 일어나요.",
+  "slow": true
+ },
+ {
+  "key": "ff7558d54cc0",
+  "text": "이 티셔츠는 너무 작아요.",
+  "slow": true
+ }
+]

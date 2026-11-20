@@ -7,7 +7,7 @@ adb root >/dev/null 2>&1 || true
 sleep 3
 adb wait-for-device
 adb shell settings put global window_animation_scale 0
-adb install -r app/build/outputs/apk/debug/app-debug.apk
+adb install -r app/build/outputs/apk/debug/app-x86_64-debug.apk
 adb logcat -c
 adb logcat -v time > logcat.txt 2>&1 &
 LOGPID=$!

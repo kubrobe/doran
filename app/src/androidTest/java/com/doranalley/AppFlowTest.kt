@@ -8,6 +8,7 @@ import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performScrollToNode
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -47,7 +48,9 @@ class AppFlowTest {
 
     private fun tap(tag: String) {
         rule.waitUntil(10_000) { rule.onAllNodesWithTag(tag).fetchSemanticsNodes().isNotEmpty() }
-        rule.onAllNodesWithTag(tag).onFirst().performClick()
+        val node = rule.onAllNodesWithTag(tag).onFirst()
+        try { node.performScrollTo() } catch (_: Throwable) { /* not in a scrollable container */ }
+        node.performClick()
         rule.waitForIdle()
     }
 

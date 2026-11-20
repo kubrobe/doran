@@ -21,7 +21,7 @@ import java.util.concurrent.Executors
  * Offline Korean speech recognition (sherpa-onnx zipformer, bundled in assets/asr).
  * Runs on one background thread; nothing leaves the phone.
  */
-class KoreanAsr(context: Context) {
+class KoreanAsr private constructor(context: Context) {
     private val app = context.applicationContext
     private val thread = Executors.newSingleThreadExecutor { r -> Thread(r, "korean-asr").apply { priority = Thread.NORM_PRIORITY } }
     private val dispatcher = thread.asCoroutineDispatcher()
@@ -93,5 +93,12 @@ class KoreanAsr(context: Context) {
         }
     }
 
-    companion object { private const val TAG = "KoreanAsr" }
+    companion object {
+        private const val TAG = "KoreanAsr"
+        @Volatile private var instance: KoreanAsr? = null
+
+        /** One recognizer per app process: the model is large, so it is loaded only once. */
+        fun get(context: Context): KoreanAsr =
+            instance ?: synchronized(this) { instance ?: KoreanAsr(context.applicationContext).also { instance = it } }
+    }
 }

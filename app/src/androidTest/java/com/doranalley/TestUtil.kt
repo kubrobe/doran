@@ -8,6 +8,7 @@ import android.media.MediaFormat
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.test.junit4.ComposeTestRule
 import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.test.isRoot
 import androidx.compose.ui.test.captureToImage
 import androidx.test.platform.app.InstrumentationRegistry
 import java.io.File
@@ -22,11 +23,18 @@ object TestUtil {
     }
 
     private var shot = 0
+    /** Saves a screenshot for review. Never fails the test. Dialogs are captured from their own window. */
     fun screenshot(rule: ComposeTestRule, name: String) {
-        rule.waitForIdle()
-        val dir = File(ctx.getExternalFilesDir(null), "screens").apply { mkdirs() }
-        val bmp = rule.onRoot().captureToImage().asAndroidBitmap()
-        FileOutputStream(File(dir, "%03d_%s.png".format(++shot, name))).use { bmp.compress(Bitmap.CompressFormat.PNG, 100, it) }
+        try {
+            rule.waitForIdle()
+            val dir = File(ctx.getExternalFilesDir(null), "screens").apply { mkdirs() }
+            val roots = rule.onAllNodes(isRoot()).fetchSemanticsNodes()
+            val img = if (roots.size > 1) rule.onAllNodes(isRoot())[roots.size - 1].captureToImage() else rule.onRoot().captureToImage()
+            val bmp = img.asAndroidBitmap()
+            FileOutputStream(File(dir, "%03d_%s.png".format(++shot, name))).use { bmp.compress(Bitmap.CompressFormat.PNG, 100, it) }
+        } catch (t: Throwable) {
+            android.util.Log.w("TestUtil", "screenshot $name failed", t)
+        }
     }
 
     /** Decodes a bundled mp3 to mono float samples at 16 kHz. */

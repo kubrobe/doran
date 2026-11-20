@@ -67,8 +67,8 @@ private fun Speakers(vm: AppViewModel, text: String, slow: Boolean = true, big: 
 @Composable
 private fun MascotPrompt(text: String, vm: AppViewModel?, audioText: String?) {
     val playing = vm?.audio?.playing?.collectAsState()?.value
-    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(bottom = 18.dp)) {
-        Mascot(size = 92.dp)
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp)) {
+        Mascot(size = 76.dp)
         Spacer(Modifier.width(8.dp))
         Row(
             Modifier.border(2.dp, C.Line, RoundedCornerShape(16.dp)).padding(horizontal = 12.dp, vertical = 10.dp),
@@ -276,9 +276,8 @@ private fun WordBank(tiles: List<Tile>, chosen: MutableList<Tile>, locked: Boole
     val fs = if (korean) 20.sp else 18.sp
     // Answer lines
     Box(Modifier.fillMaxWidth().defaultMinSize(minHeight = 128.dp).testTag("answerArea")) {
-        Column {
-            repeat(2) { Box(Modifier.fillMaxWidth().padding(top = 62.dp * (it) + 60.dp).height(2.dp).background(C.Line)) }
-        }
+        Box(Modifier.fillMaxWidth().padding(top = 63.dp).height(2.dp).background(C.Line))
+        Box(Modifier.fillMaxWidth().padding(top = 126.dp).height(2.dp).background(C.Line))
         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.padding(top = 8.dp)) {
             chosen.forEach { t ->
                 SelectBox(false, { if (!locked) chosen.remove(t) }, tag = "chosen:${t.text}", enabled = !locked) {
@@ -287,7 +286,7 @@ private fun WordBank(tiles: List<Tile>, chosen: MutableList<Tile>, locked: Boole
             }
         }
     }
-    Spacer(Modifier.height(28.dp))
+    Spacer(Modifier.height(18.dp))
     FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally), verticalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
         tiles.forEach { t ->
             val used = chosen.any { it.id == t.id }

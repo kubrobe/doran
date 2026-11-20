@@ -74,7 +74,7 @@ class AudioAndSpeechTest {
     }
 
     @Test fun recognizerUnderstandsTheBundledAudio() = runBlocking {
-        val asr = KoreanAsr(ctx)
+        val asr = KoreanAsr.get(ctx)
         val sentences = course.units.flatMap { it.sentences }.filter { it.speak }
         val sample = sentences.filterIndexed { i, _ -> i % 8 == 0 }
         var passed = 0

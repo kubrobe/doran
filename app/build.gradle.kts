@@ -15,8 +15,17 @@ android {
         versionCode = 2
         versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        // Phones (arm) and the x86_64 emulator. The speech checker ships native code for these.
-        ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64") }
+    }
+
+    // One APK per processor type keeps the download small (the speech checker has native code).
+    // Almost every phone from the last 6 years needs the arm64-v8a APK.
+    splits {
+        abi {
+            isEnable = true
+            reset()
+            include("arm64-v8a", "armeabi-v7a", "x86_64")
+            isUniversalApk = false
+        }
     }
 
     signingConfigs {

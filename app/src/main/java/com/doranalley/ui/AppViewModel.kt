@@ -79,7 +79,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     val course: Course = store.loadCourse()
     val audio = AudioPlayer(app)
     val recorder = MicRecorder(app)
-    val asr = KoreanAsr(app)
+    val asr = KoreanAsr.get(app)
     private val rng = Random(System.nanoTime())
     private val builder = LessonBuilder(course, rng)
 

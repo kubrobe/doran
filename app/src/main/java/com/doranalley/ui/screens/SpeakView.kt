@@ -306,14 +306,28 @@ private fun ScoreView(vm: AppViewModel, s: SpeakState.Scored, ex: Exercise.Speak
     }
 }
 
-/** The target sentence with each syllable coloured by how well it was heard. */
+/** The target sentence with each syllable coloured by how well it was heard; wraps between words, not inside them. */
+@OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 @Composable
 private fun ColoredSentence(target: String, heard: String) {
-    val marks = remember(target, heard) { Hangul.markSyllables(target, heard) }
-    Text(buildAnnotatedString {
-        marks.forEach { (c, m) ->
-            val col = when (m) { Hangul.Mark.GOOD -> C.GreenDark; Hangul.Mark.CLOSE -> C.GoldDark; Hangul.Mark.MISSED -> C.Red }
-            withStyle(SpanStyle(color = if (Hangul.isSyllable(c)) col else C.Ink)) { append(c) }
+    val words = remember(target, heard) {
+        val out = mutableListOf<List<Pair<Char, Hangul.Mark>>>()
+        var cur = mutableListOf<Pair<Char, Hangul.Mark>>()
+        Hangul.markSyllables(target, heard).forEach { p ->
+            if (p.first == ' ') { if (cur.isNotEmpty()) out.add(cur); cur = mutableListOf() } else cur.add(p)
         }
-    }, fontSize = 22.sp, fontWeight = FontWeight.Bold, modifier = Modifier.testTag("prompt"))
+        if (cur.isNotEmpty()) out.add(cur)
+        out
+    }
+    androidx.compose.foundation.layout.FlowRow(Modifier.testTag("prompt")) {
+        words.forEachIndexed { i, w ->
+            Text(buildAnnotatedString {
+                w.forEach { (c, m) ->
+                    val col = when (m) { Hangul.Mark.GOOD -> C.GreenDark; Hangul.Mark.CLOSE -> C.GoldDark; Hangul.Mark.MISSED -> C.Red }
+                    withStyle(SpanStyle(color = if (Hangul.isSyllable(c)) col else C.Ink)) { append(c) }
+                }
+                if (i < words.lastIndex) append(' ')
+            }, fontSize = 22.sp, fontWeight = FontWeight.Bold)
+        }
+    }
 }

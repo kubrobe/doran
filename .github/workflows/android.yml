@@ -2,7 +2,7 @@ name: Android build
 
 on:
   push:
-    branches: [main]
+    branches: [main, duolingo-korean]
   pull_request:
   workflow_dispatch:
 
@@ -12,21 +12,24 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
+      - name: Course file is up to date
+        run: python3 tools/build_course.py && git diff --exit-code app/src/main/assets/course/course.json
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "17"
       - uses: gradle/actions/setup-gradle@v4
-      - name: Unit tests (engine, matcher, scheduler, content)
+      - name: Unit tests (course, lessons, answer checking, scoring, progress)
         run: ./gradlew --no-daemon testDebugUnitTest
       - name: Build debug APK
         run: ./gradlew --no-daemon assembleDebug
+      - run: ls -la app/build/outputs/apk/debug/
       - uses: actions/upload-artifact@v4
         with:
-          name: doran-alley-debug-apk
+          name: doran-korean-apk
           path: app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: test-reports
+          name: unit-test-reports
           path: app/build/reports/tests/

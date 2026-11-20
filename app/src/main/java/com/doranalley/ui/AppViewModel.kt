@@ -1,576 +1,404 @@
 package com.doranalley.ui
 
 import android.app.Application
-import android.provider.Settings.Global
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.doranalley.audio.AudioHub
-import com.doranalley.audio.KoRecognizer
-import com.doranalley.audio.Recorder
-import com.doranalley.core.DiaryEntry
-import com.doranalley.core.Engine
-import com.doranalley.core.Episode
-import com.doranalley.core.Evidence
-import com.doranalley.core.Help
-import com.doranalley.core.InputMode
-import com.doranalley.core.ItemContext
-import com.doranalley.core.KoText
-import com.doranalley.core.MatchResult
-import com.doranalley.core.Meta
-import com.doranalley.core.Node
+import com.doranalley.audio.AudioPlayer
+import com.doranalley.audio.KoreanAsr
+import com.doranalley.audio.MicRecorder
+import com.doranalley.core.Course
+import com.doranalley.core.CourseUnit
+import com.doranalley.core.Exercise
+import com.doranalley.core.LessonBuilder
 import com.doranalley.core.Progress
-import com.doranalley.core.ReviewConfig
-import com.doranalley.core.ReviewItem
-import com.doranalley.core.Scheduler
-import com.doranalley.core.Settings
-import com.doranalley.core.TranscriptEntry
-import com.doranalley.core.TurnOutcome
-import com.doranalley.core.VocabSpec
-import com.doranalley.data.Content
-import com.doranalley.data.ContentRepository
+import com.doranalley.core.SpeechResult
 import com.doranalley.data.Store
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.io.File
-import java.util.UUID
+import java.time.LocalDate
+import kotlin.random.Random
 
-sealed class Screen {
-    data object Home : Screen()
-    data class Play(val episodeId: String) : Screen()
-    data class Mirror(val episodeId: String) : Screen()
-    data object Recall : Screen()
-    data object Quest : Screen()
-    data object Diary : Screen()
-    data object Settings : Screen()
+enum class Tab { LEARN, PRACTICE, WORDS, PROFILE }
+
+sealed interface Screen {
+    data class Onboarding(val step: Int = 0) : Screen
+    data class Home(val tab: Tab = Tab.LEARN) : Screen
+    data object Lesson : Screen
+    data class Complete(val summary: Summary) : Screen
+    data class Streak(val days: Int) : Screen
+    data object OutOfHearts : Screen
+    data class Placed(val unit: CourseUnit?) : Screen
+    data class Guidebook(val unit: CourseUnit) : Screen
+    data object Settings : Screen
 }
 
-/** State of the learner's current turn in an episode. */
-sealed class TurnUi {
-    data object Idle : TurnUi()
-    data object Listening : TurnUi()
-    data object Recording : TurnUi()
-    /** Recognizer output waiting for the learner to confirm what the app heard. */
-    data class Heard(val heard: String, val result: MatchResult) : TurnUi()
-    /** Learner tells the app what he meant: after recording (self-confirmed) or without the mic (listening only). */
-    data class Choose(val take: String?, val listeningOnly: Boolean, val heard: String?) : TurnUi()
+data class Summary(val xp: Int, val accuracy: Int, val seconds: Int, val perfect: Boolean, val title: String, val streakExtended: Int?)
+
+enum class SessionType { LESSON, PRACTICE, PLACEMENT }
+
+data class Feedback(val correct: Boolean, val solution: String, val note: String? = null)
+
+data class Session(
+    val type: SessionType,
+    val unit: CourseUnit?,
+    val lessonIndex: Int,
+    val queue: List<Exercise>,
+    val pos: Int = 0,
+    val feedback: Feedback? = null,
+    val mistakes: Int = 0,
+    val graded: Int = 0,
+    val combo: Int = 0,
+    val requeued: Set<Int> = emptySet(),
+    val startedAt: Long = System.currentTimeMillis(),
+    /** Placement only: unit index of each question. */
+    val placementUnits: List<Int> = emptyList(),
+    val wrongInARow: Int = 0,
+    /** Bumped every time an exercise is (re)shown so its UI state resets. */
+    val serial: Int = 0,
+) {
+    val current: Exercise? get() = queue.getOrNull(pos)
+    val fraction: Float get() = if (queue.isEmpty()) 0f else (pos + if (feedback != null) 1 else 0).toFloat() / queue.size
 }
 
-/** One-shot capture used by recall cards, the mirror and the diary. */
-data class Captured(val key: String, val alternatives: List<String>, val file: String?, val durationMs: Long)
+sealed interface SpeakState {
+    data object Idle : SpeakState
+    data object Recording : SpeakState
+    data object Checking : SpeakState
+    data class Scored(val result: SpeechResult, val take: File?, val attempt: Int) : SpeakState
+    data class NotHeard(val attempt: Int) : SpeakState
+    data class Error(val message: String) : SpeakState
+}
 
 class AppViewModel(app: Application) : AndroidViewModel(app) {
-
-    val content: Content = ContentRepository.load(app)
     private val store = Store(app)
-    val audio = AudioHub(app)
-    val recorder = Recorder(app)
-    val recognizer = KoRecognizer(app)
-    @OptIn(ExperimentalCoroutinesApi::class)
-    private val io = Dispatchers.IO.limitedParallelism(1)
+    val course: Course = store.loadCourse()
+    val audio = AudioPlayer(app)
+    val recorder = MicRecorder(app)
+    val asr = KoreanAsr(app)
+    private val rng = Random(System.nanoTime())
+    private val builder = LessonBuilder(course, rng)
 
-    var settings by mutableStateOf(store.loadSettings()); private set
-    var meta by mutableStateOf(store.loadMeta()); private set
-    var review by mutableStateOf(store.loadReview()); private set
-    var outcomesLog by mutableStateOf(store.loadOutcomes()); private set
-    var diary by mutableStateOf(store.loadDiary()); private set
+    private val _progress = MutableStateFlow(store.load())
+    val progress: StateFlow<Progress> = _progress.asStateFlow()
 
-    var screen by mutableStateOf<Screen>(Screen.Home)
+    private val _screen = MutableStateFlow<Screen>(if (_progress.value.onboarded) Screen.Home() else Screen.Onboarding())
+    val screen: StateFlow<Screen> = _screen.asStateFlow()
 
-    // ----- episode play state -----
-    var engine by mutableStateOf<Engine?>(null); private set
-    var progress by mutableStateOf<Progress?>(null); private set
-    var turnUi by mutableStateOf<TurnUi>(TurnUi.Idle); private set
-    var awaitingTap by mutableStateOf(false); private set
-    private var autoJob: Job? = null
+    private val _session = MutableStateFlow<Session?>(null)
+    val session: StateFlow<Session?> = _session.asStateFlow()
 
-    // ----- device capabilities -----
-    var micGranted by mutableStateOf(false)
-    var micDenied by mutableStateOf(false)
-    /** Set when the recognizer failed in a way that means Korean recognition is not usable on this device. */
-    var recognitionBroken by mutableStateOf(false); private set
-    var notice by mutableStateOf<String?>(null)
+    private val _speak = MutableStateFlow<SpeakState>(SpeakState.Idle)
+    val speak: StateFlow<SpeakState> = _speak.asStateFlow()
 
-    // ----- capture (recall / mirror / diary) -----
-    var capturing by mutableStateOf<String?>(null); private set
-    var captured by mutableStateOf<Captured?>(null); private set
+    /** Ticks every 30 s so heart refill and streak displays stay fresh. */
+    private val _now = MutableStateFlow(System.currentTimeMillis())
+    val now: StateFlow<Long> = _now.asStateFlow()
+
+    private var recordJob: Job? = null
+    private var pendingStreak: Int? = null
 
     init {
-        // Reopening mid-lesson returns straight to the scene.
-        meta.activeEpisode?.let { id ->
-            val p = store.loadProgress(id)
-            if (p != null && !p.finished && content.episodes.containsKey(id)) openEpisode(id)
-        }
+        asr.warmUp()
+        viewModelScope.launch { while (true) { delay(30_000); _now.value = System.currentTimeMillis() } }
     }
 
-    // ================= basics =================
-
-    fun now(): Long = System.currentTimeMillis() + settings.timeOffsetHours * 3_600_000L
-    val lang get() = settings.lang
-    val reviewConfig: ReviewConfig
-        get() = settings.intervalsHours?.let { content.config.review.copy(intervalsHours = it) } ?: content.config.review
-
-    val reducedMotion: Boolean
-        get() = settings.reducedMotion ?: runCatching {
-            Global.getFloat(getApplication<Application>().contentResolver, Global.ANIMATOR_DURATION_SCALE, 1f) == 0f
-        }.getOrDefault(false)
-
-    private fun persist(block: Store.() -> Unit) { viewModelScope.launch(io) { store.block() } }
-
-    fun updateSettings(f: (Settings) -> Settings) {
-        settings = f(settings)
-        val s = settings
-        persist { saveSettings(s) }
+    private fun update(f: (Progress) -> Progress) {
+        val p = f(_progress.value)
+        _progress.value = p
+        store.save(p)
     }
 
-    private fun updateMeta(f: (Meta) -> Meta) {
-        meta = f(meta)
-        val m = meta
-        persist { saveMeta(m) }
-    }
+    fun today(): LocalDate = LocalDate.now()
 
-    private fun updateReview(items: Map<String, ReviewItem>) {
-        review = items
-        persist { saveReview(items) }
-    }
-
-    fun setLang(code: String) = updateSettings { it.copy(lang = code) }
+    // ------------------------------------------------------------ navigation
 
     fun go(s: Screen) {
-        stopAllAudio()
-        if (s !is Screen.Play) { autoJob?.cancel(); awaitingTap = false }
-        screen = s
-    }
-
-    fun back() {
-        when (screen) {
-            Screen.Home -> {}
-            is Screen.Play -> { go(Screen.Home) }
-            else -> go(Screen.Home)
-        }
-    }
-
-    fun stopAllAudio() {
         audio.stop()
-        if (recorder.isRecording) recorder.cancel()
-        recognizer.destroy()
-        capturing = null
-        if (turnUi == TurnUi.Listening || turnUi == TurnUi.Recording) turnUi = TurnUi.Idle
+        _screen.value = s
     }
 
-    /** App went to the background: stop sound and the microphone, pause the scene. */
-    fun onPause() {
-        autoJob?.cancel()
-        stopAllAudio()
-    }
-
-    /** Back in the foreground: pick the scene up where it stopped. */
-    fun onResume() {
-        if (screen is Screen.Play && progress?.finished == false) runAuto()
-    }
-
-    // ================= episodes =================
-
-    fun episodeProgress(id: String): Progress? = store.loadProgress(id)
-
-    fun openEpisode(id: String, restart: Boolean = false) {
-        val ep = content.episodes[id] ?: return
-        val e = Engine(ep)
-        val saved = if (restart) null else store.loadProgress(id)?.takeIf { !it.finished }
-        engine = e
-        progress = saved ?: e.start(now()).also { p -> persist { saveProgress(p) } }
-        turnUi = TurnUi.Idle
-        awaitingTap = false
-        updateMeta { it.copy(activeEpisode = id) }
-        screen = Screen.Play(id)
-        runAuto()
-    }
-
-    fun episodeFor(p: Progress?): Episode? = p?.let { content.episodes[it.episodeId] }
-
-    private fun commit(p: Progress) {
-        progress = p
-        persist { saveProgress(p) }
-    }
-
-    /** Plays narration, lines and walks until the learner's next turn (or the end). */
-    private fun runAuto() {
-        autoJob?.cancel()
-        autoJob = viewModelScope.launch {
-            while (true) {
-                val e = engine ?: break
-                val p = progress ?: break
-                when (val node = e.current(p)) {
-                    is Node.Narration -> { awaitingTap = true; break }
-                    is Node.Line -> {
-                        commit(e.step(p, now()))
-                        introduceFrom(node, e.episode)
-                        speakLine(node)
-                        delay(450)
-                    }
-                    is Node.Move -> {
-                        commit(e.step(p, now()))
-                        delay(if (reducedMotion) 250 else 1400)
-                    }
-                    is Node.End -> {
-                        if (!p.finished) { commit(e.step(p, now())); onFinished(e.episode, node) }
-                        break
-                    }
-                    is Node.Turn -> break
-                }
-            }
+    fun back(): Boolean {
+        when (val s = _screen.value) {
+            is Screen.Home -> if (s.tab != Tab.LEARN) { go(Screen.Home(Tab.LEARN)); return true } else return false
+            is Screen.Guidebook, Screen.Settings -> { go(Screen.Home(if (s == Screen.Settings) Tab.PROFILE else Tab.LEARN)); return true }
+            is Screen.Onboarding -> if (s.step > 0) { go(Screen.Onboarding(s.step - 1)); return true } else return false
+            Screen.Lesson -> return false // the lesson screen shows its own "quit?" dialog
+            else -> { go(Screen.Home()); return true }
         }
     }
 
-    fun continueNarration() {
-        val e = engine ?: return
-        val p = progress ?: return
-        if (e.current(p) !is Node.Narration) return
-        awaitingTap = false
-        commit(e.step(p, now()))
-        runAuto()
+    // ------------------------------------------------------------ onboarding
+
+    fun setGoal(xp: Int) = update { it.copy(dailyGoal = xp) }
+
+    fun finishOnboarding(placement: Boolean) {
+        update { it.copy(onboarded = true) }
+        if (placement) startPlacement() else go(Screen.Home())
     }
 
-    private suspend fun speakLine(node: Node.Line) {
-        val c = content.characters[node.speaker]
-        val src = audio.playReference(node.id, node.ko, node.audio, settings.allowSynthetic, c?.pitch ?: 1f, c?.rate ?: 1f)
-        if (src == AudioHub.Source.NONE) delay(1200L + 70L * node.ko.length) // time to read when no voice is available
+    // ------------------------------------------------------------ settings
+
+    fun setSettings(f: (com.doranalley.core.Settings) -> com.doranalley.core.Settings) = update { it.copy(settings = f(it.settings)) }
+
+    fun resetProgress() {
+        update { Progress(onboarded = false) }
+        _session.value = null
+        go(Screen.Onboarding())
     }
 
-    fun replayEntry(entry: TranscriptEntry) {
-        val ko = entry.ko ?: return
-        val c = entry.speaker?.let { content.characters[it] }
-        viewModelScope.launch { audio.playReference("t:${entry.nodeId}", ko, entry.audio, settings.allowSynthetic, c?.pitch ?: 1f, c?.rate ?: 1f) }
+    // ------------------------------------------------------------ starting sessions
+
+    fun startLesson(unit: CourseUnit, lessonIndex: Int) {
+        val now = System.currentTimeMillis()
+        if (_progress.value.heartsNow(now) <= 0) { go(Screen.OutOfHearts); return }
+        val q = builder.lesson(unit, lessonIndex, _progress.value.filter(now))
+        begin(Session(SessionType.LESSON, unit, lessonIndex, q))
     }
 
-    fun replayLastLine() {
-        progress?.transcript?.lastOrNull { it.kind == "partner" }?.let(::replayEntry)
+    /** Returns false when there is nothing to practise yet. */
+    fun startPractice(mode: LessonBuilder.PracticeMode): Boolean {
+        val p = _progress.value
+        val studied = p.studiedUnits(course)
+        val q = builder.practice(studied, p.weakness(), mode, p.filter(System.currentTimeMillis()))
+        if (q.isEmpty()) return false
+        begin(Session(SessionType.PRACTICE, null, 0, q))
+        return true
     }
 
-    /** Target expressions enter the review list when he first hears them, with the sentence as context. */
-    private fun introduceFrom(line: Node.Line, ep: Episode) {
-        val targets = content.targetVocab()
-        val ids = (line.words.filter { content.vocab[it]?.target == true } + KoText.used(line.ko, targets)).toSet()
-        if (ids.isEmpty()) return
-        var items = review
-        for (id in ids) {
-            val v = content.vocab[id] ?: continue
-            val ctx = ItemContext(line.ko, line.gloss, ep.id, now())
-            items = items + (id to (items[id]?.let { Scheduler.addContext(it, ctx) } ?: introduce(v, ctx, "lesson", id)))
+    fun startPlacement() {
+        val units = course.units
+        val q = units.map { builder.placementQuestion(it) }
+        begin(Session(SessionType.PLACEMENT, null, 0, q, placementUnits = units.map { it.index }))
+    }
+
+    private fun begin(s: Session) {
+        _speak.value = SpeakState.Idle
+        _session.value = s
+        go(Screen.Lesson)
+        autoplay()
+    }
+
+    private fun autoplay() {
+        val ex = _session.value?.current ?: return
+        ex.autoplay?.let { audio.play(it) }
+    }
+
+    fun replayCurrent(slow: Boolean = false) {
+        val ex = _session.value?.current ?: return
+        val text = when (ex) {
+            is Exercise.Speak -> ex.ko
+            is Exercise.BuildKorean -> ex.sentence.ko
+            is Exercise.FillBlank -> ex.fill.full
+            is Exercise.PickKorean -> ex.word.ko
+            else -> ex.autoplay
+        } ?: return
+        audio.play(text, slow)
+    }
+
+    // ------------------------------------------------------------ answering
+
+    /** Called by an exercise when the learner presses CHECK (or finishes a match / speaking task). */
+    fun submit(correct: Boolean, note: String? = null, penalty: Boolean = true) {
+        val s = _session.value ?: return
+        if (s.feedback != null) return
+        val ex = s.current ?: return
+        val now = System.currentTimeMillis()
+        val graded = ex.kind != Exercise.Kind.INTRO
+        val firstTime = s.pos !in s.requeued
+        if (graded && ex.kind != Exercise.Kind.MATCH && s.type != SessionType.PLACEMENT && firstTime) {
+            update { it.record(ex.itemId, correct, now) }
         }
-        updateReview(items)
-    }
-
-    private fun introduce(v: VocabSpec, ctx: ItemContext?, source: String, id: String = v.id) =
-        Scheduler.introduce(id, v.ko, v.meaning, v.audio, source, ctx, now(), reviewConfig)
-
-    fun hint() {
-        val e = engine ?: return
-        val p = progress ?: return
-        commit(e.hint(p, now()))
-    }
-
-    fun playModel() {
-        val t = progress?.let { engine?.turn(it) } ?: return
-        viewModelScope.launch { audio.playReference("model:${t.id}", t.hints.model, t.hints.modelAudio, settings.allowSynthetic) }
-    }
-
-    /** Main microphone button during a turn. */
-    fun speak(requestPermission: () -> Unit) {
-        audio.stop()
-        when {
-            settings.inputMode == InputMode.LISTEN -> chooseWithoutSpeaking()
-            !micGranted -> requestPermission()
-            settings.inputMode == InputMode.AUTO && !recognitionBroken && recognizer.isAvailable() -> listen()
-            else -> record()
-        }
-    }
-
-    private fun listen() {
-        turnUi = TurnUi.Listening
-        recognizer.start(
-            onResult = { alts ->
-                val p = progress
-                val e = engine
-                turnUi = if (p != null && e != null) TurnUi.Heard(alts.first(), e.match(p, alts)) else TurnUi.Idle
-            },
-            onFailure = { f ->
-                turnUi = TurnUi.Idle
-                when (f) {
-                    KoRecognizer.Failure.NOTHING_HEARD -> notice = "notice_not_heard"
-                    KoRecognizer.Failure.NO_PERMISSION -> { micGranted = false; notice = "notice_mic_needed" }
-                    KoRecognizer.Failure.UNAVAILABLE -> { recognitionBroken = true; notice = "notice_recognition_unavailable" }
-                }
-            },
+        var next = s.copy(
+            feedback = Feedback(correct, ex.solution, note),
+            graded = s.graded + if (graded) 1 else 0,
+            mistakes = s.mistakes + if (!correct) 1 else 0,
+            combo = if (correct) s.combo + 1 else 0,
         )
+        if (!correct && penalty) {
+            when (s.type) {
+                SessionType.LESSON -> {
+                    update { it.loseHeart(now) }
+                    // Wrong answers come back at the end of the lesson (once).
+                    if (s.pos !in s.requeued && ex !is Exercise.Speak) {
+                        next = next.copy(queue = next.queue + ex, requeued = next.requeued + next.queue.size)
+                    }
+                }
+                SessionType.PRACTICE -> if (s.pos !in s.requeued && ex !is Exercise.Speak) {
+                    next = next.copy(queue = next.queue + ex, requeued = next.requeued + next.queue.size)
+                }
+                SessionType.PLACEMENT -> next = next.copy(wrongInARow = s.wrongInARow + 1)
+            }
+        } else if (s.type == SessionType.PLACEMENT) {
+            next = next.copy(wrongInARow = 0)
+        }
+        _session.value = next
+        if (_progress.value.settings.sounds && graded && (correct || penalty)) {
+            audio.effect(if (correct) AudioPlayer.Sfx.CORRECT else AudioPlayer.Sfx.WRONG)
+        }
     }
 
-    fun finishSpeaking() {
-        when (turnUi) {
-            TurnUi.Listening -> recognizer.finish()
-            TurnUi.Recording -> {
-                val r = recorder.stop()
-                turnUi = TurnUi.Choose(r?.first?.absolutePath, listeningOnly = false, heard = null)
-            }
+    /** CONTINUE after feedback (or after an intro card). */
+    fun next() {
+        val s = _session.value ?: return
+        val ex = s.current
+        if (s.feedback == null && ex !is Exercise.LetterIntro) return
+        audio.stop()
+        recorder.stop()
+        _speak.value = SpeakState.Idle
+        if (s.type == SessionType.PLACEMENT && s.feedback?.correct == false && s.wrongInARow >= 2) {
+            finishPlacement(s.placementUnits[s.pos - 1].coerceAtLeast(0))
+            return
+        }
+        if (s.type == SessionType.LESSON && _progress.value.heartsNow(System.currentTimeMillis()) <= 0) {
+            _session.value = null
+            go(Screen.OutOfHearts)
+            return
+        }
+        val pos = s.pos + 1
+        if (pos >= s.queue.size) { finish(s); return }
+        _session.value = s.copy(pos = pos, feedback = null, serial = s.serial + 1)
+        autoplay()
+    }
+
+    fun skipExercise(pause: Exercise.Kind) {
+        val s = _session.value ?: return
+        val now = System.currentTimeMillis()
+        when (pause) {
+            Exercise.Kind.SPEAK -> update { it.copy(speakingPausedUntil = now + Progress.PAUSE_MS) }
+            Exercise.Kind.LISTEN -> update { it.copy(listeningPausedUntil = now + Progress.PAUSE_MS) }
             else -> {}
         }
+        recorder.stop(); audio.stop()
+        _speak.value = SpeakState.Idle
+        // Drop the rest of that kind of exercise from this session.
+        val keep = s.queue.filterIndexed { i, e -> i <= s.pos || e.kind != pause }
+        val trimmed = keep.toMutableList().also { it.removeAt(s.pos) }
+        if (s.pos >= trimmed.size) { finish(s.copy(queue = trimmed)); return }
+        _session.value = s.copy(queue = trimmed, feedback = null, serial = s.serial + 1,
+            requeued = s.requeued.filter { it < s.pos }.toSet())
+        autoplay()
     }
 
-    private fun record() {
-        val t = progress?.let { engine?.turn(it) } ?: return
-        val f = File(store.scratchDir, "reply_${t.id}_${System.currentTimeMillis()}.m4a")
-        if (recorder.start("turn", f)) turnUi = TurnUi.Recording
-        else { notice = "notice_record_failed"; chooseWithoutSpeaking() }
+    fun quitSession() {
+        recorder.stop(); audio.stop()
+        val s = _session.value
+        _session.value = null
+        if (s?.type == SessionType.PLACEMENT) { finishOnboardingQuit(); return }
+        go(Screen.Home())
     }
 
-    /** Listening-only route: used when the microphone is declined or off. */
-    fun chooseWithoutSpeaking() { turnUi = TurnUi.Choose(null, listeningOnly = true, heard = null) }
+    private fun finishOnboardingQuit() = go(Screen.Home())
 
-    /** "That's not what I said": he spoke, but picks the meaning himself (self-confirmed). */
-    fun correctHeard() {
-        val h = (turnUi as? TurnUi.Heard)?.heard
-        turnUi = TurnUi.Choose(null, listeningOnly = false, heard = h)
+    fun stopPlacementHere() {
+        val s = _session.value ?: return
+        finishPlacement(s.placementUnits.getOrElse(s.pos) { course.units.size })
     }
 
-    fun retry() { recognizer.destroy(); turnUi = TurnUi.Idle }
-
-    fun playTake(path: String) { viewModelScope.launch { audio.playFile(File(path)) } }
-
-    /** Confirms a recognized reply. Used targets are detected in the recognized text. */
-    fun confirmHeard(intentId: String) {
-        val h = turnUi as? TurnUi.Heard ?: return
-        val t = progress?.let { engine?.turn(it) } ?: return
-        val used = KoText.used(h.heard, t.targets.mapNotNull { content.vocab[it] })
-        resolve(intentId, h.heard, used, Evidence.RECOGNIZED)
+    private fun finishPlacement(unitIndex: Int) {
+        _session.value = null
+        update { it.placeAt(course, unitIndex).addXp(10, today()) }
+        go(Screen.Placed(course.units.getOrNull(unitIndex)))
     }
 
-    /** The partner reacts to something he did not understand (natural clarification). */
-    fun sendUnclear() {
-        val e = engine ?: return
-        val p = progress ?: return
-        val (heard, ev) = when (val u = turnUi) {
-            is TurnUi.Heard -> u.heard to Evidence.RECOGNIZED
-            is TurnUi.Choose -> u.heard to (if (u.listeningOnly) Evidence.LISTENING_ONLY else Evidence.SELF_CONFIRMED)
-            else -> null to Evidence.SELF_CONFIRMED
+    private fun finish(s: Session) {
+        val now = System.currentTimeMillis()
+        _session.value = null
+        if (s.type == SessionType.PLACEMENT) { finishPlacement(course.units.size); return }
+        val perfect = s.mistakes == 0
+        val base = when {
+            s.type == SessionType.PRACTICE -> 10
+            s.unit != null && s.lessonIndex >= s.unit.lessonCount - 1 -> 15
+            else -> 10
         }
-        turnUi = TurnUi.Idle
-        commit(e.noMatch(p, heard, ev, now()))
-        runAuto()
-    }
-
-    fun confirmChoice(intentId: String, used: Set<String>) {
-        val c = turnUi as? TurnUi.Choose ?: return
-        resolve(intentId, c.heard, if (c.listeningOnly) emptySet() else used,
-            if (c.listeningOnly) Evidence.LISTENING_ONLY else Evidence.SELF_CONFIRMED)
-    }
-
-    private fun resolve(intentId: String, heard: String?, used: Set<String>, ev: Evidence) {
-        val e = engine ?: return
-        val p = progress ?: return
-        val (np, outcome) = e.resolve(p, intentId, heard, used, ev, now())
-        turnUi = TurnUi.Idle
-        commit(np)
-        applyOutcome(outcome)
-        runAuto()
-    }
-
-    /** Communication success and vocabulary recall are recorded separately. */
-    private fun applyOutcome(o: TurnOutcome) {
-        val log = outcomesLog + o
-        outcomesLog = log
-        persist { saveOutcomes(log) }
-        val ev = Evidence.of(o.evidence)
-        var items = review
-        for (t in o.targets) {
-            val v = content.vocab[t] ?: continue
-            val item = items[t] ?: introduce(v, null, "lesson")
-            items = items + (t to Scheduler.record(item, now(), o.help, t in o.used, ev, o.episodeId, reviewConfig))
-        }
-        updateReview(items)
-    }
-
-    private fun onFinished(ep: Episode, end: Node.End) {
-        updateMeta { m ->
-            m.copy(
-                activeEpisode = null,
-                completed = (m.completed + (ep.parent ?: ep.id)).distinct(),
-                unlocks = (m.unlocks + end.unlocks).distinct(),
-                recallVariantsDone = if (ep.parent != null) (m.recallVariantsDone + ep.id).distinct() else m.recallVariantsDone,
+        val xp = base + if (perfect) 5 else 0
+        val before = _progress.value
+        val extendedBefore = before.extendedToday(today())
+        update { p ->
+            var n = p.addXp(xp, today()).copy(
+                lessonsCompleted = p.lessonsCompleted + 1,
+                perfectLessons = p.perfectLessons + if (perfect) 1 else 0,
             )
+            if (s.type == SessionType.LESSON && s.unit != null) n = n.completeNode(s.unit, s.lessonIndex)
+            if (s.type == SessionType.PRACTICE) n = n.gainHeart(now)
+            n
         }
+        if (_progress.value.settings.sounds) audio.effect(AudioPlayer.Sfx.COMPLETE)
+        val graded = s.graded.coerceAtLeast(1)
+        val accuracy = (100 * (graded - s.mistakes).coerceAtLeast(0) / graded)
+        pendingStreak = if (!extendedBefore) _progress.value.streak else null
+        val title = when (s.type) {
+            SessionType.PRACTICE -> "Practice complete!"
+            else -> if (s.unit != null && s.lessonIndex >= s.unit.lessonCount - 1) "Unit ${s.unit.number} complete!" else "Lesson complete!"
+        }
+        go(Screen.Complete(Summary(xp, accuracy, ((now - s.startedAt) / 1000).toInt(), perfect, title, pendingStreak)))
     }
 
-    // ================= words =================
-
-    fun reviewIdFor(vocabId: String) = if (content.vocab[vocabId]?.target == true) vocabId else "saved:$vocabId"
-
-    fun isSaved(vocabId: String) = review.containsKey(reviewIdFor(vocabId))
-
-    /** Saves a word he tapped after the exchange, together with the sentence he heard. */
-    fun saveWord(vocabId: String, entry: TranscriptEntry) {
-        val v = content.vocab[vocabId] ?: return
-        val id = reviewIdFor(vocabId)
-        val ctx = ItemContext(entry.ko ?: v.ko, entry.text, progress?.episodeId ?: "", now())
-        val item = review[id]?.let { Scheduler.addContext(it, ctx) } ?: introduce(v, ctx, "saved", id)
-        updateReview(review + (id to item))
-        notice = "notice_saved"
+    fun afterComplete() {
+        val st = pendingStreak
+        pendingStreak = null
+        if (st != null) go(Screen.Streak(st)) else go(Screen.Home())
     }
 
-    fun playKo(key: String, ko: String, audioPath: String? = null) {
-        viewModelScope.launch { audio.playReference(key, ko, audioPath, settings.allowSynthetic) }
-    }
+    // ------------------------------------------------------------ hearts
 
-    // ================= recall & quest =================
+    fun refillForTesting() = update { it.refillHearts(System.currentTimeMillis()) }
 
-    fun dueItems(): List<ReviewItem> = Scheduler.due(review.values, now())
+    // ------------------------------------------------------------ speaking
 
-    fun nextDue(): ReviewItem? = review.values.filter { !Scheduler.isDue(it, now()) }.minByOrNull { it.nextReview }
-
-    /** Five-minute quest: due items first, then the ones practiced longest ago. */
-    fun questItems(): List<ReviewItem> {
-        val due = dueItems()
-        val rest = review.values.filter { it !in due }.sortedBy { it.lastPracticed ?: it.introducedAt }
-        return (due + rest).take(3)
-    }
-
-    fun recordRecall(itemId: String, help: Int, produced: Boolean, ev: Evidence, setting: String) {
-        val item = review[itemId] ?: return
-        updateReview(review + (itemId to Scheduler.record(item, now(), help, produced, ev, setting, reviewConfig)))
-    }
-
-    /** Next-day twist: a recall variant of a finished episode, rotating through settings. */
-    fun twistEpisode(): Episode? {
-        val parent = meta.completed.firstOrNull { content.recallVariants(it).isNotEmpty() } ?: return null
-        val variants = content.recallVariants(parent).sortedBy { it.id }
-        val fresh = variants.filter { it.id !in meta.recallVariantsDone }
-        val pool = fresh.ifEmpty { variants }
-        return pool[((now() / 86_400_000L) % pool.size).toInt()]
-    }
-
-    // ================= capture for recall / mirror / diary =================
-
-    fun canRecognize() = micGranted && settings.inputMode == InputMode.AUTO && !recognitionBroken && recognizer.isAvailable()
-
-    fun startCapture(key: String, recognize: Boolean, requestPermission: () -> Unit) {
+    fun startSpeaking(target: String) {
+        if (_speak.value == SpeakState.Recording || _speak.value == SpeakState.Checking) return
+        val attempt = when (val s = _speak.value) {
+            is SpeakState.Scored -> s.attempt + 1
+            is SpeakState.NotHeard -> s.attempt + 1
+            else -> 1
+        }
         audio.stop()
-        if (!micGranted) { requestPermission(); return }
-        captured = null
-        if (recognize && canRecognize()) {
-            capturing = key
-            recognizer.start(
-                onResult = { alts -> capturing = null; captured = Captured(key, alts, null, 0) },
-                onFailure = { f ->
-                    capturing = null
-                    if (f == KoRecognizer.Failure.UNAVAILABLE) recognitionBroken = true
-                    notice = if (f == KoRecognizer.Failure.NOTHING_HEARD) "notice_not_heard" else "notice_recognition_unavailable"
-                },
-            )
-        } else {
-            val f = File(store.scratchDir, "${key.replace(Regex("[^A-Za-z0-9_]"), "_")}_${System.currentTimeMillis()}.m4a")
-            if (recorder.start(key, f)) capturing = key else notice = "notice_record_failed"
+        _speak.value = SpeakState.Recording
+        recordJob = viewModelScope.launch {
+            when (val r = recorder.record()) {
+                is MicRecorder.Result.Failed -> _speak.value = SpeakState.Error(r.message())
+                is MicRecorder.Result.Ok -> {
+                    if (!r.heardVoice) { _speak.value = SpeakState.NotHeard(attempt); return@launch }
+                    score(target, r.samples, r.file, attempt)
+                }
+            }
         }
     }
 
-    fun stopCapture() {
-        val key = capturing ?: return
-        if (recognizer.listening) { recognizer.finish(); return }
-        val r = recorder.stop()
-        capturing = null
-        captured = r?.let { Captured(key, emptyList(), it.first.absolutePath, it.second) }
-    }
-
-    fun clearCapture(deleteFile: Boolean = true) {
-        captured?.file?.let { if (deleteFile && it.startsWith(store.scratchDir.absolutePath)) File(it).delete() }
-        captured = null
-    }
-
-    // ================= mirror =================
-
-    fun ladder(phraseId: String) = meta.ladder[phraseId] ?: 0
-
-    fun markLadder(phraseId: String, step: Int) {
-        if (ladder(phraseId) >= step) return
-        updateMeta { it.copy(ladder = it.ladder + (phraseId to step)) }
-    }
-
-    /** A/B: the reference, then his own take. */
-    fun playAB(key: String, ko: String, audioPath: String?, take: String) {
-        viewModelScope.launch {
-            audio.playReference(key, ko, audioPath, settings.allowSynthetic)
-            delay(350)
-            audio.playFile(File(take))
+    private suspend fun score(target: String, samples: FloatArray, take: File?, attempt: Int) {
+        _speak.value = SpeakState.Checking
+        val heard = asr.recognize(samples)
+        _speak.value = when {
+            heard == null -> SpeakState.Error("The speech checker could not start on this phone.")
+            heard.isBlank() -> SpeakState.NotHeard(attempt)
+            else -> SpeakState.Scored(SpeechResult.of(target, heard), take, attempt)
         }
     }
 
-    // ================= diary =================
-
-    /** Saves the current capture as a diary entry. Takes are only kept when he chooses. */
-    fun saveCaptureToDiary(kind: String, promptId: String?, phraseKo: String?) {
-        val c = captured ?: return
-        val src = c.file?.let(::File) ?: return
-        val id = UUID.randomUUID().toString()
-        val name = "$id.m4a"
-        val dst = store.diaryFile(name)
-        if (!src.renameTo(dst)) { src.copyTo(dst, overwrite = true); src.delete() }
-        val entry = DiaryEntry(id, now(), kind, promptId, phraseKo, name, c.durationMs)
-        val list = diary + entry
-        diary = list
-        captured = null
-        persist { saveDiary(list) }
-        notice = "notice_saved_diary"
+    /** Test hook: score prepared 16 kHz audio as if the learner had just said it. */
+    fun scoreForTest(target: String, samples: FloatArray) {
+        recordJob = viewModelScope.launch { score(target, samples, null, 1) }
     }
 
-    fun deleteDiary(entry: DiaryEntry) {
-        store.diaryFile(entry.file).delete()
-        val list = diary - entry
-        diary = list
-        persist { saveDiary(list) }
+    private fun MicRecorder.Result.Failed.message() = reason
+
+    fun stopSpeaking() = recorder.stop()
+
+    fun playTake() {
+        val s = _speak.value
+        if (s is SpeakState.Scored && s.take != null) audio.playFile(s.take) else audio.playFile(recorder.lastTake)
     }
 
-    fun diaryPath(entry: DiaryEntry) = store.diaryFile(entry.file)
-
-    fun playDiary(entry: DiaryEntry) { viewModelScope.launch { audio.playFile(diaryPath(entry)) } }
-
-    /** Side by side: baseline, then the latest weekly retell. */
-    fun playCompare(a: DiaryEntry, b: DiaryEntry) {
-        viewModelScope.launch {
-            audio.playFile(diaryPath(a))
-            delay(600)
-            audio.playFile(diaryPath(b))
-        }
-    }
-
-    fun independentExpressions(): List<ReviewItem> = review.values.filter { it.independentDays.isNotEmpty() }
-    fun clarificationCount(): Int = outcomesLog.count { it.clarification }
-    fun goalsReached(): Int = outcomesLog.count { it.success }
-
-    // ================= settings / test tools =================
-
-    fun shiftTime(hours: Long) = updateSettings { it.copy(timeOffsetHours = it.timeOffsetHours + hours) }
-    fun resetTime() = updateSettings { it.copy(timeOffsetHours = 0) }
-
-    fun resetProgress(keepDiary: Boolean) {
-        stopAllAudio()
-        autoJob?.cancel()
-        engine = null
-        progress = null
-        viewModelScope.launch(io) { store.resetProgress(keepDiary) }
-        meta = Meta()
-        review = emptyMap()
-        outcomesLog = emptyList()
-        if (!keepDiary) diary = emptyList()
-        screen = Screen.Home
-    }
+    fun resetSpeak() { _speak.value = SpeakState.Idle }
 
     override fun onCleared() {
-        stopAllAudio()
+        recorder.stop()
         audio.release()
-        recognizer.destroy()
         super.onCleared()
     }
 }

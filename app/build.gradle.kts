@@ -12,14 +12,28 @@ android {
         applicationId = "com.doranalley"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0-pilot"
+        versionCode = 2
+        versionName = "1.0.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // Phones (arm) and the x86_64 emulator. The speech checker ships native code for these.
+        ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64") }
+    }
+
+    signingConfigs {
+        // A fixed debug key in the repo, so every build (yours and CI's) can update the installed app.
+        getByName("debug") {
+            storeFile = file("debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
     }
 
     buildTypes {
+        debug { signingConfig = signingConfigs.getByName("debug") }
         release {
-            isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
@@ -27,11 +41,14 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions { jvmTarget = "17" }
-    buildFeatures { compose = true }
-    // Unit tests read the real content files from src/main/assets.
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
     testOptions { unitTests.isReturnDefaultValues = true }
-    // Keep bundled audio uncompressed so MediaPlayer can open it straight from assets.
-    androidResources { noCompress += listOf("m4a", "mp3", "ogg", "wav") }
+    // Keep audio and the speech model uncompressed so they can be opened straight from the APK.
+    androidResources { noCompress += listOf("mp3", "wav", "onnx") }
+    packaging { jniLibs { useLegacyPackaging = true } }
 }
 
 dependencies {
@@ -46,7 +63,17 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-extended")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    // Offline Korean speech recognition (sherpa-onnx, Apache-2.0).
+    implementation(files("libs/sherpa-onnx-static-2.0.2.aar"))
     debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.json:json:20240303")
+
+    androidTestImplementation(composeBom)
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+    androidTestImplementation("androidx.test:runner:1.6.2")
+    androidTestImplementation("androidx.test:rules:1.6.1")
 }

@@ -57,7 +57,7 @@ import com.doranalley.ui.components.SelectBox
 import com.doranalley.ui.theme.C
 
 @Composable
-private fun Page(content: @Composable () -> Unit) {
+private fun Page(content: @Composable androidx.compose.foundation.layout.ColumnScope.() -> Unit) {
     Column(Modifier.fillMaxSize().background(Color.White).statusBarsPadding().navigationBarsPadding().padding(20.dp)) { content() }
 }
 

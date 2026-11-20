@@ -28,6 +28,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.EmojiEvents
@@ -289,7 +290,7 @@ fun GuidebookScreen(vm: AppViewModel, u: CourseUnit) {
     Column(Modifier.fillMaxSize().background(Color.White).statusBarsPadding().navigationBarsPadding()) {
         Row(Modifier.fillMaxWidth().padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
             androidx.compose.material3.IconButton(onClick = { vm.back() }, modifier = Modifier.testTag("back")) {
-                Icon(androidx.compose.material.icons.Icons.AutoMirrored.Filled.ArrowBack, "Back", tint = C.Muted)
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back", tint = C.Muted)
             }
             Text("Unit ${u.number} guidebook", style = androidx.compose.material3.MaterialTheme.typography.titleMedium)
         }

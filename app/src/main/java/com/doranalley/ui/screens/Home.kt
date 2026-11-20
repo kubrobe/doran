@@ -162,7 +162,7 @@ private fun LiquidTabBar(tab: Tab, modifier: Modifier = Modifier, onSelect: (Tab
     val accent = C.Green
     Box(
         modifier.padding(horizontal = 18.dp, vertical = 10.dp).fillMaxWidth().height(66.dp)
-            .glass(shape, elevation = 18.dp, opaque = 0.55f)
+            .glass(shape, elevation = 16.dp, opaque = 0.86f)
             .clip(shape)
             .drawBehind {
                 val n = tabItems.size

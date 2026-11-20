@@ -3,6 +3,7 @@
 package com.doranalley.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.foundation.layout.requiredSize
 import com.doranalley.ui.components.BrushCircle
 import com.doranalley.ui.components.DancheongBand
@@ -333,7 +334,12 @@ private fun WordBank(tiles: List<Tile>, chosen: MutableList<Tile>, locked: Boole
         tiles.forEach { t ->
             val used = chosen.any { it.id == t.id }
             if (used) {
-                Box(Modifier.background(C.Line.copy(alpha = 0.55f), RoundedCornerShape(18.dp)).padding(horizontal = 14.dp, vertical = 12.dp)) {
+                val dash = C.LineDark
+                Box(Modifier.drawBehind {
+                    drawRoundRect(dash.copy(alpha = 0.18f), cornerRadius = androidx.compose.ui.geometry.CornerRadius(18.dp.toPx()))
+                    drawRoundRect(dash, cornerRadius = androidx.compose.ui.geometry.CornerRadius(18.dp.toPx()),
+                        style = androidx.compose.ui.graphics.drawscope.Stroke(1.5.dp.toPx(), pathEffect = androidx.compose.ui.graphics.PathEffect.dashPathEffect(floatArrayOf(8.dp.toPx(), 6.dp.toPx()))))
+                }.padding(horizontal = 14.dp, vertical = 12.dp)) {
                     Text(t.text, fontSize = fs, color = Color.Transparent)
                 }
             } else {

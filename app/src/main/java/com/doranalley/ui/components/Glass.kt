@@ -24,7 +24,12 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ClipOp
+import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.addOutline
+import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawOutline
@@ -56,16 +61,17 @@ fun Modifier.glass(
     opaque: Float = 0f,
 ): Modifier {
     val night = C.night
-    val shadowColor = if (glow != Color.Unspecified) glow.copy(alpha = 0.35f + 0.35f * night) else C.GlassShadow
+    val shadowColor = if (glow != Color.Unspecified) glow.copy(alpha = 0.45f + 0.35f * night) else C.GlassShadow
     val base = C.Card
     val top = C.GlassTop
     val bottom = C.GlassBottom
     val rimC = C.GlassRim
     val line = C.GlassLine
     return this
-        .then(if (elevation > 0.dp) Modifier.shadow(elevation, shape, clip = false, ambientColor = shadowColor, spotColor = shadowColor) else Modifier)
         .drawWithCache {
             val outline = shape.createOutline(size, layoutDirection, this)
+            val path = Path().apply { addOutline(outline) }
+            val spread = elevation.toPx()
             val fill = Brush.verticalGradient(listOf(top, bottom))
             val rimBrush = Brush.verticalGradient(0f to rimC, 0.45f to rimC.copy(alpha = 0f), 1f to rimC.copy(alpha = rimC.alpha * 0.25f))
             val sheen = Brush.radialGradient(
@@ -73,6 +79,16 @@ fun Modifier.glass(
                 center = Offset(size.width * 0.22f, 0f), radius = max(size.width, size.height) * 0.75f,
             )
             onDrawBehind {
+                // Soft shadow (or coloured glow) outside the shape only, so it never shows through the glass.
+                if (spread > 0f) clipPath(path, ClipOp.Difference) {
+                    val steps = 7
+                    translate(top = spread * (if (glow != Color.Unspecified) 0.1f else 0.35f)) {
+                        for (i in steps downTo 1) {
+                            val f = i / steps.toFloat()
+                            drawPath(path, shadowColor.copy(alpha = shadowColor.alpha * 0.16f), style = Stroke(width = spread * 2.2f * f))
+                        }
+                    }
+                }
                 if (opaque > 0f) drawOutline(outline, base.copy(alpha = opaque))
                 drawOutline(outline, fill)
                 if (tint != Color.Unspecified) drawOutline(outline, Brush.verticalGradient(listOf(tint.copy(alpha = tintAlpha * 1.25f), tint.copy(alpha = tintAlpha * 0.7f))))
@@ -287,7 +303,7 @@ fun GlowBurst(modifier: Modifier = Modifier, color: Color, key: Any? = Unit, dur
 fun BrushCircle(modifier: Modifier = Modifier, color: Color, delayMs: Int = 150, durationMs: Int = 900, width: Dp = 7.dp) {
     val p = remember { Animatable(0f) }
     LaunchedEffect(Unit) { p.animateTo(1f, tween(durationMs, delayMs, Motion.EaseInOut)) }
-    Canvas(modifier) {
+    Canvas(modifier.graphicsLayer { alpha = color.alpha; compositingStrategy = CompositingStrategy.Offscreen }) {
         val sweep = 330f * p.value
         if (sweep <= 0f) return@Canvas
         val r = size.minDimension / 2f - width.toPx()
@@ -299,9 +315,9 @@ fun BrushCircle(modifier: Modifier = Modifier, color: Color, delayMs: Int = 150,
             val a0 = (start + f0 * 330f) * PI.toFloat() / 180f
             val a1 = (start + ((i + 1) / steps.toFloat()).coerceAtMost(sweep / 330f) * 330f) * PI.toFloat() / 180f
             val taper = (1f - f0 * 0.75f)
-            val wob = 1f + 0.06f * sin(f0 * 23f)
+            val wob = 1f + 0.025f * sin(f0 * 17f)
             drawLine(
-                color.copy(alpha = color.alpha * (0.55f + 0.45f * taper)),
+                color.copy(alpha = 1f),
                 center + Offset(cos(a0) * r * wob, sin(a0) * r * wob), center + Offset(cos(a1) * r * wob, sin(a1) * r * wob),
                 width.toPx() * taper, StrokeCap.Round,
             )

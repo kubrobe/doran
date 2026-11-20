@@ -7,7 +7,9 @@ import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.compose.foundation.background
+import androidx.activity.SystemBarStyle
+import com.doranalley.ui.components.AmbientBackdrop
+import com.doranalley.ui.theme.isNight
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.LaunchedEffect
@@ -15,7 +17,6 @@ import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.doranalley.ui.components.enterRise
-import com.doranalley.ui.theme.C
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.lifecycleScope
@@ -53,11 +54,24 @@ class MainActivity : ComponentActivity() {
             }
         }
         setContent {
-            DoranTheme {
+            val progress by vm.progress.collectAsState()
+            val mode = progress.settings.theme
+            DoranTheme(mode) {
+                val night = isNight(mode)
+                // Light status-bar icons at night, dark ones by day.
+                LaunchedEffect(night) {
+                    val transparent = android.graphics.Color.TRANSPARENT
+                    val style = if (night) SystemBarStyle.dark(transparent) else SystemBarStyle.light(transparent, transparent)
+                    enableEdgeToEdge(statusBarStyle = style, navigationBarStyle = style)
+                }
                 val screen by vm.screen.collectAsState()
+                val warm = when (screen) { is Screen.Complete, is Screen.Streak, is Screen.Placed -> 1f; else -> 0f }
+                // The lantern backdrop stays put while screens change on top of it.
+                Box(Modifier.fillMaxSize()) {
+                AmbientBackdrop(Modifier.fillMaxSize(), warm = warm)
                 // Each kind of screen rises in once when it opens (tabs and lesson steps animate inside).
                 key(screen::class) {
-                    Box(Modifier.fillMaxSize().background(C.Bg).enterRise(distance = if (screen == Screen.Lesson) 40.dp else 12.dp, durationMs = 300)) {
+                    Box(Modifier.fillMaxSize().enterRise(distance = if (screen == Screen.Lesson) 40.dp else 12.dp, durationMs = 300)) {
                 when (val s = screen) {
                     is Screen.Onboarding -> OnboardingScreen(vm, s.step)
                     is Screen.Home -> {
@@ -73,6 +87,7 @@ class MainActivity : ComponentActivity() {
                     Screen.Settings -> SettingsScreen(vm)
                 }
                     }
+                }
                 }
                 // If a lesson screen is shown without a session (should not happen), go home.
                 LaunchedEffect(screen) {

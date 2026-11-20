@@ -51,10 +51,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.RoundRect
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Path
@@ -79,7 +81,11 @@ import com.doranalley.ui.theme.Nunito
 
 private fun Modifier.tagged(tag: String?) = if (tag != null) this.testTag(tag) else this
 
-/** A chunky button with a darker "edge" underneath; the face sinks onto the edge when pressed. */
+/**
+ * The main button: a glossy pill of [color] with a specular top, a bright rim and a soft glow in its
+ * own colour. It squeezes when pressed, and a light sheen crosses it once when it becomes enabled.
+ * A [color] equal to the card colour (or an [outline]) gives a frosted glass button instead.
+ */
 @Composable
 fun ChunkyButton(
     text: String,
@@ -96,57 +102,75 @@ fun ChunkyButton(
 ) {
     val source = remember { MutableInteractionSource() }
     val pressed by source.collectIsPressedAsState()
-    val sink by animateDpAsState(if (pressed && enabled) 4.dp else 0.dp, spring(stiffness = Spring.StiffnessHigh), label = "sink")
-    val bg by animateColorAsState(if (enabled) color else C.Line, tween(220), label = "bg")
-    val ed by animateColorAsState(if (enabled) edge else C.LineDark, tween(220), label = "edge")
+    val squeeze by animateFloatAsState(if (pressed && enabled) 0.965f else 1f, spring(dampingRatio = 0.5f, stiffness = 900f), label = "squeeze")
+    val on by animateFloatAsState(if (enabled) 1f else 0f, tween(260), label = "on")
     val fg by animateColorAsState(if (enabled) textColor else C.Muted, tween(220), label = "fg")
-    val shape = RoundedCornerShape(16.dp)
+    val sheen = remember { Animatable(0f) }
+    val wasEnabled = remember { mutableStateOf(enabled) }
+    LaunchedEffect(enabled) {
+        if (enabled && !wasEnabled.value) { sheen.snapTo(0f); sheen.animateTo(1f, tween(750, easing = Motion.EaseInOut)) }
+        wasEnabled.value = enabled
+    }
+    val isGlass = outline != null || color == C.Card
+    val shape = RoundedCornerShape(height / 2 + 2.dp)
+    val glowC = if (isGlass) Color.Unspecified else color
     Box(
         modifier
             .height(height + 4.dp)
+            .padding(vertical = 2.dp)
             .tagged(tag)
+            .graphicsLayer { scaleX = squeeze; scaleY = squeeze }
+            .then(
+                if (isGlass || on < 0.99f) Modifier.glass(shape, elevation = 6.dp)
+                else Modifier
+            )
+            .then(
+                if (!isGlass && on > 0f) Modifier.shadow((12f * on).dp, shape, clip = false, ambientColor = glowC.copy(alpha = 0.5f), spotColor = glowC.copy(alpha = 0.6f + 0.3f * C.night))
+                else Modifier
+            )
+            .clip(shape)
+            .drawBehind {
+                if (!isGlass && on > 0f) {
+                    val r = this.size.height / 2f
+                    drawRoundRect(Brush.verticalGradient(listOf(lighten(color, 0.14f), color, edge)), cornerRadius = CornerRadius(r), alpha = on)
+                    drawRoundRect(
+                        Brush.verticalGradient(0f to Color.White.copy(alpha = 0.34f), 0.5f to Color.White.copy(alpha = 0.06f), 0.51f to Color.Transparent),
+                        cornerRadius = CornerRadius(r), alpha = on,
+                    )
+                    drawRoundRect(Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.55f), Color.White.copy(alpha = 0.08f))), cornerRadius = CornerRadius(r), style = Stroke(1.3.dp.toPx()), alpha = on)
+                    if (pressed) drawRoundRect(Color.Black.copy(alpha = 0.10f), cornerRadius = CornerRadius(r))
+                    drawSheen(sheen.value, r)
+                }
+            }
             .clickable(source, null, enabled = enabled, role = Role.Button, onClick = onClick),
+        contentAlignment = Alignment.Center,
     ) {
-        Box(Modifier.fillMaxWidth().height(height).offset(y = 4.dp).clip(shape).background(ed))
-        Box(
-            Modifier.fillMaxWidth().height(height).offset(y = sink).clip(shape).background(bg)
-                .then(if (outline != null) Modifier.border(2.dp, outline, shape) else Modifier),
-            contentAlignment = Alignment.Center,
-        ) {
-            // A soft highlight along the top edge gives the face some depth.
-            if (enabled && outline == null) {
-                Box(
-                    Modifier.align(Alignment.TopCenter).padding(horizontal = 12.dp, vertical = 5.dp)
-                        .fillMaxWidth().height(4.dp).clip(CircleShape).background(Color.White.copy(alpha = 0.22f)),
-                )
-            }
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
-                if (icon != null) Icon(icon, null, tint = fg, modifier = Modifier.padding(end = 8.dp).size(22.dp))
-                Text(text, color = fg, fontFamily = Nunito, fontWeight = FontWeight.ExtraBold, fontSize = 17.sp, letterSpacing = 0.2.sp)
-            }
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+            if (icon != null) Icon(icon, null, tint = fg, modifier = Modifier.padding(end = 8.dp).size(22.dp))
+            Text(text, color = fg, fontFamily = Nunito, fontWeight = FontWeight.ExtraBold, fontSize = 17.sp, letterSpacing = 0.3.sp)
         }
     }
 }
 
-/** White button with a grey outline and edge (secondary action). */
+/** Frosted glass button (secondary action). */
 @Composable
-fun GhostButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier, tag: String? = null, textColor: Color = C.Blue, enabled: Boolean = true) {
+fun GhostButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier, tag: String? = null, textColor: Color = C.BlueInk, enabled: Boolean = true) {
     ChunkyButton(text, onClick, modifier, color = C.Card, edge = C.Line, textColor = textColor, tag = tag, enabled = enabled, outline = C.Line)
 }
 
 enum class BoxState { NORMAL, SELECTED, RIGHT, WRONG, DONE }
 
-private fun boxColors(state: BoxState): Triple<Color, Color, Color> = when (state) {
-    BoxState.NORMAL -> Triple(C.Line, C.Card, C.Line)
-    BoxState.SELECTED -> Triple(C.Blue, C.BlueLight, C.Blue)
-    BoxState.RIGHT -> Triple(C.Green, C.GreenLight, C.Green)
-    BoxState.WRONG -> Triple(C.Red, C.RedLight, C.Red)
-    BoxState.DONE -> Triple(C.Line, C.Soft, C.Line)
+/** (accent, ink) for a tile state; accent is Unspecified for plain glass. */
+private fun boxAccent(state: BoxState): Color = when (state) {
+    BoxState.NORMAL, BoxState.DONE -> Color.Unspecified
+    BoxState.SELECTED -> C.Blue
+    BoxState.RIGHT -> C.Green
+    BoxState.WRONG -> C.Red
 }
 
 /**
- * Card-like selectable tile (options, word tiles, match pairs). Colours ease between states,
- * the face sinks when pressed, it pops when picked or right, and shakes when wrong.
+ * Glass tile (options, word tiles, match pairs). Picking it tints the glass and lights its rim;
+ * it squeezes when pressed, pops when picked or right, and shakes when wrong.
  */
 @Composable
 fun SelectBox(
@@ -158,13 +182,12 @@ fun SelectBox(
     tag: String? = null,
     content: @Composable () -> Unit,
 ) {
-    val (bTarget, bgTarget, edTarget) = boxColors(state)
-    val border by animateColorAsState(bTarget, tween(160), label = "border")
-    val bg by animateColorAsState(bgTarget, tween(160), label = "bg")
-    val edge by animateColorAsState(edTarget, tween(160), label = "edge")
+    val target = boxAccent(state)
+    val accent by animateColorAsState(if (target == Color.Unspecified) C.Blue.copy(alpha = 0f) else target, tween(180), label = "accent")
+    val lit by animateFloatAsState(if (target == Color.Unspecified) 0f else 1f, tween(180), label = "lit")
     val source = remember { MutableInteractionSource() }
     val pressed by source.collectIsPressedAsState()
-    val sink by animateDpAsState(if (pressed && enabled) 3.dp else 0.dp, spring(stiffness = Spring.StiffnessHigh), label = "sink")
+    val squeeze by animateFloatAsState(if (pressed && enabled) 0.96f else 1f, spring(dampingRatio = 0.5f, stiffness = 900f), label = "squeeze")
     val shakeX = remember { Animatable(0f) }
     val scale = remember { Animatable(1f) }
     val first = remember { mutableStateOf(true) }
@@ -176,59 +199,67 @@ fun SelectBox(
             else -> {}
         }
     }
-    val shape = RoundedCornerShape(16.dp)
+    val shape = RoundedCornerShape(18.dp)
+    val solid = accent.copy(alpha = 1f)
     Box(
         modifier
             .tagged(tag)
             .graphicsLayer {
                 translationX = shakeX.value.dp.toPx()
-                scaleX = scale.value; scaleY = scale.value
+                val sc = scale.value * squeeze
+                scaleX = sc; scaleY = sc
             }
+            .glass(shape, elevation = (4f + 6f * lit).dp, glow = if (lit > 0.05f) solid else Color.Unspecified)
             .clip(shape)
+            .drawBehind {
+                if (lit > 0f) {
+                    val r = CornerRadius(18.dp.toPx())
+                    drawRoundRect(Brush.verticalGradient(listOf(solid.copy(alpha = 0.30f * lit), solid.copy(alpha = 0.14f * lit))), cornerRadius = r)
+                    drawRoundRect(solid.copy(alpha = 0.95f * lit), cornerRadius = r, style = Stroke(2.dp.toPx()))
+                }
+            }
             .clickable(source, null, enabled = enabled, role = Role.Button, onClick = onClick)
-            .padding(top = sink)
-            .background(edge, shape)
-            .padding(bottom = (3.dp - sink).coerceAtLeast(0.dp))
-            .background(bg, shape)
-            .border(2.dp, border, shape)
             .padding(horizontal = 14.dp, vertical = 12.dp),
         contentAlignment = Alignment.Center,
     ) { content() }
 }
 
-/** Chunky blue speaker button; sound waves ripple out while its audio plays. */
+/** Glossy blue orb-button; sound waves ripple out while its audio plays. */
 @Composable
 fun SpeakerButton(playing: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier, size: Dp = 72.dp, slow: Boolean = false, tag: String? = null) {
     val source = remember { MutableInteractionSource() }
     val pressed by source.collectIsPressedAsState()
-    val sink by animateDpAsState(if (pressed) 4.dp else 0.dp, spring(stiffness = Spring.StiffnessHigh), label = "sink")
+    val squeeze by animateFloatAsState(if (pressed) 0.92f else 1f, spring(dampingRatio = 0.5f, stiffness = 900f), label = "squeeze")
     val grow by animateFloatAsState(if (playing) 1.06f else 1f, spring(dampingRatio = 0.5f, stiffness = 400f), label = "grow")
     val wave = if (playing) {
         val t = rememberInfiniteTransition(label = "wave")
-        t.animateFloat(0f, 1f, infiniteRepeatable(tween(1100, easing = LinearEasing)), label = "w").value
-    } else -1f
-    val face = if (slow) Color(0xFF6E9BF5) else C.Blue
-    val corner = RoundedCornerShape(size * 0.27f)
+        t.animateFloat(0f, 1f, infiniteRepeatable(tween(1100, easing = LinearEasing)), label = "w")
+    } else null
+    val face = if (slow) lighten(C.Blue, 0.22f) else C.Blue
+    val deep = C.BlueDark
+    val corner = RoundedCornerShape(size * 0.32f)
     Box(
         modifier
             .size(size)
             .drawBehind {
-                if (wave >= 0f) {
-                    for (k in 0..1) {
-                        val p = (wave + k * 0.5f) % 1f
-                        val r = this.size.minDimension / 2f * (0.95f + p * 0.45f)
-                        drawCircle(C.Blue.copy(alpha = 0.28f * (1f - p)), r, style = Stroke(3.dp.toPx()))
-                    }
+                val w = wave?.value ?: return@drawBehind
+                for (k in 0..1) {
+                    val p = (w + k * 0.5f) % 1f
+                    val r = this.size.minDimension / 2f * (0.95f + p * 0.5f)
+                    drawCircle(face.copy(alpha = 0.38f * (1f - p)), r, style = Stroke(3.dp.toPx()))
                 }
             }
-            .graphicsLayer { scaleX = grow; scaleY = grow }
+            .graphicsLayer { val sc = grow * squeeze; scaleX = sc; scaleY = sc }
             .tagged(tag)
+            .shadow(if (size > 50.dp) 14.dp else 8.dp, corner, clip = false, ambientColor = face.copy(alpha = 0.55f), spotColor = face.copy(alpha = 0.7f))
             .clip(corner)
-            .clickable(source, null, role = Role.Button, onClick = onClick)
-            .padding(top = sink)
-            .background(C.BlueDark, corner)
-            .padding(bottom = (4.dp - sink).coerceAtLeast(0.dp))
-            .background(face, corner),
+            .drawBehind {
+                val r = CornerRadius(this.size.minDimension * 0.32f)
+                drawRoundRect(Brush.linearGradient(listOf(lighten(face, 0.18f), face, deep), start = Offset.Zero, end = Offset(this.size.width, this.size.height)), cornerRadius = r)
+                drawRoundRect(Brush.verticalGradient(0f to Color.White.copy(alpha = 0.32f), 0.48f to Color.White.copy(alpha = 0.05f), 0.5f to Color.Transparent), cornerRadius = r)
+                drawRoundRect(Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.6f), Color.White.copy(alpha = 0.1f))), cornerRadius = r, style = Stroke(1.3.dp.toPx()))
+            }
+            .clickable(source, null, role = Role.Button, onClick = onClick),
         contentAlignment = Alignment.Center,
     ) {
         if (slow) Text("🐢", fontSize = (size.value * 0.42f).sp)
@@ -236,21 +267,25 @@ fun SpeakerButton(playing: Boolean, onClick: () -> Unit, modifier: Modifier = Mo
     }
 }
 
-/** Rounded progress bar that springs forward, with a highlight stripe. */
+/** Glass track with a glowing fill that springs forward; a bright bead marks the leading edge. */
 @Composable
-fun ProgressBar(fraction: Float, modifier: Modifier = Modifier, color: Color = C.Green, height: Dp = 16.dp) {
+fun ProgressBar(fraction: Float, modifier: Modifier = Modifier, color: Color = C.Green, height: Dp = 14.dp) {
     val f by animateFloatAsState(fraction.coerceIn(0f, 1f), spring(dampingRatio = 0.75f, stiffness = 140f), label = "progress")
-    Box(modifier.height(height).clip(CircleShape).background(C.Line)) {
-        val w = f.coerceIn(0f, 1f)
-        if (w > 0.001f) {
-            Box(Modifier.fillMaxWidth(w).fillMaxHeight().clip(CircleShape).background(color)) {
-                Box(
-                    Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = height * 0.22f).height(height / 4)
-                        .clip(CircleShape).background(Color.White.copy(alpha = 0.32f)).align(Alignment.TopCenter),
-                )
+    val track = C.Line
+    Box(
+        modifier.height(height).glass(CircleShape, elevation = 0.dp).drawBehind {
+            val h = this.size.height
+            val r = CornerRadius(h / 2f)
+            drawRoundRect(track.copy(alpha = 0.55f), cornerRadius = r)
+            val w = (this.size.width * f).coerceAtLeast(if (f > 0.001f) h else 0f)
+            if (w > 0f) {
+                drawRoundRect(color.copy(alpha = 0.28f), size = Size(w + 6.dp.toPx(), h), cornerRadius = r)
+                drawRoundRect(Brush.horizontalGradient(listOf(darken(color, 0.12f), lighten(color, 0.18f)), endX = w), size = Size(w, h), cornerRadius = r)
+                drawRoundRect(Color.White.copy(alpha = 0.35f), topLeft = Offset(h * 0.45f, h * 0.2f), size = Size((w - h * 0.9f).coerceAtLeast(0f), h * 0.22f), cornerRadius = CornerRadius(h * 0.11f))
+                drawCircle(Color.White.copy(alpha = 0.85f), h * 0.22f, Offset(w - h / 2f, h / 2f))
             }
-        }
-    }
+        },
+    )
 }
 
 enum class Mood { HAPPY, CHEER, SAD, THINK }
@@ -274,6 +309,9 @@ fun Mascot(modifier: Modifier = Modifier, mood: Mood = Mood.HAPPY, size: Dp = 12
         ).value
     }
     val hop = when (mood) { Mood.CHEER -> 0.07f; Mood.SAD -> 0.012f; else -> 0.025f }
+    val mascotOrange = C.Orange
+    val nightMix = C.night
+    val shadowC = if (C.isDark) Color(0x66000000) else Color(0x1A1E2340)
     Canvas(
         modifier.size(size).graphicsLayer {
             translationY = -bob * hop * this.size.height
@@ -283,15 +321,18 @@ fun Mascot(modifier: Modifier = Modifier, mood: Mood = Mood.HAPPY, size: Dp = 12
         },
     ) {
         val w = this.size.width
-        val orange = C.Orange
+        val orange = mascotOrange
+        val night = nightMix
+        val shadow = shadowC
         val dark = Color(0xFF3A2A20)
         val cream = Color(0xFFFFF3E3)
         val cx = w / 2
         val cy = w * 0.55f
         val r = w * 0.38f
         val round = StrokeCap.Round
-        // soft ground shadow
-        drawOval(Color(0x1A1E2340), Offset(cx - r * 0.7f, cy + r * 1.02f), Size(r * 1.4f, r * 0.16f))
+        // soft ground shadow, and at night a warm lantern glow behind him
+        if (night > 0f) drawCircle(Brush.radialGradient(listOf(C.GlowA.copy(alpha = 0.32f * night), Color.Transparent), Offset(cx, cy), r * 1.7f), r * 1.7f, Offset(cx, cy))
+        drawOval(shadow, Offset(cx - r * 0.7f, cy + r * 1.02f), Size(r * 1.4f, r * 0.16f))
         // ears
         val earDrop = if (mood == Mood.SAD) r * 0.12f else 0f
         drawCircle(orange, r * 0.32f, Offset(cx - r * 0.72f, cy - r * 0.78f + earDrop))
@@ -301,6 +342,7 @@ fun Mascot(modifier: Modifier = Modifier, mood: Mood = Mood.HAPPY, size: Dp = 12
         // head
         drawCircle(orange, r, Offset(cx, cy))
         drawCircle(Color.White.copy(alpha = 0.16f), r * 0.55f, Offset(cx - r * 0.3f, cy - r * 0.38f))
+        if (night > 0f) drawCircle(Color(0xFFFFD58A).copy(alpha = 0.55f * night), r, Offset(cx, cy), style = Stroke(r * 0.04f))
         // stripes
         val stripe = Stroke(width = r * 0.09f, cap = round)
         drawLine(dark, Offset(cx, cy - r * 0.98f), Offset(cx, cy - r * 0.68f), r * 0.1f, round)
@@ -377,12 +419,12 @@ class BubbleShape(private val tail: Dp = 10.dp, private val radius: Dp = 16.dp) 
     }
 }
 
-/** A white bubble with a tail; holds any content. */
+/** A glass speech bubble with a tail; holds any content. */
 @Composable
 fun BubbleBox(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
     val shape = remember { BubbleShape() }
     Box(
-        modifier.background(C.Card, shape).border(2.dp, C.Line, shape)
+        modifier.glass(shape, elevation = 8.dp, opaque = 0.35f)
             .padding(start = 20.dp, end = 12.dp, top = 10.dp, bottom = 10.dp),
     ) { content() }
 }
@@ -395,7 +437,7 @@ fun Bubble(text: String, modifier: Modifier = Modifier, fontSize: TextUnit = 16.
     }
 }
 
-/** Icon + number in the top bar; the number rolls and the icon pops when it changes. */
+/** Glass capsule with an icon + number; the number rolls and the icon pops when it changes. */
 @Composable
 fun StatChip(icon: ImageVector, value: String, tint: Color, modifier: Modifier = Modifier, onClick: (() -> Unit)? = null, tag: String? = null) {
     val pop = remember { Animatable(1f) }
@@ -404,37 +446,46 @@ fun StatChip(icon: ImageVector, value: String, tint: Color, modifier: Modifier =
         if (first.value) { first.value = false } else { pop.pop(1.3f) }
     }
     Row(
-        modifier.clip(RoundedCornerShape(12.dp))
+        modifier.glass(CircleShape, elevation = 4.dp).clip(CircleShape)
             .then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier)
             .tagged(tag)
-            .padding(horizontal = 8.dp, vertical = 6.dp),
+            .padding(start = 8.dp, end = 12.dp, top = 5.dp, bottom = 5.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Icon(icon, null, tint = tint, modifier = Modifier.size(24.dp).graphicsLayer { scaleX = pop.value; scaleY = pop.value })
+        Box(contentAlignment = Alignment.Center, modifier = Modifier.size(26.dp).graphicsLayer { scaleX = pop.value; scaleY = pop.value }.drawBehind {
+            drawCircle(Brush.radialGradient(listOf(tint.copy(alpha = 0.35f), Color.Transparent)), this.size.minDimension / 2f)
+        }) {
+            Icon(icon, null, tint = tint, modifier = Modifier.size(20.dp))
+        }
         AnimatedContent(
             value,
             transitionSpec = { (slideInVertically { -it } + fadeIn()) togetherWith (slideOutVertically { it } + fadeOut()) },
             label = "stat",
         ) { v ->
-            Text(v, color = tint, fontFamily = Nunito, fontWeight = FontWeight.Black, fontSize = 17.sp, modifier = Modifier.padding(start = 4.dp))
+            Text(v, color = tint, fontFamily = Nunito, fontWeight = FontWeight.Black, fontSize = 16.sp, modifier = Modifier.padding(start = 3.dp))
         }
     }
 }
 
-/** Thin labelled divider used for section titles (sentence case, no all-caps eyebrows). */
+/** Section title: a small dancheong diamond, the label, and a line fading out. */
 @Composable
 fun SectionTitle(text: String, modifier: Modifier = Modifier, color: Color = C.Muted) {
+    val line = C.LineDark
     Row(modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-        Text(text, color = color, fontFamily = Nunito, fontWeight = FontWeight.ExtraBold, fontSize = 15.sp)
-        Box(Modifier.padding(start = 10.dp).weight(1f).height(2.dp).clip(CircleShape).background(C.Line))
+        Box(Modifier.padding(end = 8.dp).size(9.dp).graphicsLayer { rotationZ = 45f }.clip(RoundedCornerShape(2.dp)).background(color.copy(alpha = 0.85f)))
+        Text(text, color = color, fontFamily = Nunito, fontWeight = FontWeight.ExtraBold, fontSize = 15.sp, letterSpacing = 0.3.sp)
+        Box(
+            Modifier.padding(start = 10.dp).weight(1f).height(1.5.dp)
+                .background(Brush.horizontalGradient(listOf(line, line.copy(alpha = 0f)))),
+        )
     }
 }
 
-/** A white rounded card with a soft edge, used for lists and stats. */
+/** A glass card, used for lists and stats. */
 @Composable
 fun CardBox(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
-    val shape = RoundedCornerShape(18.dp)
-    Box(modifier.clip(shape).background(C.Line).padding(bottom = 3.dp).clip(shape).background(C.Card).border(2.dp, C.Line, shape)) { content() }
+    val shape = RoundedCornerShape(20.dp)
+    Box(modifier.glass(shape, elevation = 8.dp).clip(shape)) { content() }
 }
 
 @Suppress("unused")

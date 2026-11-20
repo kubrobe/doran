@@ -13,6 +13,8 @@ data class Settings(
     val speaking: Boolean = true,
     val listening: Boolean = true,
     val unlimitedHearts: Boolean = false,
+    /** "dark" (default), "light" or "system". */
+    val theme: String = "dark",
 )
 
 /** Everything saved on the phone. Pure data + rules; [Store] persists it. */
@@ -66,6 +68,7 @@ data class Progress(
                     speaking = st.optBoolean("speaking", true),
                     listening = st.optBoolean("listening", true),
                     unlimitedHearts = st.optBoolean("unlimitedHearts", false),
+                    theme = st.optString("theme", "dark").ifBlank { "dark" },
                 ),
                 speakingPausedUntil = o.optLong("speakingPausedUntil"),
                 listeningPausedUntil = o.optLong("listeningPausedUntil"),
@@ -91,7 +94,8 @@ data class Progress(
         o.put("items", it)
         o.put("settings", JSONObject()
             .put("sounds", settings.sounds).put("speaking", settings.speaking)
-            .put("listening", settings.listening).put("unlimitedHearts", settings.unlimitedHearts))
+            .put("listening", settings.listening).put("unlimitedHearts", settings.unlimitedHearts)
+            .put("theme", settings.theme))
         o.put("speakingPausedUntil", speakingPausedUntil)
         o.put("listeningPausedUntil", listeningPausedUntil)
         o.put("lessonsCompleted", lessonsCompleted)

@@ -218,6 +218,29 @@ class AppFlowTest {
         assertEquals(p, vm.progress.value)
     }
 
+    /** Day mode (and back to night) from Settings and the Profile toggle; screenshots of the main screens in day colours. */
+    @Test fun dayAndNightModes() {
+        onboard(placement = false)
+        TestUtil.screenshot(rule, "night_home")
+        tap("tabProfile"); tap("openSettings")
+        tap("theme:light"); TestUtil.screenshot(rule, "day_settings")
+        assertEquals("light", vm.progress.value.settings.theme)
+        tap("back")
+        tap("tabLearn"); TestUtil.screenshot(rule, "day_home")
+        tap("node:h1:0"); TestUtil.screenshot(rule, "day_lesson_popup")
+        tap("startLesson"); TestUtil.screenshot(rule, "day_lesson")
+        answer(true); answer(true); answer(false)
+        tap("quit"); TestUtil.screenshot(rule, "day_quit_dialog"); tap("confirmQuit")
+        tap("tabPractice"); TestUtil.screenshot(rule, "day_practice")
+        tap("tabProfile"); TestUtil.screenshot(rule, "day_profile")
+        tap("themeToggle")
+        assertEquals("dark", vm.progress.value.settings.theme)
+        TestUtil.screenshot(rule, "night_profile")
+        // The theme survives a progress reset.
+        vm.setTheme("light"); vm.resetProgress()
+        assertEquals("light", vm.progress.value.settings.theme)
+    }
+
     @Test fun practiceAfterLearning() {
         onboard(placement = false)
         vm.startLesson(vm.course.units[6], 0) // Greetings, lesson 1

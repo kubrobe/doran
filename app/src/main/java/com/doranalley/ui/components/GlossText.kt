@@ -80,7 +80,7 @@ fun GlossText(
                     Popup(alignment = Alignment.TopStart, offset = IntOffset(0, height + 8), onDismissRequest = { closedAt = System.currentTimeMillis() to i; open = null },
                         properties = PopupProperties(focusable = false, dismissOnClickOutside = true)) {
                         Column(
-                            Modifier.enterPop(from = 0.85f, durationMs = 220).background(Color.White, RoundedCornerShape(12.dp)).border(2.dp, C.Line, RoundedCornerShape(12.dp))
+                            Modifier.enterPop(from = 0.85f, durationMs = 220).glass(RoundedCornerShape(14.dp), elevation = 12.dp, opaque = 0.96f)
                                 .clickable { open = null }.padding(horizontal = 12.dp, vertical = 8.dp).testTag("hintPopup"),
                         ) {
                             h.forEach { line -> Text(line, fontSize = 15.sp, color = C.Ink) }

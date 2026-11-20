@@ -37,6 +37,7 @@ Every build is signed with `app/debug.keystore`, so a new build installs over th
 | Lesson generation, answer checking, scoring, progress rules | `app/src/main/java/com/doranalley/core` (plain Kotlin, unit tested) |
 | Audio playback, recording, recognition | `app/src/main/java/com/doranalley/audio` |
 | Screens | `app/src/main/java/com/doranalley/ui` |
+| Look and motion | colours and type in `ui/theme/Theme.kt` (Nunito, OFL, in `res/font`); shared animations in `ui/components/Motion.kt`. Motion follows the phone's animation setting, and screens only animate in (never out) so a tap can't land on a screen that is leaving |
 
 To add or change content, edit `tools/course.txt`, run the build script, commit, and push. The audio
 workflow records any new lines and commits them back.

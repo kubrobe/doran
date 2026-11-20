@@ -151,8 +151,8 @@ fun SpeakView(vm: AppViewModel, ex: Exercise.Speak, locked: Boolean) {
         Column(Modifier.weight(1f, fill = false).padding(horizontal = 20.dp)) {
             Text("Speak this sentence", style = androidx.compose.material3.MaterialTheme.typography.headlineSmall, modifier = Modifier.padding(top = 8.dp, bottom = 16.dp).testTag("exerciseTitle"))
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Mascot(size = 84.dp)
-                Spacer(Modifier.width(4.dp))
+                Mascot(size = 72.dp)
+                Spacer(Modifier.width(2.dp))
                 com.doranalley.ui.components.BubbleBox { Column {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         com.doranalley.ui.components.SpeakerButton(playing == "ko:${ex.ko}", { vm.audio.play(ex.ko) }, size = 40.dp, tag = "play")
@@ -161,7 +161,7 @@ fun SpeakView(vm: AppViewModel, ex: Exercise.Speak, locked: Boolean) {
                     }
                     Spacer(Modifier.height(8.dp))
                     val s = state
-                    if (s is SpeakState.Scored) ColoredSentence(ex.ko, s.result.heard) else com.doranalley.ui.components.GlossText(ex.ko, vm.course.gloss::korean, fontSize = 24.sp, bold = true)
+                    if (s is SpeakState.Scored) ColoredSentence(ex.ko, s.result.heard) else com.doranalley.ui.components.GlossText(ex.ko, vm.course.gloss::korean, fontSize = 22.sp, bold = true)
                     Text(ex.en, fontSize = 15.sp, color = C.Muted, modifier = Modifier.padding(top = 4.dp))
                 } }
             }
@@ -315,5 +315,5 @@ private fun ColoredSentence(target: String, heard: String) {
             val col = when (m) { Hangul.Mark.GOOD -> C.GreenDark; Hangul.Mark.CLOSE -> C.GoldDark; Hangul.Mark.MISSED -> C.Red }
             withStyle(SpanStyle(color = if (Hangul.isSyllable(c)) col else C.Ink)) { append(c) }
         }
-    }, fontSize = 24.sp, fontWeight = FontWeight.Bold, modifier = Modifier.testTag("prompt"))
+    }, fontSize = 22.sp, fontWeight = FontWeight.Bold, modifier = Modifier.testTag("prompt"))
 }

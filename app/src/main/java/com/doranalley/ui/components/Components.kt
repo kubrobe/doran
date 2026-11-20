@@ -383,7 +383,7 @@ fun BubbleBox(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
     val shape = remember { BubbleShape() }
     Box(
         modifier.background(C.Card, shape).border(2.dp, C.Line, shape)
-            .padding(start = 22.dp, end = 14.dp, top = 10.dp, bottom = 10.dp),
+            .padding(start = 20.dp, end = 12.dp, top = 10.dp, bottom = 10.dp),
     ) { content() }
 }
 

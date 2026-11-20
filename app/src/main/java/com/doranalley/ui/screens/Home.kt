@@ -352,7 +352,7 @@ private fun PathNodeRow(
             val cx = size.width / 2f
             val half = RowH.toPx() / 2f
             val cy = size.height - half
-            val stroke = Stroke(width = 10.dp.toPx(), cap = StrokeCap.Round, pathEffect = PathEffect.dashPathEffect(floatArrayOf(0.1f, 22.dp.toPx())))
+            val stroke = Stroke(width = 10.dp.toPx(), cap = StrokeCap.Round, pathEffect = PathEffect.dashPathEffect(floatArrayOf(0.1f, 18.dp.toPx())))
             clipRect {
                 if (hasPrev) drawPath(trail(cx + xp.dp.toPx(), -half, cx + x.dp.toPx(), cy), if (prevDone) walked else C.LineDark, style = stroke)
                 if (hasNext) drawPath(trail(cx + x.dp.toPx(), cy, cx + xn.dp.toPx(), size.height + nextTop.toPx() + half), if (done) walked else C.LineDark, style = stroke)
@@ -395,7 +395,7 @@ private fun NodeButton(icon: ImageVector, fill: Color, rim: Color, tint: Color, 
                 .padding(bottom = (7.dp - sink).coerceAtLeast(0.dp)).background(fill, CircleShape),
             contentAlignment = Alignment.Center,
         ) {
-            Box(Modifier.align(Alignment.TopCenter).padding(top = 9.dp).size(width = 30.dp, height = 8.dp).clip(CircleShape).background(Color.White.copy(alpha = 0.25f)))
+            Box(Modifier.align(Alignment.TopStart).padding(start = 15.dp, top = 11.dp).size(width = 14.dp, height = 8.dp).graphicsLayer { rotationZ = -35f }.clip(CircleShape).background(Color.White.copy(alpha = 0.35f)))
             Icon(icon, null, tint = tint, modifier = Modifier.size(34.dp))
         }
     }

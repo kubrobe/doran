@@ -58,7 +58,9 @@ class KoreanAsr private constructor(context: Context) {
                     numThreads = 2,
                     debug = false,
                 ),
-                decodingMethod = "greedy_search",
+                // Beam search recovers words that greedy decoding drops on short phrases.
+                decodingMethod = "modified_beam_search",
+                maxActivePaths = 4,
             )
             val r = OfflineRecognizer(app.assets, config)
             recognizer = r

@@ -23,14 +23,13 @@ object TestUtil {
     }
 
     private var shot = 0
-    /** Saves a screenshot for review. Never fails the test. Dialogs are captured from their own window. */
+    /** Saves a full-screen screenshot (dialogs and popups included) for review. Never fails the test. */
     fun screenshot(rule: ComposeTestRule, name: String) {
         try {
             rule.waitForIdle()
+            Thread.sleep(250) // let animations settle
             val dir = File(ctx.getExternalFilesDir(null), "screens").apply { mkdirs() }
-            val roots = rule.onAllNodes(isRoot()).fetchSemanticsNodes()
-            val img = if (roots.size > 1) rule.onAllNodes(isRoot())[roots.size - 1].captureToImage() else rule.onRoot().captureToImage()
-            val bmp = img.asAndroidBitmap()
+            val bmp = InstrumentationRegistry.getInstrumentation().uiAutomation.takeScreenshot() ?: return
             FileOutputStream(File(dir, "%03d_%s.png".format(++shot, name))).use { bmp.compress(Bitmap.CompressFormat.PNG, 100, it) }
         } catch (t: Throwable) {
             android.util.Log.w("TestUtil", "screenshot $name failed", t)

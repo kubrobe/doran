@@ -13,8 +13,8 @@ object Hangul {
     fun syllables(s: String): String = s.filter { isSyllable(it) }
 
     /**
-     * Jamo codes for comparison. Vowels that sound the same in modern Seoul Korean are merged
-     * (ㅐ/ㅔ, ㅒ/ㅖ, ㅙ/ㅚ/ㅞ) so the learner is never marked down for a spelling-only difference.
+     * Jamo codes for comparison. Vowels that sound the same in everyday Seoul Korean are merged
+     * (ㅐ/ㅔ/ㅒ/ㅖ, ㅙ/ㅚ/ㅞ) so the learner is never marked down for a spelling-only difference.
      */
     fun jamo(s: String): IntArray {
         val out = ArrayList<Int>(s.length * 3)
@@ -25,8 +25,7 @@ object Hangul {
             var v = (code % 588) / 28
             val t = code % 28
             v = when (v) {
-                5 -> 1 // ㅔ -> ㅐ
-                7 -> 3 // ㅖ -> ㅒ
+                3, 5, 7 -> 1 // ㅒ ㅔ ㅖ -> ㅐ (거예요 is said [거에요]; 시계 is said [시게])
                 10, 11, 15 -> 15 // ㅙ ㅚ ㅞ
                 else -> v
             }

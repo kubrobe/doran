@@ -12,6 +12,7 @@ class HangulTest {
     @Test fun similarity() {
         assertEquals(1.0, Hangul.similarity("저는 학생이에요.", "저 는 학생 이에요"), 1e-9)
         assertEquals(1.0, Hangul.similarity("세탁기", "새탁기"), 1e-9) // ㅐ/ㅔ merged
+        assertEquals(1.0, Hangul.similarity("갈 거예요", "갈 거에요"), 1e-9)
         assertTrue(Hangul.similarity("저는 학생이에요", "저는 흑색이예요") in 0.6..0.95)
         assertTrue(Hangul.similarity("안녕하세요", "감사합니다") < 0.4)
         assertEquals(0.0, Hangul.similarity("안녕하세요", ""), 1e-9)

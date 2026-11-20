@@ -89,6 +89,17 @@ class AppFlowTest {
                 tap("continue"); return
             }
             is Exercise.BuildEnglish -> {
+                if (shoot) {
+                    // Tap-for-meaning hint on a Korean word.
+                    val w = ex.sentence.ko.split(" ").firstOrNull { vm.course.gloss.korean(it) != null }
+                    if (w != null) {
+                        tap("hint:$w")
+                        rule.waitUntil(5_000) { rule.onAllNodesWithTag("hintPopup").fetchSemanticsNodes().isNotEmpty() }
+                        TestUtil.screenshot(rule, "hint_popup")
+                        rule.onAllNodesWithTag("exerciseTitle").onFirst().performClick()
+                        rule.waitUntil(5_000) { rule.onAllNodesWithTag("hintPopup").fetchSemanticsNodes().isEmpty() }
+                    }
+                }
                 val words = if (correct) ex.sentence.enTiles else ex.sentence.enTiles.reversed().let { if (it == ex.sentence.enTiles) listOf(ex.tiles.first { t -> t.text !in ex.sentence.enTiles }.text) else it }
                 words.forEach { tap("bank:$it") }
             }

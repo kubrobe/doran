@@ -96,7 +96,7 @@ class AppFlowTest {
                         tap("hint:$w")
                         rule.waitUntil(5_000) { rule.onAllNodesWithTag("hintPopup").fetchSemanticsNodes().isNotEmpty() }
                         TestUtil.screenshot(rule, "hint_popup")
-                        rule.onAllNodesWithTag("exerciseTitle").onFirst().performClick()
+                        rule.onAllNodesWithTag("hintPopup").onFirst().performClick()
                         rule.waitUntil(5_000) { rule.onAllNodesWithTag("hintPopup").fetchSemanticsNodes().isEmpty() }
                     }
                 }

@@ -48,6 +48,8 @@ fun GlossText(
 ) {
     val words = remember(text) { text.split(" ").filter { it.isNotEmpty() } }
     var open by remember(text) { mutableStateOf<Int?>(null) }
+    // When a tap outside closes the hint, the same tap must not reopen it.
+    var closedAt by remember { mutableStateOf(0L to -1) }
     FlowRow(modifier.testTag("prompt"), verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(2.dp)) {
         words.forEachIndexed { i, w ->
             val h = remember(w) { hints(w) }
@@ -65,16 +67,21 @@ fun GlossText(
                                     val end = if (i < words.lastIndex) size.width - 6.dp.toPx() else size.width
                                     drawLine(C.LineDark, Offset(0f, y), Offset(end, y), 2.dp.toPx(), pathEffect = PathEffect.dashPathEffect(floatArrayOf(6f, 6f)))
                                 }
-                                .clickable { open = if (open == i) null else i; onWordTap?.invoke(w) }
+                                .clickable {
+                                    val justClosed = closedAt.second == i && System.currentTimeMillis() - closedAt.first < 400
+                                    open = if (open == i || justClosed) null else i
+                                    onWordTap?.invoke(w)
+                                }
                                 .testTag("hint:$w")
                             else Modifier
                         ),
                 )
                 if (open == i && h != null) {
-                    Popup(alignment = Alignment.TopStart, offset = IntOffset(0, height + 8), onDismissRequest = { open = null }, properties = PopupProperties(focusable = true)) {
+                    Popup(alignment = Alignment.TopStart, offset = IntOffset(0, height + 8), onDismissRequest = { closedAt = System.currentTimeMillis() to i; open = null },
+                        properties = PopupProperties(focusable = false, dismissOnClickOutside = true)) {
                         Column(
                             Modifier.background(Color.White, RoundedCornerShape(12.dp)).border(2.dp, C.Line, RoundedCornerShape(12.dp))
-                                .padding(horizontal = 12.dp, vertical = 8.dp).testTag("hintPopup"),
+                                .clickable { open = null }.padding(horizontal = 12.dp, vertical = 8.dp).testTag("hintPopup"),
                         ) {
                             h.forEach { line -> Text(line, fontSize = 15.sp, color = C.Ink) }
                         }

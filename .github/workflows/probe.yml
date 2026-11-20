@@ -1,0 +1,35 @@
+name: Probe TTS and Vosk
+on:
+  push:
+    branches: [duolingo-korean]
+    paths: [".github/workflows/probe.yml", ".github/probe/**"]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: sudo apt-get install -y ffmpeg >/dev/null
+      - run: pip install edge-tts gTTS vosk
+      - run: edge-tts --list-voices | grep -i ko-KR || true
+      - name: TTS
+        run: |
+          mkdir -p out
+          i=0
+          while IFS= read -r line; do
+            i=$((i+1))
+            edge-tts --voice ko-KR-SunHiNeural --rate=-10% --text "$line" --write-media out/e_$i.mp3 || echo "edge fail $i"
+            gtts-cli -l ko "$line" -o out/g_$i.mp3 || echo "gtts fail $i"
+          done < .github/probe/lines.txt
+          ls -la out
+      - name: Vosk model
+        run: |
+          curl -sSL -o model.zip https://alphacephei.com/vosk/models/vosk-model-small-ko-0.22.zip
+          unzip -q model.zip && ls -laR vosk-model-small-ko-0.22 | head -40 && du -sh vosk-model-small-ko-0.22
+      - name: Recognize
+        run: python .github/probe/rec.py vosk-model-small-ko-0.22 out .github/probe/lines.txt
+      - uses: actions/upload-artifact@v4
+        with: { name: probe-audio, path: out }
+      - uses: actions/upload-artifact@v4
+        with: { name: vosk-model, path: model.zip }

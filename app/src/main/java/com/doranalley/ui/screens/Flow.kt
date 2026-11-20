@@ -55,10 +55,34 @@ import com.doranalley.ui.components.Mascot
 import com.doranalley.ui.components.Mood
 import com.doranalley.ui.components.SelectBox
 import com.doranalley.ui.theme.C
+import com.doranalley.ui.components.ConfettiBurst
+import com.doranalley.ui.components.CountUpText
+import com.doranalley.ui.components.enterPop
+import com.doranalley.ui.components.enterRise
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.key
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.graphicsLayer
 
 @Composable
 private fun Page(content: @Composable androidx.compose.foundation.layout.ColumnScope.() -> Unit) {
-    Column(Modifier.fillMaxSize().background(Color.White).statusBarsPadding().navigationBarsPadding().padding(20.dp)) { content() }
+    Column(Modifier.fillMaxSize().background(C.Bg).statusBarsPadding().navigationBarsPadding().padding(20.dp)) { content() }
 }
 
 // ------------------------------------------------------------------ onboarding
@@ -67,17 +91,20 @@ private fun Page(content: @Composable androidx.compose.foundation.layout.ColumnS
 fun OnboardingScreen(vm: AppViewModel, step: Int) {
     val p by vm.progress.collectAsState()
     BackHandler(enabled = step > 0) { vm.back() }
-    Page {
+    key(step) { Page {
         when (step) {
             0 -> {
                 Spacer(Modifier.weight(1f))
                 Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Mascot(size = 180.dp, mood = Mood.CHEER)
-                    Text("Doran Korean", style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, modifier = Modifier.padding(top = 12.dp))
-                    Text("Learn Korean with Horangi the tiger. Listen, tap, and speak — a few minutes a day.", textAlign = TextAlign.Center, color = C.Muted, modifier = Modifier.padding(top = 8.dp))
+                    Box(contentAlignment = Alignment.Center) {
+                        Text("도란", fontSize = 150.sp, fontWeight = FontWeight.Black, color = C.Orange.copy(alpha = 0.10f), modifier = Modifier.enterRise(distance = 30.dp, durationMs = 700))
+                        Mascot(size = 180.dp, mood = Mood.CHEER, modifier = Modifier.enterPop(delayMs = 150, from = 0.3f, durationMs = 650))
+                    }
+                    Text("Doran Korean", style = androidx.compose.material3.MaterialTheme.typography.displaySmall, modifier = Modifier.padding(top = 12.dp).enterRise(delayMs = 380))
+                    Text("Learn Korean with Horangi the tiger. Listen, tap and speak, a few minutes a day.", textAlign = TextAlign.Center, color = C.Muted, modifier = Modifier.padding(top = 8.dp, start = 12.dp, end = 12.dp).enterRise(delayMs = 480))
                 }
                 Spacer(Modifier.weight(1f))
-                ChunkyButton("Get started", { vm.go(Screen.Onboarding(1)) }, Modifier.fillMaxWidth(), tag = "getStarted")
+                ChunkyButton("Get started", { vm.go(Screen.Onboarding(1)) }, Modifier.fillMaxWidth().enterRise(delayMs = 600), tag = "getStarted")
             }
             1 -> {
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -105,7 +132,7 @@ fun OnboardingScreen(vm: AppViewModel, step: Int) {
                 }
                 Spacer(Modifier.height(30.dp))
                 if (granted) {
-                    Text("✅ Microphone is ready.", fontSize = 18.sp, color = C.GreenDark, fontWeight = FontWeight.Bold, modifier = Modifier.testTag("micReady"))
+                    Text("✅ Microphone is ready.", fontSize = 18.sp, color = C.GreenDark, fontWeight = FontWeight.ExtraBold, modifier = Modifier.enterPop(from = 0.8f).testTag("micReady"))
                 } else {
                     ChunkyButton("Allow microphone", { mic = true; request() }, Modifier.fillMaxWidth(), color = C.Blue, edge = C.BlueDark, tag = "allowMic")
                     if (mic) Text("If you said no, you can still learn. Speaking exercises will ask again.", color = C.Muted, modifier = Modifier.padding(top = 10.dp))
@@ -133,7 +160,7 @@ fun OnboardingScreen(vm: AppViewModel, step: Int) {
                 }
             }
         }
-    }
+    } }
 }
 
 // ------------------------------------------------------------------ results
@@ -141,30 +168,38 @@ fun OnboardingScreen(vm: AppViewModel, step: Int) {
 @Composable
 fun CompleteScreen(vm: AppViewModel, s: Summary) {
     BackHandler { vm.afterComplete() }
-    Page {
-        Spacer(Modifier.weight(1f))
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Mascot(size = 170.dp, mood = Mood.CHEER)
-            Text(s.title, style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, color = C.Gold, modifier = Modifier.padding(top = 10.dp).testTag("completeTitle"))
-            if (s.perfect) Text("Perfect — no mistakes!", color = C.GreenDark, fontWeight = FontWeight.Bold, modifier = Modifier.padding(top = 4.dp))
+    Box(Modifier.fillMaxSize()) {
+        Page {
+            Spacer(Modifier.weight(1f))
+            Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                Mascot(size = 170.dp, mood = Mood.CHEER, modifier = Modifier.enterPop(from = 0.2f, durationMs = 600))
+                Text(
+                    s.title, style = androidx.compose.material3.MaterialTheme.typography.displaySmall, color = C.GoldDark, textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(top = 10.dp).enterPop(delayMs = 250, from = 0.5f).testTag("completeTitle"),
+                )
+                if (s.perfect) Text("Perfect, no mistakes!", color = C.GreenDark, fontWeight = FontWeight.ExtraBold, fontSize = 17.sp, modifier = Modifier.padding(top = 4.dp).enterRise(delayMs = 400))
+            }
+            Spacer(Modifier.height(28.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                ResultBox("Total XP", s.xp, C.Gold, C.GoldDark, 450, Modifier.weight(1f)) { "$it" }
+                ResultBox("Accuracy", s.accuracy, C.Green, C.GreenDark, 560, Modifier.weight(1f)) { "$it%" }
+                ResultBox("Time", s.seconds, C.Blue, C.BlueDark, 670, Modifier.weight(1f)) { "%d:%02d".format(it / 60, it % 60) }
+            }
+            Spacer(Modifier.weight(1f))
+            ChunkyButton("Continue", { vm.afterComplete() }, Modifier.fillMaxWidth().enterRise(delayMs = 800), tag = "continue")
         }
-        Spacer(Modifier.height(28.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            ResultBox("TOTAL XP", "${s.xp}", C.Gold, Modifier.weight(1f))
-            ResultBox("ACCURACY", "${s.accuracy}%", C.Green, Modifier.weight(1f))
-            ResultBox("TIME", "%d:%02d".format(s.seconds / 60, s.seconds % 60), C.Blue, Modifier.weight(1f))
-        }
-        Spacer(Modifier.weight(1f))
-        ChunkyButton("Continue", { vm.afterComplete() }, Modifier.fillMaxWidth(), tag = "continue")
+        ConfettiBurst(Modifier.fillMaxSize(), C.Festive, count = if (s.perfect) 110 else 70, originY = 0.28f)
     }
 }
 
 @Composable
-private fun ResultBox(label: String, value: String, color: Color, modifier: Modifier) {
-    Column(modifier.background(color, androidx.compose.foundation.shape.RoundedCornerShape(16.dp)).padding(3.dp)) {
-        Text(label, color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 12.sp, modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp), textAlign = TextAlign.Center)
-        Column(Modifier.fillMaxWidth().background(Color.White, androidx.compose.foundation.shape.RoundedCornerShape(13.dp)).padding(vertical = 12.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(value, color = color, fontWeight = FontWeight.ExtraBold, fontSize = 22.sp)
+private fun ResultBox(label: String, value: Int, color: Color, edge: Color, delayMs: Int, modifier: Modifier, format: (Int) -> String) {
+    val shape = androidx.compose.foundation.shape.RoundedCornerShape(18.dp)
+    Column(modifier.enterRise(delayMs = delayMs, distance = 24.dp).background(edge, shape).padding(bottom = 3.dp).background(color, shape).padding(3.dp)) {
+        Text(label, color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 13.sp, modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp), textAlign = TextAlign.Center)
+        Column(Modifier.fillMaxWidth().background(C.Card, androidx.compose.foundation.shape.RoundedCornerShape(15.dp)).padding(vertical = 12.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+            CountUpText(value, color = edge, delayMs = delayMs + 150, format = format,
+                style = androidx.compose.material3.MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Black))
         }
     }
 }
@@ -172,13 +207,37 @@ private fun ResultBox(label: String, value: String, color: Color, modifier: Modi
 @Composable
 fun StreakScreen(vm: AppViewModel, days: Int) {
     BackHandler { vm.go(Screen.Home()) }
+    val flicker = rememberInfiniteTransition(label = "flame")
+    val f by flicker.animateFloat(0f, 1f, infiniteRepeatable(tween(420, easing = FastOutSlowInEasing), RepeatMode.Reverse), label = "f")
+    // The number ticks from yesterday's streak to today's.
+    var shown by remember { mutableStateOf((days - 1).coerceAtLeast(0)) }
+    LaunchedEffect(days) { kotlinx.coroutines.delay(500); shown = days }
     Page {
         Spacer(Modifier.weight(1f))
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("🔥", fontSize = 110.sp)
-            Text("$days", fontSize = 72.sp, fontWeight = FontWeight.ExtraBold, color = C.Orange, modifier = Modifier.testTag("streakDays"))
-            Text("day streak!", style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, color = C.Orange)
-            Text(if (days == 1) "Come back tomorrow to keep it going." else "Keep learning every day to grow your streak.", color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 10.dp))
+            Text("🔥", fontSize = 116.sp, modifier = Modifier.enterPop(from = 0.2f, durationMs = 600).graphicsLayer {
+                scaleY = 1f + 0.05f * f; scaleX = 1f - 0.02f * f; rotationZ = (f - 0.5f) * 4f
+                transformOrigin = androidx.compose.ui.graphics.TransformOrigin(0.5f, 1f)
+            })
+            AnimatedContent(
+                shown,
+                transitionSpec = { (slideInVertically { it } + fadeIn()) togetherWith (slideOutVertically { -it } + fadeOut()) },
+                modifier = Modifier.testTag("streakDays"), label = "streak",
+            ) { d -> Text("$d", fontSize = 76.sp, fontWeight = FontWeight.Black, color = C.Orange) }
+            Text("day streak!", style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, color = C.OrangeDark)
+            Text(
+                if (days == 1) "Come back tomorrow to keep it going." else "Keep learning every day to grow your streak.",
+                color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 10.dp).enterRise(delayMs = 300),
+            )
+            Row(Modifier.padding(top = 22.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                val lit = days.coerceAtMost(7)
+                repeat(7) { i ->
+                    Box(
+                        Modifier.size(30.dp).enterPop(delayMs = 350 + i * 60, from = 0.3f).clip(CircleShape).background(if (i < lit) C.Orange else C.Line),
+                        contentAlignment = Alignment.Center,
+                    ) { if (i < lit) Icon(Icons.Filled.Check, null, tint = Color.White, modifier = Modifier.size(18.dp)) }
+                }
+            }
         }
         Spacer(Modifier.weight(1f))
         ChunkyButton("Continue", { vm.go(Screen.Home()) }, Modifier.fillMaxWidth(), color = C.Orange, edge = C.OrangeDark, tag = "continue")
@@ -194,9 +253,13 @@ fun OutOfHeartsScreen(vm: AppViewModel) {
         Spacer(Modifier.weight(1f))
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
             Mascot(size = 150.dp, mood = Mood.SAD)
-            Row(Modifier.padding(vertical = 14.dp)) { repeat(Progress.MAX_HEARTS) { i -> Icon(Icons.Filled.Favorite, null, tint = if (i < p.heartsNow(now)) C.Red else C.Line) } }
+            Row(Modifier.padding(vertical = 14.dp)) {
+                repeat(Progress.MAX_HEARTS) { i ->
+                    Icon(Icons.Filled.Favorite, null, tint = if (i < p.heartsNow(now)) C.Red else C.LineDark, modifier = Modifier.size(30.dp).enterRise(delayMs = 150 + i * 70, distance = (-16).dp))
+                }
+            }
             Text("You ran out of hearts", style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, textAlign = TextAlign.Center)
-            Text("Practise to earn a heart, or wait — a new one arrives in ${(p.nextHeartIn(now) / 60000) + 1} min.", color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 8.dp))
+            Text("Practise to earn a heart, or wait: a new one arrives in ${(p.nextHeartIn(now) / 60000) + 1} min.", color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 8.dp))
         }
         Spacer(Modifier.weight(1f))
         ChunkyButton("Practice to earn hearts", { vm.startPractice(LessonBuilder.PracticeMode.MIXED) }, Modifier.fillMaxWidth(), color = C.Blue, edge = C.BlueDark, tag = "practiceHearts")
@@ -211,11 +274,11 @@ fun PlacedScreen(vm: AppViewModel, u: CourseUnit?) {
     Page {
         Spacer(Modifier.weight(1f))
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Mascot(size = 160.dp, mood = Mood.CHEER)
-            Text(if (u == null) "Wow, you know it all!" else "Your starting point", style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, modifier = Modifier.padding(top = 10.dp))
+            Mascot(size = 160.dp, mood = Mood.CHEER, modifier = Modifier.enterPop(from = 0.3f, durationMs = 600))
+            Text(if (u == null) "Wow, you know it all!" else "Your starting point", style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, modifier = Modifier.padding(top = 10.dp).enterRise(delayMs = 200))
             Text(
                 if (u == null) "You placed past every unit. You can still replay any lesson." else "Unit ${u.number}: ${u.title}\n${u.section}",
-                textAlign = TextAlign.Center, fontSize = 18.sp, color = C.Ink, modifier = Modifier.padding(top = 10.dp).testTag("placedUnit"),
+                textAlign = TextAlign.Center, fontSize = 19.sp, fontWeight = FontWeight.Bold, color = C.Ink, modifier = Modifier.padding(top = 10.dp).enterRise(delayMs = 320).testTag("placedUnit"),
             )
             Text("Everything before it is unlocked, so you can go back any time.", color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 10.dp))
         }
@@ -233,26 +296,26 @@ fun SettingsScreen(vm: AppViewModel) {
     var confirmReset by remember { mutableStateOf(false) }
     var testingMic by remember { mutableStateOf(false) }
     BackHandler { vm.back() }
-    Column(Modifier.fillMaxSize().background(Color.White).statusBarsPadding().navigationBarsPadding()) {
+    Column(Modifier.fillMaxSize().background(C.Bg).statusBarsPadding().navigationBarsPadding()) {
         Row(Modifier.fillMaxWidth().padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
-            IconButton(onClick = { vm.back() }, modifier = Modifier.testTag("back")) { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back", tint = C.Muted) }
+            IconButton(onClick = { vm.back() }, modifier = Modifier.testTag("back")) { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back", tint = C.Ink) }
             Text("Settings", style = androidx.compose.material3.MaterialTheme.typography.titleLarge)
         }
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp)) {
-            Section("LESSONS")
+            Section("Lessons")
             Toggle("Sound effects", st.sounds, "setSounds") { v -> vm.setSettings { it.copy(sounds = v) } }
             Toggle("Speaking exercises", st.speaking, "setSpeaking") { v -> vm.setSettings { it.copy(speaking = v) } }
             Toggle("Listening exercises", st.listening, "setListening") { v -> vm.setSettings { it.copy(listening = v) } }
             Toggle("Unlimited hearts", st.unlimitedHearts, "setHearts") { v -> vm.setSettings { it.copy(unlimitedHearts = v) } }
 
-            Section("DAILY GOAL")
+            Section("Daily goal")
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 listOf(10, 20, 30, 50).forEach { xp ->
                     SelectBox(p.dailyGoal == xp, { vm.setGoal(xp) }, Modifier.weight(1f), tag = "goal:$xp") { Text("$xp", color = C.Ink, fontWeight = FontWeight.Bold) }
                 }
             }
 
-            Section("CHECK YOUR PHONE")
+            Section("Check your phone")
             Text("Use these if you can't hear anything or the microphone doesn't seem to work.", color = C.Muted, fontSize = 14.sp)
             Spacer(Modifier.height(10.dp))
             GhostButton("Test sound", { vm.audio.play("안녕하세요") }, Modifier.fillMaxWidth(), tag = "testSound")
@@ -261,10 +324,10 @@ fun SettingsScreen(vm: AppViewModel) {
             GhostButton(if (testingMic) "Hide microphone test" else "Test microphone", { testingMic = !testingMic; vm.resetSpeak() }, Modifier.fillMaxWidth(), tag = "testMic")
             if (testingMic) MicTest(vm)
 
-            Section("PROGRESS")
+            Section("Progress")
             GhostButton("Reset all progress", { confirmReset = true }, Modifier.fillMaxWidth(), textColor = C.Red, tag = "reset")
 
-            Section("ABOUT")
+            Section("About")
             Text(
                 "Doran Korean · version ${com.doranalley.BuildConfig.VERSION_NAME}\n" +
                     "Speech checking runs offline with sherpa-onnx and a Korean zipformer model (Apache-2.0). " +
@@ -276,6 +339,7 @@ fun SettingsScreen(vm: AppViewModel) {
     }
     if (confirmReset) {
         AlertDialog(
+            containerColor = C.Card,
             onDismissRequest = { confirmReset = false },
             title = { Text("Reset progress?") },
             text = { Text("This deletes your XP, streak and lesson progress on this phone.") },
@@ -335,13 +399,15 @@ private fun MicTest(vm: AppViewModel) {
 }
 
 @Composable
-private fun Section(t: String) = Text(t, color = C.Muted, fontWeight = FontWeight.ExtraBold, fontSize = 13.sp, letterSpacing = 1.sp, modifier = Modifier.padding(top = 22.dp, bottom = 8.dp))
+private fun Section(t: String) = com.doranalley.ui.components.SectionTitle(t, Modifier.padding(top = 24.dp, bottom = 8.dp))
 
 @Composable
 private fun Toggle(label: String, value: Boolean, tag: String, onChange: (Boolean) -> Unit) {
     Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
         Text(label, fontSize = 17.sp, color = C.Ink, modifier = Modifier.weight(1f))
-        Switch(value, onChange, modifier = Modifier.testTag(tag), colors = SwitchDefaults.colors(checkedTrackColor = C.Green))
+        Switch(value, onChange, modifier = Modifier.testTag(tag), colors = SwitchDefaults.colors(
+            checkedTrackColor = C.Green, checkedThumbColor = Color.White, uncheckedTrackColor = C.Line, uncheckedBorderColor = C.LineDark, uncheckedThumbColor = C.Card,
+        ))
     }
 }
 

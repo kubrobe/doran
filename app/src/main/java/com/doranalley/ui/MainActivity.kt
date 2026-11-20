@@ -7,7 +7,15 @@ import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.key
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.doranalley.ui.components.enterRise
+import com.doranalley.ui.theme.C
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.lifecycleScope
@@ -47,6 +55,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             DoranTheme {
                 val screen by vm.screen.collectAsState()
+                // Each kind of screen rises in once when it opens (tabs and lesson steps animate inside).
+                key(screen::class) {
+                    Box(Modifier.fillMaxSize().background(C.Bg).enterRise(distance = if (screen == Screen.Lesson) 40.dp else 12.dp, durationMs = 300)) {
                 when (val s = screen) {
                     is Screen.Onboarding -> OnboardingScreen(vm, s.step)
                     is Screen.Home -> {
@@ -60,6 +71,8 @@ class MainActivity : ComponentActivity() {
                     is Screen.Placed -> PlacedScreen(vm, s.unit)
                     is Screen.Guidebook -> GuidebookScreen(vm, s.unit)
                     Screen.Settings -> SettingsScreen(vm)
+                }
+                    }
                 }
                 // If a lesson screen is shown without a session (should not happen), go home.
                 LaunchedEffect(screen) {

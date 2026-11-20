@@ -40,7 +40,17 @@ import com.doranalley.core.Checker
 import com.doranalley.core.Exercise
 import com.doranalley.core.Tile
 import com.doranalley.ui.AppViewModel
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.runtime.key
+import androidx.compose.ui.draw.clip
 import com.doranalley.ui.components.BoxState
+import com.doranalley.ui.components.BubbleBox
+import com.doranalley.ui.components.enterPop
+import com.doranalley.ui.components.enterRise
+import com.doranalley.ui.theme.Nunito
 import com.doranalley.ui.components.Bubble
 import com.doranalley.ui.components.GlossText
 import com.doranalley.ui.components.ChunkyButton
@@ -69,18 +79,17 @@ private fun Speakers(vm: AppViewModel, text: String, slow: Boolean = true, big: 
 private fun MascotPrompt(text: String, vm: AppViewModel, audioText: String?, korean: Boolean) {
     val playing = vm.audio.playing.collectAsState().value
     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp)) {
-        Mascot(size = 76.dp)
-        Spacer(Modifier.width(8.dp))
-        Row(
-            Modifier.border(2.dp, C.Line, RoundedCornerShape(16.dp)).padding(horizontal = 12.dp, vertical = 10.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            if (audioText != null) {
-                SpeakerButton(playing == "ko:$audioText", { vm.audio.play(audioText) }, size = 40.dp, tag = "play")
-                Spacer(Modifier.width(10.dp))
+        Mascot(size = 80.dp)
+        Spacer(Modifier.width(4.dp))
+        BubbleBox {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                if (audioText != null) {
+                    SpeakerButton(playing == "ko:$audioText", { vm.audio.play(audioText) }, size = 40.dp, tag = "play")
+                    Spacer(Modifier.width(10.dp))
+                }
+                val gloss = vm.course.gloss
+                GlossText(text, if (korean) gloss::korean else gloss::english)
             }
-            val gloss = vm.course.gloss
-            GlossText(text, if (korean) gloss::korean else gloss::english)
         }
     }
 }
@@ -91,8 +100,14 @@ private fun OptionList(options: List<String>, selected: String?, locked: Boolean
         options.forEachIndexed { i, o ->
             SelectBox(selected == o, { if (!locked) onPick(o) }, Modifier.fillMaxWidth(), tag = "option:$o", enabled = !locked) {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                    Box(Modifier.size(28.dp).border(2.dp, C.Line, RoundedCornerShape(8.dp)), contentAlignment = Alignment.Center) {
-                        Text("${i + 1}", color = C.Muted, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    val on = selected == o
+                    val badge by animateColorAsState(if (on) C.Blue else C.Line, tween(160), label = "badge")
+                    Box(
+                        Modifier.size(28.dp).clip(RoundedCornerShape(8.dp)).background(if (on) C.Blue else Color.Transparent)
+                            .border(2.dp, badge, RoundedCornerShape(8.dp)),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text("${i + 1}", color = if (on) Color.White else C.Muted, fontWeight = FontWeight.ExtraBold, fontFamily = Nunito, fontSize = 14.sp)
                     }
                     Text(o, fontSize = if (big) 24.sp else 18.sp, color = C.Ink, modifier = Modifier.padding(start = 14.dp))
                 }
@@ -124,11 +139,15 @@ fun LetterIntroView(vm: AppViewModel, ex: Exercise.LetterIntro) {
     val playing by vm.audio.playing.collectAsState()
     ExerciseFrame("New letter", locked = false, ready = true, onCheck = { vm.next() }, checkLabel = "Continue") {
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Box(Modifier.size(180.dp).border(3.dp, C.Line, RoundedCornerShape(28.dp)), contentAlignment = Alignment.Center) {
-                Text(ex.letter.ch, fontSize = 110.sp, color = C.Ink, fontWeight = FontWeight.Bold)
+            val card = RoundedCornerShape(32.dp)
+            Box(
+                Modifier.size(184.dp).clip(card).background(C.PurpleDark).padding(bottom = 6.dp).clip(card).background(C.Purple),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(ex.letter.ch, fontSize = 112.sp, color = Color.White, fontWeight = FontWeight.Bold, modifier = Modifier.enterPop(delayMs = 120, from = 0.4f, durationMs = 520))
             }
             Spacer(Modifier.height(18.dp))
-            Text("“${ex.letter.rom}”", fontSize = 32.sp, fontWeight = FontWeight.ExtraBold, color = C.Purple)
+            Text("“${ex.letter.rom}”", fontSize = 34.sp, fontWeight = FontWeight.Black, fontFamily = Nunito, color = C.Purple, modifier = Modifier.enterRise(delayMs = 260))
             Text(ex.letter.hint, fontSize = 17.sp, color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 6.dp))
             Spacer(Modifier.height(20.dp))
             SpeakerButton(playing == "ko:${ex.letter.say}", { vm.audio.play(ex.letter.say) }, size = 80.dp, tag = "play")
@@ -167,8 +186,8 @@ fun WordMeaningView(vm: AppViewModel, ex: Exercise.WordMeaning, locked: Boolean,
     val playing by vm.audio.playing.collectAsState()
     ExerciseFrame(if (ex.isNew) "New word" else "What does this mean?", locked, sel != null, { vm.submit(sel == ex.word.en) }, secondary = secondary) {
         if (ex.isNew) {
-            Text("NEW WORD", color = C.Purple, fontWeight = FontWeight.ExtraBold, fontSize = 13.sp, letterSpacing = 1.sp,
-                modifier = Modifier.background(C.Purple.copy(alpha = 0.12f), RoundedCornerShape(8.dp)).padding(horizontal = 10.dp, vertical = 4.dp))
+            Text("✨ New word", color = C.PurpleDark, fontWeight = FontWeight.ExtraBold, fontFamily = Nunito, fontSize = 14.sp,
+                modifier = Modifier.enterPop(from = 0.7f).background(C.Purple.copy(alpha = 0.12f), RoundedCornerShape(10.dp)).padding(horizontal = 10.dp, vertical = 4.dp))
             Spacer(Modifier.height(12.dp))
         }
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 22.dp)) {
@@ -218,6 +237,7 @@ fun MatchPairsView(vm: AppViewModel, ex: Exercise.MatchPairs, locked: Boolean) {
     var selL by remember { mutableStateOf<String?>(null) }
     var selR by remember { mutableStateOf<String?>(null) }
     var wrongPair by remember { mutableStateOf<Pair<String, String>?>(null) }
+    var rightPair by remember { mutableStateOf<Pair<String, String>?>(null) }
     var mistakes by remember { mutableStateOf(0) }
 
     fun tryMatch() {
@@ -225,6 +245,7 @@ fun MatchPairsView(vm: AppViewModel, ex: Exercise.MatchPairs, locked: Boolean) {
         val r = selR ?: return
         if (answer[l] == r) {
             matched += l
+            rightPair = l to r
             selL = null; selR = null
             if (vm.progress.value.settings.sounds) vm.audio.effect(com.doranalley.audio.AudioPlayer.Sfx.CORRECT)
             if (matched.size == answer.size) vm.submit(true, if (mistakes == 0) "All pairs matched!" else null)
@@ -236,6 +257,7 @@ fun MatchPairsView(vm: AppViewModel, ex: Exercise.MatchPairs, locked: Boolean) {
         }
     }
     LaunchedEffect(wrongPair) { if (wrongPair != null) { delay(600); wrongPair = null } }
+    LaunchedEffect(rightPair) { if (rightPair != null) { delay(450); rightPair = null } }
 
     ExerciseFrame("Tap the matching pairs", locked, ready = false, onCheck = {}) {
         Row(horizontalArrangement = Arrangement.spacedBy(14.dp), modifier = Modifier.fillMaxWidth()) {
@@ -243,6 +265,7 @@ fun MatchPairsView(vm: AppViewModel, ex: Exercise.MatchPairs, locked: Boolean) {
                 left.forEach { l ->
                     val done = l in matched
                     val st = when {
+                        rightPair?.first == l -> BoxState.RIGHT
                         done -> BoxState.DONE
                         wrongPair?.first == l -> BoxState.WRONG
                         selL == l -> BoxState.SELECTED
@@ -250,7 +273,7 @@ fun MatchPairsView(vm: AppViewModel, ex: Exercise.MatchPairs, locked: Boolean) {
                     }
                     SelectBox(selL == l, {
                         if (!done && !locked) { selL = l; if (ex.leftAudio) vm.audio.play(l); tryMatch() }
-                    }, Modifier.fillMaxWidth().height(64.dp).alpha(if (done) 0.45f else 1f), state = st, enabled = !done && !locked, tag = "matchL:$l") {
+                    }, Modifier.fillMaxWidth().height(64.dp).alpha(fadeDone(done && st != BoxState.RIGHT)), state = st, enabled = !done && !locked, tag = "matchL:$l") {
                         Text(l, fontSize = if (l.length > 6) 17.sp else 22.sp, fontWeight = FontWeight.Bold, color = C.Ink, textAlign = TextAlign.Center)
                     }
                 }
@@ -259,13 +282,14 @@ fun MatchPairsView(vm: AppViewModel, ex: Exercise.MatchPairs, locked: Boolean) {
                 right.forEach { r ->
                     val done = answer.any { (k, v) -> v == r && k in matched }
                     val st = when {
+                        rightPair?.second == r -> BoxState.RIGHT
                         done -> BoxState.DONE
                         wrongPair?.second == r -> BoxState.WRONG
                         selR == r -> BoxState.SELECTED
                         else -> BoxState.NORMAL
                     }
                     SelectBox(selR == r, { if (!done && !locked) { selR = r; tryMatch() } },
-                        Modifier.fillMaxWidth().height(64.dp).alpha(if (done) 0.45f else 1f), state = st, enabled = !done && !locked, tag = "matchR:$r") {
+                        Modifier.fillMaxWidth().height(64.dp).alpha(fadeDone(done && st != BoxState.RIGHT)), state = st, enabled = !done && !locked, tag = "matchR:$r") {
                         Text(r, fontSize = if (r.length > 14) 13.sp else 16.sp, color = C.Ink, textAlign = TextAlign.Center)
                     }
                 }
@@ -285,8 +309,10 @@ private fun WordBank(tiles: List<Tile>, chosen: MutableList<Tile>, locked: Boole
         Box(Modifier.fillMaxWidth().padding(top = 126.dp).height(2.dp).background(C.Line))
         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.padding(top = 8.dp)) {
             chosen.forEach { t ->
-                SelectBox(false, { if (!locked) chosen.remove(t) }, tag = "chosen:${t.text}", enabled = !locked) {
-                    Text(t.text, fontSize = fs, color = C.Ink)
+                key(t.id) {
+                    SelectBox(false, { if (!locked) chosen.remove(t) }, Modifier.enterPop(from = 0.7f, durationMs = 260), tag = "chosen:${t.text}", enabled = !locked) {
+                        Text(t.text, fontSize = fs, color = C.Ink)
+                    }
                 }
             }
         }
@@ -296,7 +322,7 @@ private fun WordBank(tiles: List<Tile>, chosen: MutableList<Tile>, locked: Boole
         tiles.forEach { t ->
             val used = chosen.any { it.id == t.id }
             if (used) {
-                Box(Modifier.background(C.Line, RoundedCornerShape(14.dp)).padding(horizontal = 14.dp, vertical = 12.dp)) {
+                Box(Modifier.padding(bottom = 3.dp).background(C.Soft, RoundedCornerShape(16.dp)).border(2.dp, C.Line, RoundedCornerShape(16.dp)).padding(horizontal = 14.dp, vertical = 12.dp)) {
                     Text(t.text, fontSize = fs, color = Color.Transparent)
                 }
             } else {
@@ -350,7 +376,7 @@ fun FillBlankView(vm: AppViewModel, ex: Exercise.FillBlank, locked: Boolean, sec
                 Modifier.padding(horizontal = 4.dp).border(2.dp, if (sel != null) C.Blue else C.LineDark, RoundedCornerShape(10.dp))
                     .defaultMinSize(minWidth = 70.dp).padding(horizontal = 10.dp, vertical = 4.dp).align(Alignment.CenterVertically).testTag("blank"),
                 contentAlignment = Alignment.Center,
-            ) { Text(sel ?: " ", fontSize = 26.sp, color = C.Blue, fontWeight = FontWeight.Bold) }
+            ) { key(sel) { Text(sel ?: " ", fontSize = 26.sp, color = C.Blue, fontWeight = FontWeight.Bold, modifier = if (sel != null) Modifier.enterPop(from = 0.6f, durationMs = 260) else Modifier) } }
             if (ex.fill.after.isNotBlank()) Text(ex.fill.after, fontSize = 26.sp, color = C.Ink, modifier = Modifier.align(Alignment.CenterVertically))
         }
         OptionList(ex.options, sel, locked, { sel = it }, big = true)
@@ -363,3 +389,7 @@ fun BigBubble(text: String) = Bubble(text, fontSize = 22.sp)
 @Suppress("unused")
 @Composable
 private fun Placeholder() = ChunkyButton("", {})
+
+@Composable
+private fun fadeDone(done: Boolean): Float =
+    animateFloatAsState(if (done) 0.45f else 1f, tween(250), label = "fadeDone").value

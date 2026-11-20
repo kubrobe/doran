@@ -52,6 +52,17 @@ import com.doranalley.ui.Screen
 import com.doranalley.ui.components.Mascot
 import com.doranalley.ui.components.Mood
 import com.doranalley.ui.theme.C
+import com.doranalley.ui.theme.Nunito
+import com.doranalley.ui.components.CountUpText
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.runtime.LaunchedEffect
 
 @Composable
 fun PracticeTab(vm: AppViewModel) {
@@ -77,18 +88,25 @@ fun PracticeTab(vm: AppViewModel) {
 
 @Composable
 private fun PracticeCard(title: String, sub: String, icon: ImageVector, color: Color, tag: String, onClick: () -> Unit) {
+    val source = remember { MutableInteractionSource() }
+    val pressed by source.collectIsPressedAsState()
+    val sink by animateDpAsState(if (pressed) 3.dp else 0.dp, spring(stiffness = Spring.StiffnessHigh), label = "sink")
+    val shape = RoundedCornerShape(18.dp)
     Row(
-        Modifier.fillMaxWidth().padding(vertical = 6.dp).clip(RoundedCornerShape(16.dp)).border(2.dp, C.Line, RoundedCornerShape(16.dp))
-            .clickable(onClick = onClick).padding(16.dp).testTag(tag),
+        Modifier.fillMaxWidth().padding(vertical = 6.dp).clip(shape)
+            .clickable(source, null, onClick = onClick).testTag(tag)
+            .padding(top = sink).background(C.Line, shape).padding(bottom = (3.dp - sink).coerceAtLeast(0.dp))
+            .background(C.Card, shape).border(2.dp, C.Line, shape).padding(14.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Box(Modifier.size(52.dp).clip(RoundedCornerShape(14.dp)).background(color), contentAlignment = Alignment.Center) {
-            Icon(icon, null, tint = Color.White, modifier = Modifier.size(30.dp))
+        Box(Modifier.size(54.dp).clip(RoundedCornerShape(16.dp)).background(color.copy(alpha = 0.16f)), contentAlignment = Alignment.Center) {
+            Icon(icon, null, tint = color, modifier = Modifier.size(30.dp))
         }
-        Column(Modifier.padding(start = 14.dp)) {
-            Text(title, fontWeight = FontWeight.ExtraBold, fontSize = 18.sp, color = C.Ink)
+        Column(Modifier.padding(start = 14.dp).weight(1f)) {
+            Text(title, fontWeight = FontWeight.Black, fontFamily = Nunito, fontSize = 18.sp, color = C.Ink)
             Text(sub, color = C.Muted, fontSize = 14.sp)
         }
+        Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = C.LineDark)
     }
 }
 
@@ -100,7 +118,8 @@ fun WordsTab(vm: AppViewModel, p: Progress) {
     if (words.isEmpty()) {
         Column(Modifier.fillMaxSize().padding(30.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
             Mascot(mood = Mood.THINK)
-            Text("Words you learn will appear here.", color = C.Muted, textAlign = TextAlign.Center)
+            Text("No words yet", style = androidx.compose.material3.MaterialTheme.typography.titleLarge, modifier = Modifier.padding(top = 8.dp))
+            Text("Finish your first lesson and its words will appear here, ready to replay.", color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 4.dp))
         }
         return
     }
@@ -111,7 +130,7 @@ fun WordsTab(vm: AppViewModel, p: Progress) {
         }
         items(words, key = { it.second.id }) { (_, w) ->
             val st = p.items[w.id]
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(vertical = 2.dp)) {
                 Box(Modifier.weight(1f)) { GuideRow(w.ko, w.en, playing == "ko:${w.ko}") { vm.audio.play(w.ko) } }
                 StrengthBars(st?.strength ?: 0.0)
             }
@@ -138,15 +157,18 @@ fun ProfileTab(vm: AppViewModel, p: Progress) {
             Text("Profile", style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, modifier = Modifier.weight(1f))
             IconButton(onClick = { vm.go(Screen.Settings) }, modifier = Modifier.testTag("openSettings")) { Icon(Icons.Filled.Settings, "Settings", tint = C.Muted) }
         }
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(vertical = 12.dp)) {
-            Mascot(size = 90.dp, mood = Mood.HAPPY)
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(vertical = 12.dp).fillMaxWidth().clip(RoundedCornerShape(20.dp)).background(C.Orange.copy(alpha = 0.12f)).padding(12.dp),
+        ) {
+            Mascot(size = 84.dp, mood = Mood.HAPPY)
             Column(Modifier.padding(start = 12.dp)) {
-                Text("Learning Korean", fontWeight = FontWeight.ExtraBold, fontSize = 20.sp, color = C.Ink)
+                Text("Learning Korean", fontWeight = FontWeight.Black, fontFamily = Nunito, fontSize = 20.sp, color = C.Ink)
                 val cur = p.current(vm.course)
                 Text(cur?.let { "Unit ${it.first.number}: ${it.first.title}" } ?: "Course complete", color = C.Muted)
             }
         }
-        Text("STATISTICS", color = C.Muted, fontWeight = FontWeight.ExtraBold, fontSize = 13.sp, letterSpacing = 1.sp, modifier = Modifier.padding(top = 8.dp, bottom = 8.dp))
+        com.doranalley.ui.components.SectionTitle("Statistics", Modifier.padding(top = 8.dp, bottom = 10.dp))
         val learnedWords = p.studiedUnits(vm.course).sumOf { it.words.size }
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             Stat("🔥", "${p.visibleStreak(today)}", "Day streak", Modifier.weight(1f))
@@ -162,7 +184,7 @@ fun ProfileTab(vm: AppViewModel, p: Progress) {
             Stat("🗣️", "$learnedWords", "Words seen", Modifier.weight(1f))
             Stat("💯", "${p.perfectLessons}", "Perfect lessons", Modifier.weight(1f))
         }
-        Text("THIS WEEK", color = C.Muted, fontWeight = FontWeight.ExtraBold, fontSize = 13.sp, letterSpacing = 1.sp, modifier = Modifier.padding(top = 22.dp, bottom = 8.dp))
+        com.doranalley.ui.components.SectionTitle("This week", Modifier.padding(top = 22.dp, bottom = 10.dp))
         WeekChart(p, today)
         Text("Daily goal: ${p.dailyGoal} XP · today ${p.xpOn(today)} XP", color = C.Muted, modifier = Modifier.padding(top = 8.dp))
     }
@@ -170,11 +192,15 @@ fun ProfileTab(vm: AppViewModel, p: Progress) {
 
 @Composable
 private fun Stat(emoji: String, value: String, label: String, modifier: Modifier) {
-    Row(modifier.clip(RoundedCornerShape(14.dp)).border(2.dp, C.Line, RoundedCornerShape(14.dp)).padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text(emoji, fontSize = 24.sp)
-        Column(Modifier.padding(start = 8.dp)) {
-            Text(value, fontWeight = FontWeight.ExtraBold, fontSize = 20.sp, color = C.Ink)
-            Text(label, color = C.Muted, fontSize = 13.sp)
+    com.doranalley.ui.components.CardBox(modifier) {
+        Row(Modifier.fillMaxWidth().padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+            Text(emoji, fontSize = 24.sp)
+            Column(Modifier.padding(start = 8.dp)) {
+                val n = value.toIntOrNull()
+                if (n != null) CountUpText(n, style = androidx.compose.material3.MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Black), durationMs = 700)
+                else Text(value, fontWeight = FontWeight.Black, fontSize = 20.sp, color = C.Ink)
+                Text(label, color = C.Muted, fontSize = 13.sp)
+            }
         }
     }
 }
@@ -183,12 +209,14 @@ private fun Stat(emoji: String, value: String, label: String, modifier: Modifier
 private fun WeekChart(p: Progress, today: java.time.LocalDate) {
     val days = (6 downTo 0).map { today.minusDays(it.toLong()) }
     val max = maxOf(days.maxOf { p.xpOn(it) }, p.dailyGoal, 1)
-    Row(Modifier.fillMaxWidth().height(150.dp).border(2.dp, C.Line, RoundedCornerShape(14.dp)).padding(12.dp), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.Bottom) {
+    val grow = remember { Animatable(0f) }
+    LaunchedEffect(Unit) { grow.animateTo(1f, tween(700, 100, com.doranalley.ui.components.Motion.EaseOut)) }
+    Row(Modifier.fillMaxWidth().height(150.dp).clip(RoundedCornerShape(18.dp)).background(C.Card).border(2.dp, C.Line, RoundedCornerShape(18.dp)).padding(12.dp), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.Bottom) {
         days.forEach { d ->
             val xp = p.xpOn(d)
             Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Bottom) {
                 Text("$xp", fontSize = 11.sp, color = C.Muted)
-                Box(Modifier.width(22.dp).height((90f * xp / max).dp.coerceAtLeast(3.dp)).clip(RoundedCornerShape(6.dp)).background(if (xp >= p.dailyGoal) C.Gold else C.Blue))
+                Box(Modifier.width(22.dp).height((90f * xp / max * grow.value).dp.coerceAtLeast(3.dp)).clip(RoundedCornerShape(7.dp)).background(if (xp >= p.dailyGoal) C.Gold else if (d == today) C.Green else C.Blue))
                 Text(d.dayOfWeek.name.take(2).lowercase().replaceFirstChar { it.uppercase() }, fontSize = 12.sp, color = if (d == today) C.Ink else C.Muted, fontWeight = FontWeight.Bold)
             }
         }

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- In-app text lives in assets/i18n/ui.json so the language can switch without restarting. -->
-    <string name="app_name">Doran Alley</string>
+    <string name="app_name">Doran Korean</string>
 </resources>

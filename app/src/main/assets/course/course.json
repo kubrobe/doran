@@ -1,0 +1,6696 @@
+{
+ "version": 1,
+ "units": [
+  {
+   "id": "h1",
+   "title": "Vowels 1",
+   "section": "Hangul",
+   "blurb": "Your first six Korean vowels",
+   "tips": [
+    "Korean letters are grouped into syllable blocks. Every block starts with a consonant.",
+    "ㅇ is silent at the start of a block, so 아 is just \"a\" and 오 is just \"o\".",
+    "Vertical vowels (ㅏ ㅓ ㅣ) sit to the right of the consonant. Horizontal ones (ㅗ ㅜ ㅡ) sit below it."
+   ],
+   "letters": [
+    {
+     "id": "h1.l1",
+     "ch": "ㅏ",
+     "rom": "a",
+     "say": "아",
+     "hint": "like \"a\" in \"father\"",
+     "group": ""
+    },
+    {
+     "id": "h1.l2",
+     "ch": "ㅓ",
+     "rom": "eo",
+     "say": "어",
+     "hint": "like \"u\" in \"fun\"",
+     "group": ""
+    },
+    {
+     "id": "h1.l3",
+     "ch": "ㅗ",
+     "rom": "o",
+     "say": "오",
+     "hint": "like \"o\" in \"go\", lips rounded",
+     "group": ""
+    },
+    {
+     "id": "h1.l4",
+     "ch": "ㅜ",
+     "rom": "u",
+     "say": "우",
+     "hint": "like \"oo\" in \"moon\"",
+     "group": ""
+    },
+    {
+     "id": "h1.l5",
+     "ch": "ㅡ",
+     "rom": "eu",
+     "say": "으",
+     "hint": "lips flat, tongue back, like \"oo\" without rounding",
+     "group": ""
+    },
+    {
+     "id": "h1.l6",
+     "ch": "ㅣ",
+     "rom": "i",
+     "say": "이",
+     "hint": "like \"ee\" in \"see\"",
+     "group": ""
+    }
+   ],
+   "words": [
+    {
+     "id": "h1.w1",
+     "ko": "아이",
+     "en": "child"
+    },
+    {
+     "id": "h1.w2",
+     "ko": "오이",
+     "en": "cucumber"
+    },
+    {
+     "id": "h1.w3",
+     "ko": "오",
+     "en": "five"
+    },
+    {
+     "id": "h1.w4",
+     "ko": "이",
+     "en": "two"
+    }
+   ],
+   "sentences": [],
+   "fills": []
+  },
+  {
+   "id": "h2",
+   "title": "Vowels 2",
+   "section": "Hangul",
+   "blurb": "Y-vowels and the e-sounds",
+   "tips": [
+    "Add one extra stroke and a vowel gets a \"y\" in front: ㅏ a → ㅑ ya, ㅗ o → ㅛ yo.",
+    "ㅐ and ㅔ sound almost the same in modern Seoul Korean. You only need to tell them apart in spelling."
+   ],
+   "letters": [
+    {
+     "id": "h2.l1",
+     "ch": "ㅐ",
+     "rom": "ae",
+     "say": "애",
+     "hint": "like \"e\" in \"bed\"",
+     "group": "e"
+    },
+    {
+     "id": "h2.l2",
+     "ch": "ㅔ",
+     "rom": "e",
+     "say": "에",
+     "hint": "almost the same as ㅐ",
+     "group": "e"
+    },
+    {
+     "id": "h2.l3",
+     "ch": "ㅑ",
+     "rom": "ya",
+     "say": "야",
+     "hint": "like \"ya\" in \"yard\"",
+     "group": ""
+    },
+    {
+     "id": "h2.l4",
+     "ch": "ㅕ",
+     "rom": "yeo",
+     "say": "여",
+     "hint": "like \"yu\" in \"young\"",
+     "group": ""
+    },
+    {
+     "id": "h2.l5",
+     "ch": "ㅛ",
+     "rom": "yo",
+     "say": "요",
+     "hint": "like \"yo\" in \"yoga\"",
+     "group": ""
+    },
+    {
+     "id": "h2.l6",
+     "ch": "ㅠ",
+     "rom": "yu",
+     "say": "유",
+     "hint": "like \"you\"",
+     "group": ""
+    }
+   ],
+   "words": [
+    {
+     "id": "h2.w1",
+     "ko": "우유",
+     "en": "milk"
+    },
+    {
+     "id": "h2.w2",
+     "ko": "여우",
+     "en": "fox"
+    },
+    {
+     "id": "h2.w3",
+     "ko": "이유",
+     "en": "reason"
+    }
+   ],
+   "sentences": [],
+   "fills": []
+  },
+  {
+   "id": "h3",
+   "title": "Vowels 3",
+   "section": "Hangul",
+   "blurb": "Combined vowels",
+   "tips": [
+    "Combined vowels glide: ㅗ + ㅏ = ㅘ (wa), ㅜ + ㅓ = ㅝ (wo).",
+    "ㅙ, ㅚ and ㅞ all sound like \"we\" today."
+   ],
+   "letters": [
+    {
+     "id": "h3.l1",
+     "ch": "ㅘ",
+     "rom": "wa",
+     "say": "와",
+     "hint": "like \"wa\" in \"water\"",
+     "group": ""
+    },
+    {
+     "id": "h3.l2",
+     "ch": "ㅝ",
+     "rom": "wo",
+     "say": "워",
+     "hint": "like \"wo\" in \"won\"",
+     "group": ""
+    },
+    {
+     "id": "h3.l3",
+     "ch": "ㅟ",
+     "rom": "wi",
+     "say": "위",
+     "hint": "like \"wee\"",
+     "group": ""
+    },
+    {
+     "id": "h3.l4",
+     "ch": "ㅢ",
+     "rom": "ui",
+     "say": "의",
+     "hint": "\"eu\" gliding into \"i\"",
+     "group": ""
+    },
+    {
+     "id": "h3.l5",
+     "ch": "ㅚ",
+     "rom": "oe",
+     "say": "외",
+     "hint": "sounds like \"we\"",
+     "group": "we"
+    },
+    {
+     "id": "h3.l6",
+     "ch": "ㅙ",
+     "rom": "wae",
+     "say": "왜",
+     "hint": "sounds like \"we\"",
+     "group": "we"
+    },
+    {
+     "id": "h3.l7",
+     "ch": "ㅖ",
+     "rom": "ye",
+     "say": "예",
+     "hint": "like \"ye\" in \"yes\"",
+     "group": ""
+    }
+   ],
+   "words": [
+    {
+     "id": "h3.w1",
+     "ko": "왜",
+     "en": "why"
+    },
+    {
+     "id": "h3.w2",
+     "ko": "위",
+     "en": "above"
+    },
+    {
+     "id": "h3.w3",
+     "ko": "예",
+     "en": "yes (formal)"
+    },
+    {
+     "id": "h3.w4",
+     "ko": "와",
+     "en": "wow"
+    }
+   ],
+   "sentences": [],
+   "fills": []
+  },
+  {
+   "id": "h4",
+   "title": "Consonants 1",
+   "section": "Hangul",
+   "blurb": "The basic consonants",
+   "tips": [
+    "ㄱ ㄷ ㅂ ㅈ sound softer at the start of a word (k, t, p, ch) and voiced between vowels (g, d, b, j).",
+    "ㄹ is a quick tap between vowels (like the \"tt\" in American \"butter\") and an \"l\" at the end of a syllable."
+   ],
+   "letters": [
+    {
+     "id": "h4.l1",
+     "ch": "ㄱ",
+     "rom": "g / k",
+     "say": "가",
+     "hint": "soft \"g\" or \"k\"",
+     "group": ""
+    },
+    {
+     "id": "h4.l2",
+     "ch": "ㄴ",
+     "rom": "n",
+     "say": "나",
+     "hint": "like \"n\"",
+     "group": ""
+    },
+    {
+     "id": "h4.l3",
+     "ch": "ㄷ",
+     "rom": "d / t",
+     "say": "다",
+     "hint": "soft \"d\" or \"t\"",
+     "group": ""
+    },
+    {
+     "id": "h4.l4",
+     "ch": "ㄹ",
+     "rom": "r / l",
+     "say": "라",
+     "hint": "a light tap",
+     "group": ""
+    },
+    {
+     "id": "h4.l5",
+     "ch": "ㅁ",
+     "rom": "m",
+     "say": "마",
+     "hint": "like \"m\"",
+     "group": ""
+    },
+    {
+     "id": "h4.l6",
+     "ch": "ㅂ",
+     "rom": "b / p",
+     "say": "바",
+     "hint": "soft \"b\" or \"p\"",
+     "group": ""
+    },
+    {
+     "id": "h4.l7",
+     "ch": "ㅅ",
+     "rom": "s",
+     "say": "사",
+     "hint": "like \"s\"",
+     "group": ""
+    },
+    {
+     "id": "h4.l8",
+     "ch": "ㅈ",
+     "rom": "j",
+     "say": "자",
+     "hint": "soft \"j\"",
+     "group": ""
+    },
+    {
+     "id": "h4.l9",
+     "ch": "ㅎ",
+     "rom": "h",
+     "say": "하",
+     "hint": "like \"h\"",
+     "group": ""
+    }
+   ],
+   "words": [
+    {
+     "id": "h4.w1",
+     "ko": "나무",
+     "en": "tree"
+    },
+    {
+     "id": "h4.w2",
+     "ko": "바다",
+     "en": "sea"
+    },
+    {
+     "id": "h4.w3",
+     "ko": "하마",
+     "en": "hippo"
+    },
+    {
+     "id": "h4.w4",
+     "ko": "모자",
+     "en": "hat"
+    },
+    {
+     "id": "h4.w5",
+     "ko": "라디오",
+     "en": "radio"
+    },
+    {
+     "id": "h4.w6",
+     "ko": "두부",
+     "en": "tofu"
+    },
+    {
+     "id": "h4.w7",
+     "ko": "가수",
+     "en": "singer"
+    },
+    {
+     "id": "h4.w8",
+     "ko": "어머니",
+     "en": "mother"
+    },
+    {
+     "id": "h4.w9",
+     "ko": "아버지",
+     "en": "father"
+    },
+    {
+     "id": "h4.w10",
+     "ko": "비누",
+     "en": "soap"
+    }
+   ],
+   "sentences": [],
+   "fills": []
+  },
+  {
+   "id": "h5",
+   "title": "Consonants 2",
+   "section": "Hangul",
+   "blurb": "Strong and tense consonants",
+   "tips": [
+    "Aspirated consonants (ㅋ ㅌ ㅍ ㅊ) come with a puff of air. Hold your hand in front of your mouth and feel it.",
+    "Double consonants (ㄲ ㄸ ㅃ ㅆ ㅉ) are tense: no air, tight throat, a sharp start."
+   ],
+   "letters": [
+    {
+     "id": "h5.l1",
+     "ch": "ㅋ",
+     "rom": "k",
+     "say": "카",
+     "hint": "strong \"k\" with a puff of air",
+     "group": ""
+    },
+    {
+     "id": "h5.l2",
+     "ch": "ㅌ",
+     "rom": "t",
+     "say": "타",
+     "hint": "strong \"t\" with a puff of air",
+     "group": ""
+    },
+    {
+     "id": "h5.l3",
+     "ch": "ㅍ",
+     "rom": "p",
+     "say": "파",
+     "hint": "strong \"p\" with a puff of air",
+     "group": ""
+    },
+    {
+     "id": "h5.l4",
+     "ch": "ㅊ",
+     "rom": "ch",
+     "say": "차",
+     "hint": "strong \"ch\" with a puff of air",
+     "group": ""
+    },
+    {
+     "id": "h5.l5",
+     "ch": "ㄲ",
+     "rom": "kk",
+     "say": "까",
+     "hint": "tense \"k\", no air",
+     "group": ""
+    },
+    {
+     "id": "h5.l6",
+     "ch": "ㄸ",
+     "rom": "tt",
+     "say": "따",
+     "hint": "tense \"t\", no air",
+     "group": ""
+    },
+    {
+     "id": "h5.l7",
+     "ch": "ㅃ",
+     "rom": "pp",
+     "say": "빠",
+     "hint": "tense \"p\", no air",
+     "group": ""
+    },
+    {
+     "id": "h5.l8",
+     "ch": "ㅆ",
+     "rom": "ss",
+     "say": "싸",
+     "hint": "tense \"s\"",
+     "group": ""
+    },
+    {
+     "id": "h5.l9",
+     "ch": "ㅉ",
+     "rom": "jj",
+     "say": "짜",
+     "hint": "tense \"j\"",
+     "group": ""
+    }
+   ],
+   "words": [
+    {
+     "id": "h5.w1",
+     "ko": "커피",
+     "en": "coffee"
+    },
+    {
+     "id": "h5.w2",
+     "ko": "토마토",
+     "en": "tomato"
+    },
+    {
+     "id": "h5.w3",
+     "ko": "피자",
+     "en": "pizza"
+    },
+    {
+     "id": "h5.w4",
+     "ko": "아빠",
+     "en": "dad"
+    },
+    {
+     "id": "h5.w5",
+     "ko": "오빠",
+     "en": "older brother (said by a girl)"
+    },
+    {
+     "id": "h5.w6",
+     "ko": "기차",
+     "en": "train"
+    },
+    {
+     "id": "h5.w7",
+     "ko": "코",
+     "en": "nose"
+    },
+    {
+     "id": "h5.w8",
+     "ko": "쓰레기",
+     "en": "trash"
+    },
+    {
+     "id": "h5.w9",
+     "ko": "찌개",
+     "en": "stew"
+    },
+    {
+     "id": "h5.w10",
+     "ko": "토끼",
+     "en": "rabbit"
+    }
+   ],
+   "sentences": [],
+   "fills": []
+  },
+  {
+   "id": "h6",
+   "title": "Final consonants",
+   "section": "Hangul",
+   "blurb": "Batchim: consonants at the bottom",
+   "tips": [
+    "A consonant at the bottom of a block is called 받침 (batchim).",
+    "There are only seven final sounds: k, n, t, l, m, p, ng. Many letters collapse into these.",
+    "ㅇ at the bottom is \"ng\", like in \"sing\"."
+   ],
+   "letters": [
+    {
+     "id": "h6.l1",
+     "ch": "악",
+     "rom": "ak",
+     "say": "악",
+     "hint": "final ㄱ: a short, unreleased \"k\"",
+     "group": ""
+    },
+    {
+     "id": "h6.l2",
+     "ch": "안",
+     "rom": "an",
+     "say": "안",
+     "hint": "final ㄴ: \"n\"",
+     "group": ""
+    },
+    {
+     "id": "h6.l3",
+     "ch": "앗",
+     "rom": "at",
+     "say": "앗",
+     "hint": "final ㅅ sounds like an unreleased \"t\"",
+     "group": ""
+    },
+    {
+     "id": "h6.l4",
+     "ch": "알",
+     "rom": "al",
+     "say": "알",
+     "hint": "final ㄹ: a clear \"l\"",
+     "group": ""
+    },
+    {
+     "id": "h6.l5",
+     "ch": "암",
+     "rom": "am",
+     "say": "암",
+     "hint": "final ㅁ: \"m\"",
+     "group": ""
+    },
+    {
+     "id": "h6.l6",
+     "ch": "압",
+     "rom": "ap",
+     "say": "압",
+     "hint": "final ㅂ: an unreleased \"p\"",
+     "group": ""
+    },
+    {
+     "id": "h6.l7",
+     "ch": "앙",
+     "rom": "ang",
+     "say": "앙",
+     "hint": "final ㅇ: \"ng\" as in \"sing\"",
+     "group": ""
+    }
+   ],
+   "words": [
+    {
+     "id": "h6.w1",
+     "ko": "가방",
+     "en": "bag"
+    },
+    {
+     "id": "h6.w2",
+     "ko": "물",
+     "en": "water"
+    },
+    {
+     "id": "h6.w3",
+     "ko": "밥",
+     "en": "rice"
+    },
+    {
+     "id": "h6.w4",
+     "ko": "사람",
+     "en": "person"
+    },
+    {
+     "id": "h6.w5",
+     "ko": "한국",
+     "en": "Korea"
+    },
+    {
+     "id": "h6.w6",
+     "ko": "김치",
+     "en": "kimchi"
+    },
+    {
+     "id": "h6.w7",
+     "ko": "책",
+     "en": "book"
+    },
+    {
+     "id": "h6.w8",
+     "ko": "학교",
+     "en": "school"
+    },
+    {
+     "id": "h6.w9",
+     "ko": "선생님",
+     "en": "teacher"
+    },
+    {
+     "id": "h6.w10",
+     "ko": "친구",
+     "en": "friend"
+    }
+   ],
+   "sentences": [],
+   "fills": []
+  },
+  {
+   "id": "u1",
+   "title": "Greetings",
+   "section": "Basics",
+   "blurb": "Say hello, thank you and goodbye",
+   "tips": [
+    "안녕하세요 works for hello at any time of day.",
+    "There are two goodbyes: 안녕히 가세요 to someone who is leaving, 안녕히 계세요 to someone who is staying.",
+    "감사합니다 and 고맙습니다 both mean thank you. 감사합니다 is a little more formal."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u1.w1",
+     "ko": "안녕하세요",
+     "en": "hello"
+    },
+    {
+     "id": "u1.w2",
+     "ko": "감사합니다",
+     "en": "thank you"
+    },
+    {
+     "id": "u1.w3",
+     "ko": "네",
+     "en": "yes"
+    },
+    {
+     "id": "u1.w4",
+     "ko": "아니요",
+     "en": "no"
+    },
+    {
+     "id": "u1.w5",
+     "ko": "죄송합니다",
+     "en": "I'm sorry"
+    },
+    {
+     "id": "u1.w6",
+     "ko": "괜찮아요",
+     "en": "it's okay"
+    },
+    {
+     "id": "u1.w7",
+     "ko": "안녕히 가세요",
+     "en": "goodbye (to someone leaving)"
+    },
+    {
+     "id": "u1.w8",
+     "ko": "안녕히 계세요",
+     "en": "goodbye (when you leave)"
+    },
+    {
+     "id": "u1.w9",
+     "ko": "만나서 반가워요",
+     "en": "nice to meet you"
+    },
+    {
+     "id": "u1.w10",
+     "ko": "저기요",
+     "en": "excuse me"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u1.s1",
+     "ko": "안녕하세요, 만나서 반가워요.",
+     "en": "Hello, nice to meet you.",
+     "enAlt": [],
+     "koTiles": [
+      "안녕하세요",
+      "만나서",
+      "반가워요"
+     ],
+     "enTiles": [
+      "Hello",
+      "nice",
+      "to",
+      "meet",
+      "you"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u1.s2",
+     "ko": "네, 감사합니다.",
+     "en": "Yes, thank you.",
+     "enAlt": [],
+     "koTiles": [
+      "네",
+      "감사합니다"
+     ],
+     "enTiles": [
+      "Yes",
+      "thank",
+      "you"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u1.s3",
+     "ko": "아니요, 괜찮아요.",
+     "en": "No, it's okay.",
+     "enAlt": [],
+     "koTiles": [
+      "아니요",
+      "괜찮아요"
+     ],
+     "enTiles": [
+      "No",
+      "it's",
+      "okay"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u1.s4",
+     "ko": "죄송합니다, 괜찮아요?",
+     "en": "I'm sorry, are you okay?",
+     "enAlt": [],
+     "koTiles": [
+      "죄송합니다",
+      "괜찮아요"
+     ],
+     "enTiles": [
+      "I'm",
+      "sorry",
+      "are",
+      "you",
+      "okay"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u1.s5",
+     "ko": "네, 괜찮아요.",
+     "en": "Yes, it's okay.",
+     "enAlt": [],
+     "koTiles": [
+      "네",
+      "괜찮아요"
+     ],
+     "enTiles": [
+      "Yes",
+      "it's",
+      "okay"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u1.s6",
+     "ko": "감사합니다, 안녕히 계세요.",
+     "en": "Thank you, goodbye.",
+     "enAlt": [],
+     "koTiles": [
+      "감사합니다",
+      "안녕히",
+      "계세요"
+     ],
+     "enTiles": [
+      "Thank",
+      "you",
+      "goodbye"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u1.s7",
+     "ko": "정말 반가워요.",
+     "en": "It's really nice to meet you.",
+     "enAlt": [],
+     "koTiles": [
+      "정말",
+      "반가워요"
+     ],
+     "enTiles": [
+      "It's",
+      "really",
+      "nice",
+      "to",
+      "meet",
+      "you"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u1.s8",
+     "ko": "아, 죄송합니다.",
+     "en": "Oh, I'm sorry.",
+     "enAlt": [],
+     "koTiles": [
+      "아",
+      "죄송합니다"
+     ],
+     "enTiles": [
+      "Oh",
+      "I'm",
+      "sorry"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u1.s9",
+     "ko": "저기요, 괜찮아요?",
+     "en": "Excuse me, are you okay?",
+     "enAlt": [],
+     "koTiles": [
+      "저기요",
+      "괜찮아요"
+     ],
+     "enTiles": [
+      "Excuse",
+      "me",
+      "are",
+      "you",
+      "okay"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u1.s10",
+     "ko": "고맙습니다, 내일 봐요.",
+     "en": "Thanks, see you tomorrow.",
+     "enAlt": [],
+     "koTiles": [
+      "고맙습니다",
+      "내일",
+      "봐요"
+     ],
+     "enTiles": [
+      "Thanks",
+      "see",
+      "you",
+      "tomorrow"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u1.f1",
+     "before": "만나서 ",
+     "answer": "반가워요",
+     "after": "",
+     "en": "Nice to meet you.",
+     "options": [
+      "감사합니다",
+      "괜찮아요"
+     ],
+     "full": "만나서 반가워요."
+    },
+    {
+     "id": "u1.f2",
+     "before": "감사합니다, 안녕히 ",
+     "answer": "계세요",
+     "after": "",
+     "en": "Thank you, goodbye.",
+     "options": [
+      "반가워요",
+      "죄송합니다"
+     ],
+     "full": "감사합니다, 안녕히 계세요."
+    }
+   ]
+  },
+  {
+   "id": "u2",
+   "title": "Introductions",
+   "section": "Basics",
+   "blurb": "Talk about who you are",
+   "tips": [
+    "저는 means \"I\" (as the topic). 은/는 marks the topic: 는 after a vowel, 은 after a consonant.",
+    "\"A is B\" = A는 B이에요 / B예요. Use 이에요 after a consonant (학생이에요) and 예요 after a vowel (민수예요).",
+    "To say \"not\", use 이/가 아니에요: 선생님이 아니에요."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u2.w1",
+     "ko": "저",
+     "en": "I (polite)"
+    },
+    {
+     "id": "u2.w2",
+     "ko": "이름",
+     "en": "name"
+    },
+    {
+     "id": "u2.w3",
+     "ko": "학생",
+     "en": "student"
+    },
+    {
+     "id": "u2.w4",
+     "ko": "회사원",
+     "en": "office worker"
+    },
+    {
+     "id": "u2.w5",
+     "ko": "사람",
+     "en": "person"
+    },
+    {
+     "id": "u2.w6",
+     "ko": "우즈베키스탄",
+     "en": "Uzbekistan"
+    },
+    {
+     "id": "u2.w7",
+     "ko": "친구",
+     "en": "friend"
+    },
+    {
+     "id": "u2.w8",
+     "ko": "뭐",
+     "en": "what"
+    },
+    {
+     "id": "u2.w9",
+     "ko": "나라",
+     "en": "country"
+    },
+    {
+     "id": "u2.w10",
+     "ko": "의사",
+     "en": "doctor"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u2.s1",
+     "ko": "저는 학생이에요.",
+     "en": "I am a student.",
+     "enAlt": [],
+     "koTiles": [
+      "저는",
+      "학생이에요"
+     ],
+     "enTiles": [
+      "I",
+      "am",
+      "a",
+      "student"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u2.s2",
+     "ko": "제 이름은 민수예요.",
+     "en": "My name is Minsu.",
+     "enAlt": [],
+     "koTiles": [
+      "제",
+      "이름은",
+      "민수예요"
+     ],
+     "enTiles": [
+      "My",
+      "name",
+      "is",
+      "Minsu"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u2.s3",
+     "ko": "저는 우즈베키스탄 사람이에요.",
+     "en": "I am from Uzbekistan.",
+     "enAlt": [],
+     "koTiles": [
+      "저는",
+      "우즈베키스탄",
+      "사람이에요"
+     ],
+     "enTiles": [
+      "I",
+      "am",
+      "from",
+      "Uzbekistan"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u2.s4",
+     "ko": "이름이 뭐예요?",
+     "en": "What is your name?",
+     "enAlt": [],
+     "koTiles": [
+      "이름이",
+      "뭐예요"
+     ],
+     "enTiles": [
+      "What",
+      "is",
+      "your",
+      "name"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u2.s5",
+     "ko": "민수 씨는 한국 사람이에요.",
+     "en": "Minsu is Korean.",
+     "enAlt": [],
+     "koTiles": [
+      "민수",
+      "씨는",
+      "한국",
+      "사람이에요"
+     ],
+     "enTiles": [
+      "Minsu",
+      "is",
+      "Korean"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u2.s6",
+     "ko": "저는 선생님이 아니에요.",
+     "en": "I am not a teacher.",
+     "enAlt": [],
+     "koTiles": [
+      "저는",
+      "선생님이",
+      "아니에요"
+     ],
+     "enTiles": [
+      "I",
+      "am",
+      "not",
+      "a",
+      "teacher"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u2.s7",
+     "ko": "친구는 회사원이에요.",
+     "en": "My friend is an office worker.",
+     "enAlt": [],
+     "koTiles": [
+      "친구는",
+      "회사원이에요"
+     ],
+     "enTiles": [
+      "My",
+      "friend",
+      "is",
+      "an",
+      "office",
+      "worker"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u2.s8",
+     "ko": "어느 나라 사람이에요?",
+     "en": "Where are you from?",
+     "enAlt": [],
+     "koTiles": [
+      "어느",
+      "나라",
+      "사람이에요"
+     ],
+     "enTiles": [
+      "Where",
+      "are",
+      "you",
+      "from"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u2.s9",
+     "ko": "저도 학생이에요.",
+     "en": "I am a student too.",
+     "enAlt": [],
+     "koTiles": [
+      "저도",
+      "학생이에요"
+     ],
+     "enTiles": [
+      "I",
+      "am",
+      "a",
+      "student",
+      "too"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u2.s10",
+     "ko": "제 친구는 의사예요.",
+     "en": "My friend is a doctor.",
+     "enAlt": [],
+     "koTiles": [
+      "제",
+      "친구는",
+      "의사예요"
+     ],
+     "enTiles": [
+      "My",
+      "friend",
+      "is",
+      "a",
+      "doctor"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u2.f1",
+     "before": "저는 학생",
+     "answer": "이에요",
+     "after": "",
+     "en": "I am a student.",
+     "options": [
+      "예요",
+      "있어요"
+     ],
+     "full": "저는 학생이에요."
+    },
+    {
+     "id": "u2.f2",
+     "before": "제 이름은 민수",
+     "answer": "예요",
+     "after": "",
+     "en": "My name is Minsu.",
+     "options": [
+      "이에요",
+      "있어요"
+     ],
+     "full": "제 이름은 민수예요."
+    },
+    {
+     "id": "u2.f3",
+     "before": "저",
+     "answer": "는",
+     "after": " 선생님이 아니에요",
+     "en": "I am not a teacher.",
+     "options": [
+      "을",
+      "에"
+     ],
+     "full": "저는 선생님이 아니에요."
+    }
+   ]
+  },
+  {
+   "id": "u3",
+   "title": "Things",
+   "section": "Basics",
+   "blurb": "This, that and whose",
+   "tips": [
+    "이 = this (near me), 그 = that (near you), 저 = that over there.",
+    "거 means \"thing\": 이거 = this thing, 제 거 = mine.",
+    "제 = my (polite). 누구 거예요? = Whose is it?"
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u3.w1",
+     "ko": "이거",
+     "en": "this"
+    },
+    {
+     "id": "u3.w2",
+     "ko": "그거",
+     "en": "that"
+    },
+    {
+     "id": "u3.w3",
+     "ko": "저거",
+     "en": "that (over there)"
+    },
+    {
+     "id": "u3.w4",
+     "ko": "책",
+     "en": "book"
+    },
+    {
+     "id": "u3.w5",
+     "ko": "가방",
+     "en": "bag"
+    },
+    {
+     "id": "u3.w6",
+     "ko": "휴대폰",
+     "en": "cell phone"
+    },
+    {
+     "id": "u3.w7",
+     "ko": "커피",
+     "en": "coffee"
+    },
+    {
+     "id": "u3.w8",
+     "ko": "우산",
+     "en": "umbrella"
+    },
+    {
+     "id": "u3.w9",
+     "ko": "시계",
+     "en": "watch"
+    },
+    {
+     "id": "u3.w10",
+     "ko": "제",
+     "en": "my"
+    },
+    {
+     "id": "u3.w11",
+     "ko": "누구",
+     "en": "who"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u3.s1",
+     "ko": "이거 뭐예요?",
+     "en": "What is this?",
+     "enAlt": [],
+     "koTiles": [
+      "이거",
+      "뭐예요"
+     ],
+     "enTiles": [
+      "What",
+      "is",
+      "this"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u3.s2",
+     "ko": "그거 제 가방이에요.",
+     "en": "That is my bag.",
+     "enAlt": [],
+     "koTiles": [
+      "그거",
+      "제",
+      "가방이에요"
+     ],
+     "enTiles": [
+      "That",
+      "is",
+      "my",
+      "bag"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u3.s3",
+     "ko": "이건 책이 아니에요.",
+     "en": "This is not a book.",
+     "enAlt": [],
+     "koTiles": [
+      "이건",
+      "책이",
+      "아니에요"
+     ],
+     "enTiles": [
+      "This",
+      "is",
+      "not",
+      "a",
+      "book"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u3.s4",
+     "ko": "저거 누구 우산이에요?",
+     "en": "Whose umbrella is that?",
+     "enAlt": [],
+     "koTiles": [
+      "저거",
+      "누구",
+      "우산이에요"
+     ],
+     "enTiles": [
+      "Whose",
+      "umbrella",
+      "is",
+      "that"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u3.s5",
+     "ko": "이거 제 휴대폰이에요.",
+     "en": "This is my phone.",
+     "enAlt": [],
+     "koTiles": [
+      "이거",
+      "제",
+      "휴대폰이에요"
+     ],
+     "enTiles": [
+      "This",
+      "is",
+      "my",
+      "phone"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u3.s6",
+     "ko": "이 커피는 제 거예요.",
+     "en": "This coffee is mine.",
+     "enAlt": [],
+     "koTiles": [
+      "이",
+      "커피는",
+      "제",
+      "거예요"
+     ],
+     "enTiles": [
+      "This",
+      "coffee",
+      "is",
+      "mine"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u3.s7",
+     "ko": "물이에요?",
+     "en": "Is it water?",
+     "enAlt": [],
+     "koTiles": [
+      "물이에요"
+     ],
+     "enTiles": [
+      "Is",
+      "it",
+      "water"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u3.s8",
+     "ko": "네, 시계예요.",
+     "en": "Yes, it is a watch.",
+     "enAlt": [],
+     "koTiles": [
+      "네",
+      "시계예요"
+     ],
+     "enTiles": [
+      "Yes",
+      "it",
+      "is",
+      "a",
+      "watch"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u3.s9",
+     "ko": "이거 선생님 책이에요.",
+     "en": "This is the teacher's book.",
+     "enAlt": [],
+     "koTiles": [
+      "이거",
+      "선생님",
+      "책이에요"
+     ],
+     "enTiles": [
+      "This",
+      "is",
+      "the",
+      "teacher's",
+      "book"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u3.s10",
+     "ko": "제 우산은 가방 안에 있어요.",
+     "en": "My umbrella is in the bag.",
+     "enAlt": [],
+     "koTiles": [
+      "제",
+      "우산은",
+      "가방",
+      "안에",
+      "있어요"
+     ],
+     "enTiles": [
+      "My",
+      "umbrella",
+      "is",
+      "in",
+      "the",
+      "bag"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u3.f1",
+     "before": "이건 책",
+     "answer": "이",
+     "after": " 아니에요",
+     "en": "This is not a book.",
+     "options": [
+      "를",
+      "에"
+     ],
+     "full": "이건 책이 아니에요."
+    },
+    {
+     "id": "u3.f2",
+     "before": "이 커피는 제 ",
+     "answer": "거예요",
+     "after": "",
+     "en": "This coffee is mine.",
+     "options": [
+      "책이에요",
+      "있어요"
+     ],
+     "full": "이 커피는 제 거예요."
+    }
+   ]
+  },
+  {
+   "id": "u4",
+   "title": "Places",
+   "section": "Basics",
+   "blurb": "Where things are",
+   "tips": [
+    "있어요 = there is / is (located). 없어요 = there isn't.",
+    "에 marks where something is: 집에 있어요 = I am at home.",
+    "어디예요? and 어디에 있어요? both ask \"where is it?\""
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u4.w1",
+     "ko": "집",
+     "en": "home"
+    },
+    {
+     "id": "u4.w2",
+     "ko": "학교",
+     "en": "school"
+    },
+    {
+     "id": "u4.w3",
+     "ko": "도서관",
+     "en": "library"
+    },
+    {
+     "id": "u4.w4",
+     "ko": "식당",
+     "en": "restaurant"
+    },
+    {
+     "id": "u4.w5",
+     "ko": "화장실",
+     "en": "bathroom"
+    },
+    {
+     "id": "u4.w6",
+     "ko": "카페",
+     "en": "café"
+    },
+    {
+     "id": "u4.w7",
+     "ko": "은행",
+     "en": "bank"
+    },
+    {
+     "id": "u4.w8",
+     "ko": "편의점",
+     "en": "convenience store"
+    },
+    {
+     "id": "u4.w9",
+     "ko": "어디",
+     "en": "where"
+    },
+    {
+     "id": "u4.w10",
+     "ko": "여기",
+     "en": "here"
+    },
+    {
+     "id": "u4.w11",
+     "ko": "옆",
+     "en": "next to"
+    },
+    {
+     "id": "u4.w12",
+     "ko": "앞",
+     "en": "in front of"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u4.s1",
+     "ko": "화장실이 어디예요?",
+     "en": "Where is the bathroom?",
+     "enAlt": [],
+     "koTiles": [
+      "화장실이",
+      "어디예요"
+     ],
+     "enTiles": [
+      "Where",
+      "is",
+      "the",
+      "bathroom"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u4.s2",
+     "ko": "도서관은 저기 있어요.",
+     "en": "The library is over there.",
+     "enAlt": [],
+     "koTiles": [
+      "도서관은",
+      "저기",
+      "있어요"
+     ],
+     "enTiles": [
+      "The",
+      "library",
+      "is",
+      "over",
+      "there"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u4.s3",
+     "ko": "편의점 옆에 은행이 있어요.",
+     "en": "There is a bank next to the convenience store.",
+     "enAlt": [],
+     "koTiles": [
+      "편의점",
+      "옆에",
+      "은행이",
+      "있어요"
+     ],
+     "enTiles": [
+      "There",
+      "is",
+      "a",
+      "bank",
+      "next",
+      "to",
+      "the",
+      "convenience",
+      "store"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u4.s4",
+     "ko": "학교 앞에 카페가 있어요.",
+     "en": "There is a café in front of the school.",
+     "enAlt": [],
+     "koTiles": [
+      "학교",
+      "앞에",
+      "카페가",
+      "있어요"
+     ],
+     "enTiles": [
+      "There",
+      "is",
+      "a",
+      "café",
+      "in",
+      "front",
+      "of",
+      "the",
+      "school"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u4.s5",
+     "ko": "지금 집에 있어요.",
+     "en": "I am at home now.",
+     "enAlt": [
+      [
+       "Now",
+       "I",
+       "am",
+       "at",
+       "home"
+      ]
+     ],
+     "koTiles": [
+      "지금",
+      "집에",
+      "있어요"
+     ],
+     "enTiles": [
+      "I",
+      "am",
+      "at",
+      "home",
+      "now"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u4.s6",
+     "ko": "이 근처에 식당이 없어요.",
+     "en": "There is no restaurant near here.",
+     "enAlt": [],
+     "koTiles": [
+      "이",
+      "근처에",
+      "식당이",
+      "없어요"
+     ],
+     "enTiles": [
+      "There",
+      "is",
+      "no",
+      "restaurant",
+      "near",
+      "here"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u4.s7",
+     "ko": "은행이 어디에 있어요?",
+     "en": "Where is the bank?",
+     "enAlt": [],
+     "koTiles": [
+      "은행이",
+      "어디에",
+      "있어요"
+     ],
+     "enTiles": [
+      "Where",
+      "is",
+      "the",
+      "bank"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u4.s8",
+     "ko": "시간이 없어요.",
+     "en": "I don't have time.",
+     "enAlt": [],
+     "koTiles": [
+      "시간이",
+      "없어요"
+     ],
+     "enTiles": [
+      "I",
+      "don't",
+      "have",
+      "time"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u4.s9",
+     "ko": "여기는 우리 학교예요.",
+     "en": "This is our school.",
+     "enAlt": [],
+     "koTiles": [
+      "여기는",
+      "우리",
+      "학교예요"
+     ],
+     "enTiles": [
+      "This",
+      "is",
+      "our",
+      "school"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u4.s10",
+     "ko": "화장실은 식당 옆에 있어요.",
+     "en": "The bathroom is next to the restaurant.",
+     "enAlt": [],
+     "koTiles": [
+      "화장실은",
+      "식당",
+      "옆에",
+      "있어요"
+     ],
+     "enTiles": [
+      "The",
+      "bathroom",
+      "is",
+      "next",
+      "to",
+      "the",
+      "restaurant"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u4.f1",
+     "before": "학교 앞",
+     "answer": "에",
+     "after": " 카페가 있어요",
+     "en": "There is a café in front of the school.",
+     "options": [
+      "를",
+      "은"
+     ],
+     "full": "학교 앞에 카페가 있어요."
+    },
+    {
+     "id": "u4.f2",
+     "before": "편의점 옆에 은행이 ",
+     "answer": "있어요",
+     "after": "",
+     "en": "There is a bank next to the convenience store.",
+     "options": [
+      "없어요",
+      "이에요"
+     ],
+     "full": "편의점 옆에 은행이 있어요."
+    }
+   ]
+  },
+  {
+   "id": "u5",
+   "title": "Numbers",
+   "section": "Basics",
+   "blurb": "Sino-Korean numbers, prices and rooms",
+   "tips": [
+    "Korean has two number systems. Sino-Korean (일, 이, 삼...) is used for money, phone numbers, minutes and room numbers.",
+    "Big numbers: 십 = 10, 백 = 100, 천 = 1,000, 만 = 10,000. 삼천 원 = 3,000 won.",
+    "몇 asks \"what number / how many\": 몇 호예요? = What room number?"
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u5.w1",
+     "ko": "일",
+     "en": "one (Sino-Korean)"
+    },
+    {
+     "id": "u5.w2",
+     "ko": "삼",
+     "en": "three (Sino-Korean)"
+    },
+    {
+     "id": "u5.w3",
+     "ko": "사",
+     "en": "four (Sino-Korean)"
+    },
+    {
+     "id": "u5.w4",
+     "ko": "육",
+     "en": "six (Sino-Korean)"
+    },
+    {
+     "id": "u5.w5",
+     "ko": "칠",
+     "en": "seven (Sino-Korean)"
+    },
+    {
+     "id": "u5.w6",
+     "ko": "팔",
+     "en": "eight (Sino-Korean)"
+    },
+    {
+     "id": "u5.w7",
+     "ko": "구",
+     "en": "nine (Sino-Korean)"
+    },
+    {
+     "id": "u5.w8",
+     "ko": "십",
+     "en": "ten (Sino-Korean)"
+    },
+    {
+     "id": "u5.w9",
+     "ko": "백",
+     "en": "hundred"
+    },
+    {
+     "id": "u5.w10",
+     "ko": "천",
+     "en": "thousand"
+    },
+    {
+     "id": "u5.w11",
+     "ko": "만",
+     "en": "ten thousand"
+    },
+    {
+     "id": "u5.w12",
+     "ko": "원",
+     "en": "won (money)"
+    },
+    {
+     "id": "u5.w13",
+     "ko": "몇",
+     "en": "how many"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u5.s1",
+     "ko": "이 커피는 삼천 원이에요.",
+     "en": "This coffee is three thousand won.",
+     "enAlt": [],
+     "koTiles": [
+      "이",
+      "커피는",
+      "삼천",
+      "원이에요"
+     ],
+     "enTiles": [
+      "This",
+      "coffee",
+      "is",
+      "three",
+      "thousand",
+      "won"
+     ],
+     "speak": false
+    },
+    {
+     "id": "u5.s2",
+     "ko": "이거 얼마예요?",
+     "en": "How much is this?",
+     "enAlt": [],
+     "koTiles": [
+      "이거",
+      "얼마예요"
+     ],
+     "enTiles": [
+      "How",
+      "much",
+      "is",
+      "this"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u5.s3",
+     "ko": "만 원이에요.",
+     "en": "It is ten thousand won.",
+     "enAlt": [],
+     "koTiles": [
+      "만",
+      "원이에요"
+     ],
+     "enTiles": [
+      "It",
+      "is",
+      "ten",
+      "thousand",
+      "won"
+     ],
+     "speak": false
+    },
+    {
+     "id": "u5.s4",
+     "ko": "몇 호예요?",
+     "en": "What room number is it?",
+     "enAlt": [],
+     "koTiles": [
+      "몇",
+      "호예요"
+     ],
+     "enTiles": [
+      "What",
+      "room",
+      "number",
+      "is",
+      "it"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u5.s5",
+     "ko": "삼백이 호예요.",
+     "en": "It is room 302.",
+     "enAlt": [],
+     "koTiles": [
+      "삼백이",
+      "호예요"
+     ],
+     "enTiles": [
+      "It",
+      "is",
+      "room",
+      "302"
+     ],
+     "speak": false
+    },
+    {
+     "id": "u5.s6",
+     "ko": "강의실은 육 층에 있어요.",
+     "en": "The classroom is on the sixth floor.",
+     "enAlt": [],
+     "koTiles": [
+      "강의실은",
+      "육",
+      "층에",
+      "있어요"
+     ],
+     "enTiles": [
+      "The",
+      "classroom",
+      "is",
+      "on",
+      "the",
+      "sixth",
+      "floor"
+     ],
+     "speak": false
+    },
+    {
+     "id": "u5.s7",
+     "ko": "전화번호가 몇 번이에요?",
+     "en": "What is your phone number?",
+     "enAlt": [],
+     "koTiles": [
+      "전화번호가",
+      "몇",
+      "번이에요"
+     ],
+     "enTiles": [
+      "What",
+      "is",
+      "your",
+      "phone",
+      "number"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u5.s8",
+     "ko": "김밥은 사천 원이에요.",
+     "en": "Kimbap is four thousand won.",
+     "enAlt": [],
+     "koTiles": [
+      "김밥은",
+      "사천",
+      "원이에요"
+     ],
+     "enTiles": [
+      "Kimbap",
+      "is",
+      "four",
+      "thousand",
+      "won"
+     ],
+     "speak": false
+    },
+    {
+     "id": "u5.s9",
+     "ko": "우리 반에 학생이 십 명 있어요.",
+     "en": "There are ten students in our class.",
+     "enAlt": [],
+     "koTiles": [
+      "우리",
+      "반에",
+      "학생이",
+      "십",
+      "명",
+      "있어요"
+     ],
+     "enTiles": [
+      "There",
+      "are",
+      "ten",
+      "students",
+      "in",
+      "our",
+      "class"
+     ],
+     "speak": false
+    }
+   ],
+   "fills": [
+    {
+     "id": "u5.f1",
+     "before": "이거 ",
+     "answer": "얼마예요",
+     "after": "?",
+     "en": "How much is this?",
+     "options": [
+      "어디예요",
+      "뭐예요"
+     ],
+     "full": "이거 얼마예요?"
+    }
+   ]
+  },
+  {
+   "id": "u6",
+   "title": "Ordering food",
+   "section": "Basics",
+   "blurb": "Order in a restaurant",
+   "tips": [
+    "주세요 = please give me. Put the thing first: 물 주세요.",
+    "Native numbers (하나, 둘, 셋, 넷) are used with counters, and shorten before them: 한 개, 두 잔, 세 명, 네 개.",
+    "개 counts things, 잔 counts cups, 명 counts people."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u6.w1",
+     "ko": "하나",
+     "en": "one (native)"
+    },
+    {
+     "id": "u6.w2",
+     "ko": "둘",
+     "en": "two (native)"
+    },
+    {
+     "id": "u6.w3",
+     "ko": "셋",
+     "en": "three (native)"
+    },
+    {
+     "id": "u6.w4",
+     "ko": "넷",
+     "en": "four (native)"
+    },
+    {
+     "id": "u6.w5",
+     "ko": "다섯",
+     "en": "five (native)"
+    },
+    {
+     "id": "u6.w6",
+     "ko": "잔",
+     "en": "cup (counter)"
+    },
+    {
+     "id": "u6.w7",
+     "ko": "주세요",
+     "en": "please give me"
+    },
+    {
+     "id": "u6.w8",
+     "ko": "메뉴",
+     "en": "menu"
+    },
+    {
+     "id": "u6.w9",
+     "ko": "비빔밥",
+     "en": "bibimbap"
+    },
+    {
+     "id": "u6.w10",
+     "ko": "김치찌개",
+     "en": "kimchi stew"
+    },
+    {
+     "id": "u6.w11",
+     "ko": "맛있어요",
+     "en": "it's delicious"
+    },
+    {
+     "id": "u6.w12",
+     "ko": "사과",
+     "en": "apple"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u6.s1",
+     "ko": "비빔밥 하나 주세요.",
+     "en": "One bibimbap, please.",
+     "enAlt": [],
+     "koTiles": [
+      "비빔밥",
+      "하나",
+      "주세요"
+     ],
+     "enTiles": [
+      "One",
+      "bibimbap",
+      "please"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u6.s2",
+     "ko": "커피 두 잔 주세요.",
+     "en": "Two coffees, please.",
+     "enAlt": [],
+     "koTiles": [
+      "커피",
+      "두",
+      "잔",
+      "주세요"
+     ],
+     "enTiles": [
+      "Two",
+      "coffees",
+      "please"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u6.s3",
+     "ko": "몇 명이에요?",
+     "en": "How many people?",
+     "enAlt": [],
+     "koTiles": [
+      "몇",
+      "명이에요"
+     ],
+     "enTiles": [
+      "How",
+      "many",
+      "people"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u6.s4",
+     "ko": "두 명이에요.",
+     "en": "Two people.",
+     "enAlt": [],
+     "koTiles": [
+      "두",
+      "명이에요"
+     ],
+     "enTiles": [
+      "Two",
+      "people"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u6.s5",
+     "ko": "메뉴 좀 주세요.",
+     "en": "Please give me the menu.",
+     "enAlt": [
+      [
+       "The",
+       "menu",
+       "please"
+      ]
+     ],
+     "koTiles": [
+      "메뉴",
+      "좀",
+      "주세요"
+     ],
+     "enTiles": [
+      "Please",
+      "give",
+      "me",
+      "the",
+      "menu"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u6.s6",
+     "ko": "물 좀 주세요.",
+     "en": "Water, please.",
+     "enAlt": [],
+     "koTiles": [
+      "물",
+      "좀",
+      "주세요"
+     ],
+     "enTiles": [
+      "Water",
+      "please"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u6.s7",
+     "ko": "김치찌개가 정말 맛있어요.",
+     "en": "The kimchi stew is really delicious.",
+     "enAlt": [],
+     "koTiles": [
+      "김치찌개가",
+      "정말",
+      "맛있어요"
+     ],
+     "enTiles": [
+      "The",
+      "kimchi",
+      "stew",
+      "is",
+      "really",
+      "delicious"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u6.s8",
+     "ko": "여기요, 김치찌개 하나 주세요.",
+     "en": "Excuse me, one kimchi stew please.",
+     "enAlt": [],
+     "koTiles": [
+      "여기요",
+      "김치찌개",
+      "하나",
+      "주세요"
+     ],
+     "enTiles": [
+      "Excuse",
+      "me",
+      "one",
+      "kimchi",
+      "stew",
+      "please"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u6.s9",
+     "ko": "사과 세 개 주세요.",
+     "en": "Three apples, please.",
+     "enAlt": [],
+     "koTiles": [
+      "사과",
+      "세",
+      "개",
+      "주세요"
+     ],
+     "enTiles": [
+      "Three",
+      "apples",
+      "please"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u6.s10",
+     "ko": "이거 맛있어요?",
+     "en": "Is this delicious?",
+     "enAlt": [],
+     "koTiles": [
+      "이거",
+      "맛있어요"
+     ],
+     "enTiles": [
+      "Is",
+      "this",
+      "delicious"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u6.f1",
+     "before": "두 ",
+     "answer": "명이에요",
+     "after": "",
+     "en": "Two people.",
+     "options": [
+      "잔이에요",
+      "개예요"
+     ],
+     "full": "두 명이에요."
+    },
+    {
+     "id": "u6.f2",
+     "before": "비빔밥 ",
+     "answer": "하나",
+     "after": " 주세요",
+     "en": "One bibimbap, please.",
+     "options": [
+      "둘",
+      "셋"
+     ],
+     "full": "비빔밥 하나 주세요."
+    }
+   ]
+  },
+  {
+   "id": "u7",
+   "title": "Everyday verbs",
+   "section": "Everyday",
+   "blurb": "The present tense",
+   "tips": [
+    "Polite present: verb stem + 아요 (after ㅏ, ㅗ) or 어요 (after other vowels). 하다 becomes 해요.",
+    "을/를 marks the object: 커피를 마셔요 = I drink coffee. 를 after a vowel, 을 after a consonant.",
+    "에서 marks where an action happens: 도서관에서 공부해요."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u7.w1",
+     "ko": "가요",
+     "en": "go"
+    },
+    {
+     "id": "u7.w2",
+     "ko": "와요",
+     "en": "come"
+    },
+    {
+     "id": "u7.w3",
+     "ko": "먹어요",
+     "en": "eat"
+    },
+    {
+     "id": "u7.w4",
+     "ko": "마셔요",
+     "en": "drink"
+    },
+    {
+     "id": "u7.w5",
+     "ko": "봐요",
+     "en": "watch"
+    },
+    {
+     "id": "u7.w6",
+     "ko": "해요",
+     "en": "do"
+    },
+    {
+     "id": "u7.w7",
+     "ko": "공부해요",
+     "en": "study"
+    },
+    {
+     "id": "u7.w8",
+     "ko": "일해요",
+     "en": "work"
+    },
+    {
+     "id": "u7.w9",
+     "ko": "자요",
+     "en": "sleep"
+    },
+    {
+     "id": "u7.w10",
+     "ko": "읽어요",
+     "en": "read"
+    },
+    {
+     "id": "u7.w11",
+     "ko": "한국어",
+     "en": "Korean (language)"
+    },
+    {
+     "id": "u7.w12",
+     "ko": "영화",
+     "en": "movie"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u7.s1",
+     "ko": "저는 학교에 가요.",
+     "en": "I go to school.",
+     "enAlt": [],
+     "koTiles": [
+      "저는",
+      "학교에",
+      "가요"
+     ],
+     "enTiles": [
+      "I",
+      "go",
+      "to",
+      "school"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u7.s2",
+     "ko": "커피를 마셔요.",
+     "en": "I drink coffee.",
+     "enAlt": [],
+     "koTiles": [
+      "커피를",
+      "마셔요"
+     ],
+     "enTiles": [
+      "I",
+      "drink",
+      "coffee"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u7.s3",
+     "ko": "친구가 한국어를 공부해요.",
+     "en": "My friend studies Korean.",
+     "enAlt": [],
+     "koTiles": [
+      "친구가",
+      "한국어를",
+      "공부해요"
+     ],
+     "enTiles": [
+      "My",
+      "friend",
+      "studies",
+      "Korean"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u7.s4",
+     "ko": "저는 도서관에서 책을 읽어요.",
+     "en": "I read a book at the library.",
+     "enAlt": [],
+     "koTiles": [
+      "저는",
+      "도서관에서",
+      "책을",
+      "읽어요"
+     ],
+     "enTiles": [
+      "I",
+      "read",
+      "a",
+      "book",
+      "at",
+      "the",
+      "library"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u7.s5",
+     "ko": "친구가 영화를 봐요.",
+     "en": "My friend watches a movie.",
+     "enAlt": [],
+     "koTiles": [
+      "친구가",
+      "영화를",
+      "봐요"
+     ],
+     "enTiles": [
+      "My",
+      "friend",
+      "watches",
+      "a",
+      "movie"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u7.s6",
+     "ko": "지금 뭐 해요?",
+     "en": "What are you doing now?",
+     "enAlt": [],
+     "koTiles": [
+      "지금",
+      "뭐",
+      "해요"
+     ],
+     "enTiles": [
+      "What",
+      "are",
+      "you",
+      "doing",
+      "now"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u7.s7",
+     "ko": "밥을 먹어요.",
+     "en": "I eat rice.",
+     "enAlt": [],
+     "koTiles": [
+      "밥을",
+      "먹어요"
+     ],
+     "enTiles": [
+      "I",
+      "eat",
+      "rice"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u7.s8",
+     "ko": "형은 회사에서 일해요.",
+     "en": "My older brother works at a company.",
+     "enAlt": [],
+     "koTiles": [
+      "형은",
+      "회사에서",
+      "일해요"
+     ],
+     "enTiles": [
+      "My",
+      "older",
+      "brother",
+      "works",
+      "at",
+      "a",
+      "company"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u7.s9",
+     "ko": "일찍 자요.",
+     "en": "I go to bed early.",
+     "enAlt": [],
+     "koTiles": [
+      "일찍",
+      "자요"
+     ],
+     "enTiles": [
+      "I",
+      "go",
+      "to",
+      "bed",
+      "early"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u7.s10",
+     "ko": "친구가 우리 집에 와요.",
+     "en": "My friend comes to my house.",
+     "enAlt": [],
+     "koTiles": [
+      "친구가",
+      "우리",
+      "집에",
+      "와요"
+     ],
+     "enTiles": [
+      "My",
+      "friend",
+      "comes",
+      "to",
+      "my",
+      "house"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u7.f1",
+     "before": "커피",
+     "answer": "를",
+     "after": " 마셔요",
+     "en": "I drink coffee.",
+     "options": [
+      "을",
+      "가"
+     ],
+     "full": "커피를 마셔요."
+    },
+    {
+     "id": "u7.f2",
+     "before": "도서관",
+     "answer": "에서",
+     "after": " 책을 읽어요",
+     "en": "I read a book at the library.",
+     "options": [
+      "에",
+      "을"
+     ],
+     "full": "도서관에서 책을 읽어요."
+    }
+   ]
+  },
+  {
+   "id": "u8",
+   "title": "Time and routine",
+   "section": "Everyday",
+   "blurb": "Days, times and habits",
+   "tips": [
+    "Time + 에: 일곱 시에 = at seven o'clock, 주말에 = on the weekend.",
+    "Hours use native numbers (한 시, 두 시, 일곱 시). Minutes use Sino-Korean (십 분).",
+    "안 before a verb makes it negative: 안 먹어요 = I don't eat."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u8.w1",
+     "ko": "아침",
+     "en": "morning"
+    },
+    {
+     "id": "u8.w2",
+     "ko": "점심",
+     "en": "lunch"
+    },
+    {
+     "id": "u8.w3",
+     "ko": "저녁",
+     "en": "evening"
+    },
+    {
+     "id": "u8.w4",
+     "ko": "오늘",
+     "en": "today"
+    },
+    {
+     "id": "u8.w5",
+     "ko": "내일",
+     "en": "tomorrow"
+    },
+    {
+     "id": "u8.w6",
+     "ko": "어제",
+     "en": "yesterday"
+    },
+    {
+     "id": "u8.w7",
+     "ko": "지금",
+     "en": "now"
+    },
+    {
+     "id": "u8.w8",
+     "ko": "시",
+     "en": "o'clock"
+    },
+    {
+     "id": "u8.w9",
+     "ko": "매일",
+     "en": "every day"
+    },
+    {
+     "id": "u8.w10",
+     "ko": "주말",
+     "en": "weekend"
+    },
+    {
+     "id": "u8.w11",
+     "ko": "일어나요",
+     "en": "get up"
+    },
+    {
+     "id": "u8.w12",
+     "ko": "바빠요",
+     "en": "I'm busy"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u8.s1",
+     "ko": "지금 몇 시예요?",
+     "en": "What time is it now?",
+     "enAlt": [],
+     "koTiles": [
+      "지금",
+      "몇",
+      "시예요"
+     ],
+     "enTiles": [
+      "What",
+      "time",
+      "is",
+      "it",
+      "now"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u8.s2",
+     "ko": "저는 매일 일곱 시에 일어나요.",
+     "en": "I get up at seven every day.",
+     "enAlt": [
+      [
+       "Every",
+       "day",
+       "I",
+       "get",
+       "up",
+       "at",
+       "seven"
+      ]
+     ],
+     "koTiles": [
+      "저는",
+      "매일",
+      "일곱",
+      "시에",
+      "일어나요"
+     ],
+     "enTiles": [
+      "I",
+      "get",
+      "up",
+      "at",
+      "seven",
+      "every",
+      "day"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u8.s3",
+     "ko": "주말에 뭐 해요?",
+     "en": "What do you do on the weekend?",
+     "enAlt": [],
+     "koTiles": [
+      "주말에",
+      "뭐",
+      "해요"
+     ],
+     "enTiles": [
+      "What",
+      "do",
+      "you",
+      "do",
+      "on",
+      "the",
+      "weekend"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u8.s4",
+     "ko": "오늘 저녁에 친구를 만나요.",
+     "en": "I meet a friend this evening.",
+     "enAlt": [
+      [
+       "This",
+       "evening",
+       "I",
+       "meet",
+       "a",
+       "friend"
+      ]
+     ],
+     "koTiles": [
+      "오늘",
+      "저녁에",
+      "친구를",
+      "만나요"
+     ],
+     "enTiles": [
+      "I",
+      "meet",
+      "a",
+      "friend",
+      "this",
+      "evening"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u8.s5",
+     "ko": "아침을 안 먹어요.",
+     "en": "I don't eat breakfast.",
+     "enAlt": [],
+     "koTiles": [
+      "아침을",
+      "안",
+      "먹어요"
+     ],
+     "enTiles": [
+      "I",
+      "don't",
+      "eat",
+      "breakfast"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u8.s6",
+     "ko": "내일 수업이 있어요.",
+     "en": "I have class tomorrow.",
+     "enAlt": [
+      [
+       "Tomorrow",
+       "I",
+       "have",
+       "class"
+      ]
+     ],
+     "koTiles": [
+      "내일",
+      "수업이",
+      "있어요"
+     ],
+     "enTiles": [
+      "I",
+      "have",
+      "class",
+      "tomorrow"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u8.s7",
+     "ko": "점심 같이 먹어요.",
+     "en": "Let's eat lunch together.",
+     "enAlt": [],
+     "koTiles": [
+      "점심",
+      "같이",
+      "먹어요"
+     ],
+     "enTiles": [
+      "Let's",
+      "eat",
+      "lunch",
+      "together"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u8.s8",
+     "ko": "아홉 시에 시작해요.",
+     "en": "It starts at nine.",
+     "enAlt": [],
+     "koTiles": [
+      "아홉",
+      "시에",
+      "시작해요"
+     ],
+     "enTiles": [
+      "It",
+      "starts",
+      "at",
+      "nine"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u8.s9",
+     "ko": "오늘은 바빠요.",
+     "en": "I am busy today.",
+     "enAlt": [
+      [
+       "Today",
+       "I",
+       "am",
+       "busy"
+      ]
+     ],
+     "koTiles": [
+      "오늘은",
+      "바빠요"
+     ],
+     "enTiles": [
+      "I",
+      "am",
+      "busy",
+      "today"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u8.s10",
+     "ko": "열두 시에 점심을 먹어요.",
+     "en": "I eat lunch at twelve.",
+     "enAlt": [],
+     "koTiles": [
+      "열두",
+      "시에",
+      "점심을",
+      "먹어요"
+     ],
+     "enTiles": [
+      "I",
+      "eat",
+      "lunch",
+      "at",
+      "twelve"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u8.f1",
+     "before": "일곱 시",
+     "answer": "에",
+     "after": " 일어나요",
+     "en": "I get up at seven.",
+     "options": [
+      "에서",
+      "를"
+     ],
+     "full": "일곱 시에 일어나요."
+    },
+    {
+     "id": "u8.f2",
+     "before": "아침을 ",
+     "answer": "안",
+     "after": " 먹어요",
+     "en": "I don't eat breakfast.",
+     "options": [
+      "좀",
+      "다"
+     ],
+     "full": "아침을 안 먹어요."
+    }
+   ]
+  },
+  {
+   "id": "u9",
+   "title": "The past",
+   "section": "Everyday",
+   "blurb": "Talk about what you did",
+   "tips": [
+    "Past tense: 았어요 / 었어요 / 했어요. 가요 → 갔어요, 먹어요 → 먹었어요, 해요 → 했어요.",
+    "어제 (yesterday), 지난주 (last week) and 주말에 (on the weekend) often go with the past tense."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u9.w1",
+     "ko": "갔어요",
+     "en": "went"
+    },
+    {
+     "id": "u9.w2",
+     "ko": "왔어요",
+     "en": "came"
+    },
+    {
+     "id": "u9.w3",
+     "ko": "먹었어요",
+     "en": "ate"
+    },
+    {
+     "id": "u9.w4",
+     "ko": "마셨어요",
+     "en": "drank"
+    },
+    {
+     "id": "u9.w5",
+     "ko": "봤어요",
+     "en": "watched"
+    },
+    {
+     "id": "u9.w6",
+     "ko": "했어요",
+     "en": "did"
+    },
+    {
+     "id": "u9.w7",
+     "ko": "만났어요",
+     "en": "met"
+    },
+    {
+     "id": "u9.w8",
+     "ko": "샀어요",
+     "en": "bought"
+    },
+    {
+     "id": "u9.w9",
+     "ko": "재미있었어요",
+     "en": "it was fun"
+    },
+    {
+     "id": "u9.w10",
+     "ko": "지난주",
+     "en": "last week"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u9.s1",
+     "ko": "어제 친구를 만났어요.",
+     "en": "I met a friend yesterday.",
+     "enAlt": [
+      [
+       "Yesterday",
+       "I",
+       "met",
+       "a",
+       "friend"
+      ]
+     ],
+     "koTiles": [
+      "어제",
+      "친구를",
+      "만났어요"
+     ],
+     "enTiles": [
+      "I",
+      "met",
+      "a",
+      "friend",
+      "yesterday"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u9.s2",
+     "ko": "주말에 영화를 봤어요.",
+     "en": "I watched a movie on the weekend.",
+     "enAlt": [
+      [
+       "On",
+       "the",
+       "weekend",
+       "I",
+       "watched",
+       "a",
+       "movie"
+      ]
+     ],
+     "koTiles": [
+      "주말에",
+      "영화를",
+      "봤어요"
+     ],
+     "enTiles": [
+      "I",
+      "watched",
+      "a",
+      "movie",
+      "on",
+      "the",
+      "weekend"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u9.s3",
+     "ko": "점심 먹었어요?",
+     "en": "Did you eat lunch?",
+     "enAlt": [],
+     "koTiles": [
+      "점심",
+      "먹었어요"
+     ],
+     "enTiles": [
+      "Did",
+      "you",
+      "eat",
+      "lunch"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u9.s4",
+     "ko": "지난주에 부산에 갔어요.",
+     "en": "I went to Busan last week.",
+     "enAlt": [
+      [
+       "Last",
+       "week",
+       "I",
+       "went",
+       "to",
+       "Busan"
+      ]
+     ],
+     "koTiles": [
+      "지난주에",
+      "부산에",
+      "갔어요"
+     ],
+     "enTiles": [
+      "I",
+      "went",
+      "to",
+      "Busan",
+      "last",
+      "week"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u9.s5",
+     "ko": "영화가 정말 재미있었어요.",
+     "en": "The movie was really fun.",
+     "enAlt": [],
+     "koTiles": [
+      "영화가",
+      "정말",
+      "재미있었어요"
+     ],
+     "enTiles": [
+      "The",
+      "movie",
+      "was",
+      "really",
+      "fun"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u9.s6",
+     "ko": "어제 뭐 했어요?",
+     "en": "What did you do yesterday?",
+     "enAlt": [],
+     "koTiles": [
+      "어제",
+      "뭐",
+      "했어요"
+     ],
+     "enTiles": [
+      "What",
+      "did",
+      "you",
+      "do",
+      "yesterday"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u9.s7",
+     "ko": "커피를 너무 많이 마셨어요.",
+     "en": "I drank too much coffee.",
+     "enAlt": [],
+     "koTiles": [
+      "커피를",
+      "너무",
+      "많이",
+      "마셨어요"
+     ],
+     "enTiles": [
+      "I",
+      "drank",
+      "too",
+      "much",
+      "coffee"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u9.s8",
+     "ko": "시장에서 과일을 샀어요.",
+     "en": "I bought fruit at the market.",
+     "enAlt": [],
+     "koTiles": [
+      "시장에서",
+      "과일을",
+      "샀어요"
+     ],
+     "enTiles": [
+      "I",
+      "bought",
+      "fruit",
+      "at",
+      "the",
+      "market"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u9.s9",
+     "ko": "숙제를 다 했어요.",
+     "en": "I did all the homework.",
+     "enAlt": [],
+     "koTiles": [
+      "숙제를",
+      "다",
+      "했어요"
+     ],
+     "enTiles": [
+      "I",
+      "did",
+      "all",
+      "the",
+      "homework"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u9.s10",
+     "ko": "친구가 우리 집에 왔어요.",
+     "en": "My friend came to my house.",
+     "enAlt": [],
+     "koTiles": [
+      "친구가",
+      "우리",
+      "집에",
+      "왔어요"
+     ],
+     "enTiles": [
+      "My",
+      "friend",
+      "came",
+      "to",
+      "my",
+      "house"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u9.f1",
+     "before": "어제 영화를 ",
+     "answer": "봤어요",
+     "after": "",
+     "en": "I watched a movie yesterday.",
+     "options": [
+      "봐요",
+      "볼 거예요"
+     ],
+     "full": "어제 영화를 봤어요."
+    },
+    {
+     "id": "u9.f2",
+     "before": "지난주에 부산에 ",
+     "answer": "갔어요",
+     "after": "",
+     "en": "I went to Busan last week.",
+     "options": [
+      "가요",
+      "갈 거예요"
+     ],
+     "full": "지난주에 부산에 갔어요."
+    }
+   ]
+  },
+  {
+   "id": "u10",
+   "title": "Shopping",
+   "section": "Everyday",
+   "blurb": "Prices, sizes and paying",
+   "tips": [
+    "얼마예요? = How much is it?",
+    "너무 = too / very. 좀 softens a request: 좀 깎아 주세요.",
+    "-아/어도 돼요? asks for permission: 카드로 계산해도 돼요? = Can I pay by card?"
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u10.w1",
+     "ko": "얼마예요",
+     "en": "how much is it"
+    },
+    {
+     "id": "u10.w2",
+     "ko": "비싸요",
+     "en": "it's expensive"
+    },
+    {
+     "id": "u10.w3",
+     "ko": "싸요",
+     "en": "it's cheap"
+    },
+    {
+     "id": "u10.w4",
+     "ko": "사요",
+     "en": "buy"
+    },
+    {
+     "id": "u10.w5",
+     "ko": "옷",
+     "en": "clothes"
+    },
+    {
+     "id": "u10.w6",
+     "ko": "신발",
+     "en": "shoes"
+    },
+    {
+     "id": "u10.w7",
+     "ko": "가게",
+     "en": "store"
+    },
+    {
+     "id": "u10.w8",
+     "ko": "커요",
+     "en": "it's big"
+    },
+    {
+     "id": "u10.w9",
+     "ko": "작아요",
+     "en": "it's small"
+    },
+    {
+     "id": "u10.w10",
+     "ko": "예뻐요",
+     "en": "it's pretty"
+    },
+    {
+     "id": "u10.w11",
+     "ko": "색깔",
+     "en": "color"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u10.s1",
+     "ko": "이 신발 얼마예요?",
+     "en": "How much are these shoes?",
+     "enAlt": [],
+     "koTiles": [
+      "이",
+      "신발",
+      "얼마예요"
+     ],
+     "enTiles": [
+      "How",
+      "much",
+      "are",
+      "these",
+      "shoes"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u10.s2",
+     "ko": "너무 비싸요.",
+     "en": "It's too expensive.",
+     "enAlt": [],
+     "koTiles": [
+      "너무",
+      "비싸요"
+     ],
+     "enTiles": [
+      "It's",
+      "too",
+      "expensive"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u10.s3",
+     "ko": "좀 깎아 주세요.",
+     "en": "Please give me a discount.",
+     "enAlt": [],
+     "koTiles": [
+      "좀",
+      "깎아",
+      "주세요"
+     ],
+     "enTiles": [
+      "Please",
+      "give",
+      "me",
+      "a",
+      "discount"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u10.s4",
+     "ko": "이 티셔츠는 너무 작아요.",
+     "en": "This T-shirt is too small.",
+     "enAlt": [],
+     "koTiles": [
+      "이",
+      "티셔츠는",
+      "너무",
+      "작아요"
+     ],
+     "enTiles": [
+      "This",
+      "T-shirt",
+      "is",
+      "too",
+      "small"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u10.s5",
+     "ko": "다른 색깔 있어요?",
+     "en": "Do you have another color?",
+     "enAlt": [],
+     "koTiles": [
+      "다른",
+      "색깔",
+      "있어요"
+     ],
+     "enTiles": [
+      "Do",
+      "you",
+      "have",
+      "another",
+      "color"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u10.s6",
+     "ko": "카드로 계산해도 돼요?",
+     "en": "Can I pay by card?",
+     "enAlt": [],
+     "koTiles": [
+      "카드로",
+      "계산해도",
+      "돼요"
+     ],
+     "enTiles": [
+      "Can",
+      "I",
+      "pay",
+      "by",
+      "card"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u10.s7",
+     "ko": "이거 주세요.",
+     "en": "I'll take this.",
+     "enAlt": [],
+     "koTiles": [
+      "이거",
+      "주세요"
+     ],
+     "enTiles": [
+      "I'll",
+      "take",
+      "this"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u10.s8",
+     "ko": "가방이 정말 예뻐요.",
+     "en": "The bag is really pretty.",
+     "enAlt": [],
+     "koTiles": [
+      "가방이",
+      "정말",
+      "예뻐요"
+     ],
+     "enTiles": [
+      "The",
+      "bag",
+      "is",
+      "really",
+      "pretty"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u10.s9",
+     "ko": "편의점에서 물을 샀어요.",
+     "en": "I bought water at the convenience store.",
+     "enAlt": [],
+     "koTiles": [
+      "편의점에서",
+      "물을",
+      "샀어요"
+     ],
+     "enTiles": [
+      "I",
+      "bought",
+      "water",
+      "at",
+      "the",
+      "convenience",
+      "store"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u10.s10",
+     "ko": "이 가게는 옷이 싸요.",
+     "en": "This store's clothes are cheap.",
+     "enAlt": [],
+     "koTiles": [
+      "이",
+      "가게는",
+      "옷이",
+      "싸요"
+     ],
+     "enTiles": [
+      "This",
+      "store's",
+      "clothes",
+      "are",
+      "cheap"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u10.f1",
+     "before": "너무 ",
+     "answer": "비싸요",
+     "after": "",
+     "en": "It's too expensive.",
+     "options": [
+      "싸요",
+      "작아요"
+     ],
+     "full": "너무 비싸요."
+    },
+    {
+     "id": "u10.f2",
+     "before": "카드로 계산해도 ",
+     "answer": "돼요",
+     "after": "?",
+     "en": "Can I pay by card?",
+     "options": [
+      "줘요",
+      "사요"
+     ],
+     "full": "카드로 계산해도 돼요?"
+    }
+   ]
+  },
+  {
+   "id": "u11",
+   "title": "Likes and wants",
+   "section": "Everyday",
+   "blurb": "What you like and want to do",
+   "tips": [
+    "좋아해요 = I like (something). 좋아요 = it is good.",
+    "Verb stem + 고 싶어요 = want to: 가고 싶어요 = I want to go.",
+    "매운 음식 = spicy food. Adjectives go before the noun with ㄴ/은."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u11.w1",
+     "ko": "좋아해요",
+     "en": "like"
+    },
+    {
+     "id": "u11.w2",
+     "ko": "싫어해요",
+     "en": "dislike"
+    },
+    {
+     "id": "u11.w3",
+     "ko": "음식",
+     "en": "food"
+    },
+    {
+     "id": "u11.w4",
+     "ko": "운동",
+     "en": "exercise"
+    },
+    {
+     "id": "u11.w5",
+     "ko": "음악",
+     "en": "music"
+    },
+    {
+     "id": "u11.w6",
+     "ko": "여행",
+     "en": "travel"
+    },
+    {
+     "id": "u11.w7",
+     "ko": "노래",
+     "en": "song"
+    },
+    {
+     "id": "u11.w8",
+     "ko": "매워요",
+     "en": "it's spicy"
+    },
+    {
+     "id": "u11.w9",
+     "ko": "싶어요",
+     "en": "want to"
+    },
+    {
+     "id": "u11.w10",
+     "ko": "취미",
+     "en": "hobby"
+    },
+    {
+     "id": "u11.w11",
+     "ko": "자주",
+     "en": "often"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u11.s1",
+     "ko": "저는 매운 음식을 좋아해요.",
+     "en": "I like spicy food.",
+     "enAlt": [],
+     "koTiles": [
+      "저는",
+      "매운",
+      "음식을",
+      "좋아해요"
+     ],
+     "enTiles": [
+      "I",
+      "like",
+      "spicy",
+      "food"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u11.s2",
+     "ko": "한국에 가고 싶어요.",
+     "en": "I want to go to Korea.",
+     "enAlt": [],
+     "koTiles": [
+      "한국에",
+      "가고",
+      "싶어요"
+     ],
+     "enTiles": [
+      "I",
+      "want",
+      "to",
+      "go",
+      "to",
+      "Korea"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u11.s3",
+     "ko": "취미가 뭐예요?",
+     "en": "What is your hobby?",
+     "enAlt": [],
+     "koTiles": [
+      "취미가",
+      "뭐예요"
+     ],
+     "enTiles": [
+      "What",
+      "is",
+      "your",
+      "hobby"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u11.s4",
+     "ko": "저는 운동을 싫어해요.",
+     "en": "I dislike exercise.",
+     "enAlt": [],
+     "koTiles": [
+      "저는",
+      "운동을",
+      "싫어해요"
+     ],
+     "enTiles": [
+      "I",
+      "dislike",
+      "exercise"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u11.s5",
+     "ko": "한국 노래를 자주 들어요.",
+     "en": "I often listen to Korean songs.",
+     "enAlt": [],
+     "koTiles": [
+      "한국",
+      "노래를",
+      "자주",
+      "들어요"
+     ],
+     "enTiles": [
+      "I",
+      "often",
+      "listen",
+      "to",
+      "Korean",
+      "songs"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u11.s6",
+     "ko": "뭐 먹고 싶어요?",
+     "en": "What do you want to eat?",
+     "enAlt": [],
+     "koTiles": [
+      "뭐",
+      "먹고",
+      "싶어요"
+     ],
+     "enTiles": [
+      "What",
+      "do",
+      "you",
+      "want",
+      "to",
+      "eat"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u11.s7",
+     "ko": "여행을 정말 좋아해요.",
+     "en": "I really like traveling.",
+     "enAlt": [],
+     "koTiles": [
+      "여행을",
+      "정말",
+      "좋아해요"
+     ],
+     "enTiles": [
+      "I",
+      "really",
+      "like",
+      "traveling"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u11.s8",
+     "ko": "이 음식은 너무 매워요.",
+     "en": "This food is too spicy.",
+     "enAlt": [],
+     "koTiles": [
+      "이",
+      "음식은",
+      "너무",
+      "매워요"
+     ],
+     "enTiles": [
+      "This",
+      "food",
+      "is",
+      "too",
+      "spicy"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u11.s9",
+     "ko": "음악 듣는 것을 좋아해요.",
+     "en": "I like listening to music.",
+     "enAlt": [],
+     "koTiles": [
+      "음악",
+      "듣는",
+      "것을",
+      "좋아해요"
+     ],
+     "enTiles": [
+      "I",
+      "like",
+      "listening",
+      "to",
+      "music"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u11.s10",
+     "ko": "오늘은 쉬고 싶어요.",
+     "en": "I want to rest today.",
+     "enAlt": [
+      [
+       "Today",
+       "I",
+       "want",
+       "to",
+       "rest"
+      ]
+     ],
+     "koTiles": [
+      "오늘은",
+      "쉬고",
+      "싶어요"
+     ],
+     "enTiles": [
+      "I",
+      "want",
+      "to",
+      "rest",
+      "today"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u11.f1",
+     "before": "한국에 가고 ",
+     "answer": "싶어요",
+     "after": "",
+     "en": "I want to go to Korea.",
+     "options": [
+      "좋아해요",
+      "있어요"
+     ],
+     "full": "한국에 가고 싶어요."
+    },
+    {
+     "id": "u11.f2",
+     "before": "저는 매운 음식을 ",
+     "answer": "좋아해요",
+     "after": "",
+     "en": "I like spicy food.",
+     "options": [
+      "좋아요",
+      "싶어요"
+     ],
+     "full": "저는 매운 음식을 좋아해요."
+    }
+   ]
+  },
+  {
+   "id": "u12",
+   "title": "Plans",
+   "section": "Everyday",
+   "blurb": "Future plans and suggestions",
+   "tips": [
+    "-(으)ㄹ 거예요 = will / going to: 갈 거예요 = I will go.",
+    "-(으)ㄹ까요? = shall we?: 같이 볼까요? = Shall we watch it together?",
+    "-(으)ㄹ게요 = I'll (a promise to the listener): 전화할게요 = I'll call you."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u12.w1",
+     "ko": "할 거예요",
+     "en": "will do"
+    },
+    {
+     "id": "u12.w2",
+     "ko": "갈 거예요",
+     "en": "will go"
+    },
+    {
+     "id": "u12.w3",
+     "ko": "같이",
+     "en": "together"
+    },
+    {
+     "id": "u12.w4",
+     "ko": "시간",
+     "en": "time"
+    },
+    {
+     "id": "u12.w5",
+     "ko": "약속",
+     "en": "plans"
+    },
+    {
+     "id": "u12.w6",
+     "ko": "다음 주",
+     "en": "next week"
+    },
+    {
+     "id": "u12.w7",
+     "ko": "이따가",
+     "en": "later"
+    },
+    {
+     "id": "u12.w8",
+     "ko": "영화관",
+     "en": "movie theater"
+    },
+    {
+     "id": "u12.w9",
+     "ko": "만날까요",
+     "en": "shall we meet"
+    },
+    {
+     "id": "u12.w10",
+     "ko": "쉴 거예요",
+     "en": "will rest"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u12.s1",
+     "ko": "주말에 뭐 할 거예요?",
+     "en": "What will you do on the weekend?",
+     "enAlt": [],
+     "koTiles": [
+      "주말에",
+      "뭐",
+      "할",
+      "거예요"
+     ],
+     "enTiles": [
+      "What",
+      "will",
+      "you",
+      "do",
+      "on",
+      "the",
+      "weekend"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u12.s2",
+     "ko": "다음 주에 서울에 갈 거예요.",
+     "en": "I will go to Seoul next week.",
+     "enAlt": [
+      [
+       "Next",
+       "week",
+       "I",
+       "will",
+       "go",
+       "to",
+       "Seoul"
+      ]
+     ],
+     "koTiles": [
+      "다음",
+      "주에",
+      "서울에",
+      "갈",
+      "거예요"
+     ],
+     "enTiles": [
+      "I",
+      "will",
+      "go",
+      "to",
+      "Seoul",
+      "next",
+      "week"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u12.s3",
+     "ko": "같이 영화 볼까요?",
+     "en": "Shall we watch a movie together?",
+     "enAlt": [],
+     "koTiles": [
+      "같이",
+      "영화",
+      "볼까요"
+     ],
+     "enTiles": [
+      "Shall",
+      "we",
+      "watch",
+      "a",
+      "movie",
+      "together"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u12.s4",
+     "ko": "몇 시에 만날까요?",
+     "en": "What time shall we meet?",
+     "enAlt": [],
+     "koTiles": [
+      "몇",
+      "시에",
+      "만날까요"
+     ],
+     "enTiles": [
+      "What",
+      "time",
+      "shall",
+      "we",
+      "meet"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u12.s5",
+     "ko": "이따가 전화할게요.",
+     "en": "I will call you later.",
+     "enAlt": [],
+     "koTiles": [
+      "이따가",
+      "전화할게요"
+     ],
+     "enTiles": [
+      "I",
+      "will",
+      "call",
+      "you",
+      "later"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u12.s6",
+     "ko": "오늘 약속이 있어요.",
+     "en": "I have plans today.",
+     "enAlt": [
+      [
+       "Today",
+       "I",
+       "have",
+       "plans"
+      ]
+     ],
+     "koTiles": [
+      "오늘",
+      "약속이",
+      "있어요"
+     ],
+     "enTiles": [
+      "I",
+      "have",
+      "plans",
+      "today"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u12.s7",
+     "ko": "내일 시간 있어요?",
+     "en": "Do you have time tomorrow?",
+     "enAlt": [],
+     "koTiles": [
+      "내일",
+      "시간",
+      "있어요"
+     ],
+     "enTiles": [
+      "Do",
+      "you",
+      "have",
+      "time",
+      "tomorrow"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u12.s8",
+     "ko": "영화관 앞에서 만나요.",
+     "en": "Let's meet in front of the movie theater.",
+     "enAlt": [],
+     "koTiles": [
+      "영화관",
+      "앞에서",
+      "만나요"
+     ],
+     "enTiles": [
+      "Let's",
+      "meet",
+      "in",
+      "front",
+      "of",
+      "the",
+      "movie",
+      "theater"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u12.s9",
+     "ko": "저는 집에서 쉴 거예요.",
+     "en": "I will rest at home.",
+     "enAlt": [],
+     "koTiles": [
+      "저는",
+      "집에서",
+      "쉴",
+      "거예요"
+     ],
+     "enTiles": [
+      "I",
+      "will",
+      "rest",
+      "at",
+      "home"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u12.s10",
+     "ko": "같이 점심 먹을까요?",
+     "en": "Shall we eat lunch together?",
+     "enAlt": [],
+     "koTiles": [
+      "같이",
+      "점심",
+      "먹을까요"
+     ],
+     "enTiles": [
+      "Shall",
+      "we",
+      "eat",
+      "lunch",
+      "together"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u12.f1",
+     "before": "다음 주에 서울에 ",
+     "answer": "갈 거예요",
+     "after": "",
+     "en": "I will go to Seoul next week.",
+     "options": [
+      "갔어요",
+      "가요"
+     ],
+     "full": "다음 주에 서울에 갈 거예요."
+    },
+    {
+     "id": "u12.f2",
+     "before": "같이 영화 ",
+     "answer": "볼까요",
+     "after": "?",
+     "en": "Shall we watch a movie together?",
+     "options": [
+      "봤어요",
+      "봐요"
+     ],
+     "full": "같이 영화 볼까요?"
+    }
+   ]
+  },
+  {
+   "id": "u13",
+   "title": "Getting around",
+   "section": "Exchange life",
+   "blurb": "Subway, bus and directions",
+   "tips": [
+    "-(으)세요 is a polite request: 가세요 = please go, 내리세요 = please get off.",
+    "(으)로 shows direction: 오른쪽으로 = to the right.",
+    "까지 = up to / until: 학교까지 = to school."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u13.w1",
+     "ko": "지하철",
+     "en": "subway"
+    },
+    {
+     "id": "u13.w2",
+     "ko": "버스",
+     "en": "bus"
+    },
+    {
+     "id": "u13.w3",
+     "ko": "택시",
+     "en": "taxi"
+    },
+    {
+     "id": "u13.w4",
+     "ko": "역",
+     "en": "station"
+    },
+    {
+     "id": "u13.w5",
+     "ko": "정류장",
+     "en": "bus stop"
+    },
+    {
+     "id": "u13.w6",
+     "ko": "타요",
+     "en": "ride"
+    },
+    {
+     "id": "u13.w7",
+     "ko": "내려요",
+     "en": "get off"
+    },
+    {
+     "id": "u13.w8",
+     "ko": "갈아타요",
+     "en": "transfer"
+    },
+    {
+     "id": "u13.w9",
+     "ko": "왼쪽",
+     "en": "left"
+    },
+    {
+     "id": "u13.w10",
+     "ko": "오른쪽",
+     "en": "right"
+    },
+    {
+     "id": "u13.w11",
+     "ko": "똑바로",
+     "en": "straight"
+    },
+    {
+     "id": "u13.w12",
+     "ko": "걸려요",
+     "en": "it takes (time)"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u13.s1",
+     "ko": "지하철역이 어디에 있어요?",
+     "en": "Where is the subway station?",
+     "enAlt": [],
+     "koTiles": [
+      "지하철역이",
+      "어디에",
+      "있어요"
+     ],
+     "enTiles": [
+      "Where",
+      "is",
+      "the",
+      "subway",
+      "station"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u13.s2",
+     "ko": "이 버스 수원역에 가요?",
+     "en": "Does this bus go to Suwon Station?",
+     "enAlt": [],
+     "koTiles": [
+      "이",
+      "버스",
+      "수원역에",
+      "가요"
+     ],
+     "enTiles": [
+      "Does",
+      "this",
+      "bus",
+      "go",
+      "to",
+      "Suwon",
+      "Station"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u13.s3",
+     "ko": "다음 역에서 내리세요.",
+     "en": "Get off at the next station.",
+     "enAlt": [],
+     "koTiles": [
+      "다음",
+      "역에서",
+      "내리세요"
+     ],
+     "enTiles": [
+      "Get",
+      "off",
+      "at",
+      "the",
+      "next",
+      "station"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u13.s4",
+     "ko": "오른쪽으로 가세요.",
+     "en": "Go to the right.",
+     "enAlt": [],
+     "koTiles": [
+      "오른쪽으로",
+      "가세요"
+     ],
+     "enTiles": [
+      "Go",
+      "to",
+      "the",
+      "right"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u13.s5",
+     "ko": "똑바로 가세요.",
+     "en": "Go straight.",
+     "enAlt": [],
+     "koTiles": [
+      "똑바로",
+      "가세요"
+     ],
+     "enTiles": [
+      "Go",
+      "straight"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u13.s6",
+     "ko": "학교까지 얼마나 걸려요?",
+     "en": "How long does it take to get to school?",
+     "enAlt": [],
+     "koTiles": [
+      "학교까지",
+      "얼마나",
+      "걸려요"
+     ],
+     "enTiles": [
+      "How",
+      "long",
+      "does",
+      "it",
+      "take",
+      "to",
+      "get",
+      "to",
+      "school"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u13.s7",
+     "ko": "이십 분쯤 걸려요.",
+     "en": "It takes about twenty minutes.",
+     "enAlt": [],
+     "koTiles": [
+      "이십",
+      "분쯤",
+      "걸려요"
+     ],
+     "enTiles": [
+      "It",
+      "takes",
+      "about",
+      "twenty",
+      "minutes"
+     ],
+     "speak": false
+    },
+    {
+     "id": "u13.s8",
+     "ko": "사당역에서 갈아타세요.",
+     "en": "Transfer at Sadang Station.",
+     "enAlt": [],
+     "koTiles": [
+      "사당역에서",
+      "갈아타세요"
+     ],
+     "enTiles": [
+      "Transfer",
+      "at",
+      "Sadang",
+      "Station"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u13.s9",
+     "ko": "택시를 탈까요?",
+     "en": "Shall we take a taxi?",
+     "enAlt": [],
+     "koTiles": [
+      "택시를",
+      "탈까요"
+     ],
+     "enTiles": [
+      "Shall",
+      "we",
+      "take",
+      "a",
+      "taxi"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u13.s10",
+     "ko": "버스 정류장이 왼쪽에 있어요.",
+     "en": "The bus stop is on the left.",
+     "enAlt": [],
+     "koTiles": [
+      "버스",
+      "정류장이",
+      "왼쪽에",
+      "있어요"
+     ],
+     "enTiles": [
+      "The",
+      "bus",
+      "stop",
+      "is",
+      "on",
+      "the",
+      "left"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u13.s11",
+     "ko": "기사님, 여기서 내릴게요.",
+     "en": "Driver, I will get off here.",
+     "enAlt": [],
+     "koTiles": [
+      "기사님",
+      "여기서",
+      "내릴게요"
+     ],
+     "enTiles": [
+      "Driver",
+      "I",
+      "will",
+      "get",
+      "off",
+      "here"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u13.f1",
+     "before": "다음 역에서 ",
+     "answer": "내리세요",
+     "after": "",
+     "en": "Get off at the next station.",
+     "options": [
+      "타세요",
+      "가요"
+     ],
+     "full": "다음 역에서 내리세요."
+    },
+    {
+     "id": "u13.f2",
+     "before": "오른쪽",
+     "answer": "으로",
+     "after": " 가세요",
+     "en": "Go to the right.",
+     "options": [
+      "를",
+      "이"
+     ],
+     "full": "오른쪽으로 가세요."
+    }
+   ]
+  },
+  {
+   "id": "u14",
+   "title": "Campus life",
+   "section": "Exchange life",
+   "blurb": "Classes, professors and rooms",
+   "tips": [
+    "교수님 = professor. -님 adds respect (선생님, 사장님).",
+    "바뀌었어요 = it changed. Useful when a room or time moves.",
+    "몇 호 = which room number. 302호 is read 삼백이 호."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u14.w1",
+     "ko": "수업",
+     "en": "class"
+    },
+    {
+     "id": "u14.w2",
+     "ko": "강의실",
+     "en": "classroom"
+    },
+    {
+     "id": "u14.w3",
+     "ko": "교수님",
+     "en": "professor"
+    },
+    {
+     "id": "u14.w4",
+     "ko": "과제",
+     "en": "assignment"
+    },
+    {
+     "id": "u14.w5",
+     "ko": "시험",
+     "en": "exam"
+    },
+    {
+     "id": "u14.w6",
+     "ko": "기숙사",
+     "en": "dormitory"
+    },
+    {
+     "id": "u14.w7",
+     "ko": "학생회관",
+     "en": "student union building"
+    },
+    {
+     "id": "u14.w8",
+     "ko": "질문",
+     "en": "question"
+    },
+    {
+     "id": "u14.w9",
+     "ko": "바뀌었어요",
+     "en": "it changed"
+    },
+    {
+     "id": "u14.w10",
+     "ko": "끝나요",
+     "en": "it ends"
+    },
+    {
+     "id": "u14.w11",
+     "ko": "마감",
+     "en": "deadline"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u14.s1",
+     "ko": "오늘 강의실이 바뀌었어요.",
+     "en": "The classroom changed today.",
+     "enAlt": [
+      [
+       "Today",
+       "the",
+       "classroom",
+       "changed"
+      ]
+     ],
+     "koTiles": [
+      "오늘",
+      "강의실이",
+      "바뀌었어요"
+     ],
+     "enTiles": [
+      "The",
+      "classroom",
+      "changed",
+      "today"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u14.s2",
+     "ko": "수업이 몇 시에 끝나요?",
+     "en": "What time does class end?",
+     "enAlt": [],
+     "koTiles": [
+      "수업이",
+      "몇",
+      "시에",
+      "끝나요"
+     ],
+     "enTiles": [
+      "What",
+      "time",
+      "does",
+      "class",
+      "end"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u14.s3",
+     "ko": "교수님, 질문이 있어요.",
+     "en": "Professor, I have a question.",
+     "enAlt": [],
+     "koTiles": [
+      "교수님",
+      "질문이",
+      "있어요"
+     ],
+     "enTiles": [
+      "Professor",
+      "I",
+      "have",
+      "a",
+      "question"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u14.s4",
+     "ko": "과제가 너무 많아요.",
+     "en": "There are too many assignments.",
+     "enAlt": [],
+     "koTiles": [
+      "과제가",
+      "너무",
+      "많아요"
+     ],
+     "enTiles": [
+      "There",
+      "are",
+      "too",
+      "many",
+      "assignments"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u14.s5",
+     "ko": "다음 주에 시험이 있어요.",
+     "en": "There is an exam next week.",
+     "enAlt": [
+      [
+       "Next",
+       "week",
+       "there",
+       "is",
+       "an",
+       "exam"
+      ]
+     ],
+     "koTiles": [
+      "다음",
+      "주에",
+      "시험이",
+      "있어요"
+     ],
+     "enTiles": [
+      "There",
+      "is",
+      "an",
+      "exam",
+      "next",
+      "week"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u14.s6",
+     "ko": "학생회관 삼백이 호예요.",
+     "en": "It is room 302 in the student union building.",
+     "enAlt": [],
+     "koTiles": [
+      "학생회관",
+      "삼백이",
+      "호예요"
+     ],
+     "enTiles": [
+      "It",
+      "is",
+      "room",
+      "302",
+      "in",
+      "the",
+      "student",
+      "union",
+      "building"
+     ],
+     "speak": false
+    },
+    {
+     "id": "u14.s7",
+     "ko": "강의실이 몇 호예요?",
+     "en": "What room number is the classroom?",
+     "enAlt": [],
+     "koTiles": [
+      "강의실이",
+      "몇",
+      "호예요"
+     ],
+     "enTiles": [
+      "What",
+      "room",
+      "number",
+      "is",
+      "the",
+      "classroom"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u14.s8",
+     "ko": "저는 기숙사에 살아요.",
+     "en": "I live in the dormitory.",
+     "enAlt": [],
+     "koTiles": [
+      "저는",
+      "기숙사에",
+      "살아요"
+     ],
+     "enTiles": [
+      "I",
+      "live",
+      "in",
+      "the",
+      "dormitory"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u14.s9",
+     "ko": "과제 마감이 언제예요?",
+     "en": "When is the assignment due?",
+     "enAlt": [],
+     "koTiles": [
+      "과제",
+      "마감이",
+      "언제예요"
+     ],
+     "enTiles": [
+      "When",
+      "is",
+      "the",
+      "assignment",
+      "due"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u14.s10",
+     "ko": "수업이 어디로 바뀌었어요?",
+     "en": "Where did the class move to?",
+     "enAlt": [],
+     "koTiles": [
+      "수업이",
+      "어디로",
+      "바뀌었어요"
+     ],
+     "enTiles": [
+      "Where",
+      "did",
+      "the",
+      "class",
+      "move",
+      "to"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u14.s11",
+     "ko": "도서관에서 같이 공부할까요?",
+     "en": "Shall we study together at the library?",
+     "enAlt": [],
+     "koTiles": [
+      "도서관에서",
+      "같이",
+      "공부할까요"
+     ],
+     "enTiles": [
+      "Shall",
+      "we",
+      "study",
+      "together",
+      "at",
+      "the",
+      "library"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u14.f1",
+     "before": "교수님, 질문이 ",
+     "answer": "있어요",
+     "after": "",
+     "en": "Professor, I have a question.",
+     "options": [
+      "없어요",
+      "해요"
+     ],
+     "full": "교수님, 질문이 있어요."
+    },
+    {
+     "id": "u14.f2",
+     "before": "오늘 강의실이 ",
+     "answer": "바뀌었어요",
+     "after": "",
+     "en": "The classroom changed today.",
+     "options": [
+      "끝나요",
+      "있어요"
+     ],
+     "full": "오늘 강의실이 바뀌었어요."
+    }
+   ]
+  },
+  {
+   "id": "u15",
+   "title": "Dorm life",
+   "section": "Exchange life",
+   "blurb": "Rooms, parcels and problems",
+   "tips": [
+    "고장 났어요 = it's broken (a machine).",
+    "-지만 = but: 작지만 조용해요 = it's small but quiet.",
+    "잃어버렸어요 = I lost (it)."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u15.w1",
+     "ko": "방",
+     "en": "room"
+    },
+    {
+     "id": "u15.w2",
+     "ko": "룸메이트",
+     "en": "roommate"
+    },
+    {
+     "id": "u15.w3",
+     "ko": "열쇠",
+     "en": "key"
+    },
+    {
+     "id": "u15.w4",
+     "ko": "택배",
+     "en": "parcel"
+    },
+    {
+     "id": "u15.w5",
+     "ko": "세탁기",
+     "en": "washing machine"
+    },
+    {
+     "id": "u15.w6",
+     "ko": "고장 났어요",
+     "en": "it's broken"
+    },
+    {
+     "id": "u15.w7",
+     "ko": "관리실",
+     "en": "management office"
+    },
+    {
+     "id": "u15.w8",
+     "ko": "비밀번호",
+     "en": "password"
+    },
+    {
+     "id": "u15.w9",
+     "ko": "월세",
+     "en": "monthly rent"
+    },
+    {
+     "id": "u15.w10",
+     "ko": "조용해요",
+     "en": "it's quiet"
+    },
+    {
+     "id": "u15.w11",
+     "ko": "시끄러워요",
+     "en": "it's noisy"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u15.s1",
+     "ko": "택배가 왔어요.",
+     "en": "A parcel arrived.",
+     "enAlt": [],
+     "koTiles": [
+      "택배가",
+      "왔어요"
+     ],
+     "enTiles": [
+      "A",
+      "parcel",
+      "arrived"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u15.s2",
+     "ko": "세탁기가 고장 났어요.",
+     "en": "The washing machine is broken.",
+     "enAlt": [],
+     "koTiles": [
+      "세탁기가",
+      "고장",
+      "났어요"
+     ],
+     "enTiles": [
+      "The",
+      "washing",
+      "machine",
+      "is",
+      "broken"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u15.s3",
+     "ko": "와이파이 비밀번호가 뭐예요?",
+     "en": "What is the Wi-Fi password?",
+     "enAlt": [],
+     "koTiles": [
+      "와이파이",
+      "비밀번호가",
+      "뭐예요"
+     ],
+     "enTiles": [
+      "What",
+      "is",
+      "the",
+      "Wi-Fi",
+      "password"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u15.s4",
+     "ko": "방 열쇠를 잃어버렸어요.",
+     "en": "I lost my room key.",
+     "enAlt": [],
+     "koTiles": [
+      "방",
+      "열쇠를",
+      "잃어버렸어요"
+     ],
+     "enTiles": [
+      "I",
+      "lost",
+      "my",
+      "room",
+      "key"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u15.s5",
+     "ko": "관리실이 어디에 있어요?",
+     "en": "Where is the management office?",
+     "enAlt": [],
+     "koTiles": [
+      "관리실이",
+      "어디에",
+      "있어요"
+     ],
+     "enTiles": [
+      "Where",
+      "is",
+      "the",
+      "management",
+      "office"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u15.s6",
+     "ko": "제 룸메이트는 정말 친절해요.",
+     "en": "My roommate is really kind.",
+     "enAlt": [],
+     "koTiles": [
+      "제",
+      "룸메이트는",
+      "정말",
+      "친절해요"
+     ],
+     "enTiles": [
+      "My",
+      "roommate",
+      "is",
+      "really",
+      "kind"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u15.s7",
+     "ko": "월세가 얼마예요?",
+     "en": "How much is the monthly rent?",
+     "enAlt": [],
+     "koTiles": [
+      "월세가",
+      "얼마예요"
+     ],
+     "enTiles": [
+      "How",
+      "much",
+      "is",
+      "the",
+      "monthly",
+      "rent"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u15.s8",
+     "ko": "옆방이 너무 시끄러워요.",
+     "en": "The room next door is too noisy.",
+     "enAlt": [],
+     "koTiles": [
+      "옆방이",
+      "너무",
+      "시끄러워요"
+     ],
+     "enTiles": [
+      "The",
+      "room",
+      "next",
+      "door",
+      "is",
+      "too",
+      "noisy"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u15.s9",
+     "ko": "이 택배는 제 것이 아니에요.",
+     "en": "This parcel is not mine.",
+     "enAlt": [],
+     "koTiles": [
+      "이",
+      "택배는",
+      "제",
+      "것이",
+      "아니에요"
+     ],
+     "enTiles": [
+      "This",
+      "parcel",
+      "is",
+      "not",
+      "mine"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u15.s10",
+     "ko": "방이 작지만 조용해요.",
+     "en": "The room is small but quiet.",
+     "enAlt": [],
+     "koTiles": [
+      "방이",
+      "작지만",
+      "조용해요"
+     ],
+     "enTiles": [
+      "The",
+      "room",
+      "is",
+      "small",
+      "but",
+      "quiet"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u15.f1",
+     "before": "세탁기가 ",
+     "answer": "고장 났어요",
+     "after": "",
+     "en": "The washing machine is broken.",
+     "options": [
+      "왔어요",
+      "조용해요"
+     ],
+     "full": "세탁기가 고장 났어요."
+    },
+    {
+     "id": "u15.f2",
+     "before": "방이 작",
+     "answer": "지만",
+     "after": " 조용해요",
+     "en": "The room is small but quiet.",
+     "options": [
+      "고",
+      "아서"
+     ],
+     "full": "방이 작지만 조용해요."
+    }
+   ]
+  },
+  {
+   "id": "u16",
+   "title": "Asking for help",
+   "section": "Exchange life",
+   "blurb": "Repeat, slow down, explain",
+   "tips": [
+    "These phrases save you in any conversation: 다시 한 번 말해 주세요, 천천히 말해 주세요.",
+    "-아서/어서 gives a reason: 늦어서 죄송해요 = Sorry for being late.",
+    "못 = can't: 못 갔어요 = I couldn't go."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u16.w1",
+     "ko": "다시",
+     "en": "again"
+    },
+    {
+     "id": "u16.w2",
+     "ko": "천천히",
+     "en": "slowly"
+    },
+    {
+     "id": "u16.w3",
+     "ko": "잠깐만요",
+     "en": "just a moment"
+    },
+    {
+     "id": "u16.w4",
+     "ko": "도와주세요",
+     "en": "please help me"
+    },
+    {
+     "id": "u16.w5",
+     "ko": "말해 주세요",
+     "en": "please tell me"
+    },
+    {
+     "id": "u16.w6",
+     "ko": "몰라요",
+     "en": "I don't know"
+    },
+    {
+     "id": "u16.w7",
+     "ko": "알겠어요",
+     "en": "I understand"
+    },
+    {
+     "id": "u16.w8",
+     "ko": "무슨 뜻이에요",
+     "en": "what does it mean"
+    },
+    {
+     "id": "u16.w9",
+     "ko": "영어",
+     "en": "English"
+    },
+    {
+     "id": "u16.w10",
+     "ko": "그래서",
+     "en": "so"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u16.s1",
+     "ko": "다시 한 번 말해 주세요.",
+     "en": "Please say it one more time.",
+     "enAlt": [],
+     "koTiles": [
+      "다시",
+      "한",
+      "번",
+      "말해",
+      "주세요"
+     ],
+     "enTiles": [
+      "Please",
+      "say",
+      "it",
+      "one",
+      "more",
+      "time"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u16.s2",
+     "ko": "천천히 말해 주세요.",
+     "en": "Please speak slowly.",
+     "enAlt": [],
+     "koTiles": [
+      "천천히",
+      "말해",
+      "주세요"
+     ],
+     "enTiles": [
+      "Please",
+      "speak",
+      "slowly"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u16.s3",
+     "ko": "잠깐만요, 도와주세요!",
+     "en": "Just a moment, please help me!",
+     "enAlt": [],
+     "koTiles": [
+      "잠깐만요",
+      "도와주세요"
+     ],
+     "enTiles": [
+      "Just",
+      "a",
+      "moment",
+      "please",
+      "help",
+      "me"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u16.s4",
+     "ko": "이게 무슨 뜻이에요?",
+     "en": "What does this mean?",
+     "enAlt": [],
+     "koTiles": [
+      "이게",
+      "무슨",
+      "뜻이에요"
+     ],
+     "enTiles": [
+      "What",
+      "does",
+      "this",
+      "mean"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u16.s5",
+     "ko": "죄송해요, 잘 몰라요.",
+     "en": "Sorry, I don't really know.",
+     "enAlt": [],
+     "koTiles": [
+      "죄송해요",
+      "잘",
+      "몰라요"
+     ],
+     "enTiles": [
+      "Sorry",
+      "I",
+      "don't",
+      "really",
+      "know"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u16.s6",
+     "ko": "네, 알겠어요.",
+     "en": "Yes, I understand.",
+     "enAlt": [],
+     "koTiles": [
+      "네",
+      "알겠어요"
+     ],
+     "enTiles": [
+      "Yes",
+      "I",
+      "understand"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u16.s7",
+     "ko": "늦어서 죄송해요.",
+     "en": "Sorry I'm late.",
+     "enAlt": [],
+     "koTiles": [
+      "늦어서",
+      "죄송해요"
+     ],
+     "enTiles": [
+      "Sorry",
+      "I'm",
+      "late"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u16.s8",
+     "ko": "아파서 학교에 못 갔어요.",
+     "en": "I was sick so I couldn't go to school.",
+     "enAlt": [],
+     "koTiles": [
+      "아파서",
+      "학교에",
+      "못",
+      "갔어요"
+     ],
+     "enTiles": [
+      "I",
+      "was",
+      "sick",
+      "so",
+      "I",
+      "couldn't",
+      "go",
+      "to",
+      "school"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u16.s9",
+     "ko": "한국어를 잘 못해요.",
+     "en": "I'm not good at Korean.",
+     "enAlt": [],
+     "koTiles": [
+      "한국어를",
+      "잘",
+      "못해요"
+     ],
+     "enTiles": [
+      "I'm",
+      "not",
+      "good",
+      "at",
+      "Korean"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u16.s10",
+     "ko": "영어로 말해도 돼요?",
+     "en": "Can I speak in English?",
+     "enAlt": [],
+     "koTiles": [
+      "영어로",
+      "말해도",
+      "돼요"
+     ],
+     "enTiles": [
+      "Can",
+      "I",
+      "speak",
+      "in",
+      "English"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u16.f1",
+     "before": "천천히 말해 ",
+     "answer": "주세요",
+     "after": "",
+     "en": "Please speak slowly.",
+     "options": [
+      "있어요",
+      "했어요"
+     ],
+     "full": "천천히 말해 주세요."
+    },
+    {
+     "id": "u16.f2",
+     "before": "늦",
+     "answer": "어서",
+     "after": " 죄송해요",
+     "en": "Sorry I'm late.",
+     "options": [
+      "지만",
+      "고"
+     ],
+     "full": "늦어서 죄송해요."
+    }
+   ]
+  },
+  {
+   "id": "u17",
+   "title": "Part-time job",
+   "section": "Exchange life",
+   "blurb": "Shifts, bosses and customers",
+   "tips": [
+    "-(으)ㄹ 수 있어요 = can: 일할 수 있어요 = I can work. -(으)ㄹ 수 없어요 = can't.",
+    "-(으)ㄹ 것 같아요 = I think (it) will: 늦을 것 같아요 = I think I'll be late.",
+    "사장님 = the boss (owner). 손님 = customer."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u17.w1",
+     "ko": "아르바이트",
+     "en": "part-time job"
+    },
+    {
+     "id": "u17.w2",
+     "ko": "사장님",
+     "en": "boss"
+    },
+    {
+     "id": "u17.w3",
+     "ko": "손님",
+     "en": "customer"
+    },
+    {
+     "id": "u17.w4",
+     "ko": "출근해요",
+     "en": "go to work"
+    },
+    {
+     "id": "u17.w5",
+     "ko": "퇴근해요",
+     "en": "leave work"
+    },
+    {
+     "id": "u17.w6",
+     "ko": "쉬는 날",
+     "en": "day off"
+    },
+    {
+     "id": "u17.w7",
+     "ko": "시급",
+     "en": "hourly wage"
+    },
+    {
+     "id": "u17.w8",
+     "ko": "근무",
+     "en": "shift"
+    },
+    {
+     "id": "u17.w9",
+     "ko": "바꿀 수 있어요",
+     "en": "can change"
+    },
+    {
+     "id": "u17.w10",
+     "ko": "많아요",
+     "en": "there are many"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u17.s1",
+     "ko": "저는 카페에서 아르바이트를 해요.",
+     "en": "I work part-time at a café.",
+     "enAlt": [],
+     "koTiles": [
+      "저는",
+      "카페에서",
+      "아르바이트를",
+      "해요"
+     ],
+     "enTiles": [
+      "I",
+      "work",
+      "part-time",
+      "at",
+      "a",
+      "café"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u17.s2",
+     "ko": "내일 근무를 바꿀 수 있어요?",
+     "en": "Can I change my shift tomorrow?",
+     "enAlt": [],
+     "koTiles": [
+      "내일",
+      "근무를",
+      "바꿀",
+      "수",
+      "있어요"
+     ],
+     "enTiles": [
+      "Can",
+      "I",
+      "change",
+      "my",
+      "shift",
+      "tomorrow"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u17.s3",
+     "ko": "사장님, 오늘 조금 늦을 것 같아요.",
+     "en": "Boss, I think I will be a little late today.",
+     "enAlt": [],
+     "koTiles": [
+      "사장님",
+      "오늘",
+      "조금",
+      "늦을",
+      "것",
+      "같아요"
+     ],
+     "enTiles": [
+      "Boss",
+      "I",
+      "think",
+      "I",
+      "will",
+      "be",
+      "a",
+      "little",
+      "late",
+      "today"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u17.s4",
+     "ko": "손님, 뭐 드릴까요?",
+     "en": "What can I get for you?",
+     "enAlt": [],
+     "koTiles": [
+      "손님",
+      "뭐",
+      "드릴까요"
+     ],
+     "enTiles": [
+      "What",
+      "can",
+      "I",
+      "get",
+      "for",
+      "you"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u17.s5",
+     "ko": "몇 시에 출근해요?",
+     "en": "What time do you go to work?",
+     "enAlt": [],
+     "koTiles": [
+      "몇",
+      "시에",
+      "출근해요"
+     ],
+     "enTiles": [
+      "What",
+      "time",
+      "do",
+      "you",
+      "go",
+      "to",
+      "work"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u17.s6",
+     "ko": "저는 여섯 시에 퇴근해요.",
+     "en": "I leave work at six.",
+     "enAlt": [],
+     "koTiles": [
+      "저는",
+      "여섯",
+      "시에",
+      "퇴근해요"
+     ],
+     "enTiles": [
+      "I",
+      "leave",
+      "work",
+      "at",
+      "six"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u17.s7",
+     "ko": "토요일은 제 쉬는 날이에요.",
+     "en": "Saturday is my day off.",
+     "enAlt": [],
+     "koTiles": [
+      "토요일은",
+      "제",
+      "쉬는",
+      "날이에요"
+     ],
+     "enTiles": [
+      "Saturday",
+      "is",
+      "my",
+      "day",
+      "off"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u17.s8",
+     "ko": "시급이 얼마예요?",
+     "en": "What is the hourly wage?",
+     "enAlt": [],
+     "koTiles": [
+      "시급이",
+      "얼마예요"
+     ],
+     "enTiles": [
+      "What",
+      "is",
+      "the",
+      "hourly",
+      "wage"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u17.s9",
+     "ko": "주말에도 일할 수 있어요.",
+     "en": "I can work on weekends too.",
+     "enAlt": [],
+     "koTiles": [
+      "주말에도",
+      "일할",
+      "수",
+      "있어요"
+     ],
+     "enTiles": [
+      "I",
+      "can",
+      "work",
+      "on",
+      "weekends",
+      "too"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u17.s10",
+     "ko": "오늘은 손님이 많아요.",
+     "en": "There are many customers today.",
+     "enAlt": [
+      [
+       "Today",
+       "there",
+       "are",
+       "many",
+       "customers"
+      ]
+     ],
+     "koTiles": [
+      "오늘은",
+      "손님이",
+      "많아요"
+     ],
+     "enTiles": [
+      "There",
+      "are",
+      "many",
+      "customers",
+      "today"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u17.f1",
+     "before": "내일 근무를 ",
+     "answer": "바꿀 수 있어요",
+     "after": "?",
+     "en": "Can I change my shift tomorrow?",
+     "options": [
+      "바꿨어요",
+      "바꿀 거예요"
+     ],
+     "full": "내일 근무를 바꿀 수 있어요?"
+    },
+    {
+     "id": "u17.f2",
+     "before": "주말에도 일할 수 ",
+     "answer": "있어요",
+     "after": "",
+     "en": "I can work on weekends too.",
+     "options": [
+      "해요",
+      "싶어요"
+     ],
+     "full": "주말에도 일할 수 있어요."
+    }
+   ]
+  },
+  {
+   "id": "u18",
+   "title": "Health",
+   "section": "Exchange life",
+   "blurb": "Feeling sick and the pharmacy",
+   "tips": [
+    "아파요 = it hurts / I'm sick. Body part + 이/가 아파요: 머리가 아파요.",
+    "-아/어야 해요 = have to: 가야 해요 = I have to go.",
+    "드세요 is the polite way to say \"take / eat\" for medicine."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u18.w1",
+     "ko": "아파요",
+     "en": "it hurts"
+    },
+    {
+     "id": "u18.w2",
+     "ko": "머리",
+     "en": "head"
+    },
+    {
+     "id": "u18.w3",
+     "ko": "배",
+     "en": "stomach"
+    },
+    {
+     "id": "u18.w4",
+     "ko": "감기",
+     "en": "cold"
+    },
+    {
+     "id": "u18.w5",
+     "ko": "약",
+     "en": "medicine"
+    },
+    {
+     "id": "u18.w6",
+     "ko": "약국",
+     "en": "pharmacy"
+    },
+    {
+     "id": "u18.w7",
+     "ko": "병원",
+     "en": "hospital"
+    },
+    {
+     "id": "u18.w8",
+     "ko": "열",
+     "en": "fever"
+    },
+    {
+     "id": "u18.w9",
+     "ko": "기침",
+     "en": "cough"
+    },
+    {
+     "id": "u18.w10",
+     "ko": "목",
+     "en": "throat"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u18.s1",
+     "ko": "머리가 아파요.",
+     "en": "My head hurts.",
+     "enAlt": [],
+     "koTiles": [
+      "머리가",
+      "아파요"
+     ],
+     "enTiles": [
+      "My",
+      "head",
+      "hurts"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u18.s2",
+     "ko": "감기에 걸렸어요.",
+     "en": "I caught a cold.",
+     "enAlt": [],
+     "koTiles": [
+      "감기에",
+      "걸렸어요"
+     ],
+     "enTiles": [
+      "I",
+      "caught",
+      "a",
+      "cold"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u18.s3",
+     "ko": "약국이 어디에 있어요?",
+     "en": "Where is the pharmacy?",
+     "enAlt": [],
+     "koTiles": [
+      "약국이",
+      "어디에",
+      "있어요"
+     ],
+     "enTiles": [
+      "Where",
+      "is",
+      "the",
+      "pharmacy"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u18.s4",
+     "ko": "열이 나고 기침을 해요.",
+     "en": "I have a fever and a cough.",
+     "enAlt": [],
+     "koTiles": [
+      "열이",
+      "나고",
+      "기침을",
+      "해요"
+     ],
+     "enTiles": [
+      "I",
+      "have",
+      "a",
+      "fever",
+      "and",
+      "a",
+      "cough"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u18.s5",
+     "ko": "이 약을 하루에 세 번 드세요.",
+     "en": "Take this medicine three times a day.",
+     "enAlt": [],
+     "koTiles": [
+      "이",
+      "약을",
+      "하루에",
+      "세",
+      "번",
+      "드세요"
+     ],
+     "enTiles": [
+      "Take",
+      "this",
+      "medicine",
+      "three",
+      "times",
+      "a",
+      "day"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u18.s6",
+     "ko": "병원에 가야 해요.",
+     "en": "I have to go to the hospital.",
+     "enAlt": [],
+     "koTiles": [
+      "병원에",
+      "가야",
+      "해요"
+     ],
+     "enTiles": [
+      "I",
+      "have",
+      "to",
+      "go",
+      "to",
+      "the",
+      "hospital"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u18.s7",
+     "ko": "배가 아파서 못 먹었어요.",
+     "en": "My stomach hurt so I couldn't eat.",
+     "enAlt": [],
+     "koTiles": [
+      "배가",
+      "아파서",
+      "못",
+      "먹었어요"
+     ],
+     "enTiles": [
+      "My",
+      "stomach",
+      "hurt",
+      "so",
+      "I",
+      "couldn't",
+      "eat"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u18.s8",
+     "ko": "목이 아파요.",
+     "en": "My throat hurts.",
+     "enAlt": [],
+     "koTiles": [
+      "목이",
+      "아파요"
+     ],
+     "enTiles": [
+      "My",
+      "throat",
+      "hurts"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u18.s9",
+     "ko": "감기약 있어요?",
+     "en": "Do you have cold medicine?",
+     "enAlt": [],
+     "koTiles": [
+      "감기약",
+      "있어요"
+     ],
+     "enTiles": [
+      "Do",
+      "you",
+      "have",
+      "cold",
+      "medicine"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u18.s10",
+     "ko": "푹 쉬세요.",
+     "en": "Get some good rest.",
+     "enAlt": [],
+     "koTiles": [
+      "푹",
+      "쉬세요"
+     ],
+     "enTiles": [
+      "Get",
+      "some",
+      "good",
+      "rest"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u18.f1",
+     "before": "병원에 ",
+     "answer": "가야 해요",
+     "after": "",
+     "en": "I have to go to the hospital.",
+     "options": [
+      "갔어요",
+      "가고 싶어요"
+     ],
+     "full": "병원에 가야 해요."
+    },
+    {
+     "id": "u18.f2",
+     "before": "머리",
+     "answer": "가",
+     "after": " 아파요",
+     "en": "My head hurts.",
+     "options": [
+      "를",
+      "에서"
+     ],
+     "full": "머리가 아파요."
+    }
+   ]
+  },
+  {
+   "id": "u19",
+   "title": "Phone and plans",
+   "section": "Exchange life",
+   "blurb": "Calls, texts and meeting up",
+   "tips": [
+    "여보세요 = hello (only on the phone).",
+    "-(으)면 = if / when: 도착하면 = when you arrive.",
+    "어때요? = how about it?: 토요일은 어때요? = How about Saturday?"
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u19.w1",
+     "ko": "여보세요",
+     "en": "hello (on the phone)"
+    },
+    {
+     "id": "u19.w2",
+     "ko": "전화",
+     "en": "phone call"
+    },
+    {
+     "id": "u19.w3",
+     "ko": "문자",
+     "en": "text message"
+    },
+    {
+     "id": "u19.w4",
+     "ko": "연락",
+     "en": "contact"
+    },
+    {
+     "id": "u19.w5",
+     "ko": "보낼게요",
+     "en": "I'll send"
+    },
+    {
+     "id": "u19.w6",
+     "ko": "어때요",
+     "en": "how about"
+    },
+    {
+     "id": "u19.w7",
+     "ko": "기다릴게요",
+     "en": "I'll wait"
+    },
+    {
+     "id": "u19.w8",
+     "ko": "도착했어요",
+     "en": "I arrived"
+    },
+    {
+     "id": "u19.w9",
+     "ko": "출발해요",
+     "en": "leave"
+    },
+    {
+     "id": "u19.w10",
+     "ko": "벌써",
+     "en": "already"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u19.s1",
+     "ko": "여보세요, 민수 씨 계세요?",
+     "en": "Hello, is Minsu there?",
+     "enAlt": [],
+     "koTiles": [
+      "여보세요",
+      "민수",
+      "씨",
+      "계세요"
+     ],
+     "enTiles": [
+      "Hello",
+      "is",
+      "Minsu",
+      "there"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u19.s2",
+     "ko": "나중에 문자 보낼게요.",
+     "en": "I will text you later.",
+     "enAlt": [],
+     "koTiles": [
+      "나중에",
+      "문자",
+      "보낼게요"
+     ],
+     "enTiles": [
+      "I",
+      "will",
+      "text",
+      "you",
+      "later"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u19.s3",
+     "ko": "토요일 오후는 어때요?",
+     "en": "How about Saturday afternoon?",
+     "enAlt": [],
+     "koTiles": [
+      "토요일",
+      "오후는",
+      "어때요"
+     ],
+     "enTiles": [
+      "How",
+      "about",
+      "Saturday",
+      "afternoon"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u19.s4",
+     "ko": "미안해요, 조금 늦을 것 같아요.",
+     "en": "Sorry, I think I will be a little late.",
+     "enAlt": [],
+     "koTiles": [
+      "미안해요",
+      "조금",
+      "늦을",
+      "것",
+      "같아요"
+     ],
+     "enTiles": [
+      "Sorry",
+      "I",
+      "think",
+      "I",
+      "will",
+      "be",
+      "a",
+      "little",
+      "late"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u19.s5",
+     "ko": "지금 출발해요.",
+     "en": "I am leaving now.",
+     "enAlt": [],
+     "koTiles": [
+      "지금",
+      "출발해요"
+     ],
+     "enTiles": [
+      "I",
+      "am",
+      "leaving",
+      "now"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u19.s6",
+     "ko": "역 앞에서 기다릴게요.",
+     "en": "I will wait in front of the station.",
+     "enAlt": [],
+     "koTiles": [
+      "역",
+      "앞에서",
+      "기다릴게요"
+     ],
+     "enTiles": [
+      "I",
+      "will",
+      "wait",
+      "in",
+      "front",
+      "of",
+      "the",
+      "station"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u19.s7",
+     "ko": "도착하면 연락 주세요.",
+     "en": "Please contact me when you arrive.",
+     "enAlt": [],
+     "koTiles": [
+      "도착하면",
+      "연락",
+      "주세요"
+     ],
+     "enTiles": [
+      "Please",
+      "contact",
+      "me",
+      "when",
+      "you",
+      "arrive"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u19.s8",
+     "ko": "지금 통화할 수 있어요?",
+     "en": "Can you talk on the phone now?",
+     "enAlt": [],
+     "koTiles": [
+      "지금",
+      "통화할",
+      "수",
+      "있어요"
+     ],
+     "enTiles": [
+      "Can",
+      "you",
+      "talk",
+      "on",
+      "the",
+      "phone",
+      "now"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u19.s9",
+     "ko": "다섯 시는 어때요?",
+     "en": "How about five o'clock?",
+     "enAlt": [],
+     "koTiles": [
+      "다섯",
+      "시는",
+      "어때요"
+     ],
+     "enTiles": [
+      "How",
+      "about",
+      "five",
+      "o'clock"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u19.s10",
+     "ko": "벌써 도착했어요.",
+     "en": "I already arrived.",
+     "enAlt": [],
+     "koTiles": [
+      "벌써",
+      "도착했어요"
+     ],
+     "enTiles": [
+      "I",
+      "already",
+      "arrived"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u19.f1",
+     "before": "역 앞에서 ",
+     "answer": "기다릴게요",
+     "after": "",
+     "en": "I will wait in front of the station.",
+     "options": [
+      "기다렸어요",
+      "기다려요"
+     ],
+     "full": "역 앞에서 기다릴게요."
+    },
+    {
+     "id": "u19.f2",
+     "before": "도착하",
+     "answer": "면",
+     "after": " 연락 주세요",
+     "en": "Please contact me when you arrive.",
+     "options": [
+      "지만",
+      "고"
+     ],
+     "full": "도착하면 연락 주세요."
+    }
+   ]
+  },
+  {
+   "id": "u20",
+   "title": "Polite speech",
+   "section": "Exchange life",
+   "blurb": "Talking to professors and elders",
+   "tips": [
+    "-(으)시- shows respect to the person you talk about: 가요 → 가세요.",
+    "Some verbs change completely: 먹어요 → 드세요, 자요 → 주무세요, 있어요 → 계세요.",
+    "Some nouns change too: 이름 → 성함, 나이 → 연세, 집 → 댁."
+   ],
+   "letters": [],
+   "words": [
+    {
+     "id": "u20.w1",
+     "ko": "성함",
+     "en": "name (honorific)"
+    },
+    {
+     "id": "u20.w2",
+     "ko": "연세",
+     "en": "age (honorific)"
+    },
+    {
+     "id": "u20.w3",
+     "ko": "드세요",
+     "en": "please eat"
+    },
+    {
+     "id": "u20.w4",
+     "ko": "계세요",
+     "en": "is there (honorific)"
+    },
+    {
+     "id": "u20.w5",
+     "ko": "말씀",
+     "en": "words (honorific)"
+    },
+    {
+     "id": "u20.w6",
+     "ko": "주무세요",
+     "en": "sleep (honorific)"
+    },
+    {
+     "id": "u20.w7",
+     "ko": "댁",
+     "en": "home (honorific)"
+    },
+    {
+     "id": "u20.w8",
+     "ko": "할머니",
+     "en": "grandmother"
+    },
+    {
+     "id": "u20.w9",
+     "ko": "연구실",
+     "en": "office (professor's)"
+    },
+    {
+     "id": "u20.w10",
+     "ko": "잠시만",
+     "en": "for a moment"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "u20.s1",
+     "ko": "성함이 어떻게 되세요?",
+     "en": "May I ask your name?",
+     "enAlt": [],
+     "koTiles": [
+      "성함이",
+      "어떻게",
+      "되세요"
+     ],
+     "enTiles": [
+      "May",
+      "I",
+      "ask",
+      "your",
+      "name"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u20.s2",
+     "ko": "교수님께서 연구실에 계세요.",
+     "en": "The professor is in the office.",
+     "enAlt": [],
+     "koTiles": [
+      "교수님께서",
+      "연구실에",
+      "계세요"
+     ],
+     "enTiles": [
+      "The",
+      "professor",
+      "is",
+      "in",
+      "the",
+      "office"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u20.s3",
+     "ko": "맛있게 드세요.",
+     "en": "Enjoy your meal.",
+     "enAlt": [],
+     "koTiles": [
+      "맛있게",
+      "드세요"
+     ],
+     "enTiles": [
+      "Enjoy",
+      "your",
+      "meal"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u20.s4",
+     "ko": "할머니, 안녕히 주무세요.",
+     "en": "Good night, Grandma.",
+     "enAlt": [],
+     "koTiles": [
+      "할머니",
+      "안녕히",
+      "주무세요"
+     ],
+     "enTiles": [
+      "Good",
+      "night",
+      "Grandma"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u20.s5",
+     "ko": "사장님께 말씀드릴게요.",
+     "en": "I will tell the boss.",
+     "enAlt": [],
+     "koTiles": [
+      "사장님께",
+      "말씀드릴게요"
+     ],
+     "enTiles": [
+      "I",
+      "will",
+      "tell",
+      "the",
+      "boss"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u20.s6",
+     "ko": "연세가 어떻게 되세요?",
+     "en": "May I ask how old you are?",
+     "enAlt": [],
+     "koTiles": [
+      "연세가",
+      "어떻게",
+      "되세요"
+     ],
+     "enTiles": [
+      "May",
+      "I",
+      "ask",
+      "how",
+      "old",
+      "you",
+      "are"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u20.s7",
+     "ko": "어디에 가세요?",
+     "en": "Where are you going?",
+     "enAlt": [],
+     "koTiles": [
+      "어디에",
+      "가세요"
+     ],
+     "enTiles": [
+      "Where",
+      "are",
+      "you",
+      "going"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u20.s8",
+     "ko": "교수님, 하나 여쭤봐도 될까요?",
+     "en": "Professor, may I ask you something?",
+     "enAlt": [],
+     "koTiles": [
+      "교수님",
+      "하나",
+      "여쭤봐도",
+      "될까요"
+     ],
+     "enTiles": [
+      "Professor",
+      "may",
+      "I",
+      "ask",
+      "you",
+      "something"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u20.s9",
+     "ko": "선생님 댁이 어디세요?",
+     "en": "Where is your home, teacher?",
+     "enAlt": [],
+     "koTiles": [
+      "선생님",
+      "댁이",
+      "어디세요"
+     ],
+     "enTiles": [
+      "Where",
+      "is",
+      "your",
+      "home",
+      "teacher"
+     ],
+     "speak": true
+    },
+    {
+     "id": "u20.s10",
+     "ko": "잠시만 기다려 주세요.",
+     "en": "Please wait a moment.",
+     "enAlt": [],
+     "koTiles": [
+      "잠시만",
+      "기다려",
+      "주세요"
+     ],
+     "enTiles": [
+      "Please",
+      "wait",
+      "a",
+      "moment"
+     ],
+     "speak": true
+    }
+   ],
+   "fills": [
+    {
+     "id": "u20.f1",
+     "before": "맛있게 ",
+     "answer": "드세요",
+     "after": "",
+     "en": "Enjoy your meal.",
+     "options": [
+      "먹어요",
+      "마셔요"
+     ],
+     "full": "맛있게 드세요."
+    },
+    {
+     "id": "u20.f2",
+     "before": "교수님께서 연구실에 ",
+     "answer": "계세요",
+     "after": "",
+     "en": "The professor is in the office.",
+     "options": [
+      "있어요",
+      "주무세요"
+     ],
+     "full": "교수님께서 연구실에 계세요."
+    }
+   ]
+  }
+ ],
+ "glossary": {
+  "정말": "really",
+  "진짜": "really",
+  "좀": "a little / please",
+  "너무": "too / very",
+  "아주": "very",
+  "저기": "over there",
+  "거기": "there",
+  "근처": "nearby",
+  "안": "not / inside",
+  "못": "can't",
+  "잘": "well",
+  "다": "all",
+  "우리": "we / our",
+  "이": "this (before a noun)",
+  "그": "that (before a noun)",
+  "무슨": "what (kind of)",
+  "어느": "which",
+  "어떻게": "how",
+  "언제": "when",
+  "얼마나": "how long / how much",
+  "많이": "a lot",
+  "조금": "a little",
+  "씨": "Mr. / Ms. (after a name)",
+  "분": "minute",
+  "층": "floor",
+  "번": "number / time(s)",
+  "호": "room number",
+  "개": "(counter for things)",
+  "명": "(counter for people)",
+  "반": "class",
+  "쯤": "about",
+  "있어요": "there is / have",
+  "없어요": "there isn't / don't have",
+  "아니에요": "is not",
+  "뭐예요": "what is it",
+  "어디예요": "where is it",
+  "만나서": "meeting (you)",
+  "반가워요": "glad",
+  "만나요": "meet",
+  "내리세요": "please get off",
+  "가세요": "please go",
+  "한": "one (before a counter)",
+  "두": "two (before a counter)",
+  "세": "three (before a counter)",
+  "네": "yes / four (before a counter)",
+  "수업": "class",
+  "시장": "market",
+  "과일": "fruit",
+  "숙제": "homework",
+  "부산": "Busan",
+  "서울": "Seoul",
+  "수원역": "Suwon Station",
+  "사당역": "Sadang Station",
+  "형": "older brother (said by a man)",
+  "회사": "company",
+  "일찍": "early",
+  "들어요": "listen",
+  "쉬고": "resting",
+  "오후": "afternoon",
+  "토요일": "Saturday",
+  "나중에": "later",
+  "하루에": "a day",
+  "기사님": "driver",
+  "여기서": "here (from here)",
+  "친절해요": "is kind",
+  "와이파이": "Wi-Fi",
+  "잃어버렸어요": "lost",
+  "옆방": "the room next door",
+  "걸렸어요": "caught (a cold)",
+  "할머니": "grandmother",
+  "거예요": "will (be) / it's",
+  "다음": "next",
+  "수": "way (in \"can\")",
+  "안녕히": "in peace (goodbye)",
+  "민수": "Minsu (a name)",
+  "돼요": "is okay",
+  "주에": "in the week",
+  "말해": "say / speak",
+  "죄송해요": "I'm sorry",
+  "아파서": "because I was sick",
+  "늦을": "will be late",
+  "것": "thing",
+  "같아요": "seems / I think",
+  "되세요": "is (polite)",
+  "아": "oh",
+  "고맙습니다": "thank you",
+  "이건": "this (topic)",
+  "삼천": "three thousand",
+  "전화번호": "phone number",
+  "김밥": "kimbap",
+  "사천": "four thousand",
+  "일곱": "seven (native)",
+  "아홉": "nine (native)",
+  "여섯": "six (native)",
+  "열두": "twelve (native)",
+  "시작해요": "starts",
+  "깎아": "lower (the price)",
+  "티셔츠": "T-shirt",
+  "다른": "other / different",
+  "카드": "card",
+  "계산해도": "(may I) pay",
+  "매운": "spicy",
+  "가고": "go (and)",
+  "먹고": "eat (and)",
+  "듣는": "listening",
+  "할": "will do",
+  "갈": "will go",
+  "볼까요": "shall we watch",
+  "전화할게요": "I'll call",
+  "쉴": "will rest",
+  "먹을까요": "shall we eat",
+  "지하철역": "subway station",
+  "이십": "twenty",
+  "갈아타세요": "please transfer",
+  "탈까요": "shall we take",
+  "내릴게요": "I'll get off",
+  "살아요": "live",
+  "공부할까요": "shall we study",
+  "고장": "breakdown",
+  "났어요": "happened",
+  "작지만": "small, but",
+  "이게": "this (subject)",
+  "뜻": "meaning",
+  "늦어서": "because I'm late",
+  "못해요": "can't do (well)",
+  "말해도": "(may I) speak",
+  "바꿀": "change",
+  "드릴까요": "shall I give (you)",
+  "쉬는": "resting / off",
+  "날": "day",
+  "일할": "work",
+  "주말에도": "on weekends too",
+  "나고": "comes on (and)",
+  "가야": "have to go",
+  "감기약": "cold medicine",
+  "푹": "well (rest well)",
+  "쉬세요": "please rest",
+  "미안해요": "sorry",
+  "도착하면": "when you arrive",
+  "통화할": "talk on the phone",
+  "맛있게": "deliciously",
+  "말씀드릴게요": "I'll tell (polite)",
+  "여쭤봐도": "(may I) ask",
+  "될까요": "would it be okay",
+  "어디세요": "where is it (polite)",
+  "기다려": "wait"
+ }
+}

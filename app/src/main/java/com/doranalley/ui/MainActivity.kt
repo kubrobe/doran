@@ -1,99 +1,77 @@
 package com.doranalley.ui
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
-import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.core.content.ContextCompat
-import com.doranalley.ui.screens.DiaryScreen
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.lifecycleScope
+import com.doranalley.audio.AudioPlayer
+import com.doranalley.ui.screens.CompleteScreen
+import com.doranalley.ui.screens.GuidebookScreen
 import com.doranalley.ui.screens.HomeScreen
-import com.doranalley.ui.screens.MirrorScreen
-import com.doranalley.ui.screens.PlayScreen
-import com.doranalley.ui.screens.QuestScreen
-import com.doranalley.ui.screens.RecallScreen
+import com.doranalley.ui.screens.LessonScreen
+import com.doranalley.ui.screens.OnboardingScreen
+import com.doranalley.ui.screens.OutOfHeartsScreen
+import com.doranalley.ui.screens.PlacedScreen
 import com.doranalley.ui.screens.SettingsScreen
+import com.doranalley.ui.screens.StreakScreen
 import com.doranalley.ui.theme.DoranTheme
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
-
-    private val vm: AppViewModel by viewModels()
+    val vm: AppViewModel by viewModels()
+    private var lastToast = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent { DoranTheme { DoranApp(vm) } }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        vm.micGranted = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED
-        if (vm.micGranted) vm.micDenied = false
-        vm.onResume()
-    }
-
-    override fun onPause() {
-        vm.onPause()
-        super.onPause()
-    }
-}
-
-@Composable
-fun DoranApp(vm: AppViewModel) {
-    val ctx = LocalContext.current
-    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { ok ->
-        vm.micGranted = ok
-        vm.micDenied = !ok
-        if (!ok) vm.notice = "notice_mic_denied"
-    }
-    val requestMic: () -> Unit = {
-        if (ContextCompat.checkSelfPermission(ctx, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) vm.micGranted = true
-        else launcher.launch(Manifest.permission.RECORD_AUDIO)
-    }
-    val strings = remember(vm.lang) { Strings(vm.content.ui, vm.lang) }
-    val snackbar = remember { SnackbarHostState() }
-    LaunchedEffect(vm.notice) {
-        val key = vm.notice ?: return@LaunchedEffect
-        vm.notice = null
-        snackbar.showSnackbar(strings[key])
-    }
-    CompositionLocalProvider(LocalStrings provides strings) {
-        Scaffold(
-            snackbarHost = { SnackbarHost(snackbar) },
-            containerColor = MaterialTheme.colorScheme.background,
-            contentWindowInsets = WindowInsets(0, 0, 0, 0),
-        ) { pad ->
-            Box(Modifier.fillMaxSize().padding(pad)) {
-                BackHandler(enabled = vm.screen != Screen.Home) { vm.back() }
-                when (val sc = vm.screen) {
-                    Screen.Home -> HomeScreen(vm)
-                    is Screen.Play -> PlayScreen(vm, requestMic)
-                    is Screen.Mirror -> MirrorScreen(vm, sc.episodeId, requestMic)
-                    Screen.Recall -> RecallScreen(vm, requestMic)
-                    Screen.Quest -> QuestScreen(vm, requestMic)
-                    Screen.Diary -> DiaryScreen(vm, requestMic)
-                    Screen.Settings -> SettingsScreen(vm, requestMic)
+        lifecycleScope.launch {
+            vm.audio.problems.collect { p ->
+                val now = System.currentTimeMillis()
+                if (now - lastToast < 15_000) return@collect
+                lastToast = now
+                val msg = when (p) {
+                    AudioPlayer.Problem.MUTED -> "Your media volume is off. Turn it up to hear the Korean audio."
+                    AudioPlayer.Problem.MISSING -> "This audio clip is missing."
+                    AudioPlayer.Problem.FAILED -> "Audio could not play. Try again."
+                }
+                Toast.makeText(this@MainActivity, msg, Toast.LENGTH_LONG).show()
+            }
+        }
+        setContent {
+            DoranTheme {
+                val screen by vm.screen.collectAsState()
+                when (val s = screen) {
+                    is Screen.Onboarding -> OnboardingScreen(vm, s.step)
+                    is Screen.Home -> {
+                        BackHandler(enabled = s.tab != Tab.LEARN) { vm.back() }
+                        HomeScreen(vm, s.tab)
+                    }
+                    Screen.Lesson -> LessonScreen(vm)
+                    is Screen.Complete -> CompleteScreen(vm, s.summary)
+                    is Screen.Streak -> StreakScreen(vm, s.days)
+                    Screen.OutOfHearts -> OutOfHeartsScreen(vm)
+                    is Screen.Placed -> PlacedScreen(vm, s.unit)
+                    is Screen.Guidebook -> GuidebookScreen(vm, s.unit)
+                    Screen.Settings -> SettingsScreen(vm)
+                }
+                // If a lesson screen is shown without a session (should not happen), go home.
+                LaunchedEffect(screen) {
+                    if (screen == Screen.Lesson && vm.session.value == null) vm.go(Screen.Home())
                 }
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        vm.audio.stop()
+        vm.stopSpeaking()
     }
 }

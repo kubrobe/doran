@@ -2,9 +2,12 @@ name: Android build
 
 on:
   push:
-    branches: [main]
+    branches: [main, duolingo-korean]
   pull_request:
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -12,21 +15,47 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
+      - name: Course file is up to date
+        run: python3 tools/build_course.py && git diff --exit-code app/src/main/assets/course/course.json
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "17"
       - uses: gradle/actions/setup-gradle@v4
-      - name: Unit tests (engine, matcher, scheduler, content)
+      - name: Unit tests (course, lessons, answer checking, scoring, progress)
         run: ./gradlew --no-daemon testDebugUnitTest
       - name: Build debug APK
         run: ./gradlew --no-daemon assembleDebug
+      - run: ls -la app/build/outputs/apk/debug/
       - uses: actions/upload-artifact@v4
         with:
-          name: doran-alley-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: doran-korean-phone-apk
+          path: app/build/outputs/apk/debug/app-arm64-v8a-debug.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: doran-korean-old-32bit-phone-apk
+          path: app/build/outputs/apk/debug/app-armeabi-v7a-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: test-reports
+          name: unit-test-reports
           path: app/build/reports/tests/
+      - name: Publish phone APK to the "apk" branch (direct download link)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/duolingo-korean'
+        run: |
+          set -e
+          APK=app/build/outputs/apk/debug/app-arm64-v8a-debug.apk
+          ls -la "$APK"
+          SIZE=$(stat -c %s "$APK")
+          D=$(mktemp -d)
+          cp "$APK" "$D/Doran-Korean.apk"
+          printf '# Doran Korean - phone APK\n\nOpen Doran-Korean.apk on your phone and tap Download. (Stored with Git LFS because it is over 100 MB.)\n' > "$D/README.md"
+          cd "$D"
+          git init -q -b apk
+          git lfs install --local
+          git lfs track "*.apk"
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add .
+          git commit -q -m "Doran Korean APK from ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" apk

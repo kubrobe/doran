@@ -1,0 +1,39 @@
+name: Fetch speech recognizer
+# One-off: downloads the offline Korean recognizer (sherpa-onnx, Apache-2.0),
+# checks the hashes and commits the files so every build is self-contained.
+on:
+  push:
+    branches: [duolingo-korean]
+    paths: [".github/workflows/fetch-asr.yml"]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Download and verify
+        run: |
+          set -e
+          base=https://github.com/k2-fsa/sherpa-onnx/releases/download
+          curl -sSL -o /tmp/m.tar.bz2 $base/asr-models/sherpa-onnx-zipformer-korean-2024-06-24.tar.bz2
+          echo "24bd409318f389cd2de0e295eb1acf91f4e8dfcc0d650490dd2a01f5b50d2c77  /tmp/m.tar.bz2" | sha256sum -c
+          tar xjf /tmp/m.tar.bz2 -C /tmp
+          src=/tmp/sherpa-onnx-zipformer-korean-2024-06-24
+          dst=app/src/main/assets/asr
+          mkdir -p $dst app/libs
+          cp $src/encoder-epoch-99-avg-1.int8.onnx $dst/encoder.int8.onnx
+          cp $src/decoder-epoch-99-avg-1.int8.onnx $dst/decoder.int8.onnx
+          cp $src/joiner-epoch-99-avg-1.int8.onnx $dst/joiner.int8.onnx
+          cp $src/tokens.txt $dst/tokens.txt
+          curl -sSL -o app/libs/sherpa-onnx-static-2.0.2.aar $base/v2.0.2/sherpa-onnx-static-link-onnxruntime-2.0.2.aar
+          echo "cb73564809268c8b96bf98f1a32b0b3b611e01d028d22f10beb57ef55418c0cb  app/libs/sherpa-onnx-static-2.0.2.aar" | sha256sum -c
+          printf 'Offline Korean speech recognizer.\nModel: k2-fsa sherpa-onnx-zipformer-korean-2024-06-24 (int8), Apache-2.0.\nLibrary: app/libs/sherpa-onnx-static-2.0.2.aar, Apache-2.0.\n' > $dst/README.txt
+          ls -la $dst app/libs
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/src/main/assets/asr app/libs
+          git commit -m "Add offline Korean speech recognizer (sherpa-onnx, Apache-2.0)"
+          git push

@@ -107,6 +107,15 @@ class ProgressTest {
         assertEquals(Progress(), Progress.fromJson("{}"))
     }
 
+    @Test fun reduceMotionSettingIsSavedAndDefaultsOff() {
+        val p = Progress(settings = Settings(theme = "light", reduceMotion = true))
+        assertEquals(p, Progress.fromJson(p.toJson()))
+        // A progress file written before the setting existed still loads, with motion on.
+        val old = """{"onboarded":true,"settings":{"sounds":true,"speaking":true,"listening":true,"unlimitedHearts":false,"theme":"dark"}}"""
+        assertFalse(Progress.fromJson(old).settings.reduceMotion)
+        assertTrue(Progress.fromJson(old).onboarded)
+    }
+
     @Test fun pathAndPlacement() {
         val course = Course.parse(java.io.File("src/main/assets/course/course.json").readText())
         var p = Progress()

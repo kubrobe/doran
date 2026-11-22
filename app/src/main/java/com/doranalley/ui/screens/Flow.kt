@@ -360,7 +360,8 @@ fun SettingsScreen(vm: AppViewModel) {
                 Toggle("Sound effects", st.sounds, "setSounds") { v -> vm.setSettings { it.copy(sounds = v) } }
                 Toggle("Speaking exercises", st.speaking, "setSpeaking") { v -> vm.setSettings { it.copy(speaking = v) } }
                 Toggle("Listening exercises", st.listening, "setListening") { v -> vm.setSettings { it.copy(listening = v) } }
-                Toggle("Unlimited hearts", st.unlimitedHearts, "setHearts", last = true) { v -> vm.setSettings { it.copy(unlimitedHearts = v) } }
+                Toggle("Unlimited hearts", st.unlimitedHearts, "setHearts") { v -> vm.setSettings { it.copy(unlimitedHearts = v) } }
+                Toggle("Reduce motion", st.reduceMotion, "setReduceMotion", last = true) { v -> vm.setSettings { it.copy(reduceMotion = v) } }
             }
 
             Section("Daily goal")

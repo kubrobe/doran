@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val progress by vm.progress.collectAsState()
             val mode = progress.settings.theme
-            DoranTheme(mode) {
+            DoranTheme(mode, reduceMotion = progress.settings.reduceMotion) {
                 val night = isNight(mode)
                 // Light status-bar icons at night, dark ones by day.
                 LaunchedEffect(night) {

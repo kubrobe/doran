@@ -15,6 +15,8 @@ data class Settings(
     val unlimitedHearts: Boolean = false,
     /** "dark" (default), "light" or "system". */
     val theme: String = "dark",
+    /** Keep motion to a minimum (no celebrations, pops or slides). Older files without the key read as false. */
+    val reduceMotion: Boolean = false,
 )
 
 /** Everything saved on the phone. Pure data + rules; [Store] persists it. */
@@ -69,6 +71,7 @@ data class Progress(
                     listening = st.optBoolean("listening", true),
                     unlimitedHearts = st.optBoolean("unlimitedHearts", false),
                     theme = st.optString("theme", "dark").ifBlank { "dark" },
+                    reduceMotion = st.optBoolean("reduceMotion", false),
                 ),
                 speakingPausedUntil = o.optLong("speakingPausedUntil"),
                 listeningPausedUntil = o.optLong("listeningPausedUntil"),
@@ -95,7 +98,7 @@ data class Progress(
         o.put("settings", JSONObject()
             .put("sounds", settings.sounds).put("speaking", settings.speaking)
             .put("listening", settings.listening).put("unlimitedHearts", settings.unlimitedHearts)
-            .put("theme", settings.theme))
+            .put("theme", settings.theme).put("reduceMotion", settings.reduceMotion))
         o.put("speakingPausedUntil", speakingPausedUntil)
         o.put("listeningPausedUntil", listeningPausedUntil)
         o.put("lessonsCompleted", lessonsCompleted)

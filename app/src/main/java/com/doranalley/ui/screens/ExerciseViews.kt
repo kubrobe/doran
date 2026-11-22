@@ -402,12 +402,5 @@ fun FillBlankView(vm: AppViewModel, ex: Exercise.FillBlank, locked: Boolean, sec
 }
 
 @Composable
-fun BigBubble(text: String) = Bubble(text, fontSize = 22.sp)
-
-@Suppress("unused")
-@Composable
-private fun Placeholder() = ChunkyButton("", {})
-
-@Composable
 private fun fadeDone(done: Boolean): Float =
     animateFloatAsState(if (done) 0.45f else 1f, tween(250), label = "fadeDone").value

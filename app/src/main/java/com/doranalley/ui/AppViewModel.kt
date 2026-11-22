@@ -148,7 +148,8 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     fun setSettings(f: (com.doranalley.core.Settings) -> com.doranalley.core.Settings) = update { it.copy(settings = f(it.settings)) }
 
     fun resetProgress() {
-        update { Progress(onboarded = false, settings = com.doranalley.core.Settings(theme = it.settings.theme)) }
+        // Appearance and motion preferences survive a reset; everything else starts over.
+        update { Progress(onboarded = false, settings = com.doranalley.core.Settings(theme = it.settings.theme, reduceMotion = it.settings.reduceMotion)) }
         _session.value = null
         go(Screen.Onboarding())
     }

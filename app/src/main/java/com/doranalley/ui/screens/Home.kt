@@ -121,6 +121,7 @@ import com.doranalley.ui.theme.Radius
 import com.doranalley.ui.theme.Space
 import com.doranalley.ui.theme.Tone
 import com.doranalley.ui.theme.darken
+import com.doranalley.ui.theme.fixedSp
 import kotlin.math.sin
 
 @Composable
@@ -369,7 +370,7 @@ private fun UnitHeader(u: CourseUnit, sectionStart: Boolean, done: Int, isCurren
                 .drawBehind { drawRect(stripe, size = androidx.compose.ui.geometry.Size(5.dp.toPx(), size.height)) },
         ) {
             Text(
-                watermark(u), style = DoranType.koLetter, color = tone.ink.copy(alpha = 0.08f),
+                watermark(u), style = DoranType.koLetter.copy(fontSize = 88.dp.fixedSp(), lineHeight = 100.dp.fixedSp()), color = tone.ink.copy(alpha = 0.08f),
                 modifier = Modifier.align(Alignment.CenterEnd).padding(end = 64.dp).clearAndSetSemantics { },
             )
             Row(Modifier.padding(start = 21.dp, end = 12.dp, top = 16.dp, bottom = 16.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -503,7 +504,9 @@ private fun PathNode(state: NodeState, icon: ImageVector, tone: Tone, label: Str
                     .then(if (border != Color.Transparent) Modifier.border(2.dp, border, CircleShape) else Modifier),
                 contentAlignment = Alignment.Center,
             ) {
-                if (glyph != null && (state == NodeState.CURRENT || state == NodeState.OPEN)) Text(glyph, style = DoranType.h1.copy(fontFamily = com.doranalley.ui.theme.Hangul), color = tint)
+                if (glyph != null && (state == NodeState.CURRENT || state == NodeState.OPEN)) {
+                    Text(glyph, style = DoranType.h1.copy(fontFamily = com.doranalley.ui.theme.Hangul, fontSize = 28.dp.fixedSp(), lineHeight = 34.dp.fixedSp()), color = tint)
+                }
                 else Icon(icon, null, tint = tint, modifier = Modifier.size(if (state == NodeState.CURRENT) 30.dp else 26.dp))
             }
         }
@@ -586,7 +589,7 @@ fun GuidebookScreen(vm: AppViewModel, u: CourseUnit) {
             item {
                 Box(Modifier.fillMaxWidth().padding(top = 4.dp, bottom = 8.dp)) {
                     Text(
-                        watermark(u), style = DoranType.koLetter, color = tone.ink.copy(alpha = 0.10f),
+                        watermark(u), style = DoranType.koLetter.copy(fontSize = 88.dp.fixedSp(), lineHeight = 100.dp.fixedSp()), color = tone.ink.copy(alpha = 0.10f),
                         modifier = Modifier.align(Alignment.TopEnd).clearAndSetSemantics { },
                     )
                     Column {

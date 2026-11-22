@@ -1,6 +1,9 @@
 package com.doranalley.ui.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -52,6 +55,14 @@ object DoranType {
     /** A single Hangul letter shown on its own (letter cards, letter questions). */
     val koLetter = style(88, 100, FontWeight.Bold, Hangul)
 }
+
+/**
+ * A text size that stays the same physical size whatever the phone's font scale. Only for text
+ * that acts as a graphic inside a fixed shape (the seal mark, a letter inside a path node, faint
+ * watermarks); reading text always uses the scalable styles above.
+ */
+@Composable
+fun Dp.fixedSp(): TextUnit = with(LocalDensity.current) { this@fixedSp.toSp() }
 
 /** Material's slots mapped onto the Doran scale, so stock components (dialogs, switches, text fields) match. */
 fun doranTypography(ink: Color) = Typography(

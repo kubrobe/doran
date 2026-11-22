@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import com.doranalley.ui.theme.C
 import com.doranalley.ui.theme.DoranType
 import com.doranalley.ui.theme.LocalReduceMotion
+import com.doranalley.ui.theme.fixedSp
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
@@ -112,7 +113,7 @@ fun SealMark(modifier: Modifier = Modifier, size: Dp = 36.dp) {
         modifier.size(size).clip(RoundedCornerShape(size * 0.28f)).background(C.Accent).clearAndSetSemantics { },
         contentAlignment = Alignment.Center,
     ) {
-        Text("도", style = DoranType.koBody.copy(fontSize = DoranType.koBody.fontSize * (size.value / 36f)), color = C.OnAccent)
+        Text("도", style = DoranType.koBody.copy(fontSize = (size * 0.55f).fixedSp(), lineHeight = (size * 0.7f).fixedSp()), color = C.OnAccent)
     }
 }
 

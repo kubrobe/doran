@@ -1,64 +1,87 @@
 package com.doranalley.ui.screens
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.filled.DarkMode
-import androidx.compose.material.icons.filled.LightMode
-import androidx.compose.material.icons.filled.PhoneAndroid
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.drawscope.Stroke
-import com.doranalley.ui.components.BrushCircle
-import com.doranalley.ui.components.DancheongBand
-import com.doranalley.ui.components.GlowBurst
-import com.doranalley.ui.components.LightRays
-import com.doranalley.ui.components.drawOrb
-import com.doranalley.ui.components.glass
-import com.doranalley.ui.components.jewel
-import com.doranalley.ui.components.lighten
-import com.doranalley.ui.theme.HangulSerif
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
+import androidx.compose.material.icons.filled.Animation
+import androidx.compose.material.icons.filled.Bolt
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material3.AlertDialog
+import androidx.compose.material.icons.filled.Hearing
+import androidx.compose.material.icons.filled.LightMode
+import androidx.compose.material.icons.filled.LocalFireDepartment
+import androidx.compose.material.icons.filled.Mic
+import androidx.compose.material.icons.filled.MusicNote
+import androidx.compose.material.icons.filled.PhoneAndroid
+import androidx.compose.material.icons.filled.RecordVoiceOver
+import androidx.compose.material.icons.filled.School
+import androidx.compose.material.icons.filled.Stop
+import androidx.compose.material.icons.filled.TaskAlt
+import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material.icons.filled.Translate
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.doranalley.audio.KoreanAsr
 import com.doranalley.core.CourseUnit
 import com.doranalley.core.LessonBuilder
@@ -67,42 +90,44 @@ import com.doranalley.ui.AppViewModel
 import com.doranalley.ui.Screen
 import com.doranalley.ui.SpeakState
 import com.doranalley.ui.Summary
-import com.doranalley.ui.Tab
+import com.doranalley.ui.components.BrushCircle
 import com.doranalley.ui.components.Bubble
-import com.doranalley.ui.components.ChunkyButton
-import com.doranalley.ui.components.GhostButton
-import com.doranalley.ui.components.Mascot
-import com.doranalley.ui.components.Mood
-import com.doranalley.ui.components.SelectBox
-import com.doranalley.ui.theme.C
+import com.doranalley.ui.components.ButtonVariant
+import com.doranalley.ui.components.CardStyle
+import com.doranalley.ui.components.ChoiceState
+import com.doranalley.ui.components.ChoiceTile
 import com.doranalley.ui.components.ConfettiBurst
 import com.doranalley.ui.components.CountUpText
+import com.doranalley.ui.components.DancheongBand
+import com.doranalley.ui.components.DoranButton
+import com.doranalley.ui.components.DoranCard
+import com.doranalley.ui.components.DoranDialog
+import com.doranalley.ui.components.DoranIconButton
+import com.doranalley.ui.components.HairlineDivider
+import com.doranalley.ui.components.IconStyle
+import com.doranalley.ui.components.LightRays
+import com.doranalley.ui.components.ListRow
+import com.doranalley.ui.components.Mascot
+import com.doranalley.ui.components.Mood
+import com.doranalley.ui.components.ProgressBar
+import com.doranalley.ui.components.RewardChip
+import com.doranalley.ui.components.RowIcon
+import com.doranalley.ui.components.SectionHeader
+import com.doranalley.ui.components.Segment
+import com.doranalley.ui.components.SegmentedControl
+import com.doranalley.ui.components.TopBar
 import com.doranalley.ui.components.enterPop
 import com.doranalley.ui.components.enterRise
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
-import androidx.compose.animation.togetherWith
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.key
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.graphicsLayer
+import com.doranalley.ui.theme.C
+import com.doranalley.ui.theme.DoranType
+import com.doranalley.ui.theme.LocalReduceMotion
+import com.doranalley.ui.theme.Space
+import com.doranalley.ui.theme.Tone
 
+/** A full-screen page with system-bar insets and the standard gutter. */
 @Composable
-private fun Page(content: @Composable androidx.compose.foundation.layout.ColumnScope.() -> Unit) {
-    Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().padding(20.dp)) { content() }
+private fun Page(content: @Composable ColumnScope.() -> Unit) {
+    Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().padding(horizontal = Space.gutter, vertical = Space.l), content = content)
 }
 
 // ------------------------------------------------------------------ onboarding
@@ -112,176 +137,228 @@ fun OnboardingScreen(vm: AppViewModel, step: Int) {
     val p by vm.progress.collectAsState()
     BackHandler(enabled = step > 0) { vm.back() }
     key(step) { Page {
-        when (step) {
-            0 -> {
-                Spacer(Modifier.weight(1f))
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Box(contentAlignment = Alignment.Center, modifier = Modifier.size(300.dp)) {
-                        LightRays(Modifier.requiredSize(420.dp), color = C.Gold, rays = 12, strength = 0.55f)
-                        Text("도란", fontSize = 150.sp, fontWeight = FontWeight.Black, fontFamily = HangulSerif, color = C.Ink.copy(alpha = 0.08f), modifier = Modifier.enterRise(distance = 30.dp, durationMs = 900))
-                        BrushCircle(Modifier.size(250.dp), color = C.Orange.copy(alpha = 0.75f), delayMs = 300, durationMs = 1100, width = 9.dp)
-                        Mascot(size = 180.dp, mood = Mood.CHEER, modifier = Modifier.enterPop(delayMs = 150, from = 0.3f, durationMs = 650))
-                    }
-                    Text("Doran Korean", style = androidx.compose.material3.MaterialTheme.typography.displaySmall, modifier = Modifier.padding(top = 4.dp).enterRise(delayMs = 380))
-                    Text("도란도란 · chatting softly together", color = C.GoldInk, fontWeight = FontWeight.ExtraBold, fontSize = 14.sp, modifier = Modifier.padding(top = 2.dp).enterRise(delayMs = 430))
-                    Text("Learn Korean with Horangi the tiger. Listen, tap and speak, a few minutes a day.", textAlign = TextAlign.Center, color = C.Muted, modifier = Modifier.padding(top = 10.dp, start = 12.dp, end = 12.dp).enterRise(delayMs = 500))
+        if (step == 0) {
+            // Visible from the first frame: no staggered entrances on the welcome screen.
+            Spacer(Modifier.weight(1f))
+            Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                Box(contentAlignment = Alignment.Center, modifier = Modifier.size(250.dp)) {
+                    BrushCircle(Modifier.size(232.dp), color = C.Accent.copy(alpha = 0.6f), delayMs = 150, durationMs = 1000, width = 8.dp)
+                    Mascot(size = 168.dp, mood = Mood.CHEER)
                 }
-                Spacer(Modifier.weight(1f))
-                ChunkyButton("Get started", { vm.go(Screen.Onboarding(1)) }, Modifier.fillMaxWidth().enterRise(delayMs = 600), tag = "getStarted")
+                Text("Doran Korean", style = DoranType.display, color = C.Text, modifier = Modifier.padding(top = Space.m).semantics { heading() })
+                Text("도란도란 · chatting softly together", style = DoranType.label, color = C.XpInk, modifier = Modifier.padding(top = Space.xs))
+                Text(
+                    "Learn Korean with Horangi the tiger. Listen, tap and speak, a few minutes a day.",
+                    style = DoranType.body, color = C.Text2, textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(top = Space.m, start = Space.m, end = Space.m),
+                )
             }
+            Spacer(Modifier.weight(1f))
+            DoranButton("Get started", { vm.go(Screen.Onboarding(1)) }, Modifier.fillMaxWidth(), tag = "getStarted")
+            return@Page
+        }
+        OnboardingTop(step) { vm.back() }
+        when (step) {
             1 -> {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Mascot(size = 90.dp)
-                    Bubble("How much do you want to practise each day?", Modifier.padding(start = 8.dp))
-                }
-                Spacer(Modifier.height(20.dp))
-                listOf(10 to "Casual · about 5 min", 20 to "Regular · about 10 min", 30 to "Serious · about 15 min", 50 to "Intense · about 25 min").forEach { (xp, label) ->
-                    SelectBox(p.dailyGoal == xp, { vm.setGoal(xp) }, Modifier.fillMaxWidth().padding(vertical = 6.dp), tag = "goal:$xp") {
-                        Row(Modifier.fillMaxWidth()) {
-                            Text(label, fontSize = 17.sp, color = C.Ink, modifier = Modifier.weight(1f))
-                            Text("$xp XP", fontSize = 15.sp, color = C.Muted)
+                HorangiSays("How much do you want to practise each day?")
+                Column(verticalArrangement = Arrangement.spacedBy(Space.m)) {
+                    listOf(
+                        Triple(10, "Casual", "About 5 minutes"), Triple(20, "Regular", "About 10 minutes"),
+                        Triple(30, "Serious", "About 15 minutes"), Triple(50, "Intense", "About 25 minutes"),
+                    ).forEach { (xp, label, sub) ->
+                        ChoiceTile(
+                            if (p.dailyGoal == xp) ChoiceState.Selected else ChoiceState.Normal, { vm.setGoal(xp) }, Modifier.fillMaxWidth(),
+                            tag = "goal:$xp", role = Role.RadioButton, contentAlignment = Alignment.CenterStart,
+                            contentPadding = PaddingValues(start = Space.l, end = 44.dp, top = Space.m, bottom = Space.m),
+                        ) {
+                            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                                Column(Modifier.weight(1f)) {
+                                    Text(label, style = DoranType.title)
+                                    Text(sub, style = DoranType.bodySmall, color = C.Text2)
+                                }
+                                Text("$xp XP", style = DoranType.label, color = C.XpInk)
+                            }
                         }
                     }
                 }
                 Spacer(Modifier.weight(1f))
-                ChunkyButton("Continue", { vm.go(Screen.Onboarding(2)) }, Modifier.fillMaxWidth(), tag = "continue")
+                DoranButton("Continue", { vm.go(Screen.Onboarding(2)) }, Modifier.fillMaxWidth(), tag = "continue")
             }
             2 -> {
-                var mic by remember { mutableStateOf(false) }
+                var asked by remember { mutableStateOf(false) }
                 val (granted, request) = rememberMicPermission()
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Mascot(size = 90.dp)
-                    Bubble("You'll speak Korean out loud! Your recordings never leave your phone.", Modifier.padding(start = 8.dp))
-                }
-                Spacer(Modifier.height(30.dp))
-                if (granted) {
-                    Text("✅ Microphone is ready.", fontSize = 18.sp, color = C.GreenInk, fontWeight = FontWeight.ExtraBold, modifier = Modifier.enterPop(from = 0.8f).testTag("micReady"))
-                } else {
-                    ChunkyButton("Allow microphone", { mic = true; request() }, Modifier.fillMaxWidth(), color = C.Blue, edge = C.BlueDark, tag = "allowMic")
-                    if (mic) Text("If you said no, you can still learn. Speaking exercises will ask again.", color = C.Muted, modifier = Modifier.padding(top = 10.dp))
+                HorangiSays("You'll speak Korean out loud! Your recordings never leave your phone.")
+                DoranCard(Modifier.fillMaxWidth(), style = if (granted) CardStyle.Highlighted else CardStyle.Raised, tone = C.accent) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        RowIcon(if (granted) Icons.Filled.CheckCircle else Icons.Filled.Mic, if (granted) C.accent else C.lavender, size = 48.dp)
+                        Column(Modifier.weight(1f).padding(start = Space.m)) {
+                            Text(
+                                if (granted) "Microphone is ready" else "Microphone", style = DoranType.title, color = C.Text,
+                                modifier = if (granted) Modifier.enterPop(from = 0.9f).testTag("micReady") else Modifier,
+                            )
+                            Text(
+                                if (granted) "Speaking exercises will score your pronunciation offline." else "Used only while you practise speaking.",
+                                style = DoranType.bodySmall, color = C.Text2,
+                            )
+                        }
+                    }
+                    if (!granted) {
+                        Spacer(Modifier.height(Space.l))
+                        DoranButton("Allow microphone", { asked = true; request() }, Modifier.fillMaxWidth(), tone = C.lavender, icon = Icons.Filled.Mic, tag = "allowMic")
+                        if (asked) Text("If you said no, you can still learn. Speaking exercises will ask again.", style = DoranType.bodySmall, color = C.Text2, modifier = Modifier.padding(top = Space.m))
+                    }
                 }
                 Spacer(Modifier.weight(1f))
-                ChunkyButton("Continue", { vm.go(Screen.Onboarding(3)) }, Modifier.fillMaxWidth(), tag = "continue")
+                DoranButton("Continue", { vm.go(Screen.Onboarding(3)) }, Modifier.fillMaxWidth(), tag = "continue")
             }
             else -> {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Mascot(size = 90.dp)
-                    Bubble("How much Korean do you know?", Modifier.padding(start = 8.dp))
-                }
-                Spacer(Modifier.height(24.dp))
-                SelectBox(false, { vm.finishOnboarding(placement = false) }, Modifier.fillMaxWidth().padding(vertical = 6.dp), tag = "startScratch") {
-                    Column(Modifier.fillMaxWidth()) {
-                        Text("I'm new to Korean", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = C.Ink)
-                        Text("Start with the alphabet (Hangul)", color = C.Muted)
-                    }
-                }
-                SelectBox(false, { vm.finishOnboarding(placement = true) }, Modifier.fillMaxWidth().padding(vertical = 6.dp), tag = "startPlacement") {
-                    Column(Modifier.fillMaxWidth()) {
-                        Text("I already know some Korean", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = C.Ink)
-                        Text("Take a short placement test to find your level", color = C.Muted)
-                    }
-                }
+                HorangiSays("How much Korean do you know?")
+                LevelCard(Icons.Filled.Translate, C.lavender, "I'm new to Korean", "Start with the alphabet (Hangul)", "startScratch") { vm.finishOnboarding(placement = false) }
+                Spacer(Modifier.height(Space.m))
+                LevelCard(Icons.Filled.School, C.accent, "I already know some Korean", "Take a short placement test to find your level", "startPlacement") { vm.finishOnboarding(placement = true) }
             }
         }
     } }
 }
 
+/** Back button and a three-step progress indicator for onboarding steps 1–3. */
+@Composable
+private fun OnboardingTop(step: Int, onBack: () -> Unit) {
+    Row(Modifier.fillMaxWidth().padding(bottom = Space.l), verticalAlignment = Alignment.CenterVertically) {
+        DoranIconButton(Icons.AutoMirrored.Filled.ArrowBack, "Back", onBack, style = IconStyle.Plain, tint = C.Text)
+        Row(
+            Modifier.weight(1f).padding(start = Space.s, end = Space.l).semantics(mergeDescendants = true) { contentDescription = "Step $step of 3" },
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
+            repeat(3) { i ->
+                Box(Modifier.weight(1f).height(6.dp).clip(CircleShape).background(if (i < step) C.Accent else C.SurfaceRaised))
+            }
+        }
+    }
+}
+
+@Composable
+private fun HorangiSays(text: String) {
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = Space.xxl)) {
+        Mascot(size = 80.dp)
+        Spacer(Modifier.width(Space.xs))
+        Bubble(text)
+    }
+}
+
+@Composable
+private fun LevelCard(icon: ImageVector, tone: Tone, title: String, sub: String, tag: String, onClick: () -> Unit) {
+    DoranCard(Modifier.fillMaxWidth(), style = CardStyle.Interactive, onClick = onClick, tag = tag) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RowIcon(icon, tone, size = 48.dp)
+            Column(Modifier.weight(1f).padding(start = Space.m)) {
+                Text(title, style = DoranType.title, color = C.Text)
+                Text(sub, style = DoranType.bodySmall, color = C.Text2)
+            }
+            Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = C.Muted)
+        }
+    }
+}
+
 // ------------------------------------------------------------------ results
 
+/**
+ * Lesson complete: the one big celebration. Horangi cheers, the XP counts up, and confetti falls
+ * once (with rays and a dancheong trim when a whole unit is finished). Everything ends by itself.
+ */
 @Composable
 fun CompleteScreen(vm: AppViewModel, s: Summary) {
     BackHandler { vm.afterComplete() }
+    val unitDone = s.title.startsWith("Unit")
     Box(Modifier.fillMaxSize()) {
         Page {
             Spacer(Modifier.weight(1f))
             Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                Box(Modifier.size(230.dp), contentAlignment = Alignment.Center) {
-                    LightRays(Modifier.requiredSize(460.dp), color = C.Gold, rays = 16)
-                    GlowBurst(Modifier.requiredSize(320.dp), color = C.Gold, durationMs = 1200)
-                    Mascot(size = 170.dp, mood = Mood.CHEER, modifier = Modifier.enterPop(from = 0.2f, durationMs = 600))
+                Box(Modifier.size(220.dp), contentAlignment = Alignment.Center) {
+                    if (unitDone) LightRays(Modifier.requiredSize(420.dp), color = C.Xp, rays = 14, strength = 0.8f)
+                    Mascot(size = 156.dp, mood = Mood.CHEER, modifier = Modifier.enterPop(from = 0.5f, durationMs = 420))
                 }
                 Text(
-                    s.title, style = androidx.compose.material3.MaterialTheme.typography.displaySmall, color = C.GoldInk, textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(top = 4.dp).enterPop(delayMs = 250, from = 0.5f).testTag("completeTitle"),
+                    s.title, style = DoranType.display, color = C.XpInk, textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(top = Space.s).enterRise(delayMs = 120, distance = 10.dp).testTag("completeTitle").semantics { heading() },
                 )
-                DancheongBand(Modifier.padding(top = 10.dp).width(140.dp).height(8.dp).clip(CircleShape).enterRise(delayMs = 330), alpha = 0.9f)
-                if (s.perfect) Text("Perfect, no mistakes!", color = C.GreenInk, fontWeight = FontWeight.ExtraBold, fontSize = 17.sp, modifier = Modifier.padding(top = 8.dp).enterRise(delayMs = 400))
+                if (unitDone) DancheongBand(Modifier.padding(top = Space.m).width(120.dp).height(8.dp).clip(RoundedCornerShape(2.dp)), alpha = 0.9f)
+                if (s.perfect) RewardChip("Perfect, no mistakes!", C.accent, Modifier.padding(top = Space.m).enterPop(delayMs = 260, from = 0.7f), icon = Icons.Filled.TaskAlt)
             }
-            Spacer(Modifier.height(28.dp))
-            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                ResultBox("Total XP", s.xp, C.Gold, C.GoldDark, C.GoldInk, 450, Modifier.weight(1f)) { "$it" }
-                ResultBox("Accuracy", s.accuracy, C.Green, C.GreenDark, C.GreenInk, 560, Modifier.weight(1f)) { "$it%" }
-                ResultBox("Time", s.seconds, C.Blue, C.BlueDark, C.BlueInk, 670, Modifier.weight(1f)) { "%d:%02d".format(it / 60, it % 60) }
+            Spacer(Modifier.height(Space.x3))
+            Row(horizontalArrangement = Arrangement.spacedBy(Space.m)) {
+                ResultStat(Icons.Filled.Bolt, C.xp, "XP earned", s.xp, 300, Modifier.weight(1f)) { "+$it" }
+                ResultStat(Icons.Filled.TaskAlt, C.accent, "Accuracy", s.accuracy, 420, Modifier.weight(1f)) { "$it%" }
+                ResultStat(Icons.Filled.Timer, C.select, "Time", s.seconds, 540, Modifier.weight(1f)) { "%d:%02d".format(it / 60, it % 60) }
             }
             Spacer(Modifier.weight(1f))
-            ChunkyButton("Continue", { vm.afterComplete() }, Modifier.fillMaxWidth().enterRise(delayMs = 800), tag = "continue")
+            DoranButton("Continue", { vm.afterComplete() }, Modifier.fillMaxWidth(), tag = "continue")
         }
-        ConfettiBurst(Modifier.fillMaxSize(), C.Festive, count = if (s.perfect) 110 else 70, originY = 0.28f)
+        ConfettiBurst(Modifier.fillMaxSize(), C.Festive, count = if (unitDone) 100 else if (s.perfect) 80 else 56, originY = 0.26f)
     }
 }
 
 @Composable
-private fun ResultBox(label: String, value: Int, color: Color, edge: Color, ink: Color, delayMs: Int, modifier: Modifier, format: (Int) -> String) {
-    val shape = androidx.compose.foundation.shape.RoundedCornerShape(22.dp)
-    Column(
-        modifier.enterRise(delayMs = delayMs, distance = 24.dp).glass(shape, tint = color, tintAlpha = 0.10f, elevation = 12.dp, glow = color).clip(shape),
-        horizontalAlignment = Alignment.CenterHorizontally,
+private fun ResultStat(icon: ImageVector, tone: Tone, label: String, value: Int, delayMs: Int, modifier: Modifier, format: (Int) -> String) {
+    DoranCard(
+        modifier.enterRise(delayMs = delayMs, distance = 14.dp).semantics(mergeDescendants = true) { contentDescription = "$label: ${format(value)}" },
+        contentPadding = PaddingValues(horizontal = Space.s, vertical = Space.l),
     ) {
-        Text(
-            label, color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 13.sp, textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth().jewel(color, edge, androidx.compose.foundation.shape.RoundedCornerShape(bottomStart = 14.dp, bottomEnd = 14.dp), elevation = 0.dp).padding(vertical = 6.dp),
-        )
-        CountUpText(value, color = ink, delayMs = delayMs + 150, format = format, modifier = Modifier.padding(vertical = 14.dp),
-            style = androidx.compose.material3.MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Black))
+        Column(Modifier.fillMaxWidth().clearAndSetSemantics { }, horizontalAlignment = Alignment.CenterHorizontally) {
+            Box(Modifier.size(36.dp).clip(CircleShape).background(tone.soft), contentAlignment = Alignment.Center) {
+                Icon(icon, null, tint = tone.ink, modifier = Modifier.size(20.dp))
+            }
+            CountUpText(value, color = C.Text, delayMs = delayMs + 120, format = format, style = DoranType.h2, modifier = Modifier.padding(top = Space.s))
+            Text(label, style = DoranType.caption, color = C.Text2, textAlign = TextAlign.Center)
+        }
     }
 }
 
+/** The daily streak: calmer than lesson complete — the flame pops, the number ticks up, the week fills in. */
 @Composable
 fun StreakScreen(vm: AppViewModel, days: Int) {
     BackHandler { vm.go(Screen.Home()) }
-    val flicker = rememberInfiniteTransition(label = "flame")
-    val f by flicker.animateFloat(0f, 1f, infiniteRepeatable(tween(420, easing = FastOutSlowInEasing), RepeatMode.Reverse), label = "f")
+    val reduce = LocalReduceMotion.current
     // The number ticks from yesterday's streak to today's.
-    var shown by remember { mutableStateOf((days - 1).coerceAtLeast(0)) }
-    LaunchedEffect(days) { kotlinx.coroutines.delay(500); shown = days }
+    var shown by remember { mutableStateOf(if (reduce) days else (days - 1).coerceAtLeast(0)) }
+    LaunchedEffect(days) { if (!reduce) kotlinx.coroutines.delay(450); shown = days }
     Page {
         Spacer(Modifier.weight(1f))
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Box(Modifier.size(200.dp), contentAlignment = Alignment.Center) {
-                LightRays(Modifier.requiredSize(420.dp), color = C.Orange, rays = 12, strength = 0.8f)
-                Embers(Modifier.requiredSize(width = 220.dp, height = 320.dp), C.Orange)
-                Text("🔥", fontSize = 116.sp, modifier = Modifier.enterPop(from = 0.2f, durationMs = 600).graphicsLayer {
-                    scaleY = 1f + 0.05f * f; scaleX = 1f - 0.02f * f; rotationZ = (f - 0.5f) * 4f
-                    transformOrigin = androidx.compose.ui.graphics.TransformOrigin(0.5f, 1f)
-                })
+            Box(Modifier.enterPop(from = 0.4f, durationMs = 480).size(168.dp).clip(CircleShape).background(C.StreakSoft), contentAlignment = Alignment.Center) {
+                Icon(Icons.Filled.LocalFireDepartment, null, tint = C.Streak, modifier = Modifier.size(104.dp))
             }
             AnimatedContent(
                 shown,
-                transitionSpec = { (slideInVertically { it } + fadeIn()) togetherWith (slideOutVertically { -it } + fadeOut()) },
-                modifier = Modifier.testTag("streakDays"), label = "streak",
-            ) { d -> Text("$d", fontSize = 76.sp, fontWeight = FontWeight.Black, color = C.Orange, fontFamily = com.doranalley.ui.theme.Nunito) }
-            Text("day streak!", style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, color = C.OrangeInk)
+                transitionSpec = {
+                    if (reduce) EnterTransition.None togetherWith ExitTransition.None
+                    else (slideInVertically { it } + fadeIn()) togetherWith (slideOutVertically { -it } + fadeOut())
+                },
+                modifier = Modifier.padding(top = Space.l).testTag("streakDays").semantics { contentDescription = "$days day streak" }, label = "streak",
+            ) { d -> Text("$d", style = DoranType.display.copy(fontSize = DoranType.display.fontSize * 2, lineHeight = DoranType.display.lineHeight * 2), color = C.StreakInk) }
+            Text("day streak!", style = DoranType.h1, color = C.StreakInk)
             Text(
                 if (days == 1) "Come back tomorrow to keep it going." else "Keep learning every day to grow your streak.",
-                color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 10.dp).enterRise(delayMs = 300),
+                style = DoranType.body, color = C.Text2, textAlign = TextAlign.Center, modifier = Modifier.padding(top = Space.s),
             )
-            Row(Modifier.padding(top = 22.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                val lit = days.coerceAtMost(7)
+            val lit = days.coerceAtMost(7)
+            Row(
+                Modifier.padding(top = Space.xxl).semantics(mergeDescendants = true) { contentDescription = "$lit of 7 days this week" },
+                horizontalArrangement = Arrangement.spacedBy(Space.s),
+            ) {
                 repeat(7) { i ->
                     val on = i < lit
-                    val orange = C.Orange
-                    val deep = C.OrangeDark
                     Box(
-                        Modifier.size(32.dp).enterPop(delayMs = 350 + i * 60, from = 0.3f)
-                            .then(if (on) Modifier.shadow(8.dp, CircleShape, clip = false, ambientColor = orange, spotColor = orange).clip(CircleShape).drawBehind { drawOrb(orange, deep, center, size.minDimension / 2f) }
-                            else Modifier.glass(CircleShape, elevation = 2.dp)),
+                        Modifier.enterPop(delayMs = 300 + i * 50, from = 0.4f).size(32.dp).clip(CircleShape)
+                            .background(if (on) C.Streak else C.Surface)
+                            .then(if (on) Modifier else Modifier.border(1.5.dp, C.OutlineStrong, CircleShape)),
                         contentAlignment = Alignment.Center,
-                    ) { if (on) Icon(Icons.Filled.Check, null, tint = Color.White, modifier = Modifier.size(18.dp)) }
+                    ) { if (on) Icon(Icons.Filled.Check, null, tint = C.OnStreak, modifier = Modifier.size(18.dp)) }
                 }
             }
         }
         Spacer(Modifier.weight(1f))
-        ChunkyButton("Continue", { vm.go(Screen.Home()) }, Modifier.fillMaxWidth(), color = C.Orange, edge = C.OrangeDark, tag = "continue")
+        DoranButton("Continue", { vm.go(Screen.Home()) }, Modifier.fillMaxWidth(), tone = C.streak, tag = "continue")
     }
 }
 
@@ -293,22 +370,30 @@ fun OutOfHeartsScreen(vm: AppViewModel) {
     Page {
         Spacer(Modifier.weight(1f))
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Box(Modifier.size(170.dp), contentAlignment = Alignment.Center) {
-                Box(Modifier.requiredSize(260.dp).drawBehind { drawCircle(Brush.radialGradient(listOf(C.Blue.copy(alpha = 0.22f), Color.Transparent))) })
-                Mascot(size = 150.dp, mood = Mood.SAD)
-            }
-            Row(Modifier.padding(vertical = 14.dp)) {
+            Mascot(size = 140.dp, mood = Mood.SAD)
+            val hearts = p.heartsNow(now)
+            Row(
+                Modifier.padding(vertical = Space.l).semantics(mergeDescendants = true) { contentDescription = "$hearts of ${Progress.MAX_HEARTS} hearts" },
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
                 repeat(Progress.MAX_HEARTS) { i ->
-                    Icon(Icons.Filled.Favorite, null, tint = if (i < p.heartsNow(now)) C.Red else C.LineDark, modifier = Modifier.size(30.dp).enterRise(delayMs = 150 + i * 70, distance = (-16).dp))
+                    val full = i < hearts
+                    Icon(
+                        if (full) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder, null,
+                        tint = if (full) C.Heart else C.OutlineStrong, modifier = Modifier.size(30.dp),
+                    )
                 }
             }
-            Text("You ran out of hearts", style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, textAlign = TextAlign.Center)
-            Text("Practise to earn a heart, or wait: a new one arrives in ${(p.nextHeartIn(now) / 60000) + 1} min.", color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 8.dp))
+            Text("You ran out of hearts", style = DoranType.h1, color = C.Text, textAlign = TextAlign.Center, modifier = Modifier.semantics { heading() })
+            Text(
+                "Practise to earn a heart, or take a break: a new one arrives in ${(p.nextHeartIn(now) / 60000) + 1} min.",
+                style = DoranType.body, color = C.Text2, textAlign = TextAlign.Center, modifier = Modifier.padding(top = Space.s),
+            )
         }
         Spacer(Modifier.weight(1f))
-        ChunkyButton("Practice to earn hearts", { vm.startPractice(LessonBuilder.PracticeMode.MIXED) }, Modifier.fillMaxWidth(), color = C.Blue, edge = C.BlueDark, tag = "practiceHearts")
-        Spacer(Modifier.height(10.dp))
-        GhostButton("No thanks", { vm.go(Screen.Home()) }, Modifier.fillMaxWidth(), tag = "noThanks")
+        DoranButton("Practice to earn hearts", { vm.startPractice(LessonBuilder.PracticeMode.MIXED) }, Modifier.fillMaxWidth(), icon = Icons.Filled.Favorite, tag = "practiceHearts")
+        Spacer(Modifier.height(Space.s))
+        DoranButton("No thanks", { vm.go(Screen.Home()) }, Modifier.fillMaxWidth(), variant = ButtonVariant.Secondary, tag = "noThanks")
     }
 }
 
@@ -319,18 +404,29 @@ fun PlacedScreen(vm: AppViewModel, u: CourseUnit?) {
         Spacer(Modifier.weight(1f))
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
             Box(Modifier.size(200.dp), contentAlignment = Alignment.Center) {
-                LightRays(Modifier.requiredSize(400.dp), color = C.Green, rays = 12, strength = 0.7f)
-                Mascot(size = 160.dp, mood = Mood.CHEER, modifier = Modifier.enterPop(from = 0.3f, durationMs = 600))
+                LightRays(Modifier.requiredSize(380.dp), color = C.Accent, rays = 12, strength = 0.6f)
+                Mascot(size = 150.dp, mood = Mood.CHEER, modifier = Modifier.enterPop(from = 0.5f, durationMs = 420))
             }
-            Text(if (u == null) "Wow, you know it all!" else "Your starting point", style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, modifier = Modifier.padding(top = 10.dp).enterRise(delayMs = 200))
             Text(
-                if (u == null) "You placed past every unit. You can still replay any lesson." else "Unit ${u.number}: ${u.title}\n${u.section}",
-                textAlign = TextAlign.Center, fontSize = 19.sp, fontWeight = FontWeight.Bold, color = C.Ink, modifier = Modifier.padding(top = 10.dp).enterRise(delayMs = 320).testTag("placedUnit"),
+                if (u == null) "Wow, you know it all!" else "Your starting point", style = DoranType.h1, color = C.Text,
+                modifier = Modifier.padding(top = Space.s).semantics { heading() },
             )
-            Text("Everything before it is unlocked, so you can go back any time.", color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 10.dp))
+            if (u == null) {
+                Text(
+                    "You placed past every unit. You can still replay any lesson.", style = DoranType.body, color = C.Text2,
+                    textAlign = TextAlign.Center, modifier = Modifier.padding(top = Space.m).testTag("placedUnit"),
+                )
+            } else {
+                val tone = C.section(u.section)
+                DoranCard(Modifier.fillMaxWidth().padding(top = Space.l), style = CardStyle.Highlighted, tone = tone) {
+                    RewardChip("Unit ${u.number} · ${u.section}", tone)
+                    Text("Unit ${u.number}: ${u.title}", style = DoranType.h2, color = C.Text, modifier = Modifier.padding(top = Space.s).testTag("placedUnit"))
+                }
+            }
+            Text("Everything before it is unlocked, so you can go back any time.", style = DoranType.body, color = C.Text2, textAlign = TextAlign.Center, modifier = Modifier.padding(top = Space.l))
         }
         Spacer(Modifier.weight(1f))
-        ChunkyButton("Let's go", { vm.go(Screen.Home()) }, Modifier.fillMaxWidth(), tag = "continue")
+        DoranButton("Let's go", { vm.go(Screen.Home()) }, Modifier.fillMaxWidth(), tag = "continue")
     }
 }
 
@@ -343,68 +439,86 @@ fun SettingsScreen(vm: AppViewModel) {
     var confirmReset by remember { mutableStateOf(false) }
     var testingMic by remember { mutableStateOf(false) }
     BackHandler { vm.back() }
-    Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
-        Row(Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-            Box(
-                Modifier.size(42.dp).glass(CircleShape, elevation = 4.dp).clip(CircleShape).clickable { vm.back() }.testTag("back"),
-                contentAlignment = Alignment.Center,
-            ) { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back", tint = C.Ink, modifier = Modifier.size(22.dp)) }
-            Text("Settings", style = androidx.compose.material3.MaterialTheme.typography.titleLarge, modifier = Modifier.padding(start = 14.dp))
-        }
-        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp)) {
+    Column(Modifier.fillMaxSize().statusBarsPadding()) {
+        TopBar("Settings", onBack = { vm.back() })
+        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).navigationBarsPadding().padding(horizontal = Space.gutter)) {
             Section("Appearance")
-            ThemePicker(st.theme) { vm.setTheme(it) }
+            val themes = listOf("dark", "light", "system")
+            SegmentedControl(
+                listOf(Segment("Night", "theme:dark", Icons.Filled.DarkMode), Segment("Day", "theme:light", Icons.Filled.LightMode), Segment("Phone", "theme:system", Icons.Filled.PhoneAndroid)),
+                selected = themes.indexOf(st.theme).coerceAtLeast(0), onSelect = { vm.setTheme(themes[it]) },
+            )
+            Text(
+                when (st.theme) { "light" -> "Hanji paper and jade, for daytime."; "system" -> "Follows your phone's dark mode."; else -> "Ink and lantern light, easy on the eyes." },
+                style = DoranType.bodySmall, color = C.Text2, modifier = Modifier.padding(top = Space.s, start = Space.xs),
+            )
+            DoranCard(Modifier.fillMaxWidth().padding(top = Space.m), contentPadding = PaddingValues(0.dp)) {
+                ToggleRow("Reduce motion", "Fewer animations and no celebration effects", Icons.Filled.Animation, C.lavender, st.reduceMotion, "setReduceMotion") { v -> vm.setSettings { it.copy(reduceMotion = v) } }
+            }
 
             Section("Lessons")
-            SettingsGroup {
-                Toggle("Sound effects", st.sounds, "setSounds") { v -> vm.setSettings { it.copy(sounds = v) } }
-                Toggle("Speaking exercises", st.speaking, "setSpeaking") { v -> vm.setSettings { it.copy(speaking = v) } }
-                Toggle("Listening exercises", st.listening, "setListening") { v -> vm.setSettings { it.copy(listening = v) } }
-                Toggle("Unlimited hearts", st.unlimitedHearts, "setHearts") { v -> vm.setSettings { it.copy(unlimitedHearts = v) } }
-                Toggle("Reduce motion", st.reduceMotion, "setReduceMotion", last = true) { v -> vm.setSettings { it.copy(reduceMotion = v) } }
+            DoranCard(Modifier.fillMaxWidth(), contentPadding = PaddingValues(0.dp)) {
+                ToggleRow("Sound effects", "Chimes for right and wrong answers", Icons.Filled.MusicNote, C.accent, st.sounds, "setSounds") { v -> vm.setSettings { it.copy(sounds = v) } }
+                HairlineDivider(Modifier.padding(start = 68.dp))
+                ToggleRow("Speaking exercises", "Say sentences out loud", Icons.Filled.RecordVoiceOver, C.lavender, st.speaking, "setSpeaking") { v -> vm.setSettings { it.copy(speaking = v) } }
+                HairlineDivider(Modifier.padding(start = 68.dp))
+                ToggleRow("Listening exercises", "Tap what you hear", Icons.Filled.Hearing, C.select, st.listening, "setListening") { v -> vm.setSettings { it.copy(listening = v) } }
+                HairlineDivider(Modifier.padding(start = 68.dp))
+                ToggleRow("Unlimited hearts", "Mistakes never cost a heart", Icons.Filled.Favorite, C.heart, st.unlimitedHearts, "setHearts") { v -> vm.setSettings { it.copy(unlimitedHearts = v) } }
             }
 
             Section("Daily goal")
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                listOf(10, 20, 30, 50).forEach { xp ->
-                    SelectBox(p.dailyGoal == xp, { vm.setGoal(xp) }, Modifier.weight(1f), tag = "goal:$xp") { Text("$xp XP", color = C.Ink, fontWeight = FontWeight.Bold, fontSize = 15.sp) }
-                }
-            }
+            val goals = listOf(10, 20, 30, 50)
+            SegmentedControl(goals.map { Segment("$it XP", "goal:$it") }, selected = goals.indexOf(p.dailyGoal).coerceAtLeast(0), onSelect = { vm.setGoal(goals[it]) })
 
             Section("Check your phone")
-            Text("Use these if you can't hear anything or the microphone doesn't seem to work.", color = C.Muted, fontSize = 14.sp)
-            Spacer(Modifier.height(10.dp))
-            GhostButton("Test sound", { vm.audio.play("안녕하세요") }, Modifier.fillMaxWidth(), tag = "testSound")
-            if (vm.audio.isMuted()) Text("Your media volume is at 0. Turn it up with the volume buttons.", color = C.RedInk, modifier = Modifier.padding(top = 6.dp))
-            Spacer(Modifier.height(10.dp))
-            GhostButton(if (testingMic) "Hide microphone test" else "Test microphone", { testingMic = !testingMic; vm.resetSpeak() }, Modifier.fillMaxWidth(), tag = "testMic")
-            if (testingMic) MicTest(vm)
+            Text("Use these if you can't hear anything or the microphone doesn't seem to work.", style = DoranType.bodySmall, color = C.Text2, modifier = Modifier.padding(bottom = Space.m))
+            DoranCard(Modifier.fillMaxWidth(), contentPadding = PaddingValues(0.dp)) {
+                ListRow(
+                    "Test sound", subtitle = "Plays 안녕하세요", leading = { RowIcon(Icons.AutoMirrored.Filled.VolumeUp, C.lavender) },
+                    onClick = { vm.audio.play("안녕하세요") }, tag = "testSound",
+                )
+                HairlineDivider(Modifier.padding(start = 68.dp))
+                ListRow(
+                    if (testingMic) "Hide microphone test" else "Test microphone", subtitle = "Record yourself and see what the checker hears",
+                    leading = { RowIcon(Icons.Filled.Mic, C.lavender) },
+                    onClick = { testingMic = !testingMic; vm.resetSpeak() }, tag = "testMic",
+                )
+                if (testingMic) MicTest(vm)
+            }
+            if (vm.audio.isMuted()) Text("Your media volume is at 0. Turn it up with the volume buttons.", style = DoranType.bodySmall, color = C.HeartInk, modifier = Modifier.padding(top = Space.s))
 
             Section("Progress")
-            GhostButton("Reset all progress", { confirmReset = true }, Modifier.fillMaxWidth(), textColor = C.RedInk, tag = "reset")
+            DoranCard(Modifier.fillMaxWidth(), style = CardStyle.Flat) {
+                Text("Reset all progress", style = DoranType.title, color = C.Text)
+                Text(
+                    "Deletes your XP, streak and lesson progress on this phone. Your theme and motion settings stay.",
+                    style = DoranType.bodySmall, color = C.Text2, modifier = Modifier.padding(top = 2.dp, bottom = Space.m),
+                )
+                DoranButton("Reset progress…", { confirmReset = true }, Modifier.fillMaxWidth(), variant = ButtonVariant.Secondary, tag = "reset")
+            }
 
             Section("About")
             Text(
                 "Doran Korean · version ${com.doranalley.BuildConfig.VERSION_NAME}\n" +
                     "Speech checking runs offline with sherpa-onnx and a Korean zipformer model (Apache-2.0). " +
                     "Korean audio was generated with Microsoft neural voices.",
-                color = C.Muted, fontSize = 13.sp,
+                style = DoranType.bodySmall, color = C.Muted,
             )
-            Spacer(Modifier.height(30.dp))
+            Spacer(Modifier.height(Space.x3))
         }
     }
     if (confirmReset) {
-        AlertDialog(
-            containerColor = C.Card,
-            titleContentColor = C.Ink,
-            textContentColor = C.Muted,
-            shape = androidx.compose.foundation.shape.RoundedCornerShape(28.dp),
-            onDismissRequest = { confirmReset = false },
-            title = { Text("Reset progress?") },
-            text = { Text("This deletes your XP, streak and lesson progress on this phone.") },
-            confirmButton = { TextButton(onClick = { confirmReset = false; vm.resetProgress() }, modifier = Modifier.testTag("confirmReset")) { Text("Reset", color = C.RedInk, fontWeight = FontWeight.Bold) } },
-            dismissButton = { TextButton(onClick = { confirmReset = false }) { Text("Cancel", color = C.Ink) } },
-        )
+        DoranDialog({ confirmReset = false }) {
+            Text("Reset progress?", style = DoranType.h2, color = C.Text, modifier = Modifier.semantics { heading() })
+            Text(
+                "This deletes your XP, streak and lesson progress on this phone. It can't be undone.",
+                style = DoranType.body, color = C.Text2, modifier = Modifier.padding(top = Space.s, bottom = Space.xl),
+            )
+            DoranButton("Reset", { confirmReset = false; vm.resetProgress() }, Modifier.fillMaxWidth(), variant = ButtonVariant.Destructive, tag = "confirmReset")
+            Spacer(Modifier.height(Space.s))
+            DoranButton("Cancel", { confirmReset = false }, Modifier.fillMaxWidth(), variant = ButtonVariant.Secondary)
+        }
     }
 }
 
@@ -415,142 +529,74 @@ private fun MicTest(vm: AppViewModel) {
     val asr by vm.asr.state.collectAsState()
     val (granted, request) = rememberMicPermission()
     DisposableEffect(Unit) { onDispose { vm.stopSpeaking(); vm.resetSpeak() } }
-    Column(Modifier.fillMaxWidth().padding(vertical = 10.dp).testTag("micTest")) {
-        Text("Say: 안녕하세요", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = C.Ink)
+    Column(Modifier.fillMaxWidth().padding(start = Space.l, end = Space.l, top = Space.s, bottom = Space.l).testTag("micTest")) {
+        HairlineDivider(Modifier.padding(bottom = Space.m))
+        Text("Say: 안녕하세요", style = DoranType.koBody, color = C.Text)
         Text(
             "Speech checker: " + when (val a = asr) { KoreanAsr.State.Loading -> "loading…"; KoreanAsr.State.Ready -> "ready"; is KoreanAsr.State.Failed -> "failed (${a.reason})" },
-            color = C.Muted, fontSize = 13.sp, modifier = Modifier.testTag("asrState"),
+            style = DoranType.caption, color = C.Muted, modifier = Modifier.padding(top = 2.dp, bottom = Space.m).testTag("asrState"),
         )
-        Spacer(Modifier.height(8.dp))
         if (!granted) {
-            ChunkyButton("Allow microphone", request, Modifier.fillMaxWidth(), color = C.Blue, edge = C.BlueDark)
+            DoranButton("Allow microphone", request, Modifier.fillMaxWidth(), tone = C.lavender, icon = Icons.Filled.Mic)
             return@Column
         }
         when (val s = state) {
             SpeakState.Recording -> {
-                com.doranalley.ui.components.ProgressBar(level, Modifier.fillMaxWidth(), color = C.Red)
-                Spacer(Modifier.height(8.dp))
-                ChunkyButton("Stop", { vm.stopSpeaking() }, Modifier.fillMaxWidth(), color = C.Red, edge = C.RedDark)
+                ProgressBar(level, Modifier.fillMaxWidth(), color = C.Heart, height = 8.dp, description = "Microphone level")
+                Spacer(Modifier.height(Space.m))
+                DoranButton("Stop", { vm.stopSpeaking() }, Modifier.fillMaxWidth(), tone = C.heart, icon = Icons.Filled.Stop)
             }
-            SpeakState.Checking -> Text("Checking…", color = C.Muted)
+            SpeakState.Checking -> Text("Checking…", style = DoranType.body, color = C.Text2)
             is SpeakState.Scored -> {
-                Text("Heard: ${s.result.heard} · score ${s.result.score}%", color = C.Ink, modifier = Modifier.testTag("micResult"))
-                Spacer(Modifier.height(8.dp))
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    GhostButton("Play my voice", { vm.playTake() }, Modifier.weight(1f))
-                    GhostButton("Again", { vm.startSpeaking("안녕하세요") }, Modifier.weight(1f))
+                Text("Heard: ${s.result.heard} · score ${s.result.score}%", style = DoranType.body, color = C.Text, modifier = Modifier.testTag("micResult"))
+                Spacer(Modifier.height(Space.m))
+                Row(horizontalArrangement = Arrangement.spacedBy(Space.s)) {
+                    DoranButton("Play my voice", { vm.playTake() }, Modifier.weight(1f), variant = ButtonVariant.Secondary)
+                    DoranButton("Again", { vm.startSpeaking("안녕하세요") }, Modifier.weight(1f), variant = ButtonVariant.Secondary)
                 }
             }
             is SpeakState.NotHeard -> {
-                Text("Nothing heard. The microphone may be blocked or covered.", color = C.RedInk)
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    GhostButton("Play recording", { vm.playTake() }, Modifier.weight(1f))
-                    GhostButton("Again", { vm.startSpeaking("안녕하세요") }, Modifier.weight(1f))
+                Text("Nothing heard. The microphone may be blocked or covered.", style = DoranType.body, color = C.HeartInk)
+                Spacer(Modifier.height(Space.m))
+                Row(horizontalArrangement = Arrangement.spacedBy(Space.s)) {
+                    DoranButton("Play recording", { vm.playTake() }, Modifier.weight(1f), variant = ButtonVariant.Secondary)
+                    DoranButton("Again", { vm.startSpeaking("안녕하세요") }, Modifier.weight(1f), variant = ButtonVariant.Secondary)
                 }
             }
             is SpeakState.Error -> {
-                Text(s.message, color = C.RedInk)
-                GhostButton("Again", { vm.resetSpeak() }, Modifier.fillMaxWidth())
+                Text(s.message, style = DoranType.body, color = C.HeartInk)
+                Spacer(Modifier.height(Space.m))
+                DoranButton("Again", { vm.resetSpeak() }, Modifier.fillMaxWidth(), variant = ButtonVariant.Secondary)
             }
-            SpeakState.Idle -> ChunkyButton("Record", { vm.startSpeaking("안녕하세요") }, Modifier.fillMaxWidth(), color = C.Blue, edge = C.BlueDark, tag = "micTestRecord")
+            SpeakState.Idle -> DoranButton("Record", { vm.startSpeaking("안녕하세요") }, Modifier.fillMaxWidth(), tone = C.lavender, icon = Icons.Filled.Mic, tag = "micTestRecord")
         }
     }
 }
 
 @Composable
-private fun Section(t: String) = com.doranalley.ui.components.SectionTitle(t, Modifier.padding(top = 26.dp, bottom = 10.dp))
+private fun Section(t: String) = SectionHeader(t, Modifier.padding(top = Space.x3, bottom = Space.m))
 
+/** A settings row with an icon, label, explanation and a switch; the whole row toggles (one TalkBack stop). */
 @Composable
-private fun SettingsGroup(content: @Composable () -> Unit) {
-    val shape = androidx.compose.foundation.shape.RoundedCornerShape(22.dp)
-    Column(Modifier.fillMaxWidth().glass(shape, elevation = 8.dp).padding(horizontal = 16.dp, vertical = 4.dp)) { content() }
-}
-
-@Composable
-private fun Toggle(label: String, value: Boolean, tag: String, last: Boolean = false, onChange: (Boolean) -> Unit) {
-    Column {
-        Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
-            Text(label, fontSize = 17.sp, color = C.Ink, modifier = Modifier.weight(1f))
-            Switch(value, onChange, modifier = Modifier.testTag(tag), colors = SwitchDefaults.colors(
-                checkedTrackColor = C.Green, checkedThumbColor = Color.White, checkedBorderColor = Color.Transparent,
-                uncheckedTrackColor = C.Line, uncheckedBorderColor = C.LineDark, uncheckedThumbColor = if (C.isDark) C.Muted else Color.White,
-            ))
+private fun ToggleRow(label: String, sub: String, icon: ImageVector, tone: Tone, value: Boolean, tag: String, onChange: (Boolean) -> Unit) {
+    Row(
+        Modifier.fillMaxWidth().heightIn(min = 64.dp)
+            .toggleable(value, role = Role.Switch, onValueChange = onChange)
+            .testTag(tag)
+            .padding(horizontal = Space.l, vertical = Space.m),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        RowIcon(icon, tone)
+        Column(Modifier.weight(1f).padding(start = Space.m, end = Space.s)) {
+            Text(label, style = DoranType.body.copy(fontWeight = FontWeight.SemiBold), color = C.Text)
+            Text(sub, style = DoranType.bodySmall, color = C.Text2)
         }
-        if (!last) Box(Modifier.fillMaxWidth().height(1.dp).background(C.GlassLine))
-    }
-}
-
-private data class ThemeOption(val mode: String, val label: String, val icon: androidx.compose.ui.graphics.vector.ImageVector)
-
-/**
- * Night / Day / Phone, as a glass segmented control. The lit lens slides between options with a
- * spring; night shows a lantern-gold glow, day a soft sky one.
- */
-@Composable
-private fun ThemePicker(mode: String, onPick: (String) -> Unit) {
-    val options = listOf(
-        ThemeOption("dark", "Night", Icons.Filled.DarkMode),
-        ThemeOption("light", "Day", Icons.Filled.LightMode),
-        ThemeOption("system", "Phone", Icons.Filled.PhoneAndroid),
-    )
-    val index = options.indexOfFirst { it.mode == mode }.coerceAtLeast(0)
-    val pos = remember { androidx.compose.animation.core.Animatable(index.toFloat()) }
-    LaunchedEffect(index) { pos.animateTo(index.toFloat(), androidx.compose.animation.core.spring(dampingRatio = 0.62f, stiffness = 380f)) }
-    val shape = androidx.compose.foundation.shape.RoundedCornerShape(24.dp)
-    val lens = if (mode == "light") C.Gold else C.Blue
-    Column {
-        Box(
-            Modifier.fillMaxWidth().height(64.dp).glass(shape, elevation = 8.dp).drawBehind {
-                val slot = (size.width - 12.dp.toPx()) / options.size
-                val stretch = 1f + (kotlin.math.abs(pos.value - index) * 0.8f).coerceAtMost(0.5f)
-                val w = slot * stretch
-                val cx = 6.dp.toPx() + slot * (pos.value + 0.5f)
-                val h = size.height - 12.dp.toPx()
-                val tl = Offset(cx - w / 2f, 6.dp.toPx())
-                val r = androidx.compose.ui.geometry.CornerRadius(18.dp.toPx())
-                val sz = androidx.compose.ui.geometry.Size(w, h)
-                drawRoundRect(Brush.verticalGradient(listOf(lens.copy(alpha = 0.38f), lens.copy(alpha = 0.16f)), startY = tl.y, endY = tl.y + h), tl, sz, r)
-                drawRoundRect(Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.65f), Color.White.copy(alpha = 0.06f)), startY = tl.y, endY = tl.y + h), tl, sz, r, style = Stroke(1.2.dp.toPx()))
-            }.padding(6.dp),
-        ) {
-            Row(Modifier.fillMaxSize()) {
-                options.forEachIndexed { i, o ->
-                    val on = i == index
-                    val fg by androidx.compose.animation.animateColorAsState(if (on) C.Ink else C.Muted, label = "fg")
-                    Row(
-                        Modifier.weight(1f).fillMaxSize().clip(androidx.compose.foundation.shape.RoundedCornerShape(18.dp))
-                            .clickable { onPick(o.mode) }.testTag("theme:${o.mode}"),
-                        horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Icon(o.icon, null, tint = if (on) (if (o.mode == "light") C.GoldInk else C.BlueInk) else C.Muted, modifier = Modifier.size(20.dp))
-                        Text(o.label, color = fg, fontWeight = FontWeight.ExtraBold, fontSize = 15.sp, modifier = Modifier.padding(start = 6.dp))
-                    }
-                }
-            }
-        }
-        Text(
-            when (mode) { "light" -> "Hanji paper and celadon, for daytime."; "system" -> "Follows your phone's dark mode."; else -> "Ink and lantern light, easy on the eyes at night." },
-            color = C.Muted, fontSize = 13.sp, modifier = Modifier.padding(top = 8.dp, start = 4.dp),
+        Switch(
+            value, null, modifier = Modifier.clearAndSetSemantics { },
+            colors = SwitchDefaults.colors(
+                checkedTrackColor = C.Accent, checkedThumbColor = C.OnAccent, checkedBorderColor = C.Accent,
+                uncheckedTrackColor = C.SurfaceRaised, uncheckedBorderColor = C.OutlineStrong, uncheckedThumbColor = C.OutlineStrong,
+            ),
         )
     }
 }
-
-/** Rising embers around the streak flame. */
-@Composable
-private fun Embers(modifier: Modifier, color: Color) {
-    val t = rememberInfiniteTransition(label = "embers")
-    val time = t.animateFloat(0f, 1f, infiniteRepeatable(tween(3200, easing = androidx.compose.animation.core.LinearEasing)), label = "e")
-    val bits = remember { val r = kotlin.random.Random(3); List(18) { floatArrayOf(r.nextFloat(), r.nextFloat(), 1.5f + r.nextFloat() * 2.5f, r.nextFloat()) } }
-    androidx.compose.foundation.Canvas(modifier) {
-        bits.forEach { b ->
-            val p = (time.value + b[1]) % 1f
-            val x = size.width * (0.3f + 0.4f * b[0]) + kotlin.math.sin((p * 4f + b[3] * 6f) * Math.PI.toFloat()) * 10.dp.toPx()
-            val y = size.height * (0.72f - 0.7f * p)
-            val a = (1f - p) * (if (p < 0.1f) p * 10f else 1f)
-            drawCircle(color.copy(alpha = 0.25f * a), b[2].dp.toPx() * 2.6f, Offset(x, y))
-            drawCircle(lighten(color, 0.4f).copy(alpha = 0.9f * a), b[2].dp.toPx(), Offset(x, y))
-        }
-    }
-}
-
-@Suppress("unused") private val unusedTab = Tab.LEARN

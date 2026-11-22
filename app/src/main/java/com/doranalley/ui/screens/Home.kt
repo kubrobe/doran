@@ -75,6 +75,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
@@ -521,7 +522,11 @@ private val TagArrow = GenericShape { size, _ ->
 @Composable
 private fun StartLabel(text: String, tone: Tone, modifier: Modifier) {
     Column(
-        modifier.offset(y = (-40).dp).enterRise(distance = 6.dp, durationMs = Motion.SCREEN).clearAndSetSemantics { },
+        // Sit just above the node whatever the label's height (it grows with the font size).
+        modifier.layout { measurable, constraints ->
+            val p = measurable.measure(constraints)
+            layout(p.width, p.height) { p.place(0, -p.height + 6.dp.roundToPx()) }
+        }.enterRise(distance = 6.dp, durationMs = Motion.SCREEN).clearAndSetSemantics { },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(

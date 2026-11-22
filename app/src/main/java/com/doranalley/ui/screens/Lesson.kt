@@ -81,6 +81,7 @@ import com.doranalley.ui.components.DoranIconButton
 import com.doranalley.ui.components.IconStyle
 import com.doranalley.ui.components.Motion
 import com.doranalley.ui.components.ProgressBar
+import com.doranalley.ui.components.RewardChip
 import com.doranalley.ui.components.enterPop
 import com.doranalley.ui.components.enterRise
 import com.doranalley.ui.components.enterSlide
@@ -147,8 +148,6 @@ fun LessonScreen(vm: AppViewModel) {
                             ExerciseHost(vm, ex, locked = s.feedback != null, placement = s.type == SessionType.PLACEMENT, result = s.feedback?.correct)
                         }
                     }
-                    // The streak-of-answers toast floats over the content, so nothing below it moves.
-                    ComboToast(s.combo, visible = s.combo >= 5 && s.feedback?.correct == true, Modifier.align(Alignment.TopCenter))
                 }
             }
         }
@@ -160,7 +159,7 @@ fun LessonScreen(vm: AppViewModel) {
         ) {
             val f = s.feedback ?: lastFeedback.value
             // While sliding away the panel is shown but can't be tapped again.
-            if (f != null) FeedbackPanel(f, vm, interactive = s.feedback != null)
+            if (f != null) FeedbackPanel(f, vm, interactive = s.feedback != null, combo = s.combo)
         }
     }
 
@@ -220,31 +219,12 @@ private fun HeartCounter(n: Int) {
     }
 }
 
-@Composable
-private fun ComboToast(combo: Int, visible: Boolean, modifier: Modifier) {
-    val reduce = LocalReduceMotion.current
-    AnimatedVisibility(
-        visible, modifier.padding(top = Space.s),
-        enter = if (reduce) fadeIn(tween(0)) else scaleIn(spring(dampingRatio = 0.5f, stiffness = 500f), initialScale = 0.6f) + fadeIn(),
-        exit = fadeOut(tween(if (reduce) 0 else 150)),
-    ) {
-        Row(
-            Modifier.clip(CircleShape).background(C.StreakSoft).padding(horizontal = 14.dp, vertical = 6.dp)
-                .semantics(mergeDescendants = true) { liveRegion = LiveRegionMode.Polite },
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Icon(Icons.Filled.LocalFireDepartment, null, tint = C.StreakInk, modifier = Modifier.size(18.dp))
-            Text("$combo in a row!", style = DoranType.label, color = C.StreakInk, modifier = Modifier.padding(start = 6.dp))
-        }
-    }
-}
-
 /**
  * The answer sheet: a solid panel (jade tint when right, red tint when wrong) with an icon badge,
  * a title, the correct answer when wrong, an optional note, a replay button and Continue.
  */
 @Composable
-private fun FeedbackPanel(f: Feedback, vm: AppViewModel, interactive: Boolean) {
+private fun FeedbackPanel(f: Feedback, vm: AppViewModel, interactive: Boolean, combo: Int) {
     val good = f.correct
     val tone = if (good) C.accent else C.heart
     val title = remember(f) { if (good) praise.random() else "Not quite" }
@@ -277,6 +257,10 @@ private fun FeedbackPanel(f: Feedback, vm: AppViewModel, interactive: Boolean) {
                 AudioButton(playing == "ko:$sol", { if (interactive) vm.audio.play(sol) })
             }
         }
+        // Five or more right answers in a row: a small streak chip, shown with the answer it belongs to.
+        if (good && combo >= 5) {
+            RewardChip("$combo in a row!", C.streak, Modifier.padding(top = Space.s).enterPop(delayMs = 120, from = 0.6f), icon = Icons.Filled.LocalFireDepartment)
+        }
         if (!good && f.solution.isNotBlank()) {
             Text("Correct answer", style = DoranType.label, color = C.Text2, modifier = Modifier.padding(top = Space.m))
             Text(f.solution, style = DoranType.koBody, color = C.Text, modifier = Modifier.padding(top = 2.dp).testTag("solution"))
@@ -299,6 +283,7 @@ fun ExerciseFrame(
     onCheck: () -> Unit,
     checkLabel: String = "Check",
     secondary: (@Composable () -> Unit)? = null,
+    showCheck: Boolean = true,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Column(Modifier.fillMaxSize()) {
@@ -312,7 +297,7 @@ fun ExerciseFrame(
         }
         Column(Modifier.fillMaxWidth().padding(horizontal = Space.gutter, vertical = Space.m)) {
             if (secondary != null && !locked) secondary()
-            DoranButton(checkLabel, onCheck, Modifier.fillMaxWidth(), enabled = ready && !locked, tag = "check")
+            if (showCheck) DoranButton(checkLabel, onCheck, Modifier.fillMaxWidth(), enabled = ready && !locked, tag = "check")
         }
     }
 }

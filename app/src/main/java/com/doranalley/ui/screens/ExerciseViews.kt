@@ -286,7 +286,8 @@ fun MatchPairsView(vm: AppViewModel, ex: Exercise.MatchPairs, locked: Boolean) {
     LaunchedEffect(wrongPair) { if (wrongPair != null) { delay(600); wrongPair = null } }
     LaunchedEffect(rightPair) { if (rightPair != null) { delay(450); rightPair = null } }
 
-    ExerciseFrame("Tap the matching pairs", locked, ready = false, onCheck = {}) {
+    // Matching submits by itself when the last pair is found, so there is no Check button.
+    ExerciseFrame("Tap the matching pairs", locked, ready = false, onCheck = {}, showCheck = false) {
         Text("${matched.size} of ${answer.size} matched", style = DoranType.bodySmall, color = C.Text2, modifier = Modifier.padding(bottom = Space.m))
         Row(horizontalArrangement = Arrangement.spacedBy(Space.m), modifier = Modifier.fillMaxWidth()) {
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(Space.m)) {
@@ -303,7 +304,7 @@ fun MatchPairsView(vm: AppViewModel, ex: Exercise.MatchPairs, locked: Boolean) {
                         if (!done && !locked) { selL = l; if (ex.leftAudio) vm.audio.play(l); tryMatch() }
                     }, Modifier.fillMaxWidth(), enabled = !done && !locked, tag = "matchL:$l", minHeight = 64.dp, badge = false,
                         contentPadding = PaddingValues(horizontal = Space.s, vertical = Space.m)) {
-                        Text(l, style = DoranType.koBody, textAlign = TextAlign.Center)
+                        Text(l, style = if (l.length == 1) DoranType.koPrompt else DoranType.koBody, textAlign = TextAlign.Center)
                     }
                 }
             }

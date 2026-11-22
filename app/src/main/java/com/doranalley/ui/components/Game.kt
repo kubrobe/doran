@@ -26,7 +26,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
-import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -57,6 +56,7 @@ import com.doranalley.ui.theme.C
 import com.doranalley.ui.theme.DoranType
 import com.doranalley.ui.theme.LocalReduceMotion
 import com.doranalley.ui.theme.Tone
+import com.doranalley.ui.theme.TouchTarget
 
 private val PillValue = DoranType.bodySmall.copy(fontWeight = FontWeight.ExtraBold)
 
@@ -84,43 +84,48 @@ fun StatPill(
         if (first.value) first.value = false else if (!reduce) pop.pop(1.25f)
     }
     val track = C.Outline
-    Row(
-        modifier
-            .tagged(tag)
-            .then(if (onClick != null) Modifier.minimumInteractiveComponentSize() else Modifier)
-            .clip(CircleShape)
-            .then(if (onClick != null) Modifier.clickable(role = Role.Button, onClickLabel = "Details", onClick = onClick) else Modifier)
-            .semantics(mergeDescendants = true) { contentDescription = description }
-            .heightIn(min = 40.dp)
-            .background(C.Surface, CircleShape)
-            .border(1.dp, C.Outline, CircleShape)
-            .padding(start = 8.dp, end = 12.dp, top = 6.dp, bottom = 6.dp),
-        verticalAlignment = Alignment.CenterVertically,
+    // A tappable pill keeps its 40 dp look but gets a full 48 dp touch area around it.
+    val touch = if (onClick != null) {
+        Modifier.heightIn(min = TouchTarget).clip(CircleShape)
+            .clickable(role = Role.Button, onClickLabel = "Details", onClick = onClick)
+    } else Modifier
+    Box(
+        modifier.tagged(tag).then(touch).semantics(mergeDescendants = true) { contentDescription = description },
+        contentAlignment = Alignment.Center,
     ) {
-        Box(
-            Modifier.size(26.dp).graphicsLayer { scaleX = pop.value; scaleY = pop.value }
-                .drawBehind {
-                    val p = progress ?: return@drawBehind
-                    val st = 2.5.dp.toPx()
-                    val tl = Offset(st / 2, st / 2)
-                    val sz = Size(size.width - st, size.height - st)
-                    drawArc(track, 0f, 360f, false, tl, sz, style = Stroke(st))
-                    if (p > 0f) drawArc(tint, -90f, 360f * p.coerceIn(0f, 1f), false, tl, sz, style = Stroke(st, cap = StrokeCap.Round))
-                },
-            contentAlignment = Alignment.Center,
+        Row(
+            Modifier
+                .heightIn(min = 40.dp)
+                .background(C.Surface, CircleShape)
+                .border(1.dp, C.Outline, CircleShape)
+                .padding(start = 8.dp, end = 12.dp, top = 6.dp, bottom = 6.dp),
+            verticalAlignment = Alignment.CenterVertically,
         ) {
-            Icon(icon, null, tint = tint, modifier = Modifier.size(if (progress != null) 15.dp else 20.dp))
-        }
-        AnimatedContent(
-            value,
-            transitionSpec = {
-                if (reduce) EnterTransition.None togetherWith ExitTransition.None
-                else (slideInVertically { -it } + fadeIn()) togetherWith (slideOutVertically { it } + fadeOut())
-            },
-            label = "stat",
-            modifier = Modifier.clearAndSetSemantics { },
-        ) { v ->
-            Text(v, color = valueColor, style = PillValue, modifier = Modifier.padding(start = 4.dp))
+            Box(
+                Modifier.size(26.dp).graphicsLayer { scaleX = pop.value; scaleY = pop.value }
+                    .drawBehind {
+                        val p = progress ?: return@drawBehind
+                        val st = 2.5.dp.toPx()
+                        val tl = Offset(st / 2, st / 2)
+                        val sz = Size(size.width - st, size.height - st)
+                        drawArc(track, 0f, 360f, false, tl, sz, style = Stroke(st))
+                        if (p > 0f) drawArc(tint, -90f, 360f * p.coerceIn(0f, 1f), false, tl, sz, style = Stroke(st, cap = StrokeCap.Round))
+                    },
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(icon, null, tint = tint, modifier = Modifier.size(if (progress != null) 15.dp else 20.dp))
+            }
+            AnimatedContent(
+                value,
+                transitionSpec = {
+                    if (reduce) EnterTransition.None togetherWith ExitTransition.None
+                    else (slideInVertically { -it } + fadeIn()) togetherWith (slideOutVertically { it } + fadeOut())
+                },
+                label = "stat",
+                modifier = Modifier.clearAndSetSemantics { },
+            ) { v ->
+                Text(v, color = valueColor, style = PillValue, modifier = Modifier.padding(start = 4.dp))
+            }
         }
     }
 }

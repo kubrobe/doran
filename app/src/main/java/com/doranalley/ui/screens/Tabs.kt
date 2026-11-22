@@ -297,17 +297,20 @@ private fun SearchField(value: String, onChange: (String) -> Unit) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(Icons.Filled.Search, null, tint = C.Muted, modifier = Modifier.size(20.dp))
-        Box(Modifier.weight(1f).padding(horizontal = Space.s, vertical = Space.m)) {
-            if (value.isEmpty()) Text("Search Korean or English", style = DoranType.body, color = C.Muted, modifier = Modifier.clearAndSetSemantics { })
-            BasicTextField(
-                value, onChange, singleLine = true,
-                textStyle = DoranType.body.copy(color = C.Text),
-                cursorBrush = SolidColor(C.Accent),
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-                keyboardActions = KeyboardActions(onSearch = { keyboard?.hide() }),
-                modifier = Modifier.fillMaxWidth().semantics { contentDescription = "Search words" },
-            )
-        }
+        BasicTextField(
+            value, onChange, singleLine = true,
+            textStyle = DoranType.body.copy(color = C.Text),
+            cursorBrush = SolidColor(C.Accent),
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+            keyboardActions = KeyboardActions(onSearch = { keyboard?.hide() }),
+            modifier = Modifier.weight(1f).heightIn(min = TouchTarget).semantics { contentDescription = "Search words" },
+            decorationBox = { inner ->
+                Box(Modifier.fillMaxWidth().heightIn(min = TouchTarget).padding(horizontal = Space.s), contentAlignment = Alignment.CenterStart) {
+                    if (value.isEmpty()) Text("Search Korean or English", style = DoranType.body, color = C.Muted, modifier = Modifier.clearAndSetSemantics { })
+                    inner()
+                }
+            },
+        )
         if (value.isNotEmpty()) DoranIconButton(Icons.Filled.Close, "Clear search", { onChange("") }, style = com.doranalley.ui.components.IconStyle.Plain, size = 40.dp)
     }
 }
@@ -316,7 +319,7 @@ private fun SearchField(value: String, onChange: (String) -> Unit) {
 private fun FilterPill(text: String, selected: Boolean, onClick: () -> Unit) {
     val shape = CircleShape
     Box(
-        Modifier.heightIn(min = 40.dp).clip(shape)
+        Modifier.heightIn(min = TouchTarget).clip(shape)
             .background(if (selected) C.AccentSoft else C.Surface)
             .border(if (selected) 1.5.dp else 1.dp, if (selected) C.Accent else C.Outline, shape)
             .selectable(selected, role = Role.RadioButton, onClick = onClick)

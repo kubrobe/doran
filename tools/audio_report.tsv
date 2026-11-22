@@ -1,701 +1,701 @@
 file	text	recognized	similarity	seconds	voice
-001a89099a51	과제	과제	1.0	2.6	ko-KR-SunHiNeural
-03455cfc9f61	다섯 시는 어때요?	다섯 시는 어때요?	1.0	3.6	ko-KR-InJoonNeural
-03455cfc9f61_s	다섯 시는 어때요?	다섯 시는 어때요?	1.0	4.0	ko-KR-SunHiNeural
-04d7c9bd630d	저는 도서관에서 책을 읽어요.	저는 도서관에서 책을 읽어요?	1.0	3.9	ko-KR-SunHiNeural
-04d7c9bd630d_s	저는 도서관에서 책을 읽어요.	저는 도서관에서 책을 읽어요?	1.0	5.4	ko-KR-SunHiNeural
-05000ee6cdb0	이거 맛있어요?	이거 맛있어요.	1.0	3.0	ko-KR-SunHiNeural
-05000ee6cdb0_s	이거 맛있어요?	이거 맛있어요.	1.0	4.0	ko-KR-SunHiNeural
-0563a514318a	라	라	1.0	2.6	ko-KR-SunHiNeural
-059ee37f8be7	뭐	뭐	1.0	2.6	ko-KR-SunHiNeural
-05a40b3a46ee	역	이억	0.4	2.6	ko-KR-SunHiNeural
-05a95a7cfe78	저녁	저녁	1.0	2.8	ko-KR-InJoonNeural
-06a5309a7b16	택배	택배	1.0	2.6	ko-KR-SunHiNeural
-06cf3e90de6e	일	일	1.0	2.6	ko-KR-SunHiNeural
-06f2845ec6e2	월세	월세	1.0	2.6	ko-KR-SunHiNeural
-076925c57174	메뉴	메뉴	1.0	2.8	ko-KR-InJoonNeural
-07d25c799d09	두부	두부	1.0	2.6	ko-KR-SunHiNeural
-085e7d25f844	감기	감기	1.0	2.6	ko-KR-SunHiNeural
-08906e22553d	으	느	0.5	2.6	ko-KR-SunHiNeural
-08f6c357e084	제 친구는 의사예요.	제 친구는 의사예요.	1.0	3.4	ko-KR-SunHiNeural
-08f6c357e084_s	제 친구는 의사예요.	제 친구는 의사에요.	0.94	4.6	ko-KR-SunHiNeural
-0ab81acc4b0e	교수님께서 연구실에 계세요.	교수님께서 연구실에 계세요.	1.0	3.8	ko-KR-SunHiNeural
-0ab81acc4b0e_s	교수님께서 연구실에 계세요.	교수님께서 연구실에 계세요.	1.0	5.3	ko-KR-SunHiNeural
-0b4370591e73	출근해요	출근해요.	1.0	2.6	ko-KR-SunHiNeural
-0b4af546d3ed	셋	셋.	1.0	2.6	ko-KR-SunHiNeural
-0cdb0e17f29a	병원	병원	1.0	2.9	ko-KR-InJoonNeural
-0d11962a880b	미안해요, 조금 늦을 것 같아요.	미안해요. 조금 늦을 거 같아요.	0.97	4.5	ko-KR-SunHiNeural
-0d11962a880b_s	미안해요, 조금 늦을 것 같아요.	미안해요. 조금 늦을 거 같아요.	0.97	6.2	ko-KR-SunHiNeural
-0d6c2b633b83	색깔	색깔	1.0	2.6	ko-KR-SunHiNeural
-0dfb66d7b9e9	한국 노래를 자주 들어요.	한국 노래를 자주 들어요?	1.0	3.5	ko-KR-SunHiNeural
-0dfb66d7b9e9_s	한국 노래를 자주 들어요.	한국 노래를 자주 들어요.	1.0	4.8	ko-KR-SunHiNeural
-0e3301813779	어머니	어머니	1.0	2.6	ko-KR-SunHiNeural
-0e360b40c084	저는 선생님이 아니에요.	저는 선생님이 아니에요	1.0	3.5	ko-KR-SunHiNeural
-0e360b40c084_s	저는 선생님이 아니에요.	저는 선생님이 아니에요.	1.0	4.7	ko-KR-SunHiNeural
-0ffcb2dc1b9b	이 음식은 너무 매워요.	이 음식은 너무 매워요.	1.0	4.1	ko-KR-InJoonNeural
-0ffcb2dc1b9b_s	이 음식은 너무 매워요.	이 음식은 너무 매워요.	1.0	5.6	ko-KR-InJoonNeural
-10d6c7e6e1c9	계세요	계세요.	1.0	2.6	ko-KR-SunHiNeural
-110abbe28039	저는 운동을 싫어해요.	저는 운동을 싫어해요.	1.0	3.4	ko-KR-SunHiNeural
-110abbe28039_s	저는 운동을 싫어해요.	저는 운동을 싫어해요.	1.0	4.6	ko-KR-SunHiNeural
-112941bdae0a	가수	가수	1.0	2.6	ko-KR-SunHiNeural
-11d1982d7082	연락	연락	1.0	2.6	ko-KR-SunHiNeural
-1244a68987a1	죄송합니다, 괜찮아요?	죄송합니다. 괜찮아요.	1.0	4.4	ko-KR-SunHiNeural
-1244a68987a1_s	죄송합니다, 괜찮아요?	죄송합니다요.	0.64	6.1	ko-KR-InJoonNeural
-126a593010be	이 근처에 식당이 없어요.	이 근처에 식당이 없어요.	1.0	4.2	ko-KR-InJoonNeural
-126a593010be_s	이 근처에 식당이 없어요.	이 근처에 식당이 없어요.	1.0	5.8	ko-KR-InJoonNeural
-1283cbaee724	밥	밥.	1.0	2.6	ko-KR-SunHiNeural
-131c83b2cfb5	이 약을 하루에 세 번 드세요.	이 약을 하루에 세 번 드세요.	1.0	3.7	ko-KR-SunHiNeural
-131c83b2cfb5_s	이 약을 하루에 세 번 드세요.	이 약을 하루에 3번 드세요.	0.92	5.0	ko-KR-SunHiNeural
-1380d9145ebb	사과	사과	1.0	2.6	ko-KR-SunHiNeural
-142a30281546	가방	가방	1.0	3.0	ko-KR-InJoonNeural
-144d73ab9595	문자	문자	1.0	2.6	ko-KR-SunHiNeural
-14b73293e7e0	세탁기	세탁기	1.0	2.7	ko-KR-SunHiNeural
-14f8a04bab19	지하철	지하철	1.0	2.7	ko-KR-SunHiNeural
-153ff43ea00e	우유	우이어.	0.5	2.6	ko-KR-SunHiNeural
-16f66ac24b86	오른쪽	오른쪽	1.0	2.6	ko-KR-SunHiNeural
-191475fa6074	약국	약국	1.0	2.6	ko-KR-SunHiNeural
-196c53c8f98a	어	어	1.0	2.6	ko-KR-SunHiNeural
-19c5ec746362	해요	해요.	1.0	2.6	ko-KR-SunHiNeural
-19eec08acc95	만나서 반가워요	만나서 반가워요.	1.0	3.1	ko-KR-SunHiNeural
-1b53e275a33a	비누	비누	1.0	2.6	ko-KR-SunHiNeural
-1c0c0a461d57	어느 나라 사람이에요?	어느 나라 사람이에요?	1.0	3.2	ko-KR-SunHiNeural
-1c0c0a461d57_s	어느 나라 사람이에요?	어느 나라 사람이에요?	1.0	4.3	ko-KR-SunHiNeural
-1c1ada074b17	토요일 오후는 어때요?	토요일 오후는 어때요?	1.0	3.4	ko-KR-SunHiNeural
-1c1ada074b17_s	토요일 오후는 어때요?	토요일 오후는 어때요?	1.0	4.6	ko-KR-SunHiNeural
-1c594bb5af0b	저거	저거	1.0	2.9	ko-KR-InJoonNeural
-1c7904672e2f	내일 시간 있어요?	내일 시간이 있어요.	0.89	3.2	ko-KR-SunHiNeural
-1c7904672e2f_s	내일 시간 있어요?	내일 시간이 있어요.	0.89	4.3	ko-KR-SunHiNeural
-1d6b498ac790	이 커피는 삼천 원이에요.	이 커피는 3천원이예요.	0.83	3.6	ko-KR-SunHiNeural
-1d6b498ac790_s	이 커피는 삼천 원이에요.	이 커피는 3천원이예요.	0.83	4.9	ko-KR-SunHiNeural
-1dcbc740f342	천천히	천천히	1.0	2.6	ko-KR-SunHiNeural
-1df58d3fbec5	오늘은 바빠요.	오늘은 봤다요?	0.8	3.0	ko-KR-SunHiNeural
-1df58d3fbec5_s	오늘은 바빠요.	오늘은 다 따요?	0.86	4.0	ko-KR-SunHiNeural
-1e4ab85f0d9d	여행을 정말 좋아해요.	여행을 정말 좋아해요.	1.0	3.9	ko-KR-InJoonNeural
-1e4ab85f0d9d_s	여행을 정말 좋아해요.	여행을 정말 좋아해요.	1.0	5.4	ko-KR-InJoonNeural
-1e9ec64a8950	어디에 가세요?	어디에 가세요?	1.0	3.3	ko-KR-InJoonNeural
-1e9ec64a8950_s	어디에 가세요?	어디에 가세요?	1.0	4.5	ko-KR-InJoonNeural
-1f43a021e042	늦어서 죄송해요.	늦어서 죄송해요.	1.0	3.1	ko-KR-SunHiNeural
-1f43a021e042_s	늦어서 죄송해요.	늦어서 죄송해요	1.0	4.2	ko-KR-SunHiNeural
-1ff7914bebc9	쉬는 날	쉬는 날	1.0	2.7	ko-KR-SunHiNeural
-207adb179692	아니요, 괜찮아요.	아니요, 괜찮아요.	1.0	3.6	ko-KR-SunHiNeural
-207adb179692_s	아니요, 괜찮아요.	아니요 괜찮아요.	1.0	4.9	ko-KR-SunHiNeural
-20931411a95f	싸요	싸요.	1.0	2.6	ko-KR-SunHiNeural
-20bdcf5c8f8b	와	와	1.0	2.6	ko-KR-SunHiNeural
-20bff68f55c6	사장님께 말씀드릴게요.	사장님께 말씀드릴게요.	1.0	3.7	ko-KR-SunHiNeural
-20bff68f55c6_s	사장님께 말씀드릴게요.	사장님께 말씀드릴게요.	1.0	5.1	ko-KR-SunHiNeural
-21ba070b23b6	원	원	1.0	2.6	ko-KR-SunHiNeural
-227850d2e134	도서관에서 같이 공부할까요?	도서관에서 같이 공부할까요?	1.0	3.9	ko-KR-SunHiNeural
-227850d2e134_s	도서관에서 같이 공부할까요?	도서관에서 같이 공부할까요?	1.0	5.3	ko-KR-SunHiNeural
-22bed844302f	내일 수업이 있어요.	내일 수업이 있어요.	1.0	3.3	ko-KR-SunHiNeural
-22bed844302f_s	내일 수업이 있어요.	내일 수업이 있어요.	1.0	4.4	ko-KR-SunHiNeural
-22cd875fb70d	암	안	0.67	2.6	ko-KR-SunHiNeural
-23200971c8cc	일어나요	일어나요.	1.0	2.6	ko-KR-SunHiNeural
-23268133c4d6	가요	가요.	1.0	2.6	ko-KR-SunHiNeural
-23913a525f1e	교수님	교수님	1.0	2.6	ko-KR-SunHiNeural
-23c6a8b9d892	방 열쇠를 잃어버렸어요.	방 열쇠를 잃어버렸어요.	1.0	3.7	ko-KR-SunHiNeural
-23c6a8b9d892_s	방 열쇠를 잃어버렸어요.	반 열쇠를 잃어버렸어요.	0.96	5.0	ko-KR-SunHiNeural
-249497667b4a	여보세요, 민수 씨 계세요?	여보세요. 민수 씨 계세요.	1.0	4.9	ko-KR-InJoonNeural
-249497667b4a_s	여보세요, 민수 씨 계세요?	여보세요. 민수 씨 계세요.	1.0	6.8	ko-KR-InJoonNeural
-251dd9abf191	친구는 회사원이에요.	친구는 회사원이에요.	1.0	3.3	ko-KR-SunHiNeural
-251dd9abf191_s	친구는 회사원이에요.	친구는 히사히에요.	0.76	4.5	ko-KR-SunHiNeural
-25a032c9069f	앗	앗	1.0	2.6	ko-KR-SunHiNeural
-266539c75d9a	커피를 너무 많이 마셨어요.	커피를 너무 많이 마셨어요.	1.0	3.7	ko-KR-SunHiNeural
-266539c75d9a_s	커피를 너무 많이 마셨어요.	커피를 너무 많이 마셨어요.	1.0	5.0	ko-KR-SunHiNeural
-27122a203445	이거 얼마예요?	이거 얼마에요?	0.92	3.4	ko-KR-InJoonNeural
-27122a203445_s	이거 얼마예요?	이거 얼마에요?	0.92	4.6	ko-KR-InJoonNeural
-27916ecc49ec	싸	싸	1.0	2.6	ko-KR-SunHiNeural
-27a36aee2831	은행	은행	1.0	2.6	ko-KR-SunHiNeural
-27e0fcb7ba87	영어로 말해도 돼요?	영어로 말해도 돼요?	1.0	3.6	ko-KR-InJoonNeural
-27e0fcb7ba87_s	영어로 말해도 돼요?	영어로 말해도 돼요?	1.0	4.8	ko-KR-InJoonNeural
-288d14be0365	룸메이트	룸메이트	1.0	2.7	ko-KR-SunHiNeural
-2892aebc57e1	말해 주세요	말해주세요	1.0	2.7	ko-KR-SunHiNeural
-29e6fd0f9e65	주말에 뭐 해요?	주말에 뭐 해요?	1.0	2.9	ko-KR-SunHiNeural
-29e6fd0f9e65_s	주말에 뭐 해요?	주말에 뭐 해요?	1.0	3.9	ko-KR-SunHiNeural
-2ab096e7f48b	질문	질문	1.0	2.6	ko-KR-SunHiNeural
-2b582952069c	바다	바다	1.0	2.7	ko-KR-SunHiNeural
-2b7beade8d6b	좀 깎아 주세요.	좀 깎아주세요	1.0	3.1	ko-KR-SunHiNeural
-2b7beade8d6b_s	좀 깎아 주세요.	줌 깎아주세요.	0.93	4.1	ko-KR-SunHiNeural
-2bdce5e8cc42	오늘	오늘	1.0	2.6	ko-KR-SunHiNeural
-2c0e95dc0ba9	일찍 자요.	일찍 자요?	1.0	2.8	ko-KR-SunHiNeural
-2c0e95dc0ba9_s	일찍 자요.	일찍 차요.	0.9	3.7	ko-KR-SunHiNeural
-2c2c3b487137	우즈베키스탄	우주 매키스탄	0.77	3.2	ko-KR-InJoonNeural
-2dcc21ee47ef	주말	주말	1.0	2.6	ko-KR-SunHiNeural
-2df94c8444e2	왼쪽	왼쪽	1.0	2.6	ko-KR-SunHiNeural
-2f3a26716570	따	나	0.5	2.6	ko-KR-SunHiNeural
-2f4621ed195a	바	다	0.5	2.6	ko-KR-SunHiNeural
-2f5d120217b6	저는 집에서 쉴 거예요.	저는 집에서 쉬어요.	0.81	3.5	ko-KR-SunHiNeural
-2f5d120217b6_s	저는 집에서 쉴 거예요.	저는 집에서 쉬 꺼에요.	0.86	4.7	ko-KR-SunHiNeural
-30c7307a4223	앙	안	0.67	2.6	ko-KR-SunHiNeural
-3135f62c00e4	의사	의사	1.0	2.6	ko-KR-SunHiNeural
-31f4c97b704c	메뉴 좀 주세요.	메뉴 좀 주세요.	1.0	3.0	ko-KR-SunHiNeural
-31f4c97b704c_s	메뉴 좀 주세요.	메뉴 좀 주세요.	1.0	3.9	ko-KR-SunHiNeural
-31f615480646	쓰레기	쓰레기	1.0	2.6	ko-KR-SunHiNeural
-3251b51e8a6c	밥을 먹어요.	밥을 먹어요?	1.0	2.8	ko-KR-SunHiNeural
-3251b51e8a6c_s	밥을 먹어요.	밥을 먹어요?	1.0	3.7	ko-KR-SunHiNeural
-327063563e1e	저는 매일 일곱 시에 일어나요.	저는 매일 일곱 시에 일어나요.	1.0	4.2	ko-KR-SunHiNeural
-327063563e1e_s	저는 매일 일곱 시에 일어나요.	저는 매일 일곱 시에 일어나요.	1.0	5.7	ko-KR-SunHiNeural
-32eb6dca492b	친구가 한국어를 공부해요.	친구가 한국어를 공부해요.	1.0	3.8	ko-KR-SunHiNeural
-32eb6dca492b_s	친구가 한국어를 공부해요.	친구가 한국어를 공부해요.	1.0	5.2	ko-KR-SunHiNeural
-33949eb8666b	아, 죄송합니다.	아 죄송합니다.	1.0	3.8	ko-KR-InJoonNeural
-33949eb8666b_s	아, 죄송합니다.	아 죄송합니다.	1.0	5.2	ko-KR-InJoonNeural
-34e413e86ca5	음식	음식.	1.0	2.6	ko-KR-SunHiNeural
-358f5aad8d27	택시	택시	1.0	2.6	ko-KR-SunHiNeural
-363fa7d0e382	강의실이 몇 호예요?	강의실이 몇 토해요?	0.84	3.8	ko-KR-InJoonNeural
-363fa7d0e382_s	강의실이 몇 호예요?	강의실이 몇 화에요?	0.89	5.1	ko-KR-InJoonNeural
-3658ffd36136	수업이 몇 시에 끝나요?	수업이 몇 시에 끝나요?	1.0	4.0	ko-KR-InJoonNeural
-3658ffd36136_s	수업이 몇 시에 끝나요?	수업이 몇 시에 끝나요?	1.0	5.5	ko-KR-InJoonNeural
-365e09d0e595	너무 비싸요.	너무 비싸요.	1.0	3.3	ko-KR-InJoonNeural
-365e09d0e595_s	너무 비싸요.	너무 비싸요.	1.0	4.5	ko-KR-InJoonNeural
-368a267ab5d4	그래서	그래서	1.0	2.6	ko-KR-SunHiNeural
-376b19ea5379	여행	여행	1.0	2.6	ko-KR-SunHiNeural
-377094ee3430	시장에서 과일을 샀어요.	시장에서 과일을 샀어요.	1.0	3.7	ko-KR-SunHiNeural
-377094ee3430_s	시장에서 과일을 샀어요.	시장에서 과일을 샀어요.	1.0	5.0	ko-KR-SunHiNeural
-37764ba042ce	다음 역에서 내리세요.	다음 역에서 내리세요?	1.0	3.4	ko-KR-SunHiNeural
-37764ba042ce_s	다음 역에서 내리세요.	다음 역에서 내리세요?	1.0	4.6	ko-KR-SunHiNeural
-383051371729	바뀌었어요	다 뛰었어요.	0.82	2.9	ko-KR-SunHiNeural
-3b016801e3b0	이따가	이따가	1.0	2.6	ko-KR-SunHiNeural
-3bdf9e8a53ce	어디	어디	1.0	2.6	ko-KR-SunHiNeural
-3bf609ee9834	시간이 없어요.	시간이 없어요.	1.0	2.9	ko-KR-SunHiNeural
-3bf609ee9834_s	시간이 없어요.	시간이 없어요.	1.0	3.9	ko-KR-SunHiNeural
-3c8becac138b	화장실	화장실	1.0	2.6	ko-KR-SunHiNeural
-3cab15cd8ac4	이름이 뭐예요?	이름이 뭐에요?	0.92	3.3	ko-KR-InJoonNeural
-3cab15cd8ac4_s	이름이 뭐예요?	이름이 뭐에요?	0.92	4.5	ko-KR-InJoonNeural
-3d02685ac2a0	취미가 뭐예요?	취미가 뭐에요?	0.92	2.9	ko-KR-SunHiNeural
-3d02685ac2a0_s	취미가 뭐예요?	취미가 뭐에요?	0.92	3.8	ko-KR-SunHiNeural
-3d171fc67b52	친구가 우리 집에 왔어요.	친구가 우리 집에 왔어요.	1.0	3.6	ko-KR-SunHiNeural
-3d171fc67b52_s	친구가 우리 집에 왔어요.	친구가 우리 집에 왔어요.	1.0	4.9	ko-KR-SunHiNeural
-3e80b4bf66a3	감기약 있어요?	감기약이 있어요.	0.88	3.1	ko-KR-SunHiNeural
-3e80b4bf66a3_s	감기약 있어요?	감기약이 있어요.	0.88	4.1	ko-KR-SunHiNeural
-3e92afe7a63d	다음 주	다음 주	1.0	2.7	ko-KR-SunHiNeural
-3ebecbc92a54	저는 기숙사에 살아요.	저는 기숙사에 살아요.	1.0	3.4	ko-KR-SunHiNeural
-3ebecbc92a54_s	저는 기숙사에 살아요.	저는 기숙사에 살아요.	1.0	4.7	ko-KR-SunHiNeural
-3f05aa426619	읽어요	읽어요.	1.0	2.6	ko-KR-SunHiNeural
-3f449463610d	감기에 걸렸어요.	감기에 걸렸어요.	1.0	3.6	ko-KR-InJoonNeural
-3f449463610d_s	감기에 걸렸어요.	감기에 걸렸어요.	1.0	4.9	ko-KR-InJoonNeural
-3fb24b2a2290	수업이 어디로 바뀌었어요?	수업이 어디로 바끼였어요?	0.92	4.3	ko-KR-InJoonNeural
-3fb24b2a2290_s	수업이 어디로 바뀌었어요?	수업이 어디로 바꿨어요?	0.88	5.9	ko-KR-InJoonNeural
-3fcc7bebc2b4	시험	시함	0.8	2.6	ko-KR-SunHiNeural
-406694f37ba4	출발해요	출발해요.	1.0	2.6	ko-KR-SunHiNeural
-4118d67c96ec	우	오	0.5	2.6	ko-KR-SunHiNeural
-415d0abccee6	관리실이 어디에 있어요?	관리실이 어디에 있어요?	1.0	3.5	ko-KR-SunHiNeural
-415d0abccee6_s	관리실이 어디에 있어요?	관리실이 어디에 있어요?	1.0	4.8	ko-KR-SunHiNeural
-41c24cc187b6	지금 출발해요.	지금 출발해요.	1.0	3.1	ko-KR-SunHiNeural
-41c24cc187b6_s	지금 출발해요.	지금 출발해요.	1.0	4.1	ko-KR-SunHiNeural
-42072be3da06	저	저	1.0	2.6	ko-KR-SunHiNeural
-4259dd769cec	칠	치	0.67	2.6	ko-KR-SunHiNeural
-436b04b93df9	이십 분쯤 걸려요.	20분쯤 걸려요.	0.72	3.2	ko-KR-SunHiNeural
-436b04b93df9_s	이십 분쯤 걸려요.	20분쯤 걸려요.	0.72	4.3	ko-KR-SunHiNeural
-445287d4d334	여	요	0.5	2.6	ko-KR-SunHiNeural
-44c39868ff15	보낼게요	보낼게요?	1.0	2.6	ko-KR-SunHiNeural
-4631dbf903ab	도서관은 저기 있어요.	도서관은 저기 있어요?	1.0	3.3	ko-KR-SunHiNeural
-4631dbf903ab_s	도서관은 저기 있어요.	도서관은 저기 있어요?	1.0	4.5	ko-KR-SunHiNeural
-4667f6416961	점심 먹었어요?	점심 먹었어요?	1.0	3.1	ko-KR-SunHiNeural
-4667f6416961_s	점심 먹었어요?	점심 먹었어요?	1.0	4.1	ko-KR-SunHiNeural
-4672972ea1f7	오이	오이	1.0	2.6	ko-KR-SunHiNeural
-476b58b7e5a4	어제	어제	1.0	2.6	ko-KR-SunHiNeural
-49a63eac55b6	옷	옷.	1.0	2.6	ko-KR-SunHiNeural
-49f204197d4a	왔어요	왔어요.	1.0	2.6	ko-KR-SunHiNeural
-4a3ea882accc	오	오	1.0	2.6	ko-KR-SunHiNeural
-4a63de98b64c	이 커피는 제 거예요.	이 커피는 죽어에요.	0.78	3.3	ko-KR-SunHiNeural
-4a63de98b64c_s	이 커피는 제 거예요.	이 커피는 제거에요.	0.94	4.5	ko-KR-SunHiNeural
-4a9aae1df0cc	교수님, 질문이 있어요.	교수님 질문이 있어요.	1.0	3.9	ko-KR-SunHiNeural
-4a9aae1df0cc_s	교수님, 질문이 있어요.	교수님 질문이 있어요.	1.0	5.3	ko-KR-SunHiNeural
-4b5ff02aecf4	누구	누구?	1.0	2.6	ko-KR-SunHiNeural
-4bc5d65ee391	네	네.	1.0	2.6	ko-KR-SunHiNeural
-4c3c31b4a5f1	학생회관 삼백이 호예요.	학생회관 3백이 호해요.	0.8	3.6	ko-KR-SunHiNeural
-4c3c31b4a5f1_s	학생회관 삼백이 호예요.	학생회관 3백이 호해요.	0.8	4.9	ko-KR-SunHiNeural
-4c537d131462	파	다	0.5	2.6	ko-KR-SunHiNeural
-4ca0aab4feca	사당역에서 갈아타세요.	사당역에서 갈아타세요.	1.0	3.5	ko-KR-SunHiNeural
-4ca0aab4feca_s	사당역에서 갈아타세요.	사당역에서 갈아타세요.	1.0	4.8	ko-KR-SunHiNeural
-4ce01164bfca	도서관	도서관	1.0	2.6	ko-KR-SunHiNeural
-4d18906b651e	김치찌개가 정말 맛있어요.	김치찌개가 정말 맛있어요.	1.0	3.8	ko-KR-SunHiNeural
-4d18906b651e_s	김치찌개가 정말 맛있어요.	김치찌개가 정말 맛있어요.	1.0	5.1	ko-KR-SunHiNeural
-4d20ad440e35	마셔요	마셔요.	1.0	2.6	ko-KR-SunHiNeural
-4d37461d4c11	싶어요	싶어요.	1.0	2.9	ko-KR-InJoonNeural
-4d6729522e29	여기	여기	1.0	2.6	ko-KR-SunHiNeural
-4e71ce81ea22	음악	음악	1.0	2.6	ko-KR-SunHiNeural
-4ecb3373d1e9	운동	운동	1.0	2.6	ko-KR-SunHiNeural
-4fa363012687	저는 학교에 가요.	저는 학교에 가요.	1.0	3.1	ko-KR-SunHiNeural
-4fa363012687_s	저는 학교에 가요.	저는 학교에 가요.	1.0	4.2	ko-KR-SunHiNeural
-4fa86f2b5c9b	쉴 거예요	쉬거에요.	0.78	2.7	ko-KR-SunHiNeural
-4fd1e8c4b2dd	숙제를 다 했어요.	숙제를 다 했어요.	1.0	3.2	ko-KR-SunHiNeural
-4fd1e8c4b2dd_s	숙제를 다 했어요.	숙제를 다 했어요.	1.0	4.3	ko-KR-SunHiNeural
-4fe57c1f6d3a	사과 세 개 주세요.	사과 세 개 주세요.	1.0	3.2	ko-KR-SunHiNeural
-4fe57c1f6d3a_s	사과 세 개 주세요.	사과 세개 주세요.	1.0	4.3	ko-KR-SunHiNeural
-50d36272c737	압	아	0.67	2.6	ko-KR-SunHiNeural
-51208381144e	점심	점심	1.0	2.6	ko-KR-SunHiNeural
-5195a19778ac	세탁기가 고장 났어요.	세탁기가 고장 났어요.	1.0	3.8	ko-KR-InJoonNeural
-5195a19778ac_s	세탁기가 고장 났어요.	세탁기가 고장 났어요.	1.0	5.3	ko-KR-InJoonNeural
-51d37ac1ae3a	좋아해요	좋아해요.	1.0	2.7	ko-KR-SunHiNeural
-53c83f02f25d	근무	근모	0.8	2.9	ko-KR-InJoonNeural
-54af01b89b9b	옆	역?	0.67	2.6	ko-KR-SunHiNeural
-54e5853d475c	잠깐만요, 도와주세요!	잠깐만요. 도와주세요.	1.0	4.3	ko-KR-InJoonNeural
-54e5853d475c_s	잠깐만요, 도와주세요!	잠깐만요 도와주세요.	1.0	6.0	ko-KR-InJoonNeural
-5503506ed35c	수업	수업	1.0	2.6	ko-KR-SunHiNeural
-55913fc51ee6	영어	영어	1.0	3.0	ko-KR-InJoonNeural
-5664a634af5f	목	뭐?	0.33	2.6	ko-KR-SunHiNeural
-56e7d0eeff5d	비빔밥	비빔밥	1.0	2.6	ko-KR-SunHiNeural
-5796b2127ebd	타요	다요	0.75	2.8	ko-KR-InJoonNeural
-57b7afd916e5	고맙습니다, 내일 봐요.	고맙습니다. 네일 봐요.	0.95	4.5	ko-KR-InJoonNeural
-57b7afd916e5_s	고맙습니다, 내일 봐요.	고맙습니다. 네일 봐요.	0.95	6.3	ko-KR-InJoonNeural
-5867a72fc3a0	안녕하세요, 만나서 반가워요.	안녕하세요 만나서 반가워요.	1.0	4.3	ko-KR-SunHiNeural
-5867a72fc3a0_s	안녕하세요, 만나서 반가워요.	안녕하세요 만나서 반가워요.	1.0	5.9	ko-KR-SunHiNeural
-59463e84fb8f	삼	샴	0.67	2.6	ko-KR-SunHiNeural
-5cd06196d056	휴대폰	휴대폰	1.0	2.7	ko-KR-SunHiNeural
-5d12b208e550	머리가 아파요.	머리가 아파요.	1.0	3.4	ko-KR-InJoonNeural
-5d12b208e550_s	머리가 아파요.	머리가 아파요.	1.0	4.5	ko-KR-InJoonNeural
-5d3126b6e554	버스	버스	1.0	2.9	ko-KR-InJoonNeural
-5e8d2758a78f	주세요	주세요	1.0	2.6	ko-KR-SunHiNeural
-5eeefea77e6f	시끄러워요	시끄러워요.	1.0	2.7	ko-KR-SunHiNeural
-5f1fe47a8b80	저도 학생이에요.	저도 학생이에요	1.0	3.0	ko-KR-SunHiNeural
-5f1fe47a8b80_s	저도 학생이에요.	저도 학생이요.	0.88	4.1	ko-KR-SunHiNeural
-5f51b383d2c1	잔	잔	1.0	2.6	ko-KR-SunHiNeural
-60c482020480	이 택배는 제 것이 아니에요.	이택배는 재거시 아니에요.	0.88	4.3	ko-KR-InJoonNeural
-60c482020480_s	이 택배는 제 것이 아니에요.	이택배는 재 것이 아니에요.	0.96	6.0	ko-KR-InJoonNeural
-60c9b490b4c8	주말에 뭐 할 거예요?	주말에 뭐 할 거에요?	0.94	3.8	ko-KR-InJoonNeural
-60c9b490b4c8_s	주말에 뭐 할 거예요?	주말에 뭐 할 거에요?	0.94	5.1	ko-KR-InJoonNeural
-61569786dba5	배	예	0.0	2.6	ko-KR-SunHiNeural
-620be2237701	선생님	선생님	1.0	2.6	ko-KR-SunHiNeural
-62835bc3f41a	벌써	벌써	1.0	2.6	ko-KR-SunHiNeural
-62b87927fab1	점심 같이 먹어요.	점심같이 먹어요?	1.0	3.2	ko-KR-SunHiNeural
-62b87927fab1_s	점심 같이 먹어요.	점심같이 먹어요?	1.0	4.3	ko-KR-SunHiNeural
-62cc8ca815d0	책	책.	1.0	2.6	ko-KR-SunHiNeural
-632dbc1fb4da	라디오	라디오	1.0	2.6	ko-KR-SunHiNeural
-63948d05b106	만	만	1.0	2.6	ko-KR-SunHiNeural
-65683add0017	같이	같이	1.0	2.6	ko-KR-SunHiNeural
-6587001da0ea	할머니	할머니	1.0	2.6	ko-KR-SunHiNeural
-662204e2ddd2	할머니, 안녕히 주무세요.	할머니 안녕이 주무세요.	0.96	4.5	ko-KR-InJoonNeural
-662204e2ddd2_s	할머니, 안녕히 주무세요.	할머니 안녕이 주무세요.	0.96	6.2	ko-KR-InJoonNeural
-67685688b219	지금 통화할 수 있어요?	지금 통화할 수 있어요.	1.0	3.5	ko-KR-SunHiNeural
-67685688b219_s	지금 통화할 수 있어요?	지금 통화할 수 있어요.	1.0	4.7	ko-KR-SunHiNeural
-679be7c22b7a	잠시만 기다려 주세요.	잠시만 기다려 주세요.	1.0	3.4	ko-KR-SunHiNeural
-679be7c22b7a_s	잠시만 기다려 주세요.	잠시만 기다려 주세요.	1.0	4.6	ko-KR-SunHiNeural
-67b779297055	버스 정류장이 왼쪽에 있어요.	버스 정류장이 왼쪽에 있어요.	1.0	3.9	ko-KR-SunHiNeural
-67b779297055_s	버스 정류장이 왼쪽에 있어요.	버스 정류장이 왼쪽에 있어요.	1.0	5.3	ko-KR-SunHiNeural
-67c78e687590	은행이 어디에 있어요?	은행이 어디에 있어요?	1.0	3.4	ko-KR-SunHiNeural
-67c78e687590_s	은행이 어디에 있어요?	은행이 어디에 있어요?	1.0	4.6	ko-KR-SunHiNeural
-6815b54790ef	두 명이에요.	두 명이에요.	1.0	2.7	ko-KR-SunHiNeural
-6815b54790ef_s	두 명이에요.	두 명이에요.	1.0	3.6	ko-KR-SunHiNeural
-6851b5d68b45	네, 괜찮아요.	네 괜찮아요.	1.0	3.4	ko-KR-SunHiNeural
-6851b5d68b45_s	네, 괜찮아요.	네 괜찮아요.	1.0	4.6	ko-KR-SunHiNeural
-69ae3423ef85	푹 쉬세요.	푹 쉬세요	1.0	3.3	ko-KR-InJoonNeural
-69ae3423ef85_s	푹 쉬세요.	푹 쉬어요.	0.78	4.4	ko-KR-InJoonNeural
-6a3f7c07b670	사장님	사장님	1.0	2.6	ko-KR-SunHiNeural
-6ab30e4845aa	한국에 가고 싶어요.	한국에 가고 싶어요.	1.0	3.3	ko-KR-SunHiNeural
-6ab30e4845aa_s	한국에 가고 싶어요.	한국에 가고 싶어요.	1.0	4.4	ko-KR-SunHiNeural
-6b1cfdef109e	매일	매일.	1.0	2.6	ko-KR-SunHiNeural
-6c0cd2af1e1b	이	이	1.0	2.6	ko-KR-SunHiNeural
-6c1f4a005f91	택시를 탈까요?	택시를 탈까요?	1.0	3.4	ko-KR-InJoonNeural
-6c1f4a005f91_s	택시를 탈까요?	택시를 탈까요?	1.0	4.5	ko-KR-InJoonNeural
-6c35133c478b	시간	시간	1.0	2.6	ko-KR-SunHiNeural
-6c544d7f9450	저는 카페에서 아르바이트를 해요.	저는 카페에서 아르바이트를 해요.	1.0	4.7	ko-KR-InJoonNeural
-6c544d7f9450_s	저는 카페에서 아르바이트를 해요.	저는 카페에서 아르바이트를 해요.	1.0	6.4	ko-KR-InJoonNeural
-6daadb891eff	카페	카페	1.0	2.6	ko-KR-SunHiNeural
-6df77be79eff	오른쪽으로 가세요.	오른쪽으로 가세요?	1.0	3.1	ko-KR-SunHiNeural
-6df77be79eff_s	오른쪽으로 가세요.	오른쪽으로 가세요?	1.0	4.2	ko-KR-SunHiNeural
-6e02f187f694	찌개	찌개	1.0	2.6	ko-KR-SunHiNeural
-6e081b5948ef	한국어	한국어.	1.0	2.6	ko-KR-SunHiNeural
-6e9d56454f04	약	약	1.0	2.6	ko-KR-SunHiNeural
-6f2edfcf8ee6	끝나요	끝나요.	1.0	2.6	ko-KR-SunHiNeural
-7092fea8a162	학생회관	학생회관	1.0	2.9	ko-KR-SunHiNeural
-70aac02e9d3c	화장실이 어디예요?	화장실이 어디에요?	0.94	3.2	ko-KR-SunHiNeural
-70aac02e9d3c_s	화장실이 어디예요?	화장실이 어디에요?	0.94	4.3	ko-KR-SunHiNeural
-70b1bf6d1cc1	바꿀 수 있어요	바꿀 수 있어요.	1.0	3.1	ko-KR-SunHiNeural
-712e0c058dbc	오늘은 손님이 많아요.	오늘은 손님이 많아요.	1.0	3.3	ko-KR-SunHiNeural
-712e0c058dbc_s	오늘은 손님이 많아요.	오늘은 손님이 많아요.	1.0	4.5	ko-KR-SunHiNeural
-7142cb20d309	얼마예요	얼마에요?	0.89	2.6	ko-KR-SunHiNeural
-71a490eb578b	저는 우즈베키스탄 사람이에요.	저는 우즈베키스탄 사람이에요.	1.0	4.0	ko-KR-SunHiNeural
-71a490eb578b_s	저는 우즈베키스탄 사람이에요.	저는 우집에 비슷한 사람이에요.	0.81	5.4	ko-KR-SunHiNeural
-71c706d65211	유	이요.	0.25	2.6	ko-KR-SunHiNeural
-729c85015363	강의실은 육 층에 있어요.	강의실은 6층에 있어요.	0.88	4.2	ko-KR-InJoonNeural
-729c85015363_s	강의실은 육 층에 있어요.	강의실은 6층에 있어요.	0.88	5.8	ko-KR-InJoonNeural
-72cc58fc62db	과제 마감이 언제예요?	과제 마감이 언제에요?	0.95	4.0	ko-KR-InJoonNeural
-72cc58fc62db_s	과제 마감이 언제예요?	과제 마감이 언제에요?	0.95	5.4	ko-KR-InJoonNeural
-735c1e670f00	에	네.	0.5	2.6	ko-KR-SunHiNeural
-7425750e4bec	피자	피자	1.0	2.6	ko-KR-SunHiNeural
-75b11647e539	물 좀 주세요.	물 좀 주세요.	1.0	3.4	ko-KR-InJoonNeural
-75b11647e539_s	물 좀 주세요.	몰 좀 주세요.	0.92	4.6	ko-KR-InJoonNeural
-75b9f271b083	머리	머리	1.0	2.6	ko-KR-SunHiNeural
-75cb58018b2b	죄송해요, 잘 몰라요.	죄송해요. 잘 몰라요.	1.0	4.5	ko-KR-InJoonNeural
-75cb58018b2b_s	죄송해요, 잘 몰라요.	죄송해요. 잘 몰라요.	1.0	6.2	ko-KR-InJoonNeural
-7606fd7609b7	악	아	0.67	2.6	ko-KR-SunHiNeural
-773277b54fe4	기다릴게요	기다릴게요.	1.0	2.7	ko-KR-SunHiNeural
-77b7e85879b3	카드로 계산해도 돼요?	카드로 계산해도 돼요?	1.0	3.3	ko-KR-SunHiNeural
-77b7e85879b3_s	카드로 계산해도 돼요?	카드로 계산해도 돼요?	1.0	4.4	ko-KR-SunHiNeural
-77f4df2c9b00	야	야	1.0	2.6	ko-KR-SunHiNeural
-7830e5d54679	토끼	토끼.	1.0	2.6	ko-KR-SunHiNeural
-785d85930adf	천천히 말해 주세요.	천천히 말해주세요	1.0	3.7	ko-KR-InJoonNeural
-785d85930adf_s	천천히 말해 주세요.	천천히 말해 주세요.	1.0	5.1	ko-KR-InJoonNeural
-7ae1a5a07dbc	방	방	1.0	2.6	ko-KR-SunHiNeural
-7b45c5871684	봐요	봐요.	1.0	2.6	ko-KR-SunHiNeural
-7c7bfcc5d234	주말에 영화를 봤어요.	주말에 영화를 봤어요.	1.0	3.5	ko-KR-SunHiNeural
-7c7bfcc5d234_s	주말에 영화를 봤어요.	주말에 영화를 봤어요.	1.0	4.7	ko-KR-SunHiNeural
-7dcadffb9083	카	가	0.5	2.6	ko-KR-SunHiNeural
-7dde8c4ef667	어때요	어때요?	1.0	2.6	ko-KR-SunHiNeural
-7e3ccf684e2d	아버지	아버지	1.0	2.6	ko-KR-SunHiNeural
-7e811773882e	자주	사주	0.75	2.6	ko-KR-SunHiNeural
-7eec619024a9	외	왜?	0.5	2.6	ko-KR-SunHiNeural
-7efeb2d1bb26	신발	신 달.	0.83	2.6	ko-KR-SunHiNeural
-80a2399857e2	할 거예요	할 거에요?	0.89	2.6	ko-KR-SunHiNeural
-811e02934458	나	나	1.0	2.6	ko-KR-SunHiNeural
-81973897c757	비밀번호	비밀번호	1.0	2.8	ko-KR-SunHiNeural
-8198fd54dd02	타	다	0.5	2.6	ko-KR-SunHiNeural
-82b333e36a84	한국어를 잘 못해요.	한국어를 잘 못 해요.	1.0	3.3	ko-KR-SunHiNeural
-82b333e36a84_s	한국어를 잘 못해요.	한국어를 잘 못 해요.	1.0	4.5	ko-KR-SunHiNeural
-8311e7f7e1ed	감사합니다	감사합니다.	1.0	3.0	ko-KR-SunHiNeural
-8441573d5cdd	이따가 전화할게요.	이따가 전화할게요.	1.0	3.6	ko-KR-InJoonNeural
-8441573d5cdd_s	이따가 전화할게요.	있다가 전화할게요.	0.89	4.8	ko-KR-InJoonNeural
-845b3bc66909	죄송합니다	죄송합니다.	1.0	2.8	ko-KR-SunHiNeural
-84a9cb107d99	몇 명이에요?	몇 명이에요?	1.0	3.3	ko-KR-InJoonNeural
-84a9cb107d99_s	몇 명이에요?	몇 명이에요.	1.0	4.4	ko-KR-InJoonNeural
-84f2ad4c3cdb	삼백이 호예요.	300이 호해요.	0.43	3.3	ko-KR-InJoonNeural
-84f2ad4c3cdb_s	삼백이 호예요.	300이 호해요.	0.43	4.5	ko-KR-InJoonNeural
-85289ac883a3	지난주	지난주	1.0	2.6	ko-KR-SunHiNeural
-853bf3c8124e	괜찮아요	괜찮아요.	1.0	2.7	ko-KR-SunHiNeural
-8578f008f790	약속	약속	1.0	2.6	ko-KR-SunHiNeural
-8621f0f991c3	가게	가게	1.0	2.6	ko-KR-SunHiNeural
-86860ab8f94f	비싸요	비싸요.	1.0	2.6	ko-KR-SunHiNeural
-878ce9a75ccc	저거 누구 우산이에요?	저거 누구 우산이에요?	1.0	3.8	ko-KR-InJoonNeural
-878ce9a75ccc_s	저거 누구 우산이에요?	저거 누구 우승이에요.	0.89	5.3	ko-KR-InJoonNeural
-88c6c0919f09	몇 시에 출근해요?	몇 시에 출근해요?	1.0	3.0	ko-KR-SunHiNeural
-88c6c0919f09_s	몇 시에 출근해요?	몇 시에 출근해요.	1.0	4.0	ko-KR-SunHiNeural
-8980e7e906ea	먹어요	먹어요.	1.0	2.6	ko-KR-SunHiNeural
-89d5348b4e00	백	100	0.0	2.6	ko-KR-SunHiNeural
-8a04a604381d	노래	노래	1.0	2.6	ko-KR-SunHiNeural
-8a3f09a0f3a1	시급	시급	1.0	2.6	ko-KR-SunHiNeural
-8c1f37ddc1bf	오늘은 쉬고 싶어요.	오늘은 쉬고 싶어요.	1.0	3.2	ko-KR-SunHiNeural
-8c1f37ddc1bf_s	오늘은 쉬고 싶어요.	오늘은 쉬고 싶어요.	1.0	4.3	ko-KR-SunHiNeural
-8c2400975133	친구	친구	1.0	2.6	ko-KR-SunHiNeural
-8c4f4acab88d	커피 두 잔 주세요.	커피 두 잔 주세요.	1.0	3.2	ko-KR-SunHiNeural
-8c4f4acab88d_s	커피 두 잔 주세요.	커피 두 잔 주세요.	1.0	4.3	ko-KR-SunHiNeural
-8cd38cd5337e	뭐 먹고 싶어요?	뭐 먹고 싶어요?	1.0	3.0	ko-KR-SunHiNeural
-8cd38cd5337e_s	뭐 먹고 싶어요?	뭐 먹고 싶어요?	1.0	4.0	ko-KR-SunHiNeural
-8ceca7a3c5c6	똑바로	똑바로	1.0	2.6	ko-KR-SunHiNeural
-8d0f492da35b	토마토	토마토	1.0	2.6	ko-KR-SunHiNeural
-8d74d27418bc	댁	100	0.0	2.6	ko-KR-SunHiNeural
-8eb09d166479	나무	나무	1.0	2.6	ko-KR-SunHiNeural
-8f6a651214d1	과제가 너무 많아요.	과제가 너무 많아요.	1.0	3.3	ko-KR-SunHiNeural
-8f6a651214d1_s	과제가 너무 많아요.	과제가 너무 많아요.	1.0	4.4	ko-KR-SunHiNeural
-8f873495aa55	도착했어요	도착했어요.	1.0	2.9	ko-KR-SunHiNeural
-8fcd164546ce	시계	시계	1.0	2.6	ko-KR-SunHiNeural
-900e95b6971a	한국	한국	1.0	2.6	ko-KR-SunHiNeural
-91032991267e	전화	전 화	1.0	2.7	ko-KR-InJoonNeural
-91ba5d367169	성함	성함	1.0	2.6	ko-KR-SunHiNeural
-92d77633148a	아이	아이	1.0	2.6	ko-KR-SunHiNeural
-92df3d0ff5eb	많아요	많아요.	1.0	2.6	ko-KR-SunHiNeural
-92e03fc3fa3e	이거 뭐예요?	이거 뭐해요?	0.8	2.8	ko-KR-SunHiNeural
-92e03fc3fa3e_s	이거 뭐예요?	이거 뭐에요?	0.9	3.7	ko-KR-SunHiNeural
-931e06ca2a6c	드세요	드세요.	1.0	2.6	ko-KR-SunHiNeural
-934f9d188f6e	집	집.	1.0	2.6	ko-KR-SunHiNeural
-93d5745087c9	제 우산은 가방 안에 있어요.	제 우선은 가방 안에 있어요.	0.96	4.5	ko-KR-InJoonNeural
-93d5745087c9_s	제 우산은 가방 안에 있어요.	제 우선은 가방 안에 있어요.	0.96	6.2	ko-KR-InJoonNeural
-94d49e76db66	제 룸메이트는 정말 친절해요.	제 룸메이트는 정말 친절해요.	1.0	4.0	ko-KR-SunHiNeural
-94d49e76db66_s	제 룸메이트는 정말 친절해요.	제 룸메이트는 정말 친절해요.	1.0	5.4	ko-KR-SunHiNeural
-95482fd1f3a5	관리실	관리실에	0.8	2.6	ko-KR-SunHiNeural
-959f80bb167c	육	6.2	0.0	2.6	ko-KR-SunHiNeural
-95da674c3031	지하철역이 어디에 있어요?	지하철역이 어디에 있어요?	1.0	3.6	ko-KR-SunHiNeural
-95da674c3031_s	지하철역이 어디에 있어요?	지하철역이 어디에 있어요?	1.0	4.9	ko-KR-SunHiNeural
-962d4846411b	가방이 정말 예뻐요.	가방이 정말 예뻐요.	1.0	3.8	ko-KR-InJoonNeural
-962d4846411b_s	가방이 정말 예뻐요.	가방이 정말 예뻐요.	1.0	5.1	ko-KR-InJoonNeural
-963156802b45	애	네.	0.0	2.6	ko-KR-SunHiNeural
-96873754251b	왜	왜?	1.0	2.6	ko-KR-SunHiNeural
-973984f8ba07	그거 제 가방이에요.	그거 제 가방이에요.	1.0	3.3	ko-KR-SunHiNeural
-973984f8ba07_s	그거 제 가방이에요.	그거 제 가방이에요.	1.0	4.5	ko-KR-SunHiNeural
-979cd596f75f	여기요, 김치찌개 하나 주세요.	여기요 김치찌개 하나 주세요.	1.0	4.2	ko-KR-SunHiNeural
-979cd596f75f_s	여기요, 김치찌개 하나 주세요.	여기요 김칫 하나 주세요.	0.84	5.8	ko-KR-SunHiNeural
-97e7090fc660	몇 시에 만날까요?	몇 시에 만날까요?	1.0	3.1	ko-KR-SunHiNeural
-97e7090fc660_s	몇 시에 만날까요?	몇 시에 만날까요?	1.0	4.1	ko-KR-SunHiNeural
-9867f2e28aaf	빠	마	0.5	2.6	ko-KR-SunHiNeural
-987f733776e4	아빠	아빠	1.0	2.6	ko-KR-SunHiNeural
-98bb79d2c3e7	커피	커피	1.0	2.6	ko-KR-SunHiNeural
-98cf248570be	영화관 앞에서 만나요.	영화관 앞에서 만나요?	1.0	3.4	ko-KR-SunHiNeural
-98cf248570be_s	영화관 앞에서 만나요.	영화관 앞에서 만나요?	1.0	4.6	ko-KR-SunHiNeural
-99674d0313ad	네, 감사합니다.	네 감사합니다.	1.0	4.2	ko-KR-InJoonNeural
-99674d0313ad_s	네, 감사합니다.	네. 감사합니다.	1.0	5.8	ko-KR-InJoonNeural
-99a812ae7853	지금 몇 시예요?	지금 몇 시에요?	0.93	3.5	ko-KR-InJoonNeural
-99a812ae7853_s	지금 몇 시예요?	지금 몇 시에요?	0.93	4.7	ko-KR-InJoonNeural
-99e60e2e5e6c	말씀	말씀	1.0	2.6	ko-KR-SunHiNeural
-9aa18e507125	이름	이름	1.0	2.7	ko-KR-InJoonNeural
-9b3ade54ec68	지난주에 부산에 갔어요.	지난주에 부산에 갔어요.	1.0	3.5	ko-KR-SunHiNeural
-9b3ade54ec68_s	지난주에 부산에 갔어요.	지난주에 부산에 갔어요.	1.0	4.8	ko-KR-SunHiNeural
-9b47c4246aa4	같이 영화 볼까요?	같이 영화볼까요?	1.0	3.2	ko-KR-SunHiNeural
-9b47c4246aa4_s	같이 영화 볼까요?	같이 영화볼까요?	1.0	4.3	ko-KR-SunHiNeural
-9b7d34baf22d	마	마	1.0	2.6	ko-KR-SunHiNeural
-9cdbcf20ae17	음악 듣는 것을 좋아해요.	음악 듣는 것을 좋아해요.	1.0	4.1	ko-KR-InJoonNeural
-9cdbcf20ae17_s	음악 듣는 것을 좋아해요.	음악 듣는 것을 좋아해요.	1.0	5.6	ko-KR-InJoonNeural
-9dc6e23e4804	안녕히 계세요	안녕히 계세요.	1.0	2.9	ko-KR-SunHiNeural
-9dfb9dc36cff	식당	식당	1.0	2.6	ko-KR-SunHiNeural
-9e40bd930a83	편의점에서 물을 샀어요.	편의점에서 물을 샀어요.	1.0	3.6	ko-KR-SunHiNeural
-9e40bd930a83_s	편의점에서 물을 샀어요.	편의점에서 물을 샀어요.	1.0	4.9	ko-KR-SunHiNeural
-9e49f9be2c56	이건 책이 아니에요.	이건 책이 아니에요.	1.0	3.3	ko-KR-SunHiNeural
-9e49f9be2c56_s	이건 책이 아니에요.	이건 책이 아니에요.	1.0	4.4	ko-KR-SunHiNeural
-9e4bb560ba94	차	차	1.0	2.6	ko-KR-SunHiNeural
-a0066f1d7ec2	우리 반에 학생이 십 명 있어요.	우리 반에 학생이 신명이 있어요.	0.91	3.9	ko-KR-SunHiNeural
-a0066f1d7ec2_s	우리 반에 학생이 십 명 있어요.	우리 반에 학생이 신명이 있어요.	0.91	5.3	ko-KR-SunHiNeural
-a037409af536	천	천	1.0	2.6	ko-KR-SunHiNeural
-a161fbaa4f2c	저기요, 괜찮아요?	저기요 괜찮아요.	1.0	3.6	ko-KR-SunHiNeural
-a161fbaa4f2c_s	저기요, 괜찮아요?	저기요 괜찮아요.	1.0	5.9	ko-KR-InJoonNeural
-a1ad60494964	김밥은 사천 원이에요.	김밥은 4천원이에요.	0.91	3.4	ko-KR-SunHiNeural
-a1ad60494964_s	김밥은 사천 원이에요.	김밥은 4천원이에요.	0.91	4.7	ko-KR-SunHiNeural
-a1c7f5c56476	예뻐요	예뻐요.	1.0	2.6	ko-KR-SunHiNeural
-a1e42ee229fc	여기는 우리 학교예요.	여기는 우리 학교에요	0.95	3.3	ko-KR-SunHiNeural
-a1e42ee229fc_s	여기는 우리 학교예요.	여기는 오리 학교에요.	0.9	4.5	ko-KR-SunHiNeural
-a35116d52bc2	하마	하나	0.75	2.6	ko-KR-SunHiNeural
-a35e68beb381	모자	모자	1.0	2.6	ko-KR-SunHiNeural
-a3976f42ff49	월세가 얼마예요?	월세가 얼마에요?	0.94	3.1	ko-KR-SunHiNeural
-a3976f42ff49_s	월세가 얼마예요?	월세가 얼마에요?	0.94	4.2	ko-KR-SunHiNeural
-a39fb8b80637	제	그치.	0.0	2.6	ko-KR-SunHiNeural
-a44ee133f054	택배가 왔어요.	택배가 왔어요.	1.0	3.0	ko-KR-SunHiNeural
-a44ee133f054_s	택배가 왔어요.	택배가 왔어요.	1.0	3.9	ko-KR-SunHiNeural
-a485b923c07a	맛있게 드세요.	맛있게 드세요?	1.0	2.8	ko-KR-SunHiNeural
-a485b923c07a_s	맛있게 드세요.	맛있게 드세요?	1.0	3.7	ko-KR-SunHiNeural
-a53f835e0855	다음 주에 서울에 갈 거예요.	다음 주에 서울에 갈 거에요.	0.96	4.2	ko-KR-InJoonNeural
-a53f835e0855_s	다음 주에 서울에 갈 거예요.	다음 주에 서울에 갈 거에요.	0.96	5.8	ko-KR-InJoonNeural
-a58f7c29f225	이거	이가	0.75	2.6	ko-KR-SunHiNeural
-a5f63c6d0376	이 버스 수원역에 가요?	이 버스 수원역에 가요.	1.0	3.9	ko-KR-InJoonNeural
-a5f63c6d0376_s	이 버스 수원역에 가요?	이뻐 수 수원역에 가요.	0.9	5.3	ko-KR-InJoonNeural
-a7601e8a520e	선생님 댁이 어디세요?	선생님 대기 어디세요?	0.91	3.5	ko-KR-SunHiNeural
-a7601e8a520e_s	선생님 댁이 어디세요?	선생님 대기 어디세요?	0.91	4.8	ko-KR-SunHiNeural
-a7762a2330f0	시	시	1.0	2.6	ko-KR-SunHiNeural
-a842629afdcd	예	이해해.	0.17	2.6	ko-KR-SunHiNeural
-a862646b2e3b	자	자	1.0	2.6	ko-KR-SunHiNeural
-a8bb5b3f7835	만 원이에요.	만 원이에요.	1.0	3.3	ko-KR-InJoonNeural
-a8bb5b3f7835_s	만 원이에요.	만 원이에요.	1.0	4.4	ko-KR-InJoonNeural
-a90a34b50541	저는 매운 음식을 좋아해요.	저는 매운 음식을 좋아해요.	1.0	3.8	ko-KR-SunHiNeural
-a90a34b50541_s	저는 매운 음식을 좋아해요.	저는 매운 음식을 좋아해요.	1.0	5.2	ko-KR-SunHiNeural
-aa35ca789b9a	이 신발 얼마예요?	이 신발 얼마에요?	0.94	3.1	ko-KR-SunHiNeural
-aa35ca789b9a_s	이 신발 얼마예요?	이 신발 얼마에요?	0.94	4.2	ko-KR-SunHiNeural
-aa41f7661a5e	작아요	작아요.	1.0	2.6	ko-KR-SunHiNeural
-ab3873a24347	공부해요	공부해요	1.0	2.6	ko-KR-SunHiNeural
-ac0aba44aaee	정말 반가워요.	정말 단가오	0.73	3.0	ko-KR-SunHiNeural
-ac0aba44aaee_s	정말 반가워요.	정말 단가요?	0.8	4.0	ko-KR-SunHiNeural
-ac94e84f5271	어제 친구를 만났어요.	어제 친구를 만났어요.	1.0	3.5	ko-KR-SunHiNeural
-ac94e84f5271_s	어제 친구를 만났어요.	어제 친구를 만났어요.	1.0	4.7	ko-KR-SunHiNeural
-ad95f2b6dcc7	내일	내일.	1.0	2.6	ko-KR-SunHiNeural
-ada1b261da85	아르바이트	아르바이트	1.0	2.8	ko-KR-SunHiNeural
-ae0375b0ba17	만났어요	만났어요.	1.0	2.8	ko-KR-SunHiNeural
-aebd74354697	걸려요	걸려요.	1.0	2.6	ko-KR-SunHiNeural
-afdaa5738502	이 가게는 옷이 싸요.	이 가게는 옷이 싸요.	1.0	3.3	ko-KR-SunHiNeural
-afdaa5738502_s	이 가게는 옷이 싸요.	이 가게는 옷이 싸요.	1.0	4.4	ko-KR-SunHiNeural
-b09ea522edfc	다른 색깔 있어요?	다른 색깔이 있어요.	0.9	3.1	ko-KR-SunHiNeural
-b09ea522edfc_s	다른 색깔 있어요?	다른 색깔이 있어요.	0.9	4.2	ko-KR-SunHiNeural
-b09feaba2e5a	만날까요	만날까요?	1.0	2.7	ko-KR-SunHiNeural
-b1445a899069	정류장	정류장	1.0	2.7	ko-KR-SunHiNeural
-b175acc377e7	아침	아침	1.0	2.6	ko-KR-SunHiNeural
-b1b9ffdb5c93	그거	그거	1.0	2.6	ko-KR-SunHiNeural
-b2caeebbd757	옆방이 너무 시끄러워요.	역당이 너무 시끄러워요.	0.91	3.3	ko-KR-SunHiNeural
-b2caeebbd757_s	옆방이 너무 시끄러워요.	역당이 너무 시끄러워요.	0.91	4.5	ko-KR-SunHiNeural
-b343b444896c	내려요	내려요.	1.0	2.6	ko-KR-SunHiNeural
-b3576909072e	코	코	1.0	2.6	ko-KR-SunHiNeural
-b35f51fc953f	봤어요	봤어요.	1.0	2.6	ko-KR-SunHiNeural
-b38f3d075119	오빠	오빠	1.0	2.6	ko-KR-SunHiNeural
-b3937326bcf3	오늘 저녁에 친구를 만나요.	오늘 저녁에 친구를 만나요?	1.0	3.7	ko-KR-SunHiNeural
-b3937326bcf3_s	오늘 저녁에 친구를 만나요.	오늘 저녁에 친구를 만나요?	1.0	5.0	ko-KR-SunHiNeural
-b44963f67fa8	위	위	1.0	2.6	ko-KR-SunHiNeural
-b457cf07bb6c	제 이름은 민수예요.	제 이름은 민수에요.	0.95	3.8	ko-KR-InJoonNeural
-b457cf07bb6c_s	제 이름은 민수예요.	제 이름은 민수에요.	0.95	5.3	ko-KR-InJoonNeural
-b6816abd9612	화장실은 식당 옆에 있어요.	화장실은 식당 옆에 있어요.	1.0	3.8	ko-KR-SunHiNeural
-b6816abd9612_s	화장실은 식당 옆에 있어요.	화장실은 식당이 옆에 있어요.	0.94	5.3	ko-KR-SunHiNeural
-b893b34bace7	방이 작지만 조용해요.	당이 작지만 조용해요.	0.95	3.4	ko-KR-SunHiNeural
-b893b34bace7_s	방이 작지만 조용해요.	당이 작지만 조용해요.	0.95	4.7	ko-KR-SunHiNeural
-b8b2f2af8573	워	우와.	0.25	2.6	ko-KR-SunHiNeural
-b933922e49c0	김치	김치	1.0	2.6	ko-KR-SunHiNeural
-b99482aa55a2	이유	이요.	0.75	2.6	ko-KR-SunHiNeural
-b99a86feb35f	내일 근무를 바꿀 수 있어요?	내일 근로를 바꿀 수 있어요?	0.93	3.8	ko-KR-SunHiNeural
-b99a86feb35f_s	내일 근무를 바꿀 수 있어요?	내일 근무를 바꿀 수 있어요?	1.0	5.2	ko-KR-SunHiNeural
-ba7659781416	커요	커요.	1.0	2.8	ko-KR-InJoonNeural
-baacc077ca3a	네, 시계예요.	네. 시계에요.	0.9	3.9	ko-KR-InJoonNeural
-baacc077ca3a_s	네, 시계예요.	네 시계요.	0.8	5.4	ko-KR-InJoonNeural
-bad639cc7a6f	지금 집에 있어요.	지금 집에 있어요.	1.0	3.6	ko-KR-InJoonNeural
-bad639cc7a6f_s	지금 집에 있어요.	지금 집에 있어요.	1.0	4.9	ko-KR-InJoonNeural
-bb99fe1a9bfe	샀어요	샀어요.	1.0	2.9	ko-KR-InJoonNeural
-bbb794c8d4f6	도서관에서 책을 읽어요.	도서관에서 책을 읽어요?	1.0	3.5	ko-KR-SunHiNeural
-bbb794c8d4f6_s	도서관에서 책을 읽어요.	도서관에서 책을 읽어요?	1.0	4.7	ko-KR-SunHiNeural
-bbef14c0a2a0	나중에 문자 보낼게요.	나중에 문자 보낼게요.	1.0	3.4	ko-KR-SunHiNeural
-bbef14c0a2a0_s	나중에 문자 보낼게요.	나중에 문자 보낼게요.	1.0	4.6	ko-KR-SunHiNeural
-bc08fbb2bad9	역 앞에서 기다릴게요.	역 앞에서 기다릴게요.	1.0	3.4	ko-KR-SunHiNeural
-bc08fbb2bad9_s	역 앞에서 기다릴게요.	역 앞에서 기다릴게요.	1.0	4.5	ko-KR-SunHiNeural
-bc30c10c3ce3	어제 영화를 봤어요.	어제 영화를 봤어요.	1.0	3.3	ko-KR-SunHiNeural
-bc30c10c3ce3_s	어제 영화를 봤어요.	어제 영화를 봤어요.	1.0	4.4	ko-KR-SunHiNeural
-bc89708ff7b3	알	아이	0.5	2.6	ko-KR-SunHiNeural
-bcc522c5bfa1	저기요	저기요	1.0	2.6	ko-KR-SunHiNeural
-bd987192c259	배가 아파서 못 먹었어요.	배가 아파서 못 먹었어요.	1.0	4.1	ko-KR-InJoonNeural
-bd987192c259_s	배가 아파서 못 먹었어요.	배가 아파서 못 먹었어요.	1.0	5.6	ko-KR-InJoonNeural
-bda0208a5c6a	십	시	0.67	2.6	ko-KR-SunHiNeural
-bdfc4578247e	이거 선생님 책이에요.	이거 선생님 특유에요.	0.86	3.8	ko-KR-InJoonNeural
-bdfc4578247e_s	이거 선생님 책이에요.	이거 선생님 특이해요.	0.82	5.2	ko-KR-InJoonNeural
-be0f3f883804	토요일은 제 쉬는 날이에요.	토요일은 제 쉬는 날이에요.	1.0	3.8	ko-KR-SunHiNeural
-be0f3f883804_s	토요일은 제 쉬는 날이에요.	토요일은 제 쉬는 날이에요.	1.0	5.1	ko-KR-SunHiNeural
-be4c38c2050e	회사원	회사원	1.0	2.6	ko-KR-SunHiNeural
-be6b235a0274	아	아	1.0	2.6	ko-KR-SunHiNeural
-be8a7912294f	물	뭘.	0.67	2.6	ko-KR-SunHiNeural
-bec20f9740f7	갔어요	갔어요.	1.0	2.6	ko-KR-SunHiNeural
-beef1b9f6048	몇 호예요?	몇 화에요?	0.78	3.1	ko-KR-InJoonNeural
-beef1b9f6048_s	몇 호예요?	몇 초에요?	0.78	4.1	ko-KR-InJoonNeural
-bf49f397869c	사장님, 오늘 조금 늦을 것 같아요.	사장님 오늘 조금 늦을 거 같아요.	0.97	4.8	ko-KR-SunHiNeural
-bf49f397869c_s	사장님, 오늘 조금 늦을 것 같아요.	사장님 오늘 조금 늦을 거 같아요.	0.97	6.7	ko-KR-SunHiNeural
-bf9a528f2bc8	마감	마감	1.0	2.6	ko-KR-SunHiNeural
-bfd360c3b501	나라	나라	1.0	2.6	ko-KR-SunHiNeural
-c00869777165	기차	기차	1.0	2.6	ko-KR-SunHiNeural
-c01bb55b8907	안	한	0.67	2.6	ko-KR-SunHiNeural
-c0f3f8c5f482	학교 앞에 카페가 있어요.	학교 앞에 카페가 있어요.	1.0	4.0	ko-KR-InJoonNeural
-c0f3f8c5f482_s	학교 앞에 카페가 있어요.	학교 앞에 카피가 있어요.	0.96	5.5	ko-KR-InJoonNeural
-c12837501332	와이파이 비밀번호가 뭐예요?	와이파이 비밀번호가 뭐에요?	0.96	3.9	ko-KR-SunHiNeural
-c12837501332_s	와이파이 비밀번호가 뭐예요?	와이파이 비밀번호가 뭐에요?	0.96	5.3	ko-KR-SunHiNeural
-c187b5befafb	마셨어요	마셨어요.	1.0	2.7	ko-KR-SunHiNeural
-c39acc2d68a6	기사님, 여기서 내릴게요.	기사님 여기서 내릴께요.	0.95	4.8	ko-KR-InJoonNeural
-c39acc2d68a6_s	기사님, 여기서 내릴게요.	기사님 여기서 내릴께요.	0.95	6.7	ko-KR-InJoonNeural
-c3c6d557d9a2	우산	오산	0.8	2.6	ko-KR-SunHiNeural
-c47dadc5d8f5	안녕히 가세요	안녕히 가세요.	1.0	2.9	ko-KR-SunHiNeural
-c5b0286b5410	교수님, 하나 여쭤봐도 될까요?	교수님 하나 여쭤봐도 될까요?	1.0	4.4	ko-KR-SunHiNeural
-c5b0286b5410_s	교수님, 하나 여쭤봐도 될까요?	교수님 하나 여쭤봐도 될까요?	1.0	6.0	ko-KR-SunHiNeural
-c65bf962bbe6	싫어해요	싫어해요.	1.0	2.6	ko-KR-SunHiNeural
-c664396c5362	짜	자	0.5	2.6	ko-KR-SunHiNeural
-c66b320c9c58	성함이 어떻게 되세요?	섬이 어떠게 되세요?	0.81	3.8	ko-KR-InJoonNeural
-c66b320c9c58_s	성함이 어떻게 되세요?	성함이 어떻게 되세요?	1.0	5.3	ko-KR-InJoonNeural
-c6d6e215b12b	팔	팔	1.0	2.6	ko-KR-SunHiNeural
-c8df8653b763	잠시만	잠시만	1.0	2.8	ko-KR-SunHiNeural
-c94aacfd9480	다	다	1.0	2.6	ko-KR-SunHiNeural
-ca5eea5b5296	넷	넷.	1.0	2.6	ko-KR-SunHiNeural
-cb55854f7b5f	조용해요	조용히 해요.	0.82	2.6	ko-KR-SunHiNeural
-cbf1df6a6de2	의	왜?	0.5	2.6	ko-KR-SunHiNeural
-ccf0c3a2f89b	아니요	아니요.	1.0	2.6	ko-KR-SunHiNeural
-cd6e3ede43e1	저는 여섯 시에 퇴근해요.	저는 6시에 퇴근해요.	0.78	3.6	ko-KR-SunHiNeural
-cd6e3ede43e1_s	저는 여섯 시에 퇴근해요.	저는 6시에 퇴근해요.	0.78	4.8	ko-KR-SunHiNeural
-cda0a93acda4	몰라요	몰라요.	1.0	2.6	ko-KR-SunHiNeural
-cdd53fc66531	맛있어요	맛있어요.	1.0	2.7	ko-KR-SunHiNeural
-ce05326dba5e	하	하	1.0	2.6	ko-KR-SunHiNeural
-cfc1e124a640	열	열	1.0	2.6	ko-KR-SunHiNeural
-cfc2df5c1da9	여우	여오	0.75	2.9	ko-KR-InJoonNeural
-d0235a87ebdc	어제 뭐 했어요?	어제 뭐 했어요?	1.0	2.9	ko-KR-SunHiNeural
-d0235a87ebdc_s	어제 뭐 했어요?	어제 뭐 했어요.	1.0	3.9	ko-KR-SunHiNeural
-d07eb370764a	지금	지금	1.0	2.6	ko-KR-SunHiNeural
-d168e8ff6187	먹었어요	먹었어요.	1.0	2.7	ko-KR-SunHiNeural
-d2705e43df7f	일해요	일해요.	1.0	2.6	ko-KR-SunHiNeural
-d360a51bd357	이게 무슨 뜻이에요?	이게 무슨 뜻이에요?	1.0	3.2	ko-KR-SunHiNeural
-d360a51bd357_s	이게 무슨 뜻이에요?	이게 무슨 뜻이에요?	1.0	4.3	ko-KR-SunHiNeural
-d3b807bb5fa1	갈아타요	갈아타요?	1.0	2.6	ko-KR-SunHiNeural
-d4300bfc9287	친구가 영화를 봐요.	친구가 영화를 봐요.	1.0	3.2	ko-KR-SunHiNeural
-d4300bfc9287_s	친구가 영화를 봐요.	친구가 영화를 봐요.	1.0	4.4	ko-KR-SunHiNeural
-d45c7bed6aa9	기침	기침	1.0	3.0	ko-KR-InJoonNeural
-d4b885f8f51e	주말에도 일할 수 있어요.	주말에도 일할 수 있어요.	1.0	3.5	ko-KR-SunHiNeural
-d4b885f8f51e_s	주말에도 일할 수 있어요.	주말에도 일할 수 있어요.	1.0	4.8	ko-KR-SunHiNeural
-d554c4ddca7f	영화관	영화관	1.0	2.7	ko-KR-SunHiNeural
-d79eba70db4e	주무세요	주무세요.	1.0	2.6	ko-KR-SunHiNeural
-d7d9909ee53d	열쇠	열쇠.	1.0	2.6	ko-KR-SunHiNeural
-d8ea17277cc0	감사합니다, 안녕히 계세요.	감사합니다. 안녕히 계세요.	1.0	4.7	ko-KR-InJoonNeural
-d8ea17277cc0_s	감사합니다, 안녕히 계세요.	감사합니다. 안녕히 계세요.	1.0	6.5	ko-KR-InJoonNeural
-d8f324428d3c	학생	학생	1.0	2.6	ko-KR-SunHiNeural
-d9090bbedcf7	아파요	아파요	1.0	3.0	ko-KR-InJoonNeural
-d973a47f5dd7	강의실	강의실	1.0	2.9	ko-KR-InJoonNeural
-d9b814dca800	아침을 안 먹어요.	아침을 안 먹어요?	1.0	3.1	ko-KR-SunHiNeural
-d9b814dca800_s	아침을 안 먹어요.	아침을 안 먹어요?	1.0	4.1	ko-KR-SunHiNeural
-db4c67791f35	다시 한 번 말해 주세요.	다시 한번 말해주세요	1.0	3.9	ko-KR-InJoonNeural
-db4c67791f35_s	다시 한 번 말해 주세요.	다시 한번 말해주세요.	1.0	5.3	ko-KR-InJoonNeural
-db4f4e1c81a6	까	까	1.0	2.6	ko-KR-SunHiNeural
-db5a39ac6e6d	같이 점심 먹을까요?	같이 점심 먹을까요?	1.0	3.9	ko-KR-InJoonNeural
-db5a39ac6e6d_s	같이 점심 먹을까요?	같이 점심 먹을까요?	1.0	5.4	ko-KR-InJoonNeural
-db861cdcc2b9	잠깐만요	잠깐만요.	1.0	2.8	ko-KR-SunHiNeural
-dbe0879714ed	무슨 뜻이에요	무슨 뜻이에요?	1.0	3.0	ko-KR-SunHiNeural
-dcbadde3184d	학교	학교	1.0	2.6	ko-KR-SunHiNeural
-dd0ab4ab02c8	친구가 우리 집에 와요.	친구가 우리 집에 와요.	1.0	3.3	ko-KR-SunHiNeural
-dd0ab4ab02c8_s	친구가 우리 집에 와요.	친구가 우리 집에 와요.	1.0	4.5	ko-KR-SunHiNeural
-de96f038dd16	알겠어요	알겠어요.	1.0	2.7	ko-KR-SunHiNeural
-deb2e6ed1b9f	열이 나고 기침을 해요.	열린하고 기침을 해요.	0.86	3.8	ko-KR-InJoonNeural
-deb2e6ed1b9f_s	열이 나고 기침을 해요.	열린하고 기침을 해요.	0.86	5.2	ko-KR-InJoonNeural
-df186d09302b	학교까지 얼마나 걸려요?	학교까지 얼마나 걸려요?	1.0	3.6	ko-KR-SunHiNeural
-df186d09302b_s	학교까지 얼마나 걸려요?	학교까지 얼마나 걸려?	0.91	4.9	ko-KR-SunHiNeural
-df3388cfe4d6	갈 거예요	갈 거에요?	0.89	2.7	ko-KR-SunHiNeural
-df6ec8eaea3a	아파서 학교에 못 갔어요.	아파서 학교에 못 갔어요.	1.0	3.6	ko-KR-SunHiNeural
-df6ec8eaea3a_s	아파서 학교에 못 갔어요.	아파서 학교에 못 갔어요.	1.0	4.9	ko-KR-SunHiNeural
-e04f6b9b9e57	앞	아	0.67	2.6	ko-KR-SunHiNeural
-e1654d4d968b	손님, 뭐 드릴까요?	손님 뭐 들을까요?	0.83	4.4	ko-KR-InJoonNeural
-e1654d4d968b_s	손님, 뭐 드릴까요?	손님 뭐 들을까요?	0.83	6.1	ko-KR-InJoonNeural
-e178e52a7d2b	비빔밥 하나 주세요.	비빔밥 하나 주세요	1.0	3.8	ko-KR-InJoonNeural
-e178e52a7d2b_s	비빔밥 하나 주세요.	비빔밥 하나 주스에요	0.9	5.1	ko-KR-InJoonNeural
-e2189b700c10	했어요	했어요.	1.0	2.6	ko-KR-SunHiNeural
-e3525116b83f	와요	와요.	1.0	2.6	ko-KR-SunHiNeural
-e5a7eb85d3c1	재미있었어요	재미있었어요.	1.0	3.0	ko-KR-SunHiNeural
-e671aa59d990	다시	다시	1.0	2.5	ko-KR-SunHiNeural
-e67a764b9d01	김치찌개	김치찌개	1.0	2.8	ko-KR-SunHiNeural
-e6cc255f8f47	영화	영화	1.0	2.6	ko-KR-SunHiNeural
-e7071ff21559	편의점 옆에 은행이 있어요.	편의점 옆에 은행이 있어요.	1.0	4.3	ko-KR-InJoonNeural
-e7071ff21559_s	편의점 옆에 은행이 있어요.	편의점 옆에 은행이 있어요.	1.0	5.8	ko-KR-InJoonNeural
-e78498f904fe	하나	하나	1.0	2.6	ko-KR-SunHiNeural
-e7af1ffe6f75	편의점	편의점	1.0	2.6	ko-KR-SunHiNeural
-e8762a25919b	요	유호	0.25	2.6	ko-KR-SunHiNeural
-e8a9724a92d7	커피를 마셔요.	커피를 마셔요.	1.0	2.9	ko-KR-SunHiNeural
-e8a9724a92d7_s	커피를 마셔요.	커피를 마셔요.	1.0	3.9	ko-KR-SunHiNeural
-e8b701a28309	구	9	0.0	2.6	ko-KR-SunHiNeural
-e9a95de0add7	안녕하세요	안녕하세요	1.0	2.7	ko-KR-SunHiNeural
-ea869d7cd791	열두 시에 점심을 먹어요.	12시에 점심을 먹어요.	0.8	4.1	ko-KR-InJoonNeural
-ea869d7cd791_s	열두 시에 점심을 먹어요.	12시에 점심을 먹어야	0.76	5.6	ko-KR-InJoonNeural
-eaa640aced91	몇	몇	1.0	2.6	ko-KR-SunHiNeural
-eb9f90dfacea	똑바로 가세요.	똑바로 가세요?	1.0	2.9	ko-KR-SunHiNeural
-eb9f90dfacea_s	똑바로 가세요.	똑바로 가세요?	1.0	3.8	ko-KR-SunHiNeural
-ec067747603a	병원에 가야 해요.	병원에 가야 해요.	1.0	3.1	ko-KR-SunHiNeural
-ec067747603a_s	병원에 가야 해요.	병원에 가야 해요.	1.0	4.1	ko-KR-SunHiNeural
-ec488add9d1d	사	4	0.0	2.6	ko-KR-SunHiNeural
-ed1703dc9415	연세	연쇄.	0.8	2.6	ko-KR-SunHiNeural
-ee2ea79dfacb	전화번호가 몇 번이에요?	전화번호가 몇 번이에요?	1.0	3.4	ko-KR-SunHiNeural
-ee2ea79dfacb_s	전화번호가 몇 번이에요?	전화번호가 몇 번이에요?	1.0	4.6	ko-KR-SunHiNeural
-efd23dd5edb2	가	가	1.0	2.6	ko-KR-SunHiNeural
-f03178980e64	오늘 강의실이 바뀌었어요.	오늘 강의실이 바뀌었어요.	1.0	4.2	ko-KR-InJoonNeural
-f03178980e64_s	오늘 강의실이 바뀌었어요.	오늘 강의실이 바꼈어요.	0.88	5.8	ko-KR-InJoonNeural
-f057d9a7672a	오늘 약속이 있어요.	오늘 약속이 있어요.	1.0	3.6	ko-KR-InJoonNeural
-f057d9a7672a_s	오늘 약속이 있어요.	오늘 약속이 있어요.	1.0	4.8	ko-KR-InJoonNeural
-f127ef73497d	연구실	연구실	1.0	2.7	ko-KR-SunHiNeural
-f189eae288b4	형은 회사에서 일해요.	형은 회사에서 일해요.	1.0	3.3	ko-KR-SunHiNeural
-f189eae288b4_s	형은 회사에서 일해요.	형은 회사에서 일해요.	1.0	4.5	ko-KR-SunHiNeural
-f2480f5009aa	민수 씨는 한국 사람이에요.	민수 씨는 한국 사람이에요.	1.0	3.7	ko-KR-SunHiNeural
-f2480f5009aa_s	민수 씨는 한국 사람이에요.	민수 씨는 한국 사람이예요.	0.96	5.0	ko-KR-SunHiNeural
-f308269d300a	목이 아파요.	목이 아파요.	1.0	3.3	ko-KR-InJoonNeural
-f308269d300a_s	목이 아파요.	목이 아파요.	1.0	4.5	ko-KR-InJoonNeural
-f38f87e1cdc4	퇴근해요	퇴근해요.	1.0	2.6	ko-KR-SunHiNeural
-f3e20ae188e5	저는 학생이에요.	저는 학생이에요.	1.0	3.3	ko-KR-InJoonNeural
-f3e20ae188e5_s	저는 학생이에요.	저는 학생회에요.	0.88	4.5	ko-KR-InJoonNeural
-f3fc28f45912	매워요	매워요.	1.0	2.6	ko-KR-SunHiNeural
-f414c5a8e49c	이거 제 휴대폰이에요.	이것 제 휴대폰이요.	0.84	3.5	ko-KR-SunHiNeural
-f414c5a8e49c_s	이거 제 휴대폰이에요.	이거 제 휴대폰이에요.	1.0	4.7	ko-KR-SunHiNeural
-f429d5becc35	도와주세요	도와주세요	1.0	2.7	ko-KR-SunHiNeural
-f4c43048aba5	벌써 도착했어요.	벌써 도착했어요.	1.0	3.4	ko-KR-SunHiNeural
-f4c43048aba5_s	벌써 도착했어요.	벌써 도착했어요.	1.0	4.6	ko-KR-SunHiNeural
-f4fe174eefaf	자요	사요?	0.75	2.6	ko-KR-SunHiNeural
-f5b2db88e9ac	아홉 시에 시작해요.	아홉 시에 시작해요	1.0	3.7	ko-KR-InJoonNeural
-f5b2db88e9ac_s	아홉 시에 시작해요.	아 혹시 시작해요.	0.83	4.4	ko-KR-SunHiNeural
-f5d9de961cd8	고장 났어요	고장 났어요	1.0	2.9	ko-KR-SunHiNeural
-f64ab5490128	지금 뭐 해요?	지금 뭐 해요.	1.0	3.4	ko-KR-InJoonNeural
-f64ab5490128_s	지금 뭐 해요?	지금 뭐에요?	0.82	4.6	ko-KR-InJoonNeural
-f67db198d7e8	연세가 어떻게 되세요?	연세가 어떻게 되세요?	1.0	3.9	ko-KR-InJoonNeural
-f67db198d7e8_s	연세가 어떻게 되세요?	연세가 어떻게 되세요?	1.0	5.4	ko-KR-InJoonNeural
-f6e1218a5cc7	시급이 얼마예요?	시급이 얼마에요?	0.94	3.5	ko-KR-InJoonNeural
-f6e1218a5cc7_s	시급이 얼마예요?	시급이 얼마에요?	0.94	4.8	ko-KR-InJoonNeural
-f7aa9bd92c5b	손님	손님	1.0	2.6	ko-KR-SunHiNeural
-f7de8479218d	사람	사랑	0.8	2.6	ko-KR-SunHiNeural
-f8073b892a7d	만나서 반가워요.	만나서 반가워요.	1.0	3.1	ko-KR-SunHiNeural
-f8073b892a7d_s	만나서 반가워요.	만나서 반가워요?	1.0	4.2	ko-KR-SunHiNeural
-f8bf7a93905e	둘	둘	1.0	2.6	ko-KR-SunHiNeural
-f8df78512f6f	기숙사	기숙사	1.0	2.6	ko-KR-SunHiNeural
-f8e6518387a4	약국이 어디에 있어요?	약국이 어디에 있어요?	1.0	3.4	ko-KR-SunHiNeural
-f8e6518387a4_s	약국이 어디에 있어요?	약국이 어디에 있어요?	1.0	4.6	ko-KR-SunHiNeural
-fa3129059e4c	영화가 정말 재미있었어요.	영화가 정말 재미있었어요.	1.0	3.8	ko-KR-SunHiNeural
-fa3129059e4c_s	영화가 정말 재미있었어요.	영화가 정말 재미있었어요.	1.0	5.2	ko-KR-SunHiNeural
-faac263f42e1	사요	사요	1.0	2.4	ko-KR-SunHiNeural
-fb0483e34b84	취미	취미	1.0	2.6	ko-KR-SunHiNeural
-fb28891bf148	물이에요?	무리에요.	0.78	2.6	ko-KR-SunHiNeural
-fb28891bf148_s	물이에요?	무리에요.	0.78	3.4	ko-KR-SunHiNeural
-fb9e0fb2441b	여보세요	여보세요.	1.0	2.6	ko-KR-SunHiNeural
-fbbd1d1816e0	다섯	다 서!	0.8	2.6	ko-KR-InJoonNeural
-fc3e0a447cd2	네, 알겠어요.	네. 알겠어요.	1.0	4.1	ko-KR-InJoonNeural
-fc3e0a447cd2_s	네, 알겠어요.	네. 알겠어요.	1.0	5.6	ko-KR-InJoonNeural
-fcf2ac6fdc00	바빠요	바빠요!	1.0	3.0	ko-KR-InJoonNeural
-fd962d4f43d4	이거 주세요.	이거 주세요	1.0	2.7	ko-KR-SunHiNeural
-fd962d4f43d4_s	이거 주세요.	이거 주세요.	1.0	3.6	ko-KR-SunHiNeural
-fda54e360f1d	도착하면 연락 주세요.	도착하면 연락 주세요.	1.0	3.5	ko-KR-SunHiNeural
-fda54e360f1d_s	도착하면 연락 주세요.	도착하면 연락 주세요.	1.0	4.7	ko-KR-SunHiNeural
-fdeb80b15281	다음 주에 시험이 있어요.	다음 주에 시험이 있어요.	1.0	3.5	ko-KR-SunHiNeural
-fdeb80b15281_s	다음 주에 시험이 있어요.	다음 주에 시험이 있어요.	1.0	4.7	ko-KR-SunHiNeural
-fdf3c918c694	일곱 시에 일어나요.	일곱 시에 일어나요.	1.0	3.2	ko-KR-SunHiNeural
-fdf3c918c694_s	일곱 시에 일어나요.	일곱 시에 일어나요.	1.0	4.3	ko-KR-SunHiNeural
-ff7558d54cc0	이 티셔츠는 너무 작아요.	이 티셔츠는 너무 작아요.	1.0	4.2	ko-KR-InJoonNeural
-ff7558d54cc0_s	이 티셔츠는 너무 작아요.	이 티셔츠는 너무 작아요.	1.0	5.8	ko-KR-InJoonNeural
+001a89099a51	과제	과제	1.0	2.6	kept
+03455cfc9f61	다섯 시는 어때요?	다섯 시는 어때요?	1.0	3.6	kept
+03455cfc9f61_s	다섯 시는 어때요?	다섯 시는 어때요?	1.0	4.0	kept
+04d7c9bd630d	저는 도서관에서 책을 읽어요.	저는 도서관에서 책을 읽어요?	1.0	3.9	kept
+04d7c9bd630d_s	저는 도서관에서 책을 읽어요.	저는 도서관에서 책을 읽어요.	1.0	5.4	kept
+05000ee6cdb0	이거 맛있어요?	이거 맛있어요.	1.0	3.0	kept
+05000ee6cdb0_s	이거 맛있어요?	이거 맛있어요.	1.0	4.0	kept
+0563a514318a	라	라	1.0	2.6	kept
+059ee37f8be7	뭐	뭐	1.0	2.6	kept
+05a40b3a46ee	역	이억	0.4	2.6	kept
+05a95a7cfe78	저녁	저녁	1.0	2.8	kept
+06a5309a7b16	택배	택배	1.0	2.6	kept
+06cf3e90de6e	일	일	1.0	2.6	kept
+06f2845ec6e2	월세	월세	1.0	2.6	kept
+076925c57174	메뉴	메뉴	1.0	2.8	kept
+07d25c799d09	두부	두부	1.0	2.6	kept
+085e7d25f844	감기	감기	1.0	2.6	kept
+08906e22553d	으	느	0.5	2.6	kept
+08f6c357e084	제 친구는 의사예요.	제 친구는 의사예요.	1.0	3.4	kept
+08f6c357e084_s	제 친구는 의사예요.	제 친구는 의사에요.	0.94	4.6	kept
+0ab81acc4b0e	교수님께서 연구실에 계세요.	교수님께서 연구실에 계세요.	1.0	3.8	kept
+0ab81acc4b0e_s	교수님께서 연구실에 계세요.	교수님께서 연구실에 계세요.	1.0	5.3	kept
+0b4370591e73	출근해요	출근해요.	1.0	2.6	kept
+0b4af546d3ed	셋	셋.	1.0	2.6	kept
+0cdb0e17f29a	병원	병원	1.0	2.9	kept
+0d11962a880b	미안해요, 조금 늦을 것 같아요.	미안해요. 조금 늦을 거 같아요.	0.97	4.5	kept
+0d11962a880b_s	미안해요, 조금 늦을 것 같아요.	미안해요. 조금 늦을 거 같아요.	0.97	6.2	kept
+0d6c2b633b83	색깔	색깔	1.0	2.6	kept
+0dfb66d7b9e9	한국 노래를 자주 들어요.	한국 노래를 자주 들어요.	1.0	3.5	kept
+0dfb66d7b9e9_s	한국 노래를 자주 들어요.	한국 노래를 자주 들어요.	1.0	4.8	kept
+0e3301813779	어머니	어머니	1.0	2.6	kept
+0e360b40c084	저는 선생님이 아니에요.	저는 선생님이 아니에요	1.0	3.5	kept
+0e360b40c084_s	저는 선생님이 아니에요.	저는 선생님이 아니에요.	1.0	4.7	kept
+0ffcb2dc1b9b	이 음식은 너무 매워요.	이 음식은 너무 매워요.	1.0	4.1	kept
+0ffcb2dc1b9b_s	이 음식은 너무 매워요.	이 음식은 너무 매워요.	1.0	5.6	kept
+10d6c7e6e1c9	계세요	기세요	0.83	2.6	kept
+110abbe28039	저는 운동을 싫어해요.	저는 운동을 싫어해요.	1.0	3.4	kept
+110abbe28039_s	저는 운동을 싫어해요.	저는 운동을 싫어해요.	1.0	4.6	kept
+112941bdae0a	가수	가수	1.0	2.6	kept
+11d1982d7082	연락	연락	1.0	2.6	kept
+1244a68987a1	죄송합니다, 괜찮아요?	죄송합니다. 괜찮아요.	1.0	4.4	kept
+1244a68987a1_s	죄송합니다, 괜찮아요?	죄송합니다요.	0.64	6.1	kept
+126a593010be	이 근처에 식당이 없어요.	이 근처에 식당이 없어요.	1.0	4.2	kept
+126a593010be_s	이 근처에 식당이 없어요.	이 근처에 식당이 없어요.	1.0	5.8	kept
+1283cbaee724	밥	밥	1.0	2.6	kept
+131c83b2cfb5	이 약을 하루에 세 번 드세요.	이 약을 하루에 세 번 드세요.	1.0	3.7	kept
+131c83b2cfb5_s	이 약을 하루에 세 번 드세요.	이 약을 하루에 세 번 드세요.	1.0	5.0	kept
+1380d9145ebb	사과	살 거야.	0.43	2.6	kept
+142a30281546	가방	가방	1.0	3.0	kept
+144d73ab9595	문자	문자	1.0	2.6	kept
+14b73293e7e0	세탁기	세탁기	1.0	2.7	kept
+14f8a04bab19	지하철	지하철	1.0	2.7	kept
+153ff43ea00e	우유	오히려	0.17	2.6	kept
+16f66ac24b86	오른쪽	오른쪽	1.0	2.6	kept
+191475fa6074	약국	약국	1.0	2.6	kept
+196c53c8f98a	어	어	1.0	2.6	kept
+19c5ec746362	해요	해요.	1.0	2.6	kept
+19eec08acc95	만나서 반가워요	만나서 반가워요.	1.0	3.1	kept
+1b53e275a33a	비누	비누	1.0	2.6	kept
+1c0c0a461d57	어느 나라 사람이에요?	어느 나라 사람이에요?	1.0	3.2	kept
+1c0c0a461d57_s	어느 나라 사람이에요?	어느 나라 사람이에요?	1.0	4.3	kept
+1c1ada074b17	토요일 오후는 어때요?	토요일 오후는 어때요?	1.0	3.4	kept
+1c1ada074b17_s	토요일 오후는 어때요?	토요일 오후는 어때요?	1.0	4.6	kept
+1c594bb5af0b	저거	저거	1.0	2.9	kept
+1c7904672e2f	내일 시간 있어요?	내일 시간이 있어요.	0.89	3.2	kept
+1c7904672e2f_s	내일 시간 있어요?	내일 시간이 있어요.	0.89	4.3	kept
+1d6b498ac790	이 커피는 삼천 원이에요.	이 커피는 3천원이예요.	0.83	3.6	kept
+1d6b498ac790_s	이 커피는 삼천 원이에요.	이 커피는 3천원이예요.	0.83	4.9	kept
+1dcbc740f342	천천히	천천히	1.0	2.6	kept
+1df58d3fbec5	오늘은 바빠요.	오늘은 봤다요?	0.8	3.0	kept
+1df58d3fbec5_s	오늘은 바빠요.	오늘은 다 따요?	0.86	4.0	kept
+1e4ab85f0d9d	여행을 정말 좋아해요.	여행을 정말 좋아해요.	1.0	3.9	kept
+1e4ab85f0d9d_s	여행을 정말 좋아해요.	여행을 정말 좋아해요.	1.0	5.4	kept
+1e9ec64a8950	어디에 가세요?	어디에 가세요?	1.0	3.3	kept
+1e9ec64a8950_s	어디에 가세요?	어디에 가세요?	1.0	4.5	kept
+1f43a021e042	늦어서 죄송해요.	늦어서 죄송해요.	1.0	3.1	kept
+1f43a021e042_s	늦어서 죄송해요.	늦어서 죄송해요.	1.0	4.2	kept
+1ff7914bebc9	쉬는 날	쉬는 날	1.0	2.7	kept
+207adb179692	아니요, 괜찮아요.	아니요, 괜찮아요.	1.0	3.6	kept
+207adb179692_s	아니요, 괜찮아요.	아니요 괜찮아요.	1.0	4.9	kept
+20931411a95f	싸요	싸요.	1.0	2.6	kept
+20bdcf5c8f8b	와	와	1.0	2.6	kept
+20bff68f55c6	사장님께 말씀드릴게요.	사장님께 말씀드릴게요.	1.0	3.7	kept
+20bff68f55c6_s	사장님께 말씀드릴게요.	사장님께 말씀드릴게요.	1.0	5.1	kept
+21ba070b23b6	원	원	1.0	2.6	kept
+227850d2e134	도서관에서 같이 공부할까요?	도서관에서 같이 공부할까요?	1.0	3.9	kept
+227850d2e134_s	도서관에서 같이 공부할까요?	도서관에서 같이 공부할까요?	1.0	5.3	kept
+22bed844302f	내일 수업이 있어요.	내일 수업이 있어요.	1.0	3.3	kept
+22bed844302f_s	내일 수업이 있어요.	내일 수업이 있어요.	1.0	4.4	kept
+22cd875fb70d	암	안	0.67	2.6	kept
+23200971c8cc	일어나요	일어나요.	1.0	2.6	kept
+23268133c4d6	가요	가요.	1.0	2.6	kept
+23913a525f1e	교수님	교수님	1.0	2.6	kept
+23c6a8b9d892	방 열쇠를 잃어버렸어요.	방 열쇠를 잃어버렸어요.	1.0	3.7	kept
+23c6a8b9d892_s	방 열쇠를 잃어버렸어요.	반 열쇠를 잃어버렸어요.	0.96	5.0	kept
+249497667b4a	여보세요, 민수 씨 계세요?	여보세요. 민수 씨 계세요.	1.0	4.9	kept
+249497667b4a_s	여보세요, 민수 씨 계세요?	여보세요. 민수 씨 계세요.	1.0	6.8	kept
+251dd9abf191	친구는 회사원이에요.	친구는 회사원이에요.	1.0	3.3	kept
+251dd9abf191_s	친구는 회사원이에요.	친구는 히사운이에요.	0.9	4.5	kept
+25a032c9069f	앗	앗	1.0	2.6	kept
+266539c75d9a	커피를 너무 많이 마셨어요.	커피를 너무 많이 마셨어요.	1.0	3.7	kept
+266539c75d9a_s	커피를 너무 많이 마셨어요.	커피를 너무 많이 마셨어요.	1.0	5.0	kept
+27122a203445	이거 얼마예요?	이거 얼마에요?	0.92	3.4	kept
+27122a203445_s	이거 얼마예요?	이거 얼마에요?	0.92	4.6	kept
+27916ecc49ec	싸	싸	1.0	2.6	kept
+27a36aee2831	은행	은행	1.0	2.6	kept
+27e0fcb7ba87	영어로 말해도 돼요?	영어로 말해도 돼요?	1.0	3.6	kept
+27e0fcb7ba87_s	영어로 말해도 돼요?	영어로 말해도 돼요?	1.0	4.8	kept
+288d14be0365	룸메이트	룸메이트	1.0	2.7	kept
+2892aebc57e1	말해 주세요	말해주세요	1.0	2.7	kept
+29e6fd0f9e65	주말에 뭐 해요?	주말에 뭐 해요?	1.0	2.9	kept
+29e6fd0f9e65_s	주말에 뭐 해요?	주말에 뭐 해요?	1.0	3.9	kept
+2ab096e7f48b	질문	질문	1.0	2.6	kept
+2b582952069c	바다	바다	1.0	2.7	kept
+2b7beade8d6b	좀 깎아 주세요.	좀 깎아주세요	1.0	3.1	kept
+2b7beade8d6b_s	좀 깎아 주세요.	줌 깎아주세요.	0.93	4.1	kept
+2bdce5e8cc42	오늘	오늘.	1.0	2.6	kept
+2c0e95dc0ba9	일찍 자요.	일찍 차요.	0.9	2.8	kept
+2c0e95dc0ba9_s	일찍 자요.	일찍 차요.	0.9	3.7	kept
+2c2c3b487137	우즈베키스탄	우주 매키스탄	0.77	3.2	kept
+2dcc21ee47ef	주말	주말	1.0	2.6	kept
+2df94c8444e2	왼쪽	왼쪽	1.0	2.6	kept
+2f3a26716570	따	나	0.5	2.6	kept
+2f4621ed195a	바	다	0.5	2.6	kept
+2f5d120217b6	저는 집에서 쉴 거예요.	저는 집에서 쉬어요.	0.81	3.5	kept
+2f5d120217b6_s	저는 집에서 쉴 거예요.	저는 집에서 쉬 꺼에요.	0.86	4.7	kept
+30c7307a4223	앙	안	0.67	2.6	kept
+3135f62c00e4	의사	의사	1.0	2.6	kept
+31f4c97b704c	메뉴 좀 주세요.	메뉴 좀 주세요.	1.0	3.0	kept
+31f4c97b704c_s	메뉴 좀 주세요.	메뉴 좀 주세요.	1.0	3.9	kept
+31f615480646	쓰레기	쓰레기	1.0	2.6	kept
+3251b51e8a6c	밥을 먹어요.	밥을 먹어요?	1.0	2.8	kept
+3251b51e8a6c_s	밥을 먹어요.	밥을 먹어요?	1.0	3.7	kept
+327063563e1e	저는 매일 일곱 시에 일어나요.	저는 매일 일곱 시에 일어나요.	1.0	4.2	kept
+327063563e1e_s	저는 매일 일곱 시에 일어나요.	저는 매일 일곱 시에 일어나요.	1.0	5.7	kept
+32eb6dca492b	친구가 한국어를 공부해요.	친구가 한국어를 공부해요.	1.0	3.8	kept
+32eb6dca492b_s	친구가 한국어를 공부해요.	친구가 한국어를 공부해요.	1.0	5.2	kept
+33949eb8666b	아, 죄송합니다.	아 죄송합니다.	1.0	3.8	kept
+33949eb8666b_s	아, 죄송합니다.	아 죄송합니다.	1.0	5.2	kept
+34e413e86ca5	음식	음식.	1.0	2.6	kept
+358f5aad8d27	택시	택시	1.0	2.6	kept
+363fa7d0e382	강의실이 몇 호예요?	강의실이 몇 토해요?	0.84	3.8	kept
+363fa7d0e382_s	강의실이 몇 호예요?	강의실이 몇 화에요?	0.89	5.1	kept
+3658ffd36136	수업이 몇 시에 끝나요?	수업이 몇 시에 끝나요?	1.0	4.0	kept
+3658ffd36136_s	수업이 몇 시에 끝나요?	수업이 몇 시에 끝나요?	1.0	5.5	kept
+365e09d0e595	너무 비싸요.	너무 비싸요.	1.0	3.3	kept
+365e09d0e595_s	너무 비싸요.	너무 비싸요.	1.0	4.5	kept
+368a267ab5d4	그래서	그래서	1.0	2.6	kept
+376b19ea5379	여행	여행	1.0	2.6	kept
+377094ee3430	시장에서 과일을 샀어요.	시장에서 과일을 샀어요.	1.0	3.7	kept
+377094ee3430_s	시장에서 과일을 샀어요.	시장에서 과일을 샀어요.	1.0	5.0	kept
+37764ba042ce	다음 역에서 내리세요.	다음 역에서 내리세요?	1.0	3.4	kept
+37764ba042ce_s	다음 역에서 내리세요.	다음 역에서 내리세요?	1.0	4.6	kept
+383051371729	바뀌었어요	다 뛰었어요.	0.82	2.9	kept
+3b016801e3b0	이따가	이따가	1.0	2.6	kept
+3bdf9e8a53ce	어디	어디	1.0	2.6	kept
+3bf609ee9834	시간이 없어요.	시간이 없어요.	1.0	2.9	kept
+3bf609ee9834_s	시간이 없어요.	시간이 없어요.	1.0	3.9	kept
+3c8becac138b	화장실	화장실	1.0	2.6	kept
+3cab15cd8ac4	이름이 뭐예요?	이름이 뭐에요?	0.92	3.3	kept
+3cab15cd8ac4_s	이름이 뭐예요?	이름이 뭐에요?	0.92	4.5	kept
+3d02685ac2a0	취미가 뭐예요?	취미가 뭐에요?	0.92	2.9	kept
+3d02685ac2a0_s	취미가 뭐예요?	취미가 뭐에요?	0.92	3.8	kept
+3d171fc67b52	친구가 우리 집에 왔어요.	친구가 우리 집에 왔어요.	1.0	3.6	kept
+3d171fc67b52_s	친구가 우리 집에 왔어요.	친구가 우리 집에 왔어요.	1.0	4.9	kept
+3e80b4bf66a3	감기약 있어요?	감기약이 있어요.	0.88	3.1	kept
+3e80b4bf66a3_s	감기약 있어요?	감기약이 있어요.	0.88	4.1	kept
+3e92afe7a63d	다음 주	다음 주	1.0	2.7	kept
+3ebecbc92a54	저는 기숙사에 살아요.	저는 기숙사에 살아요.	1.0	3.4	kept
+3ebecbc92a54_s	저는 기숙사에 살아요.	저는 기숙사에 살아요.	1.0	4.7	kept
+3f05aa426619	읽어요	읽어요.	1.0	2.6	kept
+3f449463610d	감기에 걸렸어요.	감기에 걸렸어요.	1.0	3.6	kept
+3f449463610d_s	감기에 걸렸어요.	감기에 걸렸어요.	1.0	4.9	kept
+3fb24b2a2290	수업이 어디로 바뀌었어요?	수업이 어디로 바끼였어요?	0.92	4.3	kept
+3fb24b2a2290_s	수업이 어디로 바뀌었어요?	수업이 어디로 바꿨어요?	0.88	5.9	kept
+3fcc7bebc2b4	시험	시함	0.8	2.6	kept
+406694f37ba4	출발해요	출발해요.	1.0	2.6	kept
+4118d67c96ec	우	오	0.5	2.6	kept
+415d0abccee6	관리실이 어디에 있어요?	관리실이 어디에 있어요?	1.0	3.5	kept
+415d0abccee6_s	관리실이 어디에 있어요?	관리실이 어디에 있어요?	1.0	4.8	kept
+41c24cc187b6	지금 출발해요.	지금 출발해요.	1.0	3.1	kept
+41c24cc187b6_s	지금 출발해요.	지금 출발해요.	1.0	4.1	kept
+42072be3da06	저	저	1.0	2.6	kept
+4259dd769cec	칠	치	0.67	2.6	kept
+436b04b93df9	이십 분쯤 걸려요.	20분쯤 걸려요.	0.72	3.2	kept
+436b04b93df9_s	이십 분쯤 걸려요.	20분쯤 걸려요.	0.72	4.3	kept
+445287d4d334	여	역	0.67	2.6	kept
+44c39868ff15	보낼게요	보낼게요?	1.0	2.6	kept
+4631dbf903ab	도서관은 저기 있어요.	도서관은 저기 있어요?	1.0	3.3	kept
+4631dbf903ab_s	도서관은 저기 있어요.	도서관은 저기 있어요?	1.0	4.5	kept
+4667f6416961	점심 먹었어요?	점심 먹었어요?	1.0	3.1	kept
+4667f6416961_s	점심 먹었어요?	점심 먹었어요?	1.0	4.1	kept
+4672972ea1f7	오이	오이	1.0	2.6	kept
+476b58b7e5a4	어제	어제	1.0	2.6	kept
+49a63eac55b6	옷	옷.	1.0	2.6	kept
+49f204197d4a	왔어요	왔어요.	1.0	2.6	kept
+4a3ea882accc	오	오	1.0	2.6	kept
+4a63de98b64c	이 커피는 제 거예요.	이 커피는 죽어에요.	0.78	3.3	kept
+4a63de98b64c_s	이 커피는 제 거예요.	이 커피는 제거에요.	0.94	4.5	kept
+4a9aae1df0cc	교수님, 질문이 있어요.	교수님 질문이 있어요.	1.0	3.9	kept
+4a9aae1df0cc_s	교수님, 질문이 있어요.	교수님 질문이 있어요.	1.0	5.3	kept
+4b5ff02aecf4	누구	누구?	1.0	2.6	kept
+4bc5d65ee391	네	네.	1.0	2.6	kept
+4c3c31b4a5f1	학생회관 삼백이 호예요.	학생회관 3백이 호해요.	0.8	3.6	kept
+4c3c31b4a5f1_s	학생회관 삼백이 호예요.	학생회관 32 호 헤어.	0.56	4.9	kept
+4c537d131462	파	다	0.5	2.6	kept
+4ca0aab4feca	사당역에서 갈아타세요.	사당역에서 갈아타세요.	1.0	3.5	kept
+4ca0aab4feca_s	사당역에서 갈아타세요.	사당역에서 갈아타세요.	1.0	4.8	kept
+4ce01164bfca	도서관	도서관	1.0	2.6	kept
+4d18906b651e	김치찌개가 정말 맛있어요.	김치찌개가 정말 맛있어요.	1.0	3.8	kept
+4d18906b651e_s	김치찌개가 정말 맛있어요.	김치찌개가 정말 맛있어요.	1.0	5.1	kept
+4d20ad440e35	마셔요	마셔요.	1.0	2.6	kept
+4d37461d4c11	싶어요	싶어요.	1.0	2.9	kept
+4d6729522e29	여기	여기	1.0	2.6	kept
+4e71ce81ea22	음악	음악	1.0	2.6	kept
+4ecb3373d1e9	운동	운동	1.0	2.6	kept
+4fa363012687	저는 학교에 가요.	저는 학교에 가요.	1.0	3.1	kept
+4fa363012687_s	저는 학교에 가요.	저는 학교에 가요.	1.0	4.2	kept
+4fa86f2b5c9b	쉴 거예요	쉬거에요.	0.78	2.7	kept
+4fd1e8c4b2dd	숙제를 다 했어요.	숙제를 다 했어요.	1.0	3.2	kept
+4fd1e8c4b2dd_s	숙제를 다 했어요.	숙제를 다 했어요.	1.0	4.3	kept
+4fe57c1f6d3a	사과 세 개 주세요.	사과 세 개 주세요.	1.0	3.2	kept
+4fe57c1f6d3a_s	사과 세 개 주세요.	사과 세개 주세요.	1.0	4.3	kept
+50d36272c737	압	아	0.67	2.6	kept
+51208381144e	점심	점심	1.0	2.6	kept
+5195a19778ac	세탁기가 고장 났어요.	세탁기가 고장 났어요.	1.0	3.8	kept
+5195a19778ac_s	세탁기가 고장 났어요.	세탁기가 고장 났어요.	1.0	5.3	kept
+51d37ac1ae3a	좋아해요	좋아해요.	1.0	2.7	kept
+53c83f02f25d	근무	근모	0.8	2.9	kept
+54af01b89b9b	옆	이역?	0.4	2.6	kept
+54e5853d475c	잠깐만요, 도와주세요!	잠깐만요. 도와주세요.	1.0	4.3	kept
+54e5853d475c_s	잠깐만요, 도와주세요!	잠깐만요 도와주세요.	1.0	6.0	kept
+5503506ed35c	수업	수업	1.0	2.6	kept
+55913fc51ee6	영어	영어	1.0	3.0	kept
+5664a634af5f	목	뭐?	0.33	2.6	kept
+56e7d0eeff5d	비빔밥	비빔밥	1.0	2.6	kept
+5796b2127ebd	타요	다요	0.75	2.8	kept
+57b7afd916e5	고맙습니다, 내일 봐요.	고맙습니다. 네일 봐요.	0.95	4.5	kept
+57b7afd916e5_s	고맙습니다, 내일 봐요.	고맙습니다. 네일 봐요.	0.95	6.3	kept
+5867a72fc3a0	안녕하세요, 만나서 반가워요.	안녕하세요 만나서 반가워요.	1.0	4.3	kept
+5867a72fc3a0_s	안녕하세요, 만나서 반가워요.	안녕하세요 만나서 반가워요.	1.0	5.9	kept
+59463e84fb8f	삼	샴	0.67	2.6	kept
+5cd06196d056	휴대폰	휴대폰	1.0	2.7	kept
+5d12b208e550	머리가 아파요.	머리가 아파요.	1.0	3.4	kept
+5d12b208e550_s	머리가 아파요.	머리가 아파요.	1.0	4.5	kept
+5d3126b6e554	버스	버스	1.0	2.9	kept
+5e8d2758a78f	주세요	주세요	1.0	2.6	kept
+5eeefea77e6f	시끄러워요	시끄러워요.	1.0	2.7	kept
+5f1fe47a8b80	저도 학생이에요.	저도 학생이에요	1.0	3.0	kept
+5f1fe47a8b80_s	저도 학생이에요.	저도 학생이요.	0.88	4.1	kept
+5f51b383d2c1	잔	잔	1.0	2.6	kept
+60c482020480	이 택배는 제 것이 아니에요.	이택배는 재거시 아니에요.	0.88	4.3	kept
+60c482020480_s	이 택배는 제 것이 아니에요.	이택배는 재 것이 아니에요.	0.96	6.0	kept
+60c9b490b4c8	주말에 뭐 할 거예요?	주말에 뭐 할 거에요?	0.94	3.8	kept
+60c9b490b4c8_s	주말에 뭐 할 거예요?	주말에 뭐 할 거에요?	0.94	5.1	kept
+61569786dba5	배	예	0.0	2.6	kept
+620be2237701	선생님	선생님	1.0	2.6	kept
+62835bc3f41a	벌써	벌써	1.0	2.6	kept
+62b87927fab1	점심 같이 먹어요.	점심같이 먹어요?	1.0	3.2	kept
+62b87927fab1_s	점심 같이 먹어요.	점심같이 먹어요?	1.0	4.3	kept
+62cc8ca815d0	책	책.	1.0	2.6	kept
+632dbc1fb4da	라디오	라디오	1.0	2.6	kept
+63948d05b106	만	만	1.0	2.6	kept
+65683add0017	같이	같이	1.0	2.6	kept
+6587001da0ea	할머니	할머니	1.0	2.6	kept
+662204e2ddd2	할머니, 안녕히 주무세요.	할머니 안녕이 주무세요.	0.96	4.5	kept
+662204e2ddd2_s	할머니, 안녕히 주무세요.	할머니 안녕이 주무세요.	0.96	6.2	kept
+67685688b219	지금 통화할 수 있어요?	지금 통화할 수 있어요.	1.0	3.5	kept
+67685688b219_s	지금 통화할 수 있어요?	지금 통화할 수 있어요.	1.0	4.7	kept
+679be7c22b7a	잠시만 기다려 주세요.	잠시만 기다려 주세요.	1.0	3.4	kept
+679be7c22b7a_s	잠시만 기다려 주세요.	잠시만 기다려 주세요.	1.0	4.6	kept
+67b779297055	버스 정류장이 왼쪽에 있어요.	버스 정류장이 왼쪽에 있어요.	1.0	3.9	kept
+67b779297055_s	버스 정류장이 왼쪽에 있어요.	버스 정류장이 왼쪽에 있어요.	1.0	5.3	kept
+67c78e687590	은행이 어디에 있어요?	은행이 어디에 있어요?	1.0	3.4	kept
+67c78e687590_s	은행이 어디에 있어요?	은행이 어디에 있어요?	1.0	4.6	kept
+6815b54790ef	두 명이에요.	두 명이에요.	1.0	2.7	kept
+6815b54790ef_s	두 명이에요.	두 명이에요.	1.0	3.6	kept
+6851b5d68b45	네, 괜찮아요.	네 괜찮아요.	1.0	3.4	kept
+6851b5d68b45_s	네, 괜찮아요.	네 괜찮아요.	1.0	4.6	kept
+69ae3423ef85	푹 쉬세요.	푹 쉬세요	1.0	3.3	kept
+69ae3423ef85_s	푹 쉬세요.	푹 쉬어요.	0.78	4.4	kept
+6a3f7c07b670	사장님	사장님	1.0	2.6	kept
+6ab30e4845aa	한국에 가고 싶어요.	한국에 가고 싶어요.	1.0	3.3	kept
+6ab30e4845aa_s	한국에 가고 싶어요.	한국에 가고 싶어요.	1.0	4.4	kept
+6b1cfdef109e	매일	매일.	1.0	2.6	kept
+6c0cd2af1e1b	이	이	1.0	2.6	kept
+6c1f4a005f91	택시를 탈까요?	택시를 탈까요?	1.0	3.4	kept
+6c1f4a005f91_s	택시를 탈까요?	택시를 탈까요?	1.0	4.5	kept
+6c35133c478b	시간	시간	1.0	2.6	kept
+6c544d7f9450	저는 카페에서 아르바이트를 해요.	저는 카페에서 아르바이트를 해요.	1.0	4.7	kept
+6c544d7f9450_s	저는 카페에서 아르바이트를 해요.	저는 카페에서 아르바이트를 해요.	1.0	6.4	kept
+6daadb891eff	카페	카페	1.0	2.6	kept
+6df77be79eff	오른쪽으로 가세요.	오른쪽으로 가세요?	1.0	3.1	kept
+6df77be79eff_s	오른쪽으로 가세요.	오른쪽으로 가세요?	1.0	4.2	kept
+6e02f187f694	찌개	찌개	1.0	2.6	kept
+6e081b5948ef	한국어	한국어.	1.0	2.6	kept
+6e9d56454f04	약	약	1.0	2.6	kept
+6f2edfcf8ee6	끝나요	끝나요.	1.0	2.6	kept
+7092fea8a162	학생회관	학생회관	1.0	2.9	kept
+70aac02e9d3c	화장실이 어디예요?	화장실이 어디에요?	0.94	3.2	kept
+70aac02e9d3c_s	화장실이 어디예요?	화장실이 어디에요?	0.94	4.3	kept
+70b1bf6d1cc1	바꿀 수 있어요	바꿀 수 있어요.	1.0	3.1	kept
+712e0c058dbc	오늘은 손님이 많아요.	오늘은 손님이 많아요.	1.0	3.3	kept
+712e0c058dbc_s	오늘은 손님이 많아요.	오늘은 손님이 많아요.	1.0	4.5	kept
+7142cb20d309	얼마예요	얼마에요?	0.89	2.6	kept
+71a490eb578b	저는 우즈베키스탄 사람이에요.	저는 우즈베키스탄 사람이에요.	1.0	4.0	kept
+71a490eb578b_s	저는 우즈베키스탄 사람이에요.	저는 우집의 비슷한 사람이에요.	0.77	5.4	kept
+71c706d65211	유	이요.	0.25	2.6	kept
+729c85015363	강의실은 육 층에 있어요.	강의실은 6층에 있어요.	0.88	4.2	kept
+729c85015363_s	강의실은 육 층에 있어요.	강의실은 6층에 있어요.	0.88	5.8	kept
+72cc58fc62db	과제 마감이 언제예요?	과제 마감이 언제에요?	0.95	4.0	kept
+72cc58fc62db_s	과제 마감이 언제예요?	과제 마감이 언제에요?	0.95	5.4	kept
+735c1e670f00	에	네.	0.5	2.6	kept
+7425750e4bec	피자	피자	1.0	2.6	kept
+75b11647e539	물 좀 주세요.	물 좀 주세요.	1.0	3.4	kept
+75b11647e539_s	물 좀 주세요.	몰 좀 주세요.	0.92	4.6	kept
+75b9f271b083	머리	머리	1.0	2.6	kept
+75cb58018b2b	죄송해요, 잘 몰라요.	죄송해요. 잘 몰라요.	1.0	4.5	kept
+75cb58018b2b_s	죄송해요, 잘 몰라요.	죄송해요. 잘 몰라요.	1.0	6.2	kept
+7606fd7609b7	악	아	0.67	2.6	kept
+773277b54fe4	기다릴게요	기다릴게요.	1.0	2.7	kept
+77b7e85879b3	카드로 계산해도 돼요?	카드로 계산해도 돼요?	1.0	3.3	kept
+77b7e85879b3_s	카드로 계산해도 돼요?	카드로 계산해도 돼요?	1.0	4.4	kept
+77f4df2c9b00	야	야	1.0	2.6	kept
+7830e5d54679	토끼	토끼.	1.0	2.6	kept
+785d85930adf	천천히 말해 주세요.	천천히 말해주세요	1.0	3.7	kept
+785d85930adf_s	천천히 말해 주세요.	천천히 말해 주세요.	1.0	5.1	kept
+7ae1a5a07dbc	방	방	1.0	2.6	kept
+7b45c5871684	봐요	봐요.	1.0	2.6	kept
+7c7bfcc5d234	주말에 영화를 봤어요.	주말에 영화를 봤어요.	1.0	3.5	kept
+7c7bfcc5d234_s	주말에 영화를 봤어요.	주말에 영화를 봤어요.	1.0	4.7	kept
+7dcadffb9083	카	가	0.5	2.6	kept
+7dde8c4ef667	어때요	어때요?	1.0	2.6	kept
+7e3ccf684e2d	아버지	아버지	1.0	2.6	kept
+7e811773882e	자주	사주	0.75	2.6	kept
+7eec619024a9	외	왜?	0.5	2.6	kept
+7efeb2d1bb26	신발	신 달.	0.83	2.6	kept
+80a2399857e2	할 거예요	할 거에요?	0.89	2.6	kept
+811e02934458	나	나	1.0	2.6	kept
+81973897c757	비밀번호	빈밀번호	0.91	2.8	kept
+8198fd54dd02	타	다	0.5	2.6	kept
+82b333e36a84	한국어를 잘 못해요.	한국어를 잘 못 해요.	1.0	3.3	kept
+82b333e36a84_s	한국어를 잘 못해요.	한국어를 잘 못 해요.	1.0	4.5	kept
+8311e7f7e1ed	감사합니다	감사합니다.	1.0	3.0	kept
+8441573d5cdd	이따가 전화할게요.	이따가 전화할게요.	1.0	3.6	kept
+8441573d5cdd_s	이따가 전화할게요.	있다가 전화할게요.	0.89	4.8	kept
+845b3bc66909	죄송합니다	죄송합니다.	1.0	2.8	kept
+84a9cb107d99	몇 명이에요?	몇 명이에요?	1.0	3.3	kept
+84a9cb107d99_s	몇 명이에요?	몇 명이에요.	1.0	4.4	kept
+84f2ad4c3cdb	삼백이 호예요.	300이 호해요.	0.43	3.3	kept
+84f2ad4c3cdb_s	삼백이 호예요.	300이 호해요.	0.43	4.5	kept
+85289ac883a3	지난주	지난주	1.0	2.6	kept
+853bf3c8124e	괜찮아요	괜찮아요.	1.0	2.7	kept
+8578f008f790	약속	약속	1.0	2.6	kept
+8621f0f991c3	가게	가게	1.0	2.6	kept
+86860ab8f94f	비싸요	비싸요.	1.0	2.6	kept
+878ce9a75ccc	저거 누구 우산이에요?	저거 누구 우산이에요?	1.0	3.8	kept
+878ce9a75ccc_s	저거 누구 우산이에요?	저거 누구 우승이에요	0.89	5.3	kept
+88c6c0919f09	몇 시에 출근해요?	몇 시에 출근해요?	1.0	3.0	kept
+88c6c0919f09_s	몇 시에 출근해요?	몇 시에 출근해요.	1.0	4.0	kept
+8980e7e906ea	먹어요	먹어요.	1.0	2.6	kept
+89d5348b4e00	백	100	0.0	2.6	kept
+8a04a604381d	노래	노래	1.0	2.6	kept
+8a3f09a0f3a1	시급	시급	1.0	2.6	kept
+8c1f37ddc1bf	오늘은 쉬고 싶어요.	오늘은 쉬고 싶어요.	1.0	3.2	kept
+8c1f37ddc1bf_s	오늘은 쉬고 싶어요.	오늘은 쉬고 싶어요.	1.0	4.3	kept
+8c2400975133	친구	친구	1.0	2.6	kept
+8c4f4acab88d	커피 두 잔 주세요.	커피 두 잔 주세요.	1.0	3.2	kept
+8c4f4acab88d_s	커피 두 잔 주세요.	커피 두 잔 주세요.	1.0	4.3	kept
+8cd38cd5337e	뭐 먹고 싶어요?	뭐 먹고 싶어요?	1.0	3.0	kept
+8cd38cd5337e_s	뭐 먹고 싶어요?	뭐 먹고 싶어요?	1.0	4.0	kept
+8ceca7a3c5c6	똑바로	똑바로	1.0	2.6	kept
+8d0f492da35b	토마토	토마토	1.0	2.6	kept
+8d74d27418bc	댁	100	0.0	2.6	kept
+8eb09d166479	나무	나무	1.0	2.6	kept
+8f6a651214d1	과제가 너무 많아요.	과제가 너무 많아요.	1.0	3.3	kept
+8f6a651214d1_s	과제가 너무 많아요.	과제가 너무 많아요.	1.0	4.4	kept
+8f873495aa55	도착했어요	도착했어요.	1.0	2.9	kept
+8fcd164546ce	시계	시계	1.0	2.6	kept
+900e95b6971a	한국	한국	1.0	2.6	kept
+91032991267e	전화	전 화	1.0	2.7	kept
+91ba5d367169	성함	성함	1.0	2.6	kept
+92d77633148a	아이	아이	1.0	2.6	kept
+92df3d0ff5eb	많아요	많아요.	1.0	2.6	kept
+92e03fc3fa3e	이거 뭐예요?	이거 뭐해요?	0.8	2.8	kept
+92e03fc3fa3e_s	이거 뭐예요?	이거 뭐에요?	0.9	3.7	kept
+931e06ca2a6c	드세요	드세요.	1.0	2.6	kept
+934f9d188f6e	집	집.	1.0	2.6	kept
+93d5745087c9	제 우산은 가방 안에 있어요.	제 우선은 가방 안에 있어요.	0.96	4.5	kept
+93d5745087c9_s	제 우산은 가방 안에 있어요.	제 우선은 가방 안에 있어요.	0.96	6.2	kept
+94d49e76db66	제 룸메이트는 정말 친절해요.	제 룸메이트는 정말 친절해요.	1.0	4.0	kept
+94d49e76db66_s	제 룸메이트는 정말 친절해요.	제 룸메이트는 정말 친절해요.	1.0	5.4	kept
+95482fd1f3a5	관리실	관리실에	0.8	2.6	kept
+959f80bb167c	육	6.2	0.0	2.6	kept
+95da674c3031	지하철역이 어디에 있어요?	지하철역이 어디에 있어요?	1.0	3.6	kept
+95da674c3031_s	지하철역이 어디에 있어요?	지하철역이 어디에 있어요?	1.0	4.9	kept
+962d4846411b	가방이 정말 예뻐요.	가방이 정말 예뻐요.	1.0	3.8	kept
+962d4846411b_s	가방이 정말 예뻐요.	가방이 정말 예뻐요.	1.0	5.1	kept
+963156802b45	애	네.	0.0	2.6	kept
+96873754251b	왜	왜?	1.0	2.6	kept
+973984f8ba07	그거 제 가방이에요.	그거 제 가방이에요.	1.0	3.3	kept
+973984f8ba07_s	그거 제 가방이에요.	그거 제 가방이에요.	1.0	4.5	kept
+979cd596f75f	여기요, 김치찌개 하나 주세요.	여기요 김치찌개 하나 주세요.	1.0	4.2	kept
+979cd596f75f_s	여기요, 김치찌개 하나 주세요.	여기요 김칫 하나 주세요.	0.84	5.8	kept
+97e7090fc660	몇 시에 만날까요?	몇 시에 만날까요?	1.0	3.1	kept
+97e7090fc660_s	몇 시에 만날까요?	몇 시에 만날까요?	1.0	4.1	kept
+9867f2e28aaf	빠	마	0.5	2.6	kept
+987f733776e4	아빠	아빠	1.0	2.6	kept
+98bb79d2c3e7	커피	커피	1.0	2.6	kept
+98cf248570be	영화관 앞에서 만나요.	영화관 앞에서 만나요?	1.0	3.4	kept
+98cf248570be_s	영화관 앞에서 만나요.	영화관 앞에서 만나요?	1.0	4.6	kept
+99674d0313ad	네, 감사합니다.	네 감사합니다.	1.0	4.2	kept
+99674d0313ad_s	네, 감사합니다.	네. 감사합니다.	1.0	5.8	kept
+99a812ae7853	지금 몇 시예요?	지금 몇 시에요?	0.93	3.5	kept
+99a812ae7853_s	지금 몇 시예요?	지금 몇 시에요.	0.93	4.7	kept
+99e60e2e5e6c	말씀	말씀	1.0	2.6	kept
+9aa18e507125	이름	이름	1.0	2.7	kept
+9b3ade54ec68	지난주에 부산에 갔어요.	지난주에 부산에 갔어요.	1.0	3.5	kept
+9b3ade54ec68_s	지난주에 부산에 갔어요.	지난주에 부산에 갔어요.	1.0	4.8	kept
+9b47c4246aa4	같이 영화 볼까요?	같이 영화볼까요?	1.0	3.2	kept
+9b47c4246aa4_s	같이 영화 볼까요?	같이 영화볼까요?	1.0	4.3	kept
+9b7d34baf22d	마	마	1.0	2.6	kept
+9cdbcf20ae17	음악 듣는 것을 좋아해요.	음악 듣는 것을 좋아해요.	1.0	4.1	kept
+9cdbcf20ae17_s	음악 듣는 것을 좋아해요.	음악 듣는 것을 좋아해요.	1.0	5.6	kept
+9dc6e23e4804	안녕히 계세요	안녕히 계세요.	1.0	2.9	kept
+9dfb9dc36cff	식당	식당	1.0	2.6	kept
+9e40bd930a83	편의점에서 물을 샀어요.	편의점에서 물을 샀어요.	1.0	3.6	kept
+9e40bd930a83_s	편의점에서 물을 샀어요.	편의점에서 물을 샀어요.	1.0	4.9	kept
+9e49f9be2c56	이건 책이 아니에요.	이건 책이 아니에요.	1.0	3.3	kept
+9e49f9be2c56_s	이건 책이 아니에요.	이건 책이 아니에요.	1.0	4.4	kept
+9e4bb560ba94	차	차	1.0	2.6	kept
+a0066f1d7ec2	우리 반에 학생이 십 명 있어요.	우리 반에 학생이 신명이 있어요.	0.91	3.9	kept
+a0066f1d7ec2_s	우리 반에 학생이 십 명 있어요.	우리 반에 학생이 신명이 있어요.	0.91	5.3	kept
+a037409af536	천	천	1.0	2.6	kept
+a161fbaa4f2c	저기요, 괜찮아요?	저기요 괜찮아요.	1.0	3.6	kept
+a161fbaa4f2c_s	저기요, 괜찮아요?	저기요 괜찮아요.	1.0	5.9	kept
+a1ad60494964	김밥은 사천 원이에요.	김밥은 4천원이에요.	0.91	3.4	kept
+a1ad60494964_s	김밥은 사천 원이에요.	김밥은 4천원이에요.	0.91	4.7	kept
+a1c7f5c56476	예뻐요	예뻐요.	1.0	2.6	kept
+a1e42ee229fc	여기는 우리 학교예요.	여기는 우리 학교에요.	0.95	3.3	kept
+a1e42ee229fc_s	여기는 우리 학교예요.	여기는 오리 학교에요.	0.9	4.5	kept
+a35116d52bc2	하마	하나	0.75	2.6	kept
+a35e68beb381	모자	모자	1.0	2.6	kept
+a3976f42ff49	월세가 얼마예요?	월세가 얼마에요?	0.94	3.1	kept
+a3976f42ff49_s	월세가 얼마예요?	월세가 얼마에요?	0.94	4.2	kept
+a39fb8b80637	제	그치.	0.0	2.6	kept
+a44ee133f054	택배가 왔어요.	택배가 왔어요.	1.0	3.0	kept
+a44ee133f054_s	택배가 왔어요.	택배가 왔어요.	1.0	3.9	kept
+a485b923c07a	맛있게 드세요.	맛있게 드세요?	1.0	2.8	kept
+a485b923c07a_s	맛있게 드세요.	맛있게 드세요?	1.0	3.7	kept
+a53f835e0855	다음 주에 서울에 갈 거예요.	다음 주에 서울에 갈 거에요.	0.96	4.2	kept
+a53f835e0855_s	다음 주에 서울에 갈 거예요.	다음 주에 서울에 갈 거에요.	0.96	5.8	kept
+a58f7c29f225	이거	이가	0.75	2.6	kept
+a5f63c6d0376	이 버스 수원역에 가요?	이 버스 수원역에 가요.	1.0	3.9	kept
+a5f63c6d0376_s	이 버스 수원역에 가요?	이뻐 수 수원역에 가요.	0.9	5.3	kept
+a7601e8a520e	선생님 댁이 어디세요?	선생님 대기 어디세요?	0.91	3.5	kept
+a7601e8a520e_s	선생님 댁이 어디세요?	선생님 대기 어디세요?	0.91	4.8	kept
+a7762a2330f0	시	시	1.0	2.6	kept
+a842629afdcd	예	이해해.	0.17	2.6	kept
+a862646b2e3b	자	자	1.0	2.6	kept
+a8bb5b3f7835	만 원이에요.	만 원이에요.	1.0	3.3	kept
+a8bb5b3f7835_s	만 원이에요.	만 원이에요.	1.0	4.4	kept
+a90a34b50541	저는 매운 음식을 좋아해요.	저는 매운 음식을 좋아해요.	1.0	3.8	kept
+a90a34b50541_s	저는 매운 음식을 좋아해요.	저는 내운 음식을 좋아해요.	0.96	5.2	kept
+aa35ca789b9a	이 신발 얼마예요?	이 신발 얼마에요?	0.94	3.1	kept
+aa35ca789b9a_s	이 신발 얼마예요?	이 신발 얼마에요?	0.94	4.2	kept
+aa41f7661a5e	작아요	작아요.	1.0	2.6	kept
+ab3873a24347	공부해요	공부해요	1.0	2.6	kept
+ac0aba44aaee	정말 반가워요.	정말 단가오	0.73	3.0	kept
+ac0aba44aaee_s	정말 반가워요.	정말 단가요.	0.8	4.0	kept
+ac94e84f5271	어제 친구를 만났어요.	어제 친구를 만났어요.	1.0	3.5	kept
+ac94e84f5271_s	어제 친구를 만났어요.	어제 친구를 만났어요.	1.0	4.7	kept
+ad95f2b6dcc7	내일	내일.	1.0	2.6	kept
+ada1b261da85	아르바이트	아르바이트	1.0	2.8	kept
+ae0375b0ba17	만났어요	만났어요.	1.0	2.8	kept
+aebd74354697	걸려요	걸려요.	1.0	2.6	kept
+afdaa5738502	이 가게는 옷이 싸요.	이 가게는 옷이 사요.	0.94	3.3	kept
+afdaa5738502_s	이 가게는 옷이 싸요.	이 가게는 옷이 싸요.	1.0	4.4	kept
+b09ea522edfc	다른 색깔 있어요?	다른 색깔이 있어요.	0.9	3.1	kept
+b09ea522edfc_s	다른 색깔 있어요?	다른 색깔이 있어요.	0.9	4.2	kept
+b09feaba2e5a	만날까요	만날까요?	1.0	2.7	kept
+b1445a899069	정류장	정류장	1.0	2.7	kept
+b175acc377e7	아침	아침	1.0	2.6	kept
+b1b9ffdb5c93	그거	그거	1.0	2.6	kept
+b2caeebbd757	옆방이 너무 시끄러워요.	역당이 너무 시끄러워요.	0.91	3.3	kept
+b2caeebbd757_s	옆방이 너무 시끄러워요.	역당이 너무 시끄러워요.	0.91	4.5	kept
+b343b444896c	내려요	내려요.	1.0	2.6	kept
+b3576909072e	코	코	1.0	2.6	kept
+b35f51fc953f	봤어요	봤어요.	1.0	2.6	kept
+b38f3d075119	오빠	오빠	1.0	2.6	kept
+b3937326bcf3	오늘 저녁에 친구를 만나요.	오늘 저녁에 친구를 만나요?	1.0	3.7	kept
+b3937326bcf3_s	오늘 저녁에 친구를 만나요.	오늘 저녁에 친구를 만나요?	1.0	5.0	kept
+b44963f67fa8	위	위	1.0	2.6	kept
+b457cf07bb6c	제 이름은 민수예요.	제 이름은 민수에요.	0.95	3.8	kept
+b457cf07bb6c_s	제 이름은 민수예요.	제 이름은 민수에요.	0.95	5.3	kept
+b6816abd9612	화장실은 식당 옆에 있어요.	화장실은 식당 옆에 있어요.	1.0	3.8	kept
+b6816abd9612_s	화장실은 식당 옆에 있어요.	화장실은 식당이 옆에 있어요.	0.94	5.3	kept
+b893b34bace7	방이 작지만 조용해요.	당이 작지만 조용해요.	0.95	3.4	kept
+b893b34bace7_s	방이 작지만 조용해요.	당이 작지만 조용해요.	0.95	4.7	kept
+b8b2f2af8573	워	우와.	0.25	2.6	kept
+b933922e49c0	김치	김치	1.0	2.6	kept
+b99482aa55a2	이유	이요.	0.75	2.6	kept
+b99a86feb35f	내일 근무를 바꿀 수 있어요?	내일 근로를 바꿀 수 있어요?	0.93	3.8	kept
+b99a86feb35f_s	내일 근무를 바꿀 수 있어요?	내일 근무를 바꿀 수 있어요?	1.0	5.2	kept
+ba7659781416	커요	커요.	1.0	2.8	kept
+baacc077ca3a	네, 시계예요.	네. 시계에요.	0.9	3.9	kept
+baacc077ca3a_s	네, 시계예요.	네 시계요.	0.8	5.4	kept
+bad639cc7a6f	지금 집에 있어요.	지금 집에 있어요.	1.0	3.6	kept
+bad639cc7a6f_s	지금 집에 있어요.	지금 집에 있어요.	1.0	4.9	kept
+bb99fe1a9bfe	샀어요	샀어요.	1.0	2.9	kept
+bbb794c8d4f6	도서관에서 책을 읽어요.	도서관에서 책을 읽어요?	1.0	3.5	kept
+bbb794c8d4f6_s	도서관에서 책을 읽어요.	도서관에서 책을 읽어요?	1.0	4.7	kept
+bbef14c0a2a0	나중에 문자 보낼게요.	나중에 문자 보낼게요.	1.0	3.4	kept
+bbef14c0a2a0_s	나중에 문자 보낼게요.	나중에 문자 보낼게요.	1.0	4.6	kept
+bc08fbb2bad9	역 앞에서 기다릴게요.	역 앞에서 기다릴게요.	1.0	3.4	kept
+bc08fbb2bad9_s	역 앞에서 기다릴게요.	역 앞에서 기다릴게요.	1.0	4.5	kept
+bc30c10c3ce3	어제 영화를 봤어요.	어제 영화를 봤어요.	1.0	3.3	kept
+bc30c10c3ce3_s	어제 영화를 봤어요.	어제 영화를 봤어요.	1.0	4.4	kept
+bc89708ff7b3	알	아이	0.5	2.6	kept
+bcc522c5bfa1	저기요	저기요	1.0	2.6	kept
+bd987192c259	배가 아파서 못 먹었어요.	배가 아파서 못 먹었어요.	1.0	4.1	kept
+bd987192c259_s	배가 아파서 못 먹었어요.	배가 아파서 못 먹었어요.	1.0	5.6	kept
+bda0208a5c6a	십	시	0.67	2.6	kept
+bdfc4578247e	이거 선생님 책이에요.	이거 선생님 특이해요.	0.82	3.8	kept
+bdfc4578247e_s	이거 선생님 책이에요.	이거 선생님 특이해요.	0.82	5.2	kept
+be0f3f883804	토요일은 제 쉬는 날이에요.	토요일은 제 쉬는 날이에요.	1.0	3.8	kept
+be0f3f883804_s	토요일은 제 쉬는 날이에요.	토요일은 제 쉬는 날이에요.	1.0	5.1	kept
+be4c38c2050e	회사원	회사원	1.0	2.6	kept
+be6b235a0274	아	아	1.0	2.6	kept
+be8a7912294f	물	뭘.	0.67	2.6	kept
+bec20f9740f7	갔어요	갔어요.	1.0	2.6	kept
+beef1b9f6048	몇 호예요?	몇 화에요?	0.78	3.1	kept
+beef1b9f6048_s	몇 호예요?	몇 초에요?	0.78	4.1	kept
+bf49f397869c	사장님, 오늘 조금 늦을 것 같아요.	사장님 오늘 조금 늦을 거 같아요.	0.97	4.8	kept
+bf49f397869c_s	사장님, 오늘 조금 늦을 것 같아요.	사장님 오늘 조금 늦을 거 같아요.	0.97	6.7	kept
+bf9a528f2bc8	마감	마감	1.0	2.6	kept
+bfd360c3b501	나라	나라	1.0	2.6	kept
+c00869777165	기차	기차	1.0	2.6	kept
+c01bb55b8907	안	한	0.67	2.6	kept
+c0f3f8c5f482	학교 앞에 카페가 있어요.	학교 앞에 카페가 있어요.	1.0	4.0	kept
+c0f3f8c5f482_s	학교 앞에 카페가 있어요.	학교 앞에 카피가 있어요.	0.96	5.5	kept
+c12837501332	와이파이 비밀번호가 뭐예요?	와이파이 비밀번호가 뭐에요?	0.96	3.9	kept
+c12837501332_s	와이파이 비밀번호가 뭐예요?	와이파이 비밀번호가 뭐에요?	0.96	5.3	kept
+c187b5befafb	마셨어요	마셨어요.	1.0	2.7	kept
+c39acc2d68a6	기사님, 여기서 내릴게요.	기사님 여기서 내릴게요.	1.0	4.8	kept
+c39acc2d68a6_s	기사님, 여기서 내릴게요.	기사님 여기서 내릴께요.	0.95	6.7	kept
+c3c6d557d9a2	우산	오산	0.8	2.6	kept
+c47dadc5d8f5	안녕히 가세요	안녕히 가세요.	1.0	2.9	kept
+c5b0286b5410	교수님, 하나 여쭤봐도 될까요?	교수님 하나 여쭤봐도 될까요?	1.0	4.4	kept
+c5b0286b5410_s	교수님, 하나 여쭤봐도 될까요?	교수님 하나 여쭤봐도 될까요?	1.0	6.0	kept
+c65bf962bbe6	싫어해요	싫어해요.	1.0	2.6	kept
+c664396c5362	짜	자	0.5	2.6	kept
+c66b320c9c58	성함이 어떻게 되세요?	성함이 어떠게 되세요?	0.95	3.8	kept
+c66b320c9c58_s	성함이 어떻게 되세요?	성함이 어떻게 되세요?	1.0	5.3	kept
+c6d6e215b12b	팔	팔	1.0	2.6	kept
+c8df8653b763	잠시만	잠시만	1.0	2.8	kept
+c94aacfd9480	다	다	1.0	2.6	kept
+ca5eea5b5296	넷	넷.	1.0	2.6	kept
+cb55854f7b5f	조용해요	조용히 해요.	0.82	2.6	kept
+cbf1df6a6de2	의	내일	0.2	2.6	kept
+ccf0c3a2f89b	아니요	아니요.	1.0	2.6	kept
+cd6e3ede43e1	저는 여섯 시에 퇴근해요.	저는 6시에 퇴근해요.	0.78	3.6	kept
+cd6e3ede43e1_s	저는 여섯 시에 퇴근해요.	저는 6시에 퇴근해요.	0.78	4.8	kept
+cda0a93acda4	몰라요	몰라요.	1.0	2.6	kept
+cdd53fc66531	맛있어요	맛있어요.	1.0	2.7	kept
+ce05326dba5e	하	하	1.0	2.6	kept
+cfc1e124a640	열	열	1.0	2.6	kept
+cfc2df5c1da9	여우	여오	0.75	2.9	kept
+d0235a87ebdc	어제 뭐 했어요?	어제 뭐 했어요?	1.0	2.9	kept
+d0235a87ebdc_s	어제 뭐 했어요?	어제 뭐 했어요.	1.0	3.9	kept
+d07eb370764a	지금	지금	1.0	2.6	kept
+d168e8ff6187	먹었어요	먹었어요.	1.0	2.7	kept
+d2705e43df7f	일해요	일해요.	1.0	2.6	kept
+d360a51bd357	이게 무슨 뜻이에요?	이게 무슨 뜻이에요?	1.0	3.2	kept
+d360a51bd357_s	이게 무슨 뜻이에요?	이게 무슨 뜻이에요?	1.0	4.3	kept
+d3b807bb5fa1	갈아타요	갈아타요?	1.0	2.6	kept
+d4300bfc9287	친구가 영화를 봐요.	친구가 영화를 봐요.	1.0	3.2	kept
+d4300bfc9287_s	친구가 영화를 봐요.	친구가 영화를 봐요.	1.0	4.4	kept
+d45c7bed6aa9	기침	기침	1.0	3.0	kept
+d4b885f8f51e	주말에도 일할 수 있어요.	주말에도 일할 수 있어요.	1.0	3.5	kept
+d4b885f8f51e_s	주말에도 일할 수 있어요.	주말에도 일할 수 있어요.	1.0	4.8	kept
+d554c4ddca7f	영화관	영화관	1.0	2.7	kept
+d79eba70db4e	주무세요	주무세요.	1.0	2.6	kept
+d7d9909ee53d	열쇠	열쇠.	1.0	2.6	kept
+d8ea17277cc0	감사합니다, 안녕히 계세요.	감사합니다. 안녕히 계세요.	1.0	4.7	kept
+d8ea17277cc0_s	감사합니다, 안녕히 계세요.	감사합니다. 안녕히 계세요.	1.0	6.5	kept
+d8f324428d3c	학생	학생	1.0	2.6	kept
+d9090bbedcf7	아파요	아파요	1.0	3.0	kept
+d973a47f5dd7	강의실	강의실	1.0	2.9	kept
+d9b814dca800	아침을 안 먹어요.	아침을 안 먹어요?	1.0	3.1	kept
+d9b814dca800_s	아침을 안 먹어요.	아침을 안 먹어요?	1.0	4.1	kept
+db4c67791f35	다시 한 번 말해 주세요.	다시 한번 말해주세요	1.0	3.9	kept
+db4c67791f35_s	다시 한 번 말해 주세요.	다시 한번 말해주세요.	1.0	5.3	kept
+db4f4e1c81a6	까	가	0.5	2.6	kept
+db5a39ac6e6d	같이 점심 먹을까요?	같이 점심 먹을까요?	1.0	3.9	kept
+db5a39ac6e6d_s	같이 점심 먹을까요?	같이 점심 먹을까요?	1.0	5.4	kept
+db861cdcc2b9	잠깐만요	잠깐만요.	1.0	2.8	kept
+dbe0879714ed	무슨 뜻이에요	무슨 뜻이에요?	1.0	3.0	kept
+dcbadde3184d	학교	학교	1.0	2.6	kept
+dd0ab4ab02c8	친구가 우리 집에 와요.	친구가 우리 집에 와요.	1.0	3.3	kept
+dd0ab4ab02c8_s	친구가 우리 집에 와요.	친구가 우리 집에 와요.	1.0	4.5	kept
+de96f038dd16	알겠어요	알겠어요.	1.0	2.7	kept
+deb2e6ed1b9f	열이 나고 기침을 해요.	열린하고 기침을 해요.	0.86	3.8	kept
+deb2e6ed1b9f_s	열이 나고 기침을 해요.	열린하고 기침을 해요.	0.86	5.2	kept
+df186d09302b	학교까지 얼마나 걸려요?	학교까지 얼마나 걸려요?	1.0	3.6	kept
+df186d09302b_s	학교까지 얼마나 걸려요?	학교까지 얼마나 걸려?	0.91	4.9	kept
+df3388cfe4d6	갈 거예요	갈 거에요?	0.89	2.7	kept
+df6ec8eaea3a	아파서 학교에 못 갔어요.	아파서 학교에 못 갔어요.	1.0	3.6	kept
+df6ec8eaea3a_s	아파서 학교에 못 갔어요.	아파서 학교에 못 갔어요.	1.0	4.9	kept
+e04f6b9b9e57	앞	아	0.67	2.6	kept
+e1654d4d968b	손님, 뭐 드릴까요?	손님 뭐 들을까요?	0.83	4.4	kept
+e1654d4d968b_s	손님, 뭐 드릴까요?	손님 뭐 들을까요?	0.83	6.1	kept
+e178e52a7d2b	비빔밥 하나 주세요.	비빔밥 하나 주세요	1.0	3.8	kept
+e178e52a7d2b_s	비빔밥 하나 주세요.	비빔밥 하나 주스에요	0.9	5.1	kept
+e2189b700c10	했어요	했어요.	1.0	2.6	kept
+e3525116b83f	와요	와요.	1.0	2.6	kept
+e5a7eb85d3c1	재미있었어요	재미있었어요.	1.0	3.0	kept
+e671aa59d990	다시	다시	1.0	2.5	kept
+e67a764b9d01	김치찌개	김치찌개	1.0	2.8	kept
+e6cc255f8f47	영화	영화	1.0	2.6	kept
+e7071ff21559	편의점 옆에 은행이 있어요.	편의점 옆에 은행이 있어요.	1.0	4.3	kept
+e7071ff21559_s	편의점 옆에 은행이 있어요.	편의점 옆에 은행이 있어요.	1.0	5.8	kept
+e78498f904fe	하나	하나	1.0	2.6	kept
+e7af1ffe6f75	편의점	편의점	1.0	2.6	kept
+e8762a25919b	요	유호	0.25	2.6	kept
+e8a9724a92d7	커피를 마셔요.	커피를 마셔요.	1.0	2.9	kept
+e8a9724a92d7_s	커피를 마셔요.	커피를 마셔요.	1.0	3.9	kept
+e8b701a28309	구	9	0.0	2.6	kept
+e9a95de0add7	안녕하세요	안녕하세요	1.0	2.7	kept
+ea869d7cd791	열두 시에 점심을 먹어요.	12시에 점심을 먹어요.	0.8	4.1	kept
+ea869d7cd791_s	열두 시에 점심을 먹어요.	12시에 점심을 먹어야	0.76	5.6	kept
+eaa640aced91	몇	몇	1.0	2.6	kept
+eb9f90dfacea	똑바로 가세요.	똑바로 가세요?	1.0	2.9	kept
+eb9f90dfacea_s	똑바로 가세요.	똑바로 가세요?	1.0	3.8	kept
+ec067747603a	병원에 가야 해요.	병원에 가야 해요.	1.0	3.1	kept
+ec067747603a_s	병원에 가야 해요.	병원에 가야 해요.	1.0	4.1	kept
+ec488add9d1d	사	4	0.0	2.6	kept
+ed1703dc9415	연세	연쇄.	0.8	2.6	kept
+ee2ea79dfacb	전화번호가 몇 번이에요?	전화번호가 몇 번이에요?	1.0	3.4	kept
+ee2ea79dfacb_s	전화번호가 몇 번이에요?	전화번호가 몇 번이에요?	1.0	4.6	kept
+efd23dd5edb2	가	가	1.0	2.6	kept
+f03178980e64	오늘 강의실이 바뀌었어요.	오늘 강의실이 바뀌었어요.	1.0	4.2	kept
+f03178980e64_s	오늘 강의실이 바뀌었어요.	오늘 강의실이 바꼈어요.	0.88	5.8	kept
+f057d9a7672a	오늘 약속이 있어요.	오늘 약속이 있어요.	1.0	3.6	kept
+f057d9a7672a_s	오늘 약속이 있어요.	오늘 약속이 있어요.	1.0	4.8	kept
+f127ef73497d	연구실	연구실	1.0	2.7	kept
+f189eae288b4	형은 회사에서 일해요.	형은 회사에서 일해요.	1.0	3.3	kept
+f189eae288b4_s	형은 회사에서 일해요.	형은 회사에서 일해요.	1.0	4.5	kept
+f2480f5009aa	민수 씨는 한국 사람이에요.	민수 씨는 한국 사람이에요.	1.0	3.7	kept
+f2480f5009aa_s	민수 씨는 한국 사람이에요.	민수 씨는 한국 사람이예요.	0.96	5.0	kept
+f308269d300a	목이 아파요.	목이 아파요.	1.0	3.3	kept
+f308269d300a_s	목이 아파요.	목이 아파요.	1.0	4.5	kept
+f38f87e1cdc4	퇴근해요	퇴근해요.	1.0	2.6	kept
+f3e20ae188e5	저는 학생이에요.	저는 학생이에요.	1.0	3.3	kept
+f3e20ae188e5_s	저는 학생이에요.	저는 학생회에요.	0.88	4.5	kept
+f3fc28f45912	매워요	매워요.	1.0	2.6	kept
+f414c5a8e49c	이거 제 휴대폰이에요.	이것 제 휴대폰이요.	0.84	3.5	kept
+f414c5a8e49c_s	이거 제 휴대폰이에요.	이거 제 휴대폰이요.	0.89	4.7	kept
+f429d5becc35	도와주세요	도와주세요	1.0	2.7	kept
+f4c43048aba5	벌써 도착했어요.	벌써 도착했어요.	1.0	3.4	kept
+f4c43048aba5_s	벌써 도착했어요.	벌써 도착했어요.	1.0	4.6	kept
+f4fe174eefaf	자요	사요?	0.75	2.6	kept
+f5b2db88e9ac	아홉 시에 시작해요.	아홉 시에 시작해요	1.0	3.7	kept
+f5b2db88e9ac_s	아홉 시에 시작해요.	9시에 시작해요.	0.72	4.4	kept
+f5d9de961cd8	고장 났어요	고장 났어요	1.0	2.9	kept
+f64ab5490128	지금 뭐 해요?	지금 뭐 해요.	1.0	3.4	kept
+f64ab5490128_s	지금 뭐 해요?	지금 뭐에요?	0.82	4.6	kept
+f67db198d7e8	연세가 어떻게 되세요?	연세가 어떻게 되세요?	1.0	3.9	kept
+f67db198d7e8_s	연세가 어떻게 되세요?	연세가 어떻게 되세요?	1.0	5.4	kept
+f6e1218a5cc7	시급이 얼마예요?	시급이 얼마에요?	0.94	3.5	kept
+f6e1218a5cc7_s	시급이 얼마예요?	시급이 얼마에요?	0.94	4.8	kept
+f7aa9bd92c5b	손님	손님	1.0	2.6	kept
+f7de8479218d	사람	사랑	0.8	2.6	kept
+f8073b892a7d	만나서 반가워요.	만나서 반가워요.	1.0	3.1	kept
+f8073b892a7d_s	만나서 반가워요.	만나서 반가워요?	1.0	4.2	kept
+f8bf7a93905e	둘	둘	1.0	2.6	kept
+f8df78512f6f	기숙사	기숙사	1.0	2.6	kept
+f8e6518387a4	약국이 어디에 있어요?	약국이 어디에 있어요?	1.0	3.4	kept
+f8e6518387a4_s	약국이 어디에 있어요?	약국이 어디에 있어요?	1.0	4.6	kept
+fa3129059e4c	영화가 정말 재미있었어요.	영화가 정말 재미있었어요.	1.0	3.8	kept
+fa3129059e4c_s	영화가 정말 재미있었어요.	영화가 정말 재미있었어요.	1.0	5.2	kept
+faac263f42e1	사요	사요	1.0	2.4	kept
+fb0483e34b84	취미	취미	1.0	2.6	kept
+fb28891bf148	물이에요?	무리에요.	0.78	2.6	kept
+fb28891bf148_s	물이에요?	무리에요.	0.78	3.4	kept
+fb9e0fb2441b	여보세요	여보세요	1.0	2.6	kept
+fbbd1d1816e0	다섯	다 서!	0.8	2.6	kept
+fc3e0a447cd2	네, 알겠어요.	네. 알겠어요.	1.0	4.1	kept
+fc3e0a447cd2_s	네, 알겠어요.	네. 알겠어요.	1.0	5.6	kept
+fcf2ac6fdc00	바빠요	바빠요!	1.0	3.0	kept
+fd962d4f43d4	이거 주세요.	이거 주세요	1.0	2.7	kept
+fd962d4f43d4_s	이거 주세요.	이거 주세요	1.0	3.6	kept
+fda54e360f1d	도착하면 연락 주세요.	도착하면 연락 주세요.	1.0	3.5	kept
+fda54e360f1d_s	도착하면 연락 주세요.	도착하면 연락 주세요.	1.0	4.7	kept
+fdeb80b15281	다음 주에 시험이 있어요.	다음 주에 시험이 있어요.	1.0	3.5	kept
+fdeb80b15281_s	다음 주에 시험이 있어요.	다음 주에 시험이 있어요.	1.0	4.7	kept
+fdf3c918c694	일곱 시에 일어나요.	일곱 시에 일어나요.	1.0	3.2	kept
+fdf3c918c694_s	일곱 시에 일어나요.	일곱 시에 일어나요.	1.0	4.3	kept
+ff7558d54cc0	이 티셔츠는 너무 작아요.	이 티셔츠는 너무 작아요.	1.0	4.2	kept
+ff7558d54cc0_s	이 티셔츠는 너무 작아요.	이 티셔츠는 너무 작아요.	1.0	5.8	kept

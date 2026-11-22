@@ -2,5 +2,5 @@
 <resources>
     <color name="icon_bg">#FFFFF4E8</color>
     <!-- Night ink; matches the default (night) C.Bg so there is no white flash on launch. -->
-    <color name="app_bg">#FF0B1021</color>
+    <color name="app_bg">#FF0B0D12</color>
 </resources>

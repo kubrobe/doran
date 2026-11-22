@@ -42,7 +42,7 @@ fun GlossText(
     hints: (String) -> List<String>?,
     modifier: Modifier = Modifier,
     fontSize: TextUnit = 19.sp,
-    color: Color = C.Ink,
+    color: Color = C.Text,
     bold: Boolean = false,
     onWordTap: ((String) -> Unit)? = null,
 ) {
@@ -65,7 +65,7 @@ fun GlossText(
                                 .drawBehind {
                                     val y = size.height - 1.dp.toPx()
                                     val end = if (i < words.lastIndex) size.width - 6.dp.toPx() else size.width
-                                    drawLine(C.LineDark, Offset(0f, y), Offset(end, y), 2.dp.toPx(), pathEffect = PathEffect.dashPathEffect(floatArrayOf(6f, 6f)))
+                                    drawLine(C.OutlineStrong, Offset(0f, y), Offset(end, y), 2.dp.toPx(), pathEffect = PathEffect.dashPathEffect(floatArrayOf(6f, 6f)))
                                 }
                                 .clickable {
                                     val justClosed = closedAt.second == i && System.currentTimeMillis() - closedAt.first < 400
@@ -80,10 +80,10 @@ fun GlossText(
                     Popup(alignment = Alignment.TopStart, offset = IntOffset(0, height + 8), onDismissRequest = { closedAt = System.currentTimeMillis() to i; open = null },
                         properties = PopupProperties(focusable = false, dismissOnClickOutside = true)) {
                         Column(
-                            Modifier.enterPop(from = 0.85f, durationMs = 220).glass(RoundedCornerShape(14.dp), elevation = 12.dp, opaque = 0.96f)
-                                .clickable { open = null }.padding(horizontal = 12.dp, vertical = 8.dp).testTag("hintPopup"),
+                            Modifier.enterPop(from = 0.9f, durationMs = 180).surface(Level.Overlay, RoundedCornerShape(com.doranalley.ui.theme.Radius.tile))
+                                .clickable { open = null }.padding(horizontal = 14.dp, vertical = 10.dp).testTag("hintPopup"),
                         ) {
-                            h.forEach { line -> Text(line, fontSize = 15.sp, color = C.Ink) }
+                            h.forEach { line -> Text(line, style = com.doranalley.ui.theme.DoranType.body, color = C.Text) }
                         }
                     }
                 }

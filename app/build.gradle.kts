@@ -35,6 +35,11 @@ android {
             storePassword = "android"
             keyAlias = "androiddebugkey"
             keyPassword = "android"
+            // Also sign the old (v1 / JAR) way. With minSdk 26 the build drops v1 by default, and some
+            // phones' installers refuse an APK without v1 signature files ("APK contains no signature files").
+            enableV1Signing = true
+            enableV2Signing = true
+            enableV3Signing = true
         }
     }
 

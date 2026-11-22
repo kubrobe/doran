@@ -22,9 +22,6 @@ val Nunito = FontFamily(
 /** Korean text uses the phone's Korean sans (Noto Sans CJK / One UI) so every phone renders it the same way. */
 val Hangul: FontFamily = FontFamily.Default
 
-/** Kept for older call sites: decorative Hangul now uses the same Korean sans (many phones have no Hangul serif). */
-val HangulSerif: FontFamily = Hangul
-
 private fun style(size: Int, line: Int, weight: FontWeight, family: FontFamily = Nunito, spacing: TextUnit = 0.sp) =
     TextStyle(fontFamily = family, fontSize = size.sp, lineHeight = line.sp, fontWeight = weight, letterSpacing = spacing)
 

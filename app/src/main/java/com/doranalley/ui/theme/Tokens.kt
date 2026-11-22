@@ -165,47 +165,6 @@ object C {
 
     /** Obangsaek-inspired set for celebrations and dancheong trims only. */
     val Festive: List<Color> get() = listOf(Lavender, Heart, Xp, Accent, Streak, c(T.Rose))
-
-    // ---- Legacy names, mapped onto the semantic roles while screens migrate. Removed once unused.
-    val Green get() = Accent
-    val GreenDark get() = AccentStrong
-    val GreenLight get() = AccentSoft
-    val GreenInk get() = AccentInk
-    val Blue get() = Select
-    val BlueDark get() = Select
-    val BlueLight get() = SelectSoft
-    val BlueInk get() = SelectInk
-    val Red get() = Heart
-    val RedDark get() = Heart
-    val RedLight get() = HeartSoft
-    val RedInk get() = HeartInk
-    val Orange get() = Streak
-    val OrangeDark get() = Streak
-    val OrangeInk get() = StreakInk
-    val Gold get() = Xp
-    val GoldDark get() = Xp
-    val GoldLight get() = XpSoft
-    val GoldInk get() = XpInk
-    val Purple get() = Lavender
-    val PurpleDark get() = Lavender
-    val PurpleInk get() = LavenderInk
-    val Plum get() = c(T.Rose)
-    val PlumDark get() = c(T.Rose)
-    val Ink get() = Text
-    val Line get() = Outline
-    val LineDark get() = OutlineStrong
-    val BgDeep get() = Bg2
-    val Card get() = Surface
-    val Soft get() = SurfaceRaised
-    val GlassTop get() = Surface
-    val GlassBottom get() = Surface
-    val GlassRim get() = Highlight
-    val GlassLine get() = Outline
-    val GlassShadow get() = Shadow
-    val GlowA get() = Xp
-    val GlowB get() = Accent
-    val GlowC get() = Lavender
-    val Dust get() = Xp
 }
 
 /** 4 dp spacing scale. */

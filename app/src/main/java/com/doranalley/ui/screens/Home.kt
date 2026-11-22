@@ -449,7 +449,9 @@ private fun PathNodeRow(
                 u.isHangul -> Icons.Filled.Translate
                 else -> Icons.Filled.Star
             }
-            PathNode(state, icon, tone, label, "node:${u.id}:${r.lesson}", onClick)
+            // Hangul lessons show one of the unit's letters instead of a generic icon.
+            val glyph = if (u.isHangul && !isReview) (u.letters.getOrNull(r.lesson * 2)?.ch ?: watermark(u)) else null
+            PathNode(state, icon, tone, label, "node:${u.id}:${r.lesson}", glyph, onClick)
             if (current) StartLabel(if (isReview) "Review" else "Start", tone, Modifier.align(Alignment.TopCenter))
         }
     }
@@ -461,7 +463,7 @@ private fun PathNodeRow(
  * presses down, and a "Start" label above it.
  */
 @Composable
-private fun PathNode(state: NodeState, icon: ImageVector, tone: Tone, label: String, tag: String, onClick: () -> Unit) {
+private fun PathNode(state: NodeState, icon: ImageVector, tone: Tone, label: String, tag: String, glyph: String?, onClick: () -> Unit) {
     val source = remember { MutableInteractionSource() }
     val pressed by source.collectIsPressedAsState()
     val reduce = LocalReduceMotion.current
@@ -501,7 +503,8 @@ private fun PathNode(state: NodeState, icon: ImageVector, tone: Tone, label: Str
                     .then(if (border != Color.Transparent) Modifier.border(2.dp, border, CircleShape) else Modifier),
                 contentAlignment = Alignment.Center,
             ) {
-                Icon(icon, null, tint = tint, modifier = Modifier.size(if (state == NodeState.CURRENT) 30.dp else 26.dp))
+                if (glyph != null && (state == NodeState.CURRENT || state == NodeState.OPEN)) Text(glyph, style = DoranType.h1.copy(fontFamily = com.doranalley.ui.theme.Hangul), color = tint)
+                else Icon(icon, null, tint = tint, modifier = Modifier.size(if (state == NodeState.CURRENT) 30.dp else 26.dp))
             }
         }
     }
@@ -577,7 +580,7 @@ fun GuidebookScreen(vm: AppViewModel, u: CourseUnit) {
     val playing by vm.audio.playing.collectAsState()
     val tone = C.section(u.section)
     androidx.activity.compose.BackHandler { vm.back() }
-    Column(Modifier.fillMaxSize().statusBarsPadding()) {
+    Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
         TopBar("Guidebook", onBack = { vm.back() })
         LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(start = Space.gutter, end = Space.gutter, bottom = 32.dp)) {
             item {

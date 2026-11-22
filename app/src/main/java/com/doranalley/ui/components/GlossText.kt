@@ -42,7 +42,7 @@ fun GlossText(
     hints: (String) -> List<String>?,
     modifier: Modifier = Modifier,
     fontSize: TextUnit = 19.sp,
-    color: Color = C.Ink,
+    color: Color = C.Text,
     bold: Boolean = false,
     onWordTap: ((String) -> Unit)? = null,
 ) {

@@ -8,7 +8,10 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.activity.SystemBarStyle
-import com.doranalley.ui.components.AmbientBackdrop
+import com.doranalley.ui.components.DoranBackdrop
+import com.doranalley.ui.components.Motion
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.remember
 import com.doranalley.ui.theme.isNight
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -66,28 +69,33 @@ class MainActivity : ComponentActivity() {
                 }
                 val screen by vm.screen.collectAsState()
                 val warm = when (screen) { is Screen.Complete, is Screen.Streak, is Screen.Placed -> 1f; else -> 0f }
-                // The lantern backdrop stays put while screens change on top of it.
+                // The first screen after launch shows at once; later screens fade and rise in briefly.
+                val firstScreen = remember { arrayOf<Any?>(screen::class) }
                 Box(Modifier.fillMaxSize()) {
-                AmbientBackdrop(Modifier.fillMaxSize(), warm = warm)
-                // Each kind of screen rises in once when it opens (tabs and lesson steps animate inside).
-                key(screen::class) {
-                    Box(Modifier.fillMaxSize().enterRise(distance = if (screen == Screen.Lesson) 40.dp else 12.dp, durationMs = 300)) {
-                when (val s = screen) {
-                    is Screen.Onboarding -> OnboardingScreen(vm, s.step)
-                    is Screen.Home -> {
-                        BackHandler(enabled = s.tab != Tab.LEARN) { vm.back() }
-                        HomeScreen(vm, s.tab)
+                    DoranBackdrop(Modifier.fillMaxSize(), warm = warm)
+                    key(screen::class) {
+                        val entrance = remember {
+                            if (firstScreen[0] == screen::class) Modifier
+                            else Modifier.enterRise(distance = if (screen == Screen.Lesson) 24.dp else 8.dp, durationMs = Motion.SCREEN)
+                        }
+                        SideEffect { firstScreen[0] = null }
+                        Box(Modifier.fillMaxSize().then(entrance)) {
+                            when (val s = screen) {
+                                is Screen.Onboarding -> OnboardingScreen(vm, s.step)
+                                is Screen.Home -> {
+                                    BackHandler(enabled = s.tab != Tab.LEARN) { vm.back() }
+                                    HomeScreen(vm, s.tab)
+                                }
+                                Screen.Lesson -> LessonScreen(vm)
+                                is Screen.Complete -> CompleteScreen(vm, s.summary)
+                                is Screen.Streak -> StreakScreen(vm, s.days)
+                                Screen.OutOfHearts -> OutOfHeartsScreen(vm)
+                                is Screen.Placed -> PlacedScreen(vm, s.unit)
+                                is Screen.Guidebook -> GuidebookScreen(vm, s.unit)
+                                Screen.Settings -> SettingsScreen(vm)
+                            }
+                        }
                     }
-                    Screen.Lesson -> LessonScreen(vm)
-                    is Screen.Complete -> CompleteScreen(vm, s.summary)
-                    is Screen.Streak -> StreakScreen(vm, s.days)
-                    Screen.OutOfHearts -> OutOfHeartsScreen(vm)
-                    is Screen.Placed -> PlacedScreen(vm, s.unit)
-                    is Screen.Guidebook -> GuidebookScreen(vm, s.unit)
-                    Screen.Settings -> SettingsScreen(vm)
-                }
-                    }
-                }
                 }
                 // If a lesson screen is shown without a session (should not happen), go home.
                 LaunchedEffect(screen) {

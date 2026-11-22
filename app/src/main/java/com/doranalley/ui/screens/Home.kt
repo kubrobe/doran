@@ -94,6 +94,30 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.material.icons.automirrored.outlined.MenuBook
+import androidx.compose.material.icons.filled.Bolt
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.outlined.FitnessCenter
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextOverflow
+import com.doranalley.ui.components.ButtonVariant
+import com.doranalley.ui.components.DoranButton
+import com.doranalley.ui.components.DoranDialog
+import com.doranalley.ui.components.HairlineDivider
+import com.doranalley.ui.components.Motion
+import com.doranalley.ui.components.SealMark
+import com.doranalley.ui.components.StatPill
+import com.doranalley.ui.theme.DoranType
+import com.doranalley.ui.theme.Radius
+import com.doranalley.ui.theme.Space
 import com.doranalley.core.CourseUnit
 import com.doranalley.core.Progress
 import com.doranalley.ui.AppViewModel
@@ -117,12 +141,13 @@ import kotlin.math.sin
 fun HomeScreen(vm: AppViewModel, tab: Tab) {
     val p by vm.progress.collectAsState()
     val now by vm.now.collectAsState()
-    Box(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
-        Column(Modifier.fillMaxSize()) {
-            TopStats(vm, p, now)
-            Box(Modifier.weight(1f)) {
+    // The tab bar is docked below the content (never floating over it), so nothing scrolls under it.
+    Column(Modifier.fillMaxSize()) {
+        Column(Modifier.weight(1f).fillMaxWidth().statusBarsPadding()) {
+            HomeHeader(vm, p, now)
+            Box(Modifier.weight(1f).fillMaxWidth()) {
                 key(tab) {
-                    Box(Modifier.fillMaxSize().enterRise(distance = 10.dp, durationMs = 260)) {
+                    Box(Modifier.fillMaxSize().enterRise(distance = 6.dp, durationMs = Motion.STATE + 60)) {
                         when (tab) {
                             Tab.LEARN -> PathView(vm, p)
                             Tab.PRACTICE -> PracticeTab(vm)
@@ -133,148 +158,127 @@ fun HomeScreen(vm: AppViewModel, tab: Tab) {
                 }
             }
         }
-        LiquidTabBar(tab, Modifier.align(Alignment.BottomCenter)) { vm.go(Screen.Home(it)) }
+        TabBar(tab) { vm.go(Screen.Home(it)) }
     }
 }
 
-/** Room the floating tab bar takes at the bottom; scrolling content pads by this so it can slide under the glass. */
-val TabBarSpace = 104.dp
+/** Extra room at the end of scrolling tab content (the tab bar is docked, so this is breathing room only). */
+val TabBarSpace = 24.dp
 
-private data class TabItem(val tab: Tab, val icon: ImageVector, val label: String, val tag: String)
+private data class TabItem(val tab: Tab, val icon: ImageVector, val iconOff: ImageVector, val label: String, val tag: String)
 
 private val tabItems = listOf(
-    TabItem(Tab.LEARN, Icons.Filled.Home, "Learn", "tabLearn"),
-    TabItem(Tab.PRACTICE, Icons.Filled.FitnessCenter, "Practice", "tabPractice"),
-    TabItem(Tab.WORDS, Icons.AutoMirrored.Filled.MenuBook, "Words", "tabWords"),
-    TabItem(Tab.PROFILE, Icons.Filled.Person, "Profile", "tabProfile"),
+    TabItem(Tab.LEARN, Icons.Filled.Home, Icons.Outlined.Home, "Learn", "tabLearn"),
+    TabItem(Tab.PRACTICE, Icons.Filled.FitnessCenter, Icons.Outlined.FitnessCenter, "Practice", "tabPractice"),
+    TabItem(Tab.WORDS, Icons.AutoMirrored.Filled.MenuBook, Icons.AutoMirrored.Outlined.MenuBook, "Words", "tabWords"),
+    TabItem(Tab.PROFILE, Icons.Filled.Person, Icons.Outlined.Person, "Profile", "tabProfile"),
 )
 
 /**
- * Floating liquid-glass tab bar. A lens of tinted glass slides to the chosen tab with a spring and
- * stretches while it travels, like a drop of water.
+ * The bottom navigation: a solid bar docked under the content. The selected tab shows a filled
+ * icon on a jade pill and jade label; the others an outlined icon. Each item is a tab for TalkBack.
  */
 @Composable
-private fun LiquidTabBar(tab: Tab, modifier: Modifier = Modifier, onSelect: (Tab) -> Unit) {
-    val index = tabItems.indexOfFirst { it.tab == tab }.coerceAtLeast(0)
-    val pos = remember { Animatable(index.toFloat()) }
-    LaunchedEffect(index) { pos.animateTo(index.toFloat(), spring(dampingRatio = 0.62f, stiffness = 380f)) }
-    val shape = RoundedCornerShape(30.dp)
-    val accent = C.Green
-    Box(
-        modifier.padding(horizontal = 18.dp, vertical = 10.dp).fillMaxWidth().height(66.dp)
-            .glass(shape, elevation = 16.dp, opaque = 0.86f)
-            .clip(shape)
-            .drawBehind {
-                val n = tabItems.size
-                val slot = (size.width - 12.dp.toPx()) / n
-                val v = pos.value
-                val stretch = 1f + (kotlin.math.abs(v - index) * 0.9f).coerceAtMost(0.6f)
-                val w = slot * stretch
-                val cx = 6.dp.toPx() + slot * (v + 0.5f)
-                val h = size.height - 12.dp.toPx()
-                val tl = Offset(cx - w / 2f, 6.dp.toPx())
-                val r = androidx.compose.ui.geometry.CornerRadius(h / 2f)
-                drawRoundRect(Brush.verticalGradient(listOf(accent.copy(alpha = 0.34f), accent.copy(alpha = 0.16f)), startY = tl.y, endY = tl.y + h), tl, androidx.compose.ui.geometry.Size(w, h), r)
-                drawRoundRect(Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.6f), Color.White.copy(alpha = 0.05f)), startY = tl.y, endY = tl.y + h), tl, androidx.compose.ui.geometry.Size(w, h), r, style = Stroke(1.2.dp.toPx()))
-            }
-            .padding(6.dp),
-    ) {
-        Row(Modifier.fillMaxSize()) {
-            tabItems.forEach { item -> NavItem(item, item.tab == tab, Modifier.weight(1f)) { onSelect(item.tab) } }
+private fun TabBar(tab: Tab, onSelect: (Tab) -> Unit) {
+    Column(Modifier.fillMaxWidth().background(C.Bg2)) {
+        HairlineDivider()
+        Row(Modifier.fillMaxWidth().navigationBarsPadding().padding(horizontal = 8.dp, vertical = 6.dp).selectableGroup()) {
+            tabItems.forEach { item -> TabButton(item, item.tab == tab, Modifier.weight(1f)) { onSelect(item.tab) } }
         }
     }
 }
 
 @Composable
-private fun NavItem(item: TabItem, selected: Boolean, modifier: Modifier, onClick: () -> Unit) {
-    val fg by animateColorAsState(if (selected) C.GreenInk else C.Muted, tween(220), label = "navFg")
-    val scale by animateFloatAsState(if (selected) 1.12f else 1f, spring(dampingRatio = 0.4f, stiffness = 500f), label = "navScale")
-    val lift by animateFloatAsState(if (selected) 1f else 0f, spring(dampingRatio = 0.6f, stiffness = 400f), label = "navLift")
+private fun TabButton(item: TabItem, selected: Boolean, modifier: Modifier, onClick: () -> Unit) {
+    val fg by animateColorAsState(if (selected) C.AccentInk else C.Muted, tween(Motion.STATE), label = "tabFg")
+    val pill by animateColorAsState(if (selected) C.AccentSoft else Color.Transparent, tween(Motion.STATE), label = "tabPill")
     Column(
-        modifier.fillMaxSize().clip(RoundedCornerShape(24.dp))
-            .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, onClick = onClick).testTag(item.tag),
+        modifier.heightIn(min = 56.dp).clip(RoundedCornerShape(Radius.tile))
+            .selectable(selected, role = Role.Tab, onClick = onClick)
+            .testTag(item.tag)
+            .padding(vertical = 4.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Icon(item.icon, item.label, tint = fg, modifier = Modifier.size(24.dp).graphicsLayer { scaleX = scale; scaleY = scale; translationY = -lift * 1.5.dp.toPx() })
-        Text(item.label, fontSize = 11.sp, color = fg, fontWeight = FontWeight.ExtraBold, fontFamily = Nunito)
+        Box(Modifier.size(width = 56.dp, height = 30.dp).clip(CircleShape).background(pill), contentAlignment = Alignment.Center) {
+            Icon(if (selected) item.icon else item.iconOff, null, tint = fg, modifier = Modifier.size(22.dp))
+        }
+        Text(item.label, style = DoranType.caption, color = fg, modifier = Modifier.padding(top = 2.dp))
     }
 }
 
+/** The compact status row on every tab: the Doran mark on the left, streak, today's XP and hearts on the right. */
 @Composable
-private fun TopStats(vm: AppViewModel, p: Progress, now: Long) {
+private fun HomeHeader(vm: AppViewModel, p: Progress, now: Long) {
     val today = vm.today()
     var heartsInfo by remember { mutableStateOf(false) }
-    Column {
-        Row(Modifier.fillMaxWidth().padding(start = 18.dp, end = 12.dp, top = 10.dp, bottom = 6.dp), verticalAlignment = Alignment.CenterVertically) {
-            Column {
-                Text("도란", fontSize = 26.sp, fontWeight = FontWeight.Black, color = C.Ink, fontFamily = HangulSerif, lineHeight = 28.sp)
-                Text("Doran Korean", fontSize = 11.sp, fontWeight = FontWeight.ExtraBold, color = C.Muted, fontFamily = Nunito, letterSpacing = 1.2.sp)
-            }
-            Spacer(Modifier.weight(1f))
-            val streak = p.visibleStreak(today)
-            StatChip(Icons.Filled.LocalFireDepartment, "$streak", if (p.extendedToday(today)) C.Orange else C.Muted, tag = "streak")
-            Spacer(Modifier.width(6.dp))
-            StatChip(Icons.Filled.Star, "${p.xpOn(today)}/${p.dailyGoal}", C.Gold, tag = "dailyXp")
-            Spacer(Modifier.width(6.dp))
-            StatChip(Icons.Filled.Favorite, if (p.settings.unlimitedHearts) "∞" else "${p.heartsNow(now)}", C.Red, onClick = { heartsInfo = true }, tag = "heartsChip")
+    Row(
+        Modifier.fillMaxWidth().heightIn(min = 60.dp).padding(start = Space.gutter, end = 12.dp, top = 6.dp, bottom = 6.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        SealMark(size = 32.dp)
+        Column(Modifier.weight(1f).padding(start = 10.dp, end = 8.dp).semantics(mergeDescendants = true) { }) {
+            Text("도란", style = DoranType.koBody, color = C.Text, maxLines = 1)
+            Text("DORAN KOREAN", style = DoranType.caption.copy(letterSpacing = DoranType.caption.letterSpacing * 6), color = C.Muted, maxLines = 1, overflow = TextOverflow.Ellipsis)
         }
-        // Daily goal as a glowing thread under the stats.
-        ProgressLine(p.xpOn(today).toFloat() / p.dailyGoal.coerceAtLeast(1))
+        val streak = p.visibleStreak(today)
+        val extended = p.extendedToday(today)
+        StatPill(
+            Icons.Filled.LocalFireDepartment, "$streak", if (extended) C.Streak else C.Muted,
+            "Day streak: $streak" + if (extended) ", done today" else "", tag = "streak",
+        )
+        Spacer(Modifier.width(6.dp))
+        val xp = p.xpOn(today)
+        val goal = p.dailyGoal.coerceAtLeast(1)
+        StatPill(
+            Icons.Filled.Bolt, "$xp", C.Xp, "Today: $xp of $goal XP", tag = "dailyXp",
+            progress = xp.toFloat() / goal,
+        )
+        Spacer(Modifier.width(2.dp))
+        val hearts = p.heartsNow(now)
+        StatPill(
+            Icons.Filled.Favorite, if (p.settings.unlimitedHearts) "∞" else "$hearts", C.Heart,
+            if (p.settings.unlimitedHearts) "Unlimited hearts" else "Hearts: $hearts of ${Progress.MAX_HEARTS}",
+            onClick = { heartsInfo = true }, tag = "heartsChip",
+        )
     }
     if (heartsInfo) HeartsDialog(vm, p, now) { heartsInfo = false }
 }
 
 @Composable
-private fun ProgressLine(fraction: Float) {
-    val f by animateFloatAsState(fraction.coerceIn(0f, 1f), spring(dampingRatio = 0.8f, stiffness = 120f), label = "goal")
-    val track = C.Line
-    val gold = C.Gold
-    Box(
-        Modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 6.dp).height(4.dp).drawBehind {
-            val r = androidx.compose.ui.geometry.CornerRadius(size.height / 2f)
-            drawRoundRect(track, cornerRadius = r)
-            if (f > 0.001f) {
-                val w = size.width * f
-                drawRoundRect(gold.copy(alpha = 0.35f), topLeft = Offset(0f, -2.dp.toPx()), size = androidx.compose.ui.geometry.Size(w, size.height + 4.dp.toPx()), cornerRadius = androidx.compose.ui.geometry.CornerRadius(size.height))
-                drawRoundRect(Brush.horizontalGradient(listOf(C.Orange, gold), endX = w), size = androidx.compose.ui.geometry.Size(w, size.height), cornerRadius = r)
-                drawCircle(Color.White, size.height * 0.9f, Offset(w, size.height / 2f))
-                drawCircle(gold.copy(alpha = 0.4f), size.height * 2.2f, Offset(w, size.height / 2f))
-            }
-        },
-    )
-}
-
-@Composable
 fun HeartsDialog(vm: AppViewModel, p: Progress, now: Long, onDismiss: () -> Unit) {
-    Dialog(onDismissRequest = onDismiss) {
-        Column(
-            Modifier.enterPop(from = 0.85f, durationMs = 320).glass(RoundedCornerShape(28.dp), elevation = 24.dp, opaque = 0.92f).padding(22.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
+    val hearts = p.heartsNow(now)
+    val next = p.nextHeartIn(now)
+    DoranDialog(onDismiss) {
+        Text("Hearts", style = DoranType.h2, color = C.Text, modifier = Modifier.semantics { heading() })
+        Row(
+            Modifier.padding(vertical = 14.dp).semantics(mergeDescendants = true) { contentDescription = "$hearts of ${Progress.MAX_HEARTS} hearts" },
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
         ) {
-            Text("Hearts", style = MaterialTheme.typography.titleLarge)
-            Row(Modifier.padding(vertical = 12.dp)) {
-                repeat(Progress.MAX_HEARTS) { i ->
-                    Icon(
-                        Icons.Filled.Favorite, null, tint = if (i < p.heartsNow(now)) C.Red else C.LineDark,
-                        modifier = Modifier.size(34.dp).enterPop(delayMs = i * 60, from = 0.3f),
-                    )
-                }
+            repeat(Progress.MAX_HEARTS) { i ->
+                val full = p.settings.unlimitedHearts || i < hearts
+                Icon(
+                    if (full) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder, null,
+                    tint = if (full) C.Heart else C.OutlineStrong,
+                    modifier = Modifier.size(32.dp).enterPop(delayMs = i * 50, from = 0.5f),
+                )
             }
-            val next = p.nextHeartIn(now)
-            Text(
-                when {
-                    p.settings.unlimitedHearts -> "Unlimited hearts are on (Settings)."
-                    next == 0L -> "You have full hearts. You lose one for each mistake in a lesson."
-                    else -> "Next heart in ${(next / 60000) + 1} min. Finish a practice session to earn one now."
-                },
-                textAlign = TextAlign.Center, color = C.Ink,
-            )
-            Spacer(Modifier.height(16.dp))
-            ChunkyButton("Practice to earn hearts", { onDismiss(); vm.startPractice(com.doranalley.core.LessonBuilder.PracticeMode.MIXED) }, Modifier.fillMaxWidth(), color = C.Blue, edge = C.BlueDark)
-            Spacer(Modifier.height(8.dp))
-            androidx.compose.material3.TextButton(onClick = onDismiss) { Text("Close", fontWeight = FontWeight.ExtraBold, color = C.Muted) }
         }
+        Text(
+            when {
+                p.settings.unlimitedHearts -> "Unlimited hearts are on (Settings)."
+                next == 0L -> "Your hearts are full. A mistake in a lesson costs one heart."
+                else -> "Next heart in ${(next / 60000) + 1} min. Finish a practice session to earn one now."
+            },
+            style = DoranType.body, color = C.Text2,
+        )
+        Spacer(Modifier.height(20.dp))
+        // Practising for hearts only makes sense when some are missing.
+        if (!p.settings.unlimitedHearts && next != 0L) {
+            DoranButton("Practice to earn hearts", { onDismiss(); vm.startPractice(com.doranalley.core.LessonBuilder.PracticeMode.MIXED) }, Modifier.fillMaxWidth())
+            Spacer(Modifier.height(8.dp))
+        }
+        DoranButton("Close", onDismiss, Modifier.fillMaxWidth(), variant = ButtonVariant.Tertiary, tone = C.select)
     }
 }
 

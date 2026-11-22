@@ -8,39 +8,45 @@ import android.net.Uri
 import android.provider.Settings
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.snap
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
-import com.doranalley.ui.components.GlowBurst
-import com.doranalley.ui.components.drawOrb
-import com.doranalley.ui.components.glass
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.ErrorOutline
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.MicOff
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Replay
 import androidx.compose.material.icons.filled.Stop
-import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -54,18 +60,24 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -74,30 +86,22 @@ import com.doranalley.core.Exercise
 import com.doranalley.core.Hangul
 import com.doranalley.ui.AppViewModel
 import com.doranalley.ui.SpeakState
-import com.doranalley.ui.components.ChunkyButton
-import com.doranalley.ui.components.GhostButton
+import com.doranalley.ui.components.AudioButton
+import com.doranalley.ui.components.BubbleBox
+import com.doranalley.ui.components.ButtonVariant
+import com.doranalley.ui.components.DoranButton
+import com.doranalley.ui.components.GlossText
+import com.doranalley.ui.components.GlowBurst
 import com.doranalley.ui.components.Mascot
-import com.doranalley.ui.theme.C
-import com.doranalley.ui.theme.Nunito
+import com.doranalley.ui.components.Mood
 import com.doranalley.ui.components.Motion
+import com.doranalley.ui.components.ProgressRing
 import com.doranalley.ui.components.enterPop
-import com.doranalley.ui.components.enterRise
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.spring
-import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.collectIsPressedAsState
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.graphics.graphicsLayer
+import com.doranalley.ui.components.pressScale
+import com.doranalley.ui.theme.C
+import com.doranalley.ui.theme.DoranType
+import com.doranalley.ui.theme.LocalReduceMotion
+import com.doranalley.ui.theme.Space
 import kotlin.math.roundToInt
 
 fun hasMic(ctx: android.content.Context) =
@@ -152,184 +156,249 @@ fun SpeakView(vm: AppViewModel, ex: Exercise.Speak, locked: Boolean) {
         is SpeakState.Error -> true
         else -> false
     }
+    val mood = when (val s = state) {
+        is SpeakState.Scored -> if (s.result.score >= 85) Mood.CHEER else if (s.result.passed) Mood.HAPPY else Mood.THINK
+        is SpeakState.NotHeard, is SpeakState.Error -> Mood.THINK
+        else -> Mood.HAPPY
+    }
 
-    Column(Modifier.fillMaxWidth()) {
-        Column(Modifier.weight(1f, fill = false).padding(horizontal = 20.dp)) {
-            Text("Speak this sentence", style = androidx.compose.material3.MaterialTheme.typography.headlineSmall, modifier = Modifier.padding(top = 8.dp, bottom = 16.dp).testTag("exerciseTitle"))
+    Column(Modifier.fillMaxSize()) {
+        Column(Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = Space.gutter)) {
+            Text(
+                "Speak this sentence", style = DoranType.h2, color = C.Text,
+                modifier = Modifier.padding(top = Space.s, bottom = Space.xl).testTag("exerciseTitle").semantics { heading() },
+            )
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Mascot(size = 72.dp)
-                Spacer(Modifier.width(2.dp))
-                com.doranalley.ui.components.BubbleBox { Column {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        com.doranalley.ui.components.SpeakerButton(playing == "ko:${ex.ko}", { vm.audio.play(ex.ko) }, size = 40.dp, tag = "play")
-                        Spacer(Modifier.width(6.dp))
-                        com.doranalley.ui.components.SpeakerButton(playing == "ko-slow:${ex.ko}", { vm.audio.play(ex.ko, slow = true) }, size = 36.dp, slow = true, tag = "playSlow")
-                    }
-                    Spacer(Modifier.height(8.dp))
-                    val s = state
-                    if (s is SpeakState.Scored) ColoredSentence(ex.ko, s.result.heard) else com.doranalley.ui.components.GlossText(ex.ko, vm.course.gloss::korean, fontSize = 22.sp, bold = true)
-                    Text(ex.en, fontSize = 15.sp, color = C.Muted, modifier = Modifier.padding(top = 4.dp))
-                } }
-            }
-        }
-        Spacer(Modifier.height(20.dp))
-        Column(Modifier.fillMaxWidth().padding(horizontal = 20.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-            if (!granted) {
-                Icon(Icons.Filled.MicOff, null, tint = C.Muted, modifier = Modifier.size(48.dp))
-                Text("Speaking practice needs the microphone. Your voice stays on this phone.", textAlign = TextAlign.Center, color = C.Ink, modifier = Modifier.padding(vertical = 10.dp))
-                ChunkyButton("Allow microphone", request, Modifier.fillMaxWidth(), color = C.Blue, edge = C.BlueDark, tag = "allowMic")
-            } else {
-                when (val s = state) {
-                    SpeakState.Idle -> { MicButton(false, level) { vm.startSpeaking(ex.ko) }; Hint("Tap the microphone and read the sentence") }
-                    SpeakState.Recording -> { MicButton(true, level) { vm.stopSpeaking() }; Hint("Listening… tap to stop") }
-                    SpeakState.Checking -> {
-                        CheckingDots(Modifier.testTag("checking"))
-                        Hint(if (asrState is KoreanAsr.State.Loading) "Getting the speech checker ready…" else "Checking your pronunciation…")
-                    }
-                    is SpeakState.Scored -> ScoreView(vm, s, ex)
-                    is SpeakState.NotHeard -> {
-                        Text("I couldn't hear you clearly.", fontWeight = FontWeight.Bold, color = C.Ink, modifier = Modifier.testTag("notHeard"))
-                        Hint("Hold the phone closer and speak a little louder.")
-                        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                            SmallAction("Hear yourself", Icons.Filled.PlayArrow, "hearSelf") { vm.playTake() }
-                            SmallAction("Try again", Icons.Filled.Refresh, "tryAgain") { vm.startSpeaking(ex.ko) }
+                Mascot(size = 72.dp, mood = mood)
+                Spacer(Modifier.width(Space.xs))
+                BubbleBox {
+                    Column {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            AudioButton(playing == "ko:${ex.ko}", { vm.audio.play(ex.ko) }, tag = "play")
+                            Spacer(Modifier.width(Space.s))
+                            AudioButton(playing == "ko-slow:${ex.ko}", { vm.audio.play(ex.ko, slow = true) }, slow = true, tag = "playSlow")
                         }
-                    }
-                    is SpeakState.Error -> {
-                        Text(s.message, color = C.RedInk, textAlign = TextAlign.Center, modifier = Modifier.testTag("speakError"))
-                        Spacer(Modifier.height(8.dp))
-                        SmallAction("Try again", Icons.Filled.Refresh, "tryAgain") { vm.resetSpeak() }
+                        Spacer(Modifier.height(Space.s))
+                        val s = state
+                        if (s is SpeakState.Scored) ColoredSentence(ex.ko, s.result.heard)
+                        else GlossText(ex.ko, vm.course.gloss::korean, fontSize = DoranType.koTile.fontSize, bold = true)
+                        Text(ex.en, style = DoranType.bodySmall, color = C.Text2, modifier = Modifier.padding(top = Space.xs))
                     }
                 }
             }
+            Spacer(Modifier.height(Space.xxl))
+            Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                if (!granted) {
+                    Box(Modifier.size(72.dp).clip(CircleShape).background(C.SurfaceRaised), contentAlignment = Alignment.Center) {
+                        Icon(Icons.Filled.MicOff, null, tint = C.Muted, modifier = Modifier.size(36.dp))
+                    }
+                    Text(
+                        "Speaking practice needs the microphone. Your voice stays on this phone.",
+                        style = DoranType.body, textAlign = TextAlign.Center, color = C.Text, modifier = Modifier.padding(vertical = Space.m),
+                    )
+                    DoranButton("Allow microphone", request, Modifier.fillMaxWidth(), tone = C.lavender, icon = Icons.Filled.Mic, tag = "allowMic")
+                } else {
+                    when (val s = state) {
+                        SpeakState.Idle -> { MicButton(false, level) { vm.startSpeaking(ex.ko) }; Hint("Tap the microphone and read the sentence") }
+                        SpeakState.Recording -> {
+                            MicButton(true, level) { vm.stopSpeaking() }
+                            LevelMeter(level)
+                            Hint("Listening\u2026 tap to stop")
+                        }
+                        SpeakState.Checking -> {
+                            CheckingDots(Modifier.testTag("checking"))
+                            Hint(if (asrState is KoreanAsr.State.Loading) "Getting the speech checker ready\u2026" else "Checking your pronunciation\u2026")
+                        }
+                        is SpeakState.Scored -> ScoreView(vm, s, ex)
+                        is SpeakState.NotHeard -> {
+                            Text("I couldn't hear you clearly.", style = DoranType.title, color = C.Text, modifier = Modifier.testTag("notHeard"))
+                            Hint("Hold the phone closer and speak a little louder.")
+                            Row(horizontalArrangement = Arrangement.spacedBy(Space.m), modifier = Modifier.fillMaxWidth()) {
+                                SmallAction("Hear yourself", Icons.Filled.PlayArrow, "hearSelf", Modifier.weight(1f)) { vm.playTake() }
+                                SmallAction("Try again", Icons.Filled.Refresh, "tryAgain", Modifier.weight(1f)) { vm.startSpeaking(ex.ko) }
+                            }
+                        }
+                        is SpeakState.Error -> {
+                            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = Space.m)) {
+                                Icon(Icons.Filled.ErrorOutline, null, tint = C.HeartInk, modifier = Modifier.size(22.dp))
+                                Text(s.message, style = DoranType.body, color = C.HeartInk, modifier = Modifier.padding(start = Space.s).testTag("speakError"))
+                            }
+                            SmallAction("Try again", Icons.Filled.Refresh, "tryAgain") { vm.resetSpeak() }
+                        }
+                    }
+                }
+            }
+            Spacer(Modifier.height(Space.xl))
         }
-        Spacer(Modifier.weight(1f))
-        Column(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 16.dp)) {
+        Column(Modifier.fillMaxWidth().padding(horizontal = Space.gutter, vertical = Space.m)) {
             if (!locked) SkipLink("Can't speak now", "cantSpeak") { vm.skipExercise(Exercise.Kind.SPEAK) }
             if (canGiveUp && !locked) {
-                Spacer(Modifier.height(8.dp))
-                GhostButton("Continue", { vm.submit(false, note = "We'll practise this one again later.", penalty = false) }, Modifier.fillMaxWidth(), tag = "giveUp")
+                DoranButton("Continue", { vm.submit(false, note = "We'll practise this one again later.", penalty = false) }, Modifier.fillMaxWidth(), variant = ButtonVariant.Secondary, tag = "giveUp")
             }
         }
     }
 }
 
-/** Three dots hopping in turn while the speech checker works. */
+/** Three dots hopping in turn while the speech checker works (still with reduced motion). */
 @Composable
 private fun CheckingDots(modifier: Modifier = Modifier) {
-    val t = rememberInfiniteTransition(label = "dots")
-    val phase by t.animateFloat(0f, 1f, infiniteRepeatable(tween(900, easing = LinearEasing)), label = "phase")
-    Row(modifier.height(64.dp), horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
+    val reduce = LocalReduceMotion.current
+    val phase = if (reduce) null else {
+        val t = rememberInfiniteTransition(label = "dots")
+        t.animateFloat(0f, 1f, infiniteRepeatable(tween(900, easing = LinearEasing)), label = "phase")
+    }
+    Row(
+        modifier.height(72.dp).semantics { contentDescription = "Checking" },
+        horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically,
+    ) {
         repeat(3) { i ->
             Box(
-                Modifier.size(16.dp).graphicsLayer {
-                    val p = ((phase - i * 0.18f) % 1f + 1f) % 1f
+                Modifier.size(14.dp).graphicsLayer {
+                    val ph = phase?.value ?: return@graphicsLayer
+                    val p = ((ph - i * 0.18f) % 1f + 1f) % 1f
                     val hop = if (p < 0.5f) kotlin.math.sin(p * 2.0 * Math.PI).toFloat() else 0f
-                    translationY = -hop * 14.dp.toPx()
-                }.clip(CircleShape).background(listOf(C.Purple, C.Blue, C.Green)[i]),
+                    translationY = -hop * 12.dp.toPx()
+                }.clip(CircleShape).background(C.Lavender.copy(alpha = 0.5f + 0.25f * i)),
             )
         }
     }
 }
 
 @Composable
-private fun Hint(text: String) = Text(text, color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 10.dp, bottom = 6.dp))
+private fun Hint(text: String) = Text(text, style = DoranType.body, color = C.Text2, textAlign = TextAlign.Center, modifier = Modifier.padding(top = Space.m, bottom = Space.s))
 
-/** A large glass orb. Blue and still when idle; red, ringed by ripples and a live voice glow while recording. */
+/**
+ * The microphone: lavender and still when idle; red with a stop icon while recording, its ring
+ * following the voice level, and ripples while (and only while) it records.
+ */
 @Composable
 private fun MicButton(recording: Boolean, level: Float, onClick: () -> Unit) {
+    val reduce = LocalReduceMotion.current
     val source = remember { MutableInteractionSource() }
-    val pressed by source.collectIsPressedAsState()
-    val squeeze by animateFloatAsState(if (pressed) 0.92f else 1f, spring(dampingRatio = 0.45f, stiffness = 800f), label = "squeeze")
-    // The voice glow follows the microphone level smoothly.
-    val lvl by animateFloatAsState(if (recording) level.coerceIn(0f, 1f) else 0f, spring(stiffness = 300f), label = "lvl")
-    val ripple = if (recording) {
-        val t = rememberInfiniteTransition(label = "mic")
-        t.animateFloat(0f, 1f, infiniteRepeatable(tween(1400, easing = LinearEasing)), label = "r")
+    val lvl by animateFloatAsState(if (recording) level.coerceIn(0f, 1f) else 0f, if (reduce) snap() else spring(stiffness = 300f), label = "lvl")
+    val ripple = if (recording && !reduce) {
+        rememberInfiniteTransition(label = "mic").animateFloat(0f, 1f, infiniteRepeatable(tween(1400, easing = LinearEasing)), label = "r")
     } else null
-    val face by animateColorAsState(if (recording) C.Red else C.Blue, tween(260), label = "face")
-    val edge by animateColorAsState(if (recording) C.RedDark else C.BlueDark, tween(260), label = "edge")
+    val face by animateColorAsState(if (recording) C.Heart else C.Lavender, tween(Motion.STATE), label = "face")
+    val on = if (recording) C.OnHeart else C.OnLavender
     Box(
-        Modifier.size(180.dp).drawBehind {
-            val base = 54.dp.toPx()
-            drawCircle(Brush.radialGradient(listOf(face.copy(alpha = 0.30f + 0.25f * lvl), face.copy(alpha = 0f))), base * (1.6f + lvl * 0.5f))
+        Modifier.size(160.dp).drawBehind {
+            val base = 48.dp.toPx()
+            if (recording) drawCircle(face.copy(alpha = 0.18f + 0.30f * lvl), base * (1.25f + lvl * 0.45f))
             val r = ripple?.value ?: return@drawBehind
-            for (k in 0..2) {
-                val p = (r + k / 3f) % 1f
-                drawCircle(face.copy(alpha = 0.35f * (1f - p)), base * (1f + p * 0.65f), style = Stroke(2.5.dp.toPx()))
+            for (k in 0..1) {
+                val p = (r + k / 2f) % 1f
+                drawCircle(face.copy(alpha = 0.35f * (1f - p)), base * (1f + p * 0.6f), style = Stroke(2.dp.toPx()))
             }
         },
         contentAlignment = Alignment.Center,
     ) {
         Box(
-            Modifier.size(108.dp).graphicsLayer { scaleX = squeeze * (1f + lvl * 0.06f); scaleY = squeeze * (1f + lvl * 0.06f) }
-                .shadow(18.dp, CircleShape, clip = false, ambientColor = face, spotColor = face)
-                .clip(CircleShape)
-                .drawBehind { drawOrb(face, edge, center, size.minDimension / 2f) }
-                .clickable(source, null, onClick = onClick).testTag(if (recording) "stopMic" else "mic"),
+            Modifier.size(96.dp).pressScale(source, scale = 0.94f).clip(CircleShape).background(face)
+                .clickable(source, null, role = Role.Button, onClickLabel = if (recording) "Stop recording" else "Start recording", onClick = onClick)
+                .semantics { contentDescription = if (recording) "Stop recording" else "Record your voice" }
+                .testTag(if (recording) "stopMic" else "mic"),
             contentAlignment = Alignment.Center,
         ) {
-            Icon(if (recording) Icons.Filled.Stop else Icons.Filled.Mic, if (recording) "Stop" else "Speak", tint = Color.White, modifier = Modifier.size(50.dp))
+            Icon(if (recording) Icons.Filled.Stop else Icons.Filled.Mic, null, tint = on, modifier = Modifier.size(44.dp))
+        }
+    }
+}
+
+/** Five bars showing how loud the microphone hears you (drawn from the live level, no animation of its own). */
+@Composable
+private fun LevelMeter(level: Float) {
+    val l = level.coerceIn(0f, 1f)
+    Row(
+        Modifier.padding(top = Space.xs).clearAndSetSemantics { },
+        horizontalArrangement = Arrangement.spacedBy(4.dp), verticalAlignment = Alignment.Bottom,
+    ) {
+        repeat(5) { i ->
+            val lit = l > i * 0.18f + 0.02f
+            Box(Modifier.width(6.dp).height((8 + i * 4).dp).clip(RoundedCornerShape(3.dp)).background(if (lit) C.Heart else C.Outline))
         }
     }
 }
 
 @Composable
-private fun SmallAction(text: String, icon: androidx.compose.ui.graphics.vector.ImageVector, tag: String, onClick: () -> Unit) {
-    Row(
-        Modifier.glass(CircleShape, elevation = 6.dp).clip(CircleShape).clickable(onClick = onClick)
-            .padding(horizontal = 16.dp, vertical = 10.dp).testTag(tag),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Icon(icon, null, tint = C.BlueInk, modifier = Modifier.size(20.dp))
-        Text(text, color = C.BlueInk, fontWeight = FontWeight.ExtraBold, fontFamily = Nunito, modifier = Modifier.padding(start = 6.dp))
-    }
+private fun SmallAction(text: String, icon: ImageVector, tag: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    DoranButton(text, onClick, modifier, variant = ButtonVariant.Secondary, icon = icon, tag = tag)
 }
 
 @Composable
 private fun ScoreView(vm: AppViewModel, s: SpeakState.Scored, ex: Exercise.Speak) {
     val score = s.result.score
-    val color = when { score >= 85 -> C.Green; s.result.passed -> C.Gold; else -> C.Red }
-    val track = C.Line
-    // The ring sweeps to the score while the number counts up.
-    val sweep = remember(s) { Animatable(0f) }
-    LaunchedEffect(s) { sweep.animateTo(score / 100f, tween(900, easing = Motion.EaseOut)) }
-    Box(Modifier.size(112.dp).enterPop(from = 0.7f).testTag("score"), contentAlignment = Alignment.Center) {
-        if (score >= 85) GlowBurst(Modifier.requiredSize(200.dp), color = color, key = s, durationMs = 1100)
-        Canvas(Modifier.size(112.dp)) {
-            val st = 9.dp.toPx()
-            drawCircle(Brush.radialGradient(listOf(color.copy(alpha = 0.28f), color.copy(alpha = 0.04f))), size.minDimension / 2f - st / 2f)
-            drawArc(track, 0f, 360f, false, topLeft = Offset(st / 2, st / 2), size = Size(size.width - st, size.height - st), style = Stroke(st))
-            drawArc(color.copy(alpha = 0.3f), -90f, 360f * sweep.value, false, topLeft = Offset(st / 2, st / 2), size = Size(size.width - st, size.height - st), style = Stroke(st * 2.2f, cap = StrokeCap.Round))
-            drawArc(color, -90f, 360f * sweep.value, false, topLeft = Offset(st / 2, st / 2), size = Size(size.width - st, size.height - st), style = Stroke(st, cap = StrokeCap.Round))
-        }
-        Text("${(sweep.value * 100).roundToInt()}%", fontSize = 28.sp, fontWeight = FontWeight.Black, fontFamily = Nunito, color = color)
+    val reduce = LocalReduceMotion.current
+    val (tone, icon, verdict) = when {
+        score >= 85 -> Triple(C.accent, Icons.Filled.CheckCircle, "Great pronunciation!")
+        s.result.passed -> Triple(C.xp, Icons.Filled.ThumbUp, "Good! Listen again and compare.")
+        else -> Triple(C.heart, Icons.Filled.Replay, "Not quite. Listen and try again.")
     }
-    Text(
-        when { score >= 85 -> "Great pronunciation!"; s.result.passed -> "Good! Listen again and compare."; else -> "Not quite. Listen and try again." },
-        fontWeight = FontWeight.ExtraBold, fontFamily = Nunito, fontSize = 17.sp, color = C.Ink, modifier = Modifier.padding(top = 10.dp).enterRise(delayMs = 200),
-    )
-    Text("I heard: ${s.result.heard}", color = C.Muted, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 4.dp, bottom = 10.dp).testTag("heard"))
-    Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-        SmallAction("Hear yourself", Icons.Filled.PlayArrow, "hearSelf") { vm.playTake() }
-        if (!s.result.passed) SmallAction("Try again", Icons.Filled.Refresh, "tryAgain") { vm.startSpeaking(ex.ko) }
+    // The ring sweeps to the score while the number counts up.
+    val sweep = remember(s) { Animatable(if (reduce) score / 100f else 0f) }
+    LaunchedEffect(s) { if (!reduce) sweep.animateTo(score / 100f, tween(900, easing = Motion.EaseOut)) }
+    Box(
+        Modifier.size(120.dp).enterPop(from = 0.8f).testTag("score").semantics { contentDescription = "Pronunciation score $score percent" },
+        contentAlignment = Alignment.Center,
+    ) {
+        if (score >= 85) GlowBurst(Modifier.requiredSize(200.dp), color = tone.fill, key = s, durationMs = 1000)
+        ProgressRing(sweep.value, Modifier.size(120.dp), color = tone.fill, stroke = 10.dp)
+        Text("${(sweep.value * 100).roundToInt()}%", style = DoranType.h1, color = C.Text, modifier = Modifier.clearAndSetSemantics { })
+    }
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = Space.m)) {
+        Icon(icon, null, tint = tone.ink, modifier = Modifier.size(20.dp))
+        Text(verdict, style = DoranType.title, color = C.Text, modifier = Modifier.padding(start = Space.s))
+    }
+    Text("I heard: ${s.result.heard}", style = DoranType.body, color = C.Text2, textAlign = TextAlign.Center, modifier = Modifier.padding(top = Space.xs).testTag("heard"))
+    MarkLegend(Modifier.padding(top = Space.m, bottom = Space.m))
+    Row(horizontalArrangement = Arrangement.spacedBy(Space.m), modifier = Modifier.fillMaxWidth()) {
+        SmallAction("Hear yourself", Icons.Filled.PlayArrow, "hearSelf", Modifier.weight(1f)) { vm.playTake() }
+        if (!s.result.passed) SmallAction("Try again", Icons.Filled.Refresh, "tryAgain", Modifier.weight(1f)) { vm.startSpeaking(ex.ko) }
+    }
+}
+
+private fun markStyle(m: Hangul.Mark): SpanStyle = when (m) {
+    Hangul.Mark.GOOD -> SpanStyle(color = C.AccentInk)
+    Hangul.Mark.CLOSE -> SpanStyle(color = C.XpInk, textDecoration = TextDecoration.Underline)
+    Hangul.Mark.MISSED -> SpanStyle(color = C.HeartInk, textDecoration = TextDecoration.LineThrough)
+}
+
+/** How to read the marked sentence: colour plus underline / strike-through, never colour alone. */
+@Composable
+private fun MarkLegend(modifier: Modifier = Modifier) {
+    Row(
+        modifier.semantics(mergeDescendants = true) { contentDescription = "Plain syllables were said well, underlined ones were close, struck-through ones were missed." },
+        horizontalArrangement = Arrangement.spacedBy(Space.l), verticalAlignment = Alignment.CenterVertically,
+    ) {
+        listOf(Hangul.Mark.GOOD to "Good", Hangul.Mark.CLOSE to "Close", Hangul.Mark.MISSED to "Missed").forEach { (m, label) ->
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.clearAndSetSemantics { }) {
+                Text(buildAnnotatedString { withStyle(markStyle(m)) { append("가") } }, style = DoranType.koBody)
+                Text(label, style = DoranType.caption, color = C.Text2, modifier = Modifier.padding(start = 4.dp))
+            }
+        }
     }
 }
 
 /**
- * The target sentence with each syllable coloured by how well it was heard.
+ * The target sentence with each syllable marked by how well it was heard: plain (good), underlined
+ * (close) or struck through (missed), each also coloured. TalkBack reads which syllables were missed.
  * Word joiners (U+2060) between the syllables of a word keep Android from breaking a line inside a word.
  */
 @Composable
 private fun ColoredSentence(target: String, heard: String) {
     val marks = remember(target, heard) { Hangul.markSyllables(target, heard) }
+    val missed = marks.filter { it.second == Hangul.Mark.MISSED && Hangul.isSyllable(it.first) }.joinToString("") { "${it.first}" }
+    val close = marks.filter { it.second == Hangul.Mark.CLOSE && Hangul.isSyllable(it.first) }.joinToString("") { "${it.first}" }
+    val spoken = target + when {
+        missed.isEmpty() && close.isEmpty() -> ". Every syllable was clear."
+        else -> (if (close.isNotEmpty()) ". Close: $close" else "") + (if (missed.isNotEmpty()) ". Missed: $missed" else "")
+    }
     Text(buildAnnotatedString {
         var prev = ' '
         marks.forEach { (c, m) ->
             if (c != ' ' && prev != ' ') append('\u2060')
-            val col = when (m) { Hangul.Mark.GOOD -> C.GreenInk; Hangul.Mark.CLOSE -> C.GoldInk; Hangul.Mark.MISSED -> C.RedInk }
-            withStyle(SpanStyle(color = if (Hangul.isSyllable(c)) col else C.Ink)) { append(c) }
+            if (Hangul.isSyllable(c)) withStyle(markStyle(m)) { append(c) } else append(c)
             prev = c
         }
-    }, fontSize = 22.sp, fontWeight = FontWeight.Bold, modifier = Modifier.testTag("prompt"))
+    }, style = DoranType.koTile, color = C.Text, modifier = Modifier.testTag("prompt").semantics { contentDescription = spoken })
 }

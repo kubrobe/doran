@@ -45,6 +45,8 @@ object DoranType {
     val button = style(16, 22, FontWeight.ExtraBold, spacing = 0.2.sp)
     /** Big numbers on results and statistics. */
     val number = style(32, 38, FontWeight.ExtraBold)
+    /** Latin answer options and word-bank words. */
+    val option = style(17, 24, FontWeight.SemiBold)
 
     // Korean
     val koPrompt = style(36, 46, FontWeight.Bold, Hangul)
